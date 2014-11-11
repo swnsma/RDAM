@@ -1,0 +1,14 @@
+.chart{
+    height: 300px;
+    width: 700px;
+    margin: auto;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+.slogan{
+    margin: auto;
+    width: 955px;
+    height: 344px;
+    margin-bottom: 15px;
+    border-bottom: 5px solid rgb(99, 173, 31);
+}

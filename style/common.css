@@ -1,0 +1,49 @@
+html, body{
+    min-height: 100%;
+}
+.container{
+    margin: auto;
+    min-width: 960px;
+    position: relative;
+}
+.header{
+    background-color: rgb(99, 173, 31);
+    height: 100px;
+    padding: 25px;
+}
+.logo{
+    background-color: white;
+}
+.navigation{
+
+}
+.navigation ul{
+
+}
+.navigation ul li{
+    padding: 7px;
+    font-weight: bold;
+    font-siz: 14px;
+    list-style: none;
+    text-align: center;
+    min-width: 140px;
+    margin: 10px;
+    display: inline-block;
+    background-color: rgb(244, 239, 212);
+}
+.navigation ul li a{
+
+    text-decoration: none;
+    color: black;
+}
+.navigation ul li:hover{
+    background-color: rgb(113,191,68);
+}
+.footer{
+    background-color: rgb(99, 173, 31);
+    padding: 20px;
+    font-weight: bold;
+    bottom: 0;
+
+
+}
