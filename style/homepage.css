@@ -1,8 +1,11 @@
 .chart{
-    height: 300px;
-    width: 700px;
+    height: 430px;
+    width: 830px;
     margin: auto;
-    border: 1px solid black;
+    border-radius: 10px;
+    border: 2px solid #7DE178;
+    border-top: none;
+    background-color:#eee;
     margin-bottom: 15px;
 }
 .slogan{
@@ -11,4 +14,13 @@
     height: 344px;
     margin-bottom: 15px;
     border-bottom: 5px solid rgb(99, 173, 31);
+}
+.chart h2{
+    background: #7DE178;
+    color:white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius-top-right: 10px;
+    margin:2px auto;
+    text-align: center;
 }

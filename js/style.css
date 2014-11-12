@@ -1,0 +1,50 @@
+.graphContainer
+{
+    height:450px;
+    width:830px;
+    /*border: 1px solid black;*/
+}
+
+
+#chartDiv
+{
+    height:350px;
+    width:750px;
+    margin: auto ;
+    /*background-color:lightblue;*/
+}
+.time:first-child{
+    margin-left: 2%;
+}
+
+.time
+{ margin-left: 2%;
+    display: inline-block;
+    width: 32.7%;
+    height: 30px;
+    margin-left: 1px;
+    cursor:pointer;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 3px;
+    border: 2px solid #7DE178;
+    color:#333;
+    background-color: #ACEFA8;
+
+}
+
+.on_button
+{
+    background-color:#999;
+
+
+}
+.is_active
+{
+    color:white;
+    background-color: #7DE178;
+}
+.jqplot-target
+{
+ font-size:1.2em;
+}
