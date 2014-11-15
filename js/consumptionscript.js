@@ -48,10 +48,10 @@ $(document).ready(function () {
 
         if(percentage!==1) {
             ctx.font = "80px Georgia";
-            ctx.strokeText('-', batteryWidth-80, batteryHeight-130);
+            ctx.strokeText('-', batteryWidth-80, batteryHeight-100);
         }
-
-        ctx.strokeRect(batteryWidth, batteryHeight / 2 - 15, 30, 30);
+        ctx.fillStyle = "#333";
+        ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 30, 50);
 
         $target = document.getElementById(id);
 
