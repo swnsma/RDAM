@@ -51,7 +51,7 @@ $(document).ready(function () {
             ctx.strokeText('-', batteryWidth-80, batteryHeight-130);
         }
         ctx.fillStyle = "#333";
-        ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 50, 50);
+        ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 30, 50);
 
         $target = document.getElementById(id);
 
