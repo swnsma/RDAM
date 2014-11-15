@@ -50,8 +50,8 @@ $(document).ready(function () {
             ctx.font = "80px Georgia";
             ctx.strokeText('-', batteryWidth-80, batteryHeight-130);
         }
-
-        ctx.strokeRect(batteryWidth, batteryHeight / 2 - 15, 30, 30);
+        ctx.fillStyle = "#333";
+        ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 50, 50);
 
         $target = document.getElementById(id);
 
