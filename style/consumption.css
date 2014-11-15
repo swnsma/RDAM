@@ -8,6 +8,8 @@
 .main-content
 {
     height: 800px;
+    width: 100%;
+    margin: 0 auto;
 }
 .prodSpan
 {
@@ -19,7 +21,7 @@
 }
 .prod
 {
-    color: #71BF44;
+    color: rgb(99, 173, 31);
 }
 .cons
 {
