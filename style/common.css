@@ -4,7 +4,7 @@ html, body{
 }
 .container{
     margin: auto;
-    min-width: 960px;
+    width: 960px;
     max-width: 2000px;
     position: relative;
     height: 100%;
@@ -26,7 +26,7 @@ html, body{
 .navigation ul li{
     padding: 7px;
     font-weight: bold;
-    font-siz: 14px;
+    font-size: 14px;
     list-style: none;
     text-align: center;
     min-width: 140px;

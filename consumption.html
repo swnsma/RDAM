@@ -4,6 +4,10 @@
     <title>Consumption</title>
     <link rel="stylesheet" href="style/common.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="style/consumption.css">
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/consumptionscript.js" ></script>
+
+
 </head>
 <body>
 <div class="container">
@@ -18,8 +22,20 @@
         </ul>
     </div><!--end navigation-->
     <div class="main-content">
-        <div class="chart1">Chart will be here</div>
-        <div class="chart2">Chart will be here</div>
+        <div class="batteryContainer">
+            <div class="dayBatteryContainer">
+                <canvas id='dayBattery'></canvas>
+            </div>
+            <div class="weekBatteryContainer">
+                <canvas id='weekBattery'></canvas>
+            </div>
+            <div class="monthBatteryContainer">
+                <canvas id='monthBattery'></canvas>
+            </div>
+        </div>
+
+
+
     </div><!--end main-content-->
     <div class="footer">
         <span>Copyright &copy 2014 All right reserved.</span>
