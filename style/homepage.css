@@ -8,12 +8,9 @@
     background-color:#eee;
     margin-bottom: 15px;
 }
-.slogan{
-    margin: auto;
-    width: 955px;
-    height: 344px;
-    margin-bottom: 15px;
-    border-bottom: 5px solid rgb(99, 173, 31);
+.navigation ul li:nth-child(1)
+{
+    background-color: rgb(99, 173, 31);
 }
 .chart h2{
     background: rgb(99, 173, 31);
