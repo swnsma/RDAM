@@ -1,8 +1,10 @@
 .graphContainer
 {
     height:450px;
-    width:830px;
+    /*width:830px;*/
     width: 955px;
+    font-size: 1.2em;
+    position: relative;
     /*border: 1px solid black;*/
 }
 
@@ -29,13 +31,13 @@
     border-radius: 3px;
     border: 2px solid rgb(113,191,68);
     color:#333;
-    background-color: #ACEFA8;
+    background-color: rgb(244, 239, 212);
 
 }
 
 .on_button
 {
-    background-color:#999;
+    background-color:rgb(159, 233, 81);
 
 
 }
@@ -46,5 +48,15 @@
 }
 .jqplot-target
 {
- font-size:1.2em;
+    font-size:1.5em;
+}
+table.jqplot-table-legend
+{
+    height:50px;
+    font-size:2em;
+}
+.change_view{
+    position: absolute;
+    top:-20px;
+    right:30px;
 }
