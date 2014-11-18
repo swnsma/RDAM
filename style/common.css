@@ -37,7 +37,6 @@ html, body{
 
 }
 .navigation ul li{
-    padding: 7px;
     font-weight: bold;
     font-size: 14px;
     list-style: none;
@@ -56,6 +55,9 @@ html, body{
     padding: 7px;
     text-decoration: none;
     color: black;
+    display: block;
+    height: 100%;
+    width: 100%;
 }
 .navigation ul li:hover{
     background-color: rgb(99, 173, 31);
