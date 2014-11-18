@@ -69,7 +69,3 @@ html, body{
 .footer >span{
     text-align: center; display: block;
 }
-
-.active-el-menu {
-    background-color: rgb(99, 173, 31);
-}
