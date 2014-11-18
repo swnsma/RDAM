@@ -19,41 +19,40 @@ function render(item) {
     var FromDT = [];
     var ToDT = [];
     allData = item;
+    var this_graph;
     console.log(allData);
     var weekProduction = [];
 
-
     var monthProduction = [];
-
 
     //   for (var i = 0; i < allData.length; i++) {
     //    FromDT.push(new DateN(getYear(allData[i].FromDT.iso), getMonth(allData[i].FromDT.iso), getDay(allData[i].FromDT.iso)));
     //    ToDT.push(new DateN(getYear(allData[i].ToDT.iso), getMonth(allData[i].ToDT.iso), getDay(allData[i].ToDT.iso)));
     //}
-    var dayProduction = [];
+    var rend;
 
+    rend=$.jqplot.BarRenderer;
+    var dayProduction = [];
+    var dayTicks =[];
+    var weekTicks =[];
+    var monthTicks =[];
     for (var i = 6; i >= 0; i--) {
 
         dayProduction.push(allData[i].Reading2);
-
-
+        dayTicks.push(allData[i].FromDT.iso.slice(0,10));
     }
 
     var weekProduction = [];
-
     for (var i = 22; i >=19; i--) {
 
         weekProduction.push(allData[i].Reading2);
-
-
+        weekTicks.push(allData[i].FromDT.iso.slice(8,10));
     }
     var monthProduction = [];
-
     for (var i = 18; i >= 7; i--) {
 
         monthProduction.push(allData[i].Reading2);
-
-
+        monthTicks.push(allData[i].FromDT.iso.slice(5,7));
     }
     debugger;
 
@@ -166,5 +165,4 @@ function render(item) {
 
 
     }
-
 }

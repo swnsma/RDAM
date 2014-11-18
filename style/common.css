@@ -71,3 +71,7 @@ html, body{
 .footer >span{
     text-align: center; display: block;
 }
+
+button {
+    outline: none;
+}
