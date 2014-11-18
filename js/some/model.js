@@ -36,7 +36,7 @@ function render(item) {
     rend=$.jqplot.BarRenderer;
     var dayProduction = [];
     var dayConsumption = [];
-   var dayTicks =[];
+    var dayTicks =[];
     var weekTicks =[];
     var monthTicks =[];
     for (var i = 6; i >= 0; i--) {
@@ -136,7 +136,7 @@ function render(item) {
                 // be applied to all series in the chart.
                 seriesDefaults:{
                     renderer:rend,
-                   rendererOptions: {fillToZero: true},
+                    rendererOptions: {fillToZero: true},
                     shadow:false,
                     pointLabels:{show:true}
                 },
@@ -270,6 +270,6 @@ function render(item) {
 
         }
 
-        }
+    }
 
 }
