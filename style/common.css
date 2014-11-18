@@ -47,6 +47,11 @@ html, body{
     display: inline-block;
     background-color: rgb(244, 239, 212);
 }
+
+.navigation ul li[selected='true'] {
+    background-color: rgb(99, 173, 31);
+}
+
 .navigation ul  a{
     padding: 7px;
     text-decoration: none;
@@ -63,4 +68,8 @@ html, body{
 }
 .footer >span{
     text-align: center; display: block;
+}
+
+.active-el-menu {
+    background-color: rgb(99, 173, 31);
 }

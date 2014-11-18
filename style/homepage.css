@@ -8,10 +8,7 @@
     background-color:#eee;
     margin-bottom: 15px;
 }
-.navigation ul li:nth-child(1)
-{
-    background-color: rgb(99, 173, 31);
-}
+
 .chart h2{
     background: rgb(99, 173, 31);
     color:white;
