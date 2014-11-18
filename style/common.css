@@ -16,6 +16,7 @@ html, body{
     border-bottom: 1px solid rgb(99, 173, 31);
     height: 100px;
     padding: 25px;
+
 }
 .header>a{
     background-color: white;
@@ -24,24 +25,38 @@ html, body{
 }
 
 .header > div {
-    float: left;
-    width: 25%;
     overflow: hidden;
-    margin: 0  0 0 100px;
     height: 100%;
 }
+.text_left{
+    width: 300px;
+    margin-left: 20px;
+    float: left;
+}
+.text_right{
+    width: 300px;
+    float: right;
+    text-align: right;
+    font-size: 0.8em;
+}
+
+.header a{
+    text-decoration: none;
+    color: blue;
+}
 .navigation{
+    width: 730px;
+    margin: 0 auto;
 
 }
 .navigation ul{
-
 }
 .navigation ul li{
     font-weight: bold;
     font-size: 14px;
     list-style: none;
     text-align: center;
-    min-width: 140px;
+    min-width: 200px;
     margin: 10px;
     display: inline-block;
     background-color: rgb(244, 239, 212);
@@ -52,7 +67,7 @@ html, body{
 }
 
 .navigation ul  a{
-    padding: 7px 0;
+    padding: 11px 0;
     text-decoration: none;
     color: black;
     display: block;

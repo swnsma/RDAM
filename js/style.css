@@ -2,7 +2,7 @@
 {
     height:450px;
     /*width:830px;*/
-    width: 955px;
+    width: 910px;
     font-size: 1.2em;
     position: relative;
     /*border: 1px solid black;*/
@@ -12,7 +12,7 @@
 #chartDiv
 {
     height:530px;
-    width:940px;
+    width:890px;
     margin: auto ;
 }
 .time:first-child{
