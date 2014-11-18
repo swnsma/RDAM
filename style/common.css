@@ -52,7 +52,7 @@ html, body{
 }
 
 .navigation ul  a{
-    padding: 7px;
+    padding: 7px 0;
     text-decoration: none;
     color: black;
     display: block;
