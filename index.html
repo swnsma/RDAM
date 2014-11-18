@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>Homepage</title>
+    <link rel="stylesheet" href="style/common.css" type="text/css"/>
     <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
     <link rel="stylesheet" href="js/style.css" type="text/css"/>
-    <link rel="stylesheet" href="style/common.css" type="text/css"/>
+    <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
     <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
     <script src="js/some/parse-1.3.1.min.js"></script>
 
@@ -12,6 +13,13 @@
     <script type='text/javascript' src='js/jquery.jqplot.min.js'></script>
     <script type='text/javascript' src='js/jqplot.canvasAxisLabelRenderer.min.js'></script>
     <script type='text/javascript' src='js/jqplot.canvasTextRenderer.min.js'></script>
+    <script type='text/javascript' src='js/jqplot.themeEngine.js'></script>
+    <script type='text/javascript' src='js/jqplot.tableLegendRenderer.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.barRenderer.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.pointLabels.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.categoryAxisRenderer.js'></script>
+
+
 </head>
 <body>
 <div class="container">
@@ -30,7 +38,7 @@
     </div><!--end header-->
     <div class="navigation">
         <ul>
-           <li selected="true"><a href="index.html">HOME</a></li>
+           <li> <a href="index.html">HOME</a></li>
            <li><a href="production.html">PRODUCTION</a></li>
            <li> <a href="consumption.html">CONSUMPTION</a></li>
         </ul>
@@ -39,6 +47,7 @@
 
         <div class="chart"><h2>Production and consumption</h2>
             <div class="graphContainer">
+                <button class="change_view">Line/Bar</button>
                 <div id="chartDiv"> </div>
 
                 <script type='text/javascript' src='js/some/model.js'></script>
