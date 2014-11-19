@@ -1,15 +1,54 @@
 $(document).ready(function () {
-    var dayProduction = 10;
-    var dayConsumption = 20;
+    var allData=[];
 
-    var weekProduction = 300;
-    var weekConsumption = 450;
+    var dayProduction;
+    var dayConsumption;
+    var weekProduction;
+    var weekConsumption;
+    var monthProduction;
+    var monthConsumption;
 
-    var monthProduction = 340;
-    var monthConsumption = 460;
+    function getData() {
+        var options = {
+            url: 'https://api.parse.com/1/classes/consumption_data/',
+            type: 'GET',
+            contentType: 'application/json',
+            beforeSend: function (request) {
+                request.setRequestHeader('X-Parse-Application-Id', 'dEruvPYiXg1FAzhn4u47ZP8Yjd7B2Ss6Gqjqi7h3');
+                request.setRequestHeader('X-Parse-REST-API-Key', 'a6npew12pgZaQJSTeCtPru3cVGS9VmZzG1op4mK8');
+            },
+            success: function (response) {
+                if (response && response.results && response.results.length) {
+
+                    for (var i = 0; i < response.results.length; i++) {
+                        var a = response.results[i];
+                        allData.push(a);
+                    }
+                    dayProduction = allData[1].production;
+                    dayConsumption = allData[1].consumption;
+                    batteryRender('dayBattery', dayProduction, dayConsumption, 'Yesterday');
+
+                    weekProduction=allData[0].production;
+                    weekConsumption= allData[0].consumption;
+                    batteryRender('weekBattery', weekProduction, weekConsumption, 'Last week');
+
+                    monthProduction=allData[2].production;
+                    monthConsumption= allData[2].consumption;
+                    batteryRender('monthBattery', monthProduction, monthConsumption, 'Last month');
+
+                }
+            },
+
+            error: function () {
+            }
+        };
+        $.ajax(options);
+    };
+getData();
+
+    var batteryRender = function (id, production, consumption,day ) {
 
 
-    var batteryRender = function (id, production, consumption, day) {
 
         var $target = $('.batteryContainer');
         var $width = $target.css('width');
@@ -48,7 +87,7 @@ $(document).ready(function () {
 
         if(percentage!==1) {
             ctx.font = "80px Georgia";
-            ctx.strokeText('-', batteryWidth-80, batteryHeight-100);
+            ctx.strokeText('-', batteryWidth-80, batteryHeight-140);
         }
         ctx.fillStyle = "#333";
         ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 30, 50);
@@ -72,12 +111,5 @@ $(document).ready(function () {
             $consSpan.appendTo($target1).addClass('prodSpan').addClass('cons').text(day + ' consumption ' + consumption + ' kWatts.');
         }
     };
-
-    batteryRender('dayBattery', dayProduction, dayConsumption, 'Yesterday');
-
-    batteryRender('weekBattery', weekProduction, weekConsumption, 'Last week');
-
-    batteryRender('monthBattery', monthProduction, monthConsumption, 'Last month');
-
 
 });
