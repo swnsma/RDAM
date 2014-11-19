@@ -117,6 +117,7 @@ function render(item) {
                         pad: 1.2
                     }
                 },
+                grid: {borderColor: 'transparent', shadow: false},
                 seriesColors: ['green']
             });
         }
@@ -137,6 +138,7 @@ function render(item) {
                         pad: 1.2
                     }
                 },
+                grid: {borderColor: 'transparent', shadow: false},
                 seriesColors: ['green']
             });
         }
@@ -158,6 +160,7 @@ function render(item) {
                         pad: 1.2
                     }
                 },
+                grid: {borderColor: 'transparent', shadow: false},
                 seriesColors: ['green']
             });
 
