@@ -73,21 +73,32 @@ getData();
         ctx.strokeStyle="black";
         ctx.strokeRect(0, 0, batteryWidth * percentage, batteryHeight);
 
+
+        var pic       = new Image();
+        pic.src    = 'img/solna15.png';
+        pic.onload = function() {
+            ctx.drawImage(pic, 50,50);
+        };
+
+
         ctx.fillStyle = "#71BF44";
 
         ctx.fillRect(0, 0, batteryWidth * percentage, batteryHeight);
 
         ctx.strokeRect(batteryWidth * percentage, 0, batteryWidth - batteryWidth * percentage, batteryHeight);
-        ctx.font = "60px Georgia";
-        ctx.strokeText('+', 20, 60);
+
 
 
         ctx.fillStyle = "#BF4444 ";
         ctx.fillRect(batteryWidth * percentage, 0, batteryWidth - batteryWidth * percentage, batteryHeight);
 
+
         if(percentage!==1) {
-            ctx.font = "80px Georgia";
-            ctx.strokeText('-', batteryWidth-80, batteryHeight-140);
+            var pic2      = new Image();
+            pic2.src    = 'img/molniya.png';
+            pic2.onload = function() {
+                ctx.drawImage(pic2, 580,50);
+            };
         }
         ctx.fillStyle = "#333";
         ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 30, 50);
