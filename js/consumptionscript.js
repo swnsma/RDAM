@@ -77,7 +77,7 @@ getData();
         var pic       = new Image();
         pic.src    = 'img/solna15.png';
         pic.onload = function() {
-            ctx.drawImage(pic, 50,50);
+            ctx.drawImage(pic, 10,50);
         };
 
 
