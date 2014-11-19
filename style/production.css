@@ -1,0 +1,30 @@
+
+body{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.emission{
+    display:inline-block;
+    width:50%;
+
+    background-color:#eee;
+    margin:0 25%;
+    text-align: center;
+
+}
+.saved_trees
+{   display:inline-block;
+    width:50%;
+    height:300px;
+    float:right;
+    background-color:#eee;
+}
+.factory{
+    width:250px;
+    height:200px;
+    stroke: green;
+    stroke-width: 2;
+}
+
+.wrap{
+    width:100%;
+}

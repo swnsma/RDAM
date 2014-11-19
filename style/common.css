@@ -3,6 +3,9 @@ html, body{
     position: relative;
     margin: 0;
     padding: 0;
+
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
 }
 .container{
     margin: auto;
@@ -81,6 +84,9 @@ html, body{
     background-color: rgb(99, 173, 31);
     padding: 20px;
     font-weight: bold;
+    margin-top: 10px;
+    width:100%;
+    clear: both;
 
 }
 .footer >span{
