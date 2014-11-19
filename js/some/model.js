@@ -128,64 +128,57 @@ function render(item) {
         if (number == 1) {
             $('#chartDiv').empty();
             this_graph=1;
-            // Ticks should match up one for each y value (category) in the series.
+
             var ticks = dayTicks;
 
             var plot1 = $.jqplot('chartDiv', [dayProduction,dayConsumption], {
-                // The "seriesDefaults" option is an options object that will
-                // be applied to all series in the chart.
+
                 seriesDefaults:{
                     renderer:rend,
                     rendererOptions: {fillToZero: true},
                     shadow:false,
                     pointLabels:{show:true}
                 },
-                // Custom labels for the series are specified with the "label"
-                // option on the series option.  Here a series option object
-                // is specified for each series.
+
                 series:[
                     {label:'consumption'},
                     {label:'production'},
                 ],
-                // Show the legend and put it outside the grid, but inside the
-                // plot container, shrinking the grid to accomodate the legend.
-                // A value of "outside" would not shrink the grid and allow
-                // the legend to overflow the container.
+
                 legend: {
                     show: true,
                     placement: 'se'
                 },
                 axes: {
-                    // Use a category axis on the x axis and use our custom ticks.
+
                     xaxis: {
                         renderer: $.jqplot.CategoryAxisRenderer,
                         ticks: ticks,
                         tickOptions:{formatString:'%b %#d, %y'},
                         tickInterval:'1 month'
                     },
-                    // Pad the y axis just a little so bars can get close to, but
-                    // not touch, the grid boundaries.  1.2 is the default padding.
+
                     yaxis: {
                         pad: 1.05,
                         tickOptions: {formatString: '%d'}
                     }
                 },
                 grid: {
-                    drawGridLines: false,        // wether to draw lines across the grid or not.
-                    gridLineColor: '#cccccc',   // *Color of the grid lines.
-                    background: '#eee',      // CSS color spec for background color of grid.
-                    borderColor: '#999999',     // CSS color spec for border around grid.
-                    borderWidth: 2.0,           // pixel width of border around grid.
-                    shadow: true,               // draw a shadow for grid.
-                    shadowAngle: 45,            // angle of the shadow.  Clockwise from x axis.
-                    shadowOffset: 1.5,          // offset from the line of the shadow.
-                    shadowWidth: 3,             // width of the stroke for the shadow.
-                    shadowDepth: 3,             // Number of strokes to make when drawing shadow.
-                                                // Each stroke offset by shadowOffset from the last.
-                    shadowAlpha: 0.07,          // Opacity of the shadow
-                    renderer: $.jqplot.CanvasGridRenderer,  // renderer to use to draw the grid.
-                    rendererOptions: {}         // options to pass to the renderer.  Note, the default
-                                                // CanvasGridRenderer takes no additional options.
+                    drawGridLines: false,
+                    gridLineColor: '#cccccc',
+                    background: '#eee',
+                    borderColor: '#999999',
+                    borderWidth: 2.0,
+                    shadow: true,
+                    shadowAngle: 45,
+                    shadowOffset: 1.5,
+                    shadowWidth: 3,
+                    shadowDepth: 3,
+
+                    shadowAlpha: 0.07,
+                    renderer: $.jqplot.CanvasGridRenderer,
+                    rendererOptions: {}
+
                 }
                 //seriesColors: ['green', 'red']
             });
@@ -194,45 +187,53 @@ function render(item) {
         if (number == 2) {
             $('#chartDiv').empty();
             this_graph=2;
-            // Ticks should match up one for each y value (category) in the series.
+
             var ticks = weekTicks;
 
             var plot1 = $.jqplot('chartDiv', [weekProduction,weekConsumption], {
-                // The "seriesDefaults" option is an options object that will
-                // be applied to all series in the chart.
+
                 seriesDefaults:{
                     renderer:rend,
                     rendererOptions: {fillToZero: true},
                     shadow:false,
                     pointLabels:{show:true}
                 },
-                // Custom labels for the series are specified with the "label"
-                // option on the series option.  Here a series option object
-                // is specified for each series.
                 series:[
                     {label:'consumption'},
                     {label:'production'},
                 ],
-                // Show the legend and put it outside the grid, but inside the
-                // plot container, shrinking the grid to accomodate the legend.
-                // A value of "outside" would not shrink the grid and allow
-                // the legend to overflow the container.
+
                 legend: {
                     show: true,
                     placement: 'se'
                 },
                 axes: {
-                    // Use a category axis on the x axis and use our custom ticks.
+
                     xaxis: {
                         renderer: $.jqplot.CategoryAxisRenderer,
                         ticks: ticks
                     },
-                    // Pad the y axis just a little so bars can get close to, but
-                    // not touch, the grid boundaries.  1.2 is the default padding.
                     yaxis: {
                         pad: 1.05,
                         tickOptions: {formatString: '%d'}
                     }
+                },
+                grid: {
+                    drawGridLines: false,
+                    gridLineColor: '#cccccc',
+                    background: '#eee',
+                    borderColor: '#999999',
+                    borderWidth: 2.0,
+                    shadow: true,
+                    shadowAngle: 45,
+                    shadowOffset: 1.5,
+                    shadowWidth: 3,
+                    shadowDepth: 3,
+
+                    shadowAlpha: 0.07,
+                    renderer: $.jqplot.CanvasGridRenderer,
+                    rendererOptions: {}
+
                 }
                 //seriesColors: ['green', 'red']
             });
@@ -281,6 +282,23 @@ function render(item) {
                         pad: 1.05,
                         tickOptions: {formatString: '%d'}
                     }
+                },
+                grid: {
+                    drawGridLines: false,
+                    gridLineColor: '#cccccc',
+                    background: '#eee',
+                    borderColor: '#999999',
+                    borderWidth: 2.0,
+                    shadow: true,
+                    shadowAngle: 45,
+                    shadowOffset: 1.5,
+                    shadowWidth: 3,
+                    shadowDepth: 3,
+
+                    shadowAlpha: 0.07,
+                    renderer: $.jqplot.CanvasGridRenderer,
+                    rendererOptions: {}
+
                 }
                 //seriesColors: ['green', 'red']
             });
