@@ -1,5 +1,5 @@
 .chart{
-    height: 600px;
+    height: 630px;
     width: 910px;
     margin:0 auto;
     border-radius: 10px;
@@ -10,6 +10,7 @@
 }
 
 .chart h2{
+    padding: 5px;
     background: rgb(99, 173, 31);
     color:white;
     border-top-left-radius: 10px;
@@ -25,8 +26,8 @@
     background-color: #6496c8;
     text-shadow: -1px 1px #417cb8;
     border: none;
-    height: 20px;
-    width: 70px;
+    height: 30px;
+    width: 100px;
     cursor: pointer;
 }
 .change_view:hover {
