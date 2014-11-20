@@ -5,49 +5,37 @@ body{
 .emission{
     display:inline-block;
     width:49%;
-position: relative;
+    position: relative;
     background-color:#eee;
     float:left;
     text-align: center;
     border-radius: 10px;
     border: 2px solid rgb(99, 173, 31);
-    border-top: none;
+    height: 100%;
 
 }
-.emission h2{
+.emission h2,.saved_trees h2{
     padding: 5px;
     background: rgb(99, 173, 31);
     color:white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-radius-top-right: 10px;
-    margin:2px auto;
+    border-radius: 7px 7px 0 0;
+    margin:0px auto;
     text-align: center;
+    height: 40px;
 
 }
 .saved_trees
-{   display:inline-block;
+{      display:inline-block;
     width:49%;
-float:right;
     position: relative;
     background-color:#eee;
+    float:right;
     text-align: center;
     border-radius: 10px;
     border: 2px solid rgb(99, 173, 31);
-    border-top: none;
+    height: 100%;
 }
-.saved_trees h2{
-    padding: 5px;
-    background: rgb(99, 173, 31);
-    color:white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-radius-top-right: 10px;
-    margin:2px auto;
-    text-align: center;
-    padding-bottom: 10px;
 
-}
 .factory{
     width:250px;
     height:200px;
@@ -59,6 +47,7 @@ float:right;
 .wrap{
     position: relative;
     width:100%;
+    overflow: hidden;
 }
 
 .emm_res

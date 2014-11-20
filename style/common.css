@@ -1,18 +1,14 @@
-html, body{
+ body{
+
+    width: 960px;
     height: 100%;
     position: relative;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 0 10px;
 font-family: "Colibri", Arial, Helvetica, sans-serif;
 
 }
-.container{
-    margin: auto;
-    width: 960px;
-    max-width: 2000px;
-    position: relative;
-    height: 100%;
-}
+
 .header{
     width: 910px;
     border-bottom: 1px solid rgb(99, 173, 31);
@@ -47,8 +43,6 @@ font-family: "Colibri", Arial, Helvetica, sans-serif;
     color: blue;
 }
 .navigation{
-    width: 730px;
-    margin: 0 auto;
 
 }
 .navigation ul{
@@ -75,13 +69,14 @@ font-family: "Colibri", Arial, Helvetica, sans-serif;
     display: block;
     height: 100%;
     width: 100%;
+    text-transform: uppercase;
 }
 .navigation ul li:hover{
     background-color: rgb(99, 173, 31);
 }
 .footer{
     background-color: rgb(99, 173, 31);
-    padding: 20px;
+    padding: 20px 0;
     font-weight: bold;
     margin-top: 10px;
     width:100%;
