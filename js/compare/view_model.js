@@ -6,6 +6,7 @@ function AppViewModel() {
     self.arrayUsers=ko.observableArray([]);
     getUsers(self);
     self.set_active = function(seat){
+        debugger;
         seat.active(!seat.active());
     }
     self.return_active_user = ko.computed(function(){
