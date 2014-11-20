@@ -1,0 +1,20 @@
+.compare_float_left{
+    width: 19%;
+    height: 500px;
+    background-color: #ccc;
+    margin-right: 1%;
+    float: left;
+}
+.compare_float_center{
+    width: 59%;
+    margin-right: 1%;
+    height: 500px;
+    background-color: #666666;
+    float: left;
+}
+.compare_float_right{
+    height: 500px;
+    width: 20%;
+    background-color: #7e4465;
+    float: left;
+}
