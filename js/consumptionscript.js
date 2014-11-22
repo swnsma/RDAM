@@ -74,7 +74,7 @@ getData();
         ctx.strokeRect(0, 0, batteryWidth * percentage, batteryHeight);
 
 
-        var pic       = new Image();
+          var pic       = new Image();
         pic.src    = 'img/solna15.png';
         pic.onload = function() {
             ctx.drawImage(pic, 10,50);
@@ -102,6 +102,14 @@ getData();
         }
         ctx.fillStyle = "#333";
         ctx.fillRect(batteryWidth, batteryHeight / 2 - 25, 30, 50);
+
+
+        ctx.fillStyle = "yellow";
+        ctx.font = 'bold 30px sans-serif';
+        ctx.fillText("Total consumption "+ consumption+" kWatt", 140, 110);
+        ctx.strokeStyle='black';
+        ctx.strokeText("Total consumption "+ consumption+" kWatt", 140, 110);
+        ctx.strokeStyle='black';
 
         $target = document.getElementById(id);
 
