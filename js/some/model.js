@@ -132,7 +132,7 @@ function render(item) {
             var ticks = dayTicks;
 
             var plot1 = $.jqplot('chartDiv', [dayProduction,dayConsumption], {
-
+                title: 'Daily production',
                 seriesDefaults:{
                     renderer:rend,
                     rendererOptions: {
@@ -187,7 +187,7 @@ function render(item) {
             var ticks = weekTicks;
 
             var plot1 = $.jqplot('chartDiv', [weekProduction,weekConsumption], {
-
+                title: 'Weekly production',
                 seriesDefaults:{
                     renderer:rend,
                     rendererOptions: {fillToZero: true},
@@ -239,6 +239,7 @@ function render(item) {
             var plot1 = $.jqplot('chartDiv', [monthProduction, monthConsumption], {
                 // The "seriesDefaults" option is an options object that will
                 // be applied to all series in the chart.
+                title: 'Monthly production',
                 seriesDefaults: {
                     renderer: rend,
                     rendererOptions: {fillToZero: true},
