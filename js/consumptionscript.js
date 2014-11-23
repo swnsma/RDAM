@@ -73,12 +73,12 @@ getData();
         ctx.strokeStyle="black";
         ctx.strokeRect(0, 0, batteryWidth * percentage, batteryHeight);
 
-
+        if(percentage!==0) {
           var pic       = new Image();
         pic.src    = 'img/solna15.png';
         pic.onload = function() {
             ctx.drawImage(pic, 10,50);
-        };
+        }};
 
 
         ctx.fillStyle = "#71BF44";
