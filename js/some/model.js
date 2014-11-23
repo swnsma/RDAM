@@ -135,7 +135,9 @@ function render(item) {
 
                 seriesDefaults:{
                     renderer:rend,
-                    rendererOptions: {fillToZero: true},
+                    rendererOptions: {
+                        fillToZero: true
+                    },
                     shadow:false,
                     pointLabels:{show:true}
                 },
@@ -147,7 +149,8 @@ function render(item) {
 
                 legend: {
                     show: true,
-                    placement: 'se'
+                    xoffset: 12,
+                    yoffset: 12
                 },
                 axes: {
 
@@ -169,18 +172,11 @@ function render(item) {
                     background: '#eee',
                     borderColor: '#999999',
                     borderWidth: 2.0,
-                    shadow: true,
-                    shadowAngle: 45,
-                    shadowOffset: 1.5,
-                    shadowWidth: 3,
-                    shadowDepth: 3,
-
-                    shadowAlpha: 0.07,
+                    shadow: false,
                     renderer: $.jqplot.CanvasGridRenderer,
                     rendererOptions: {}
-
                 }
-                //seriesColors: ['green', 'red']
+               //seriesColors: ['green', 'red']
             });
 
         }
@@ -205,7 +201,8 @@ function render(item) {
 
                 legend: {
                     show: true,
-                    placement: 'se'
+                    xoffset: 12,
+                    yoffset: 12
                 },
                 axes: {
 
@@ -224,16 +221,9 @@ function render(item) {
                     background: '#eee',
                     borderColor: '#999999',
                     borderWidth: 2.0,
-                    shadow: true,
-                    shadowAngle: 45,
-                    shadowOffset: 1.5,
-                    shadowWidth: 3,
-                    shadowDepth: 3,
-
-                    shadowAlpha: 0.07,
+                    shadow: false,
                     renderer: $.jqplot.CanvasGridRenderer,
                     rendererOptions: {}
-
                 }
                 //seriesColors: ['green', 'red']
             });
@@ -268,7 +258,8 @@ function render(item) {
                 // the legend to overflow the container.
                 legend: {
                     show: true,
-                    placement: 'se'
+                    xoffset: 12,
+                    yoffset: 12
                 },
                 axes: {
                     // Use a category axis on the x axis and use our custom ticks.
@@ -289,16 +280,9 @@ function render(item) {
                     background: '#eee',
                     borderColor: '#999999',
                     borderWidth: 2.0,
-                    shadow: true,
-                    shadowAngle: 45,
-                    shadowOffset: 1.5,
-                    shadowWidth: 3,
-                    shadowDepth: 3,
-
-                    shadowAlpha: 0.07,
+                    shadow: false,
                     renderer: $.jqplot.CanvasGridRenderer,
                     rendererOptions: {}
-
                 }
                 //seriesColors: ['green', 'red']
             });

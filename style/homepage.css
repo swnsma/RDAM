@@ -21,17 +21,15 @@
 
 
 .change_view {
-    color: #fff;
-    background-color: #6496c8;
-    text-shadow: -1px 1px #417cb8;
+    color: #000;
+    background-color: rgb(244, 239, 212);
     border: none;
     height: 30px;
     width: 100px;
     cursor: pointer;
 }
 .change_view:hover {
-    background-color: #346392;
-    text-shadow: -1px 1px #27496d;
+    background-color: rgb(159, 233, 81);
 }
 .change_view:active {
     background-color: #27496d;

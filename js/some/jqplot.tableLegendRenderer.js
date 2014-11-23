@@ -49,6 +49,7 @@
         elem = document.createElement('tr');
         tr = $(elem);
         tr.addClass('jqplot-table-legend');
+        tr.parents().on("mouseover", function(){alert(1);})
         elem = null;
 
         if (reverse){

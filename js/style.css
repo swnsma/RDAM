@@ -44,15 +44,17 @@
     color:white;
     background-color: rgb(99, 173, 31);
 }
-.jqplot-target
-{
-    font-size:1.5em;
-}
+/*.jqplot-target*/
+/*{*/
+    /*font-size:1.5em;*/
+/*}*/
 table.jqplot-table-legend
 {
+    opacity: 0.4;
     height:50px;
-    font-size:2em;
+    font-size:0.9em;
 }
+
 .change_view{
     position: absolute;
     top:-35px;

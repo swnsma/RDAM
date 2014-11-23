@@ -137,6 +137,11 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
     border: 1px solid rgb(99, 173, 31);
     position: absolute;
     font-size: 1.2em;
+    opacity: 0.5;
+}
+table.jqplot-table-legend:hover,table.jqplot-cursor-legend:hover
+{
+    opacity: 1;
 }
 
 td.jqplot-table-legend {
