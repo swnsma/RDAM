@@ -24,7 +24,7 @@ function getUsers(self) {
                 }
 
                 self.arrayUsers(mappedTasks);
-                console.log(mappedTasks);
+               /* console.log(mappedTasks);*/
             }
         },
 

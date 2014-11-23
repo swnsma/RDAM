@@ -18,7 +18,7 @@ function AppViewModel() {
                 result.push(self.arrayUsers()[i]);
             }
         }
-        console.log(result);
+        /*console.log(result);*/
         return result;
     });
 }

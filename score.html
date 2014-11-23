@@ -39,18 +39,21 @@
     <div class="main-content">
         <div class="score_wrapper">
             <div class="compare_float_left">
-                <ul data-bind="foreach: arrayUsers">
-                    <li data-bind="text:name, click: $root.set_active">
-
-                    </li>
-                </ul>
+                <form action="" >
+                    <ul data-bind="foreach: arrayUsers">
+                        <li >
+                            <input data-bind="id:name, click: $root.set_active" type="checkbox"/>
+                            <label data-bind="for:name, text:name, click: $root.set_active"></label>
+                        </li>
+                    </ul>
+                </form>
             </div>
             <div class="compare_float_center">
 
             </div>
             <div class="compare_float_right">
                 <ul data-bind="foreach: return_active_user()">
-                    <li data-bind="text:name">
+                    <li data-bind=" style:{backgroundColor: color },text:name">
 
                     </li>
                 </ul>
