@@ -19,7 +19,8 @@ function getUsers(self) {
                 var mappedTasks = [];
                 for (var i = 0; i < response.results.length; i++) {
                     var a = response.results[i];
-                    var b = new Users(a.name, a.objectId,false,masColor[i]);
+                    var j = i%masColor.length;
+                    var b = new Users(a.name, a.objectId,false,masColor[j]);
                     mappedTasks.push(b);
                 }
 

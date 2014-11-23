@@ -42,8 +42,8 @@
                 <form action="" >
                     <ul data-bind="foreach: arrayUsers">
                         <li data-bind="click: $root.set_active">
-                            <input data-bind="id:name,click: $root.set_active" type="checkbox"/>
-                            <label data-bind="for:name, text:name"></label>
+                            <input   data-bind="id:name,checked: active" type="checkbox"/>
+                            <label  data-bind="for:name, text:name"></label>
                         </li>
                     </ul>
                 </form>

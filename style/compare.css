@@ -43,13 +43,19 @@
     float: left;
     /*float: right;*/
 }
+.compare_float_right ul{
+    margin: 0;
+    padding: 0;
+}
 .compare_float_right{
     height: 628px;
-    width: 19%;
+    width: 20%;
    /* background-color: #7e4465;*/
     float: right;
 
-    margin-right: 1%;
     border-radius: 5px;
     border: 1px solid rgb(99, 173, 31);
+    font-weight: bold;
+}
+.compare_float_left input{
 }
