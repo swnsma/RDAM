@@ -11,6 +11,8 @@
     float: left;
     border-radius: 5px;
     border: 1px solid rgb(99, 173, 31);
+
+    overflow-y: auto;
 }
 .compare_float_left  ul,.compare_float_right ul{
     padding: 10px 0;
@@ -57,8 +59,24 @@
     width: 20%;
    /* background-color: #7e4465;*/
     float: right;
+    overflow-y: auto;
 
     border-radius: 5px;
     border: 1px solid rgb(99, 173, 31);
     font-weight: bold;
+}
+.compare_float_left [type='text']{
+    background-color: #47598F;
+    border: none;
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    height: 20px;
+    color: white;
+}
+.compare_float_left [type='text']:focus{
+    border: none;
+}
+.search{
+    width: 100%;
 }

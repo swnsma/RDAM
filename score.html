@@ -39,13 +39,24 @@
     <div class="main-content">
         <div class="score_wrapper">
             <div class="compare_float_left">
-                <form action="" >
-                    <ul data-bind="foreach: arrayUsers">
+                <form action="">
+                    <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
+                    <div class="not_search" data-bind="ifnot: $root.search_text">
+                    <ul data-bind=" foreach: arrayUsers">
                         <li data-bind="click: $root.set_active">
                             <input   data-bind="id:name,checked: active" type="checkbox"/>
                             <label  data-bind="for:name, text:name"></label>
                         </li>
                     </ul>
+                    </div>
+                    <div class="search" data-bind="if: $root.search_text">
+                    <ul data-bind=" foreach: return_search()">
+                        <li data-bind="click: $root.set_active">
+                            <input   data-bind="id:name,checked: active" type="checkbox"/>
+                            <label  data-bind="for:name, text:name"></label>
+                        </li>
+                    </ul>
+                    </div>
                 </form>
             </div>
             <div class="compare_float_center">
