@@ -52,7 +52,7 @@
                     <div class="search" data-bind="if: $root.search_text">
                     <ul data-bind=" foreach: return_search()">
                         <li data-bind="click: $root.set_active">
-                            <input   data-bind="id:name,checked: active,value:name" type="checkbox"/>
+                            <input   data-bind="id:name,checked: active, click: $root.set_active,value:name" type="checkbox"/>
                             <label  data-bind="for:name, text:name"></label>
                         </li>
                     </ul>
