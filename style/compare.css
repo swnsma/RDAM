@@ -28,12 +28,17 @@
     text-overflow: ellipsis;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 .compare_float_left  li label{
     cursor: pointer;
 }
 .compare_float_left  li input{
     cursor: pointer;
+    position: relative;
+    z-index: -1;
+
 }
 .compare_float_center{
     width: 59%;
@@ -56,6 +61,4 @@
     border-radius: 5px;
     border: 1px solid rgb(99, 173, 31);
     font-weight: bold;
-}
-.compare_float_left input{
 }
