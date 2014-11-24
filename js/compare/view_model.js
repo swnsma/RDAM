@@ -10,6 +10,7 @@ function AppViewModel() {
     self.set_active = function(seat){
         debugger;
         seat.active(!seat.active());
+        return true;
     }
     self.return_active_user = ko.computed(function(){
         debugger;

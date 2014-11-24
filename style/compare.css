@@ -31,7 +31,6 @@
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    z-index: 1;
 }
 .compare_float_left  li label{
     cursor: pointer;
@@ -39,7 +38,6 @@
 .compare_float_left  li input{
     cursor: pointer;
     position: relative;
-    z-index: -1;
 
 }
 .compare_float_center{
