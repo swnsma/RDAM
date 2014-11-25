@@ -8,13 +8,12 @@ function AppViewModel() {
     self.arrayUsers=ko.observableArray([]);
     getUsers(self);
     self.set_active = function(seat){
-        if(self.return_active_user().length<=3 &&seat.active()===false) {
-            seat.active(!seat.active());
+        if(self.return_active_user().length>3&&seat.active()===false){
         }
-        else if(self.return_active_user().length>3&&seat.active()===true){
+        else{
             seat.active(!seat.active());
+            return true;
         }
-        return true;
     }
     self.return_active_user = ko.computed(function(){
 
