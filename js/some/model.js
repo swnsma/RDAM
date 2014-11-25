@@ -15,6 +15,7 @@ var getDay = function (str) {
     var day = str.slice(8, 10);
     return day;
 }
+
 function render(item) {
     var FromDT = [];
     var ToDT = [];
