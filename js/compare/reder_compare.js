@@ -51,13 +51,14 @@ function get_d(item) {
 }
 function day(a,b) {
     var c=+b;
-    return a+" "+monthes[c].slice(0,3)+".";
+    return a+" "+monthes[c-1].slice(0,3)+".";
 }
 
-function mont(a,b)
+function mont(a)
 {
     var c=+a;
-    return ""+monthes[c].slice(0,3)+". "+b+"";
+    debugger;
+    return monthes[c-1].slice(0,3);
 }
 
 function render() {
@@ -78,7 +79,6 @@ function render() {
         var mas1 = [];
         for (var i = 22; i >= 19; i--) {
             mas1.push(users_data[j][i].Reading2);
-            weekTicks[i-19]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
         }
         weekProduction[j] = mas1;
     }
@@ -89,13 +89,15 @@ function render() {
     for (var j = 0; j < users_data.length; j++) {
         var mas1 = [];
         for (var i = 18; i >= 7; i--) {
+
             mas1.push(users_data[j][i].Reading2);
         }
-        monthProduction[j-7] = mas1;
+        debugger;
+        monthProduction[j] = mas1;
     }
     for (var i = 18; i >= 7; i--) {
 
-        //monthTicks[i-7]=mont(users_data[0][i].ToDT.iso.slice(5,7),users_data[0][i].ToDT.iso.slice(0,4));
+        monthTicks[i-7]=mont(users_data[0][i].ToDT.iso.slice(5,7));
     }
     console.log(dayProduction);
 
@@ -105,22 +107,26 @@ function render() {
 function changeGraph(number) {
 var ticks=[];
     var mas_dat=[];
+    var title;
     if (number == 1) {
         ticks = dayTicks;
         mas_dat = dayProduction;
+        title='Daily production';
     }
     if (number == 2) {
         ticks = weekTicks;
         mas_dat = weekProduction;
+        title='Weekly production'
     }
     if (number == 3) {
         ticks = monthTicks;
         mas_dat = monthProduction;
+        title='Monthly production'
     }
 
         $('#chartDiv').empty();
         var plot1 = $.jqplot('chartDiv', mas_dat, {
-            title: 'Daily production',
+            title: title,
             seriesDefaults: {
                 renderer: rend,
                 rendererOptions: {
