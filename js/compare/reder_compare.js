@@ -17,6 +17,7 @@ var all=[];
 var FromDT = [];
 var ToDT = [];
 
+var colors=[];
 var dayProduction = [];
 var dayConsumption = [];
 
@@ -33,6 +34,11 @@ function get_d(item) {
     all = item;
     users_data=users_data.splice(1,1);
     dayProduction = dayProduction.splice(1,1);
+    colors=colors.slice(1,1);
+    for(var i =0;i<all.length;i++)
+    {
+        colors[i]=all[i].color;
+    }
     if (length_l = item.length) {
         get_data(all[index].name_table);
     }
@@ -100,7 +106,7 @@ function changeGraph(number) {
             ],
 
             legend: {
-                show: true,
+                show: false,
                 xoffset: 12,
                 yoffset: 12
             },
@@ -127,8 +133,8 @@ function changeGraph(number) {
                 shadow: false,
                 renderer: $.jqplot.CanvasGridRenderer,
                 rendererOptions: {}
-            }
-            //seriesColors: ['green', 'red']
+            },
+            seriesColors: colors
         });
 
     }
