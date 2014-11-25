@@ -32,6 +32,11 @@
     cursor: pointer;
     position: relative;
 }
+.compare_float_right >p{
+    text-align: center;
+    padding: 10px;
+    color: red;
+}
 .compare_float_left  li label{
     cursor: pointer;
 }

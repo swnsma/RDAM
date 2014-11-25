@@ -8,14 +8,18 @@ function AppViewModel() {
     self.arrayUsers=ko.observableArray([]);
     getUsers(self);
     self.set_active = function(seat){
-
-        seat.active(!seat.active());
+        if(self.return_active_user().length<=3 &&seat.active()===false) {
+            seat.active(!seat.active());
+        }
+        else if(self.return_active_user().length>3&&seat.active()===true){
+            seat.active(!seat.active());
+        }
         return true;
     }
     self.return_active_user = ko.computed(function(){
 
         var result = [];
-        for(var i=0;i<self.arrayUsers().length;++i){
+        for(var i=0;(i<(self.arrayUsers().length));++i){
 
             if(self.arrayUsers()[i].active()===true){
                 result.push(self.arrayUsers()[i]);
