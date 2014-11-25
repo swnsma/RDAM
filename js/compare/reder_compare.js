@@ -5,7 +5,6 @@ ko.bindingHandlers.active_us = {
         var value = valueAccessor();
         //debugger;
         get_d(value);
-
     }
 };
 var rend;
@@ -36,13 +35,16 @@ var monthTicks = [];
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
 function get_d(item) {
     all = item;
-    users_data=users_data.splice(1,1);
-    dayProduction = dayProduction.splice(1,1);
-    colors=colors.splice(1,1);
+    users_data=users_data.splice(0,1);
+    dayProduction = dayProduction.splice(0,1);
+    weekProduction = weekProduction.splice(0,1);
+    monthProduction = monthProduction.splice(0,1);
+    all_col=[];
     for(var i =0;i<all.length;i++)
     {
-        colors[i]=all[i].color;
+        all_col[i]=all[i].color;
     }
+    colors=all_col;
     if (length_l = item.length) {
         get_data(all[index].name_table);
     }
@@ -55,16 +57,10 @@ function day(a,b) {
 function mont(a,b)
 {
     var c=+a;
-    debugger;
-return ""+monthes[c].slice(0,3)+". "+b+"";
+    return ""+monthes[c].slice(0,3)+". "+b+"";
 }
 
 function render() {
-
-    //   for (var i = 0; i < allData.length; i++) {
-    //    FromDT.push(new DateN(getYear(allData[i].FromDT.iso), getMonth(allData[i].FromDT.iso), getDay(allData[i].FromDT.iso)));
-    //    ToDT.push(new DateN(getYear(allData[i].ToDT.iso), getMonth(allData[i].ToDT.iso), getDay(allData[i].ToDT.iso)));
-    //}
 
     for (var j = 0; j < users_data.length; j++) {
         var mas1 = [];
@@ -121,11 +117,8 @@ var ticks=[];
         ticks = monthTicks;
         mas_dat = monthProduction;
     }
+
         $('#chartDiv').empty();
-        this_graph = 1;
-
-
-
         var plot1 = $.jqplot('chartDiv', mas_dat, {
             title: 'Daily production',
             seriesDefaults: {
@@ -140,14 +133,12 @@ var ticks=[];
             series: [
 
             ],
-
             legend: {
                 show: false,
                 xoffset: 12,
                 yoffset: 12
             },
             axes: {
-
                 xaxis: {
                     renderer: $.jqplot.CategoryAxisRenderer,
                     ticks: ticks,
