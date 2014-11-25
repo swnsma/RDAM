@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
     <link rel="stylesheet" href="js/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
+    <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
+    <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
 
     <script type='text/javascript' src='js/jquery-2.1.1.js'></script>
     <script type='text/javascript' src='js/knockout/knockout-3.2.0.js'></script>
@@ -15,6 +17,17 @@
     <script type='text/javascript' src='js/compare/Users.js'></script>
     <script type='text/javascript' src='js/compare/view_model.js'></script>
     <script type='text/javascript' src='js/compare/ColorMas.js'></script>
+    <script type='text/javascript' src='js/compare/reder_compare.js'></script>
+    <script type='text/javascript' src='js/compare/get_data.js'></script>
+
+    <script type='text/javascript' src='js/jqplot.canvasAxisLabelRenderer.min.js'></script>
+    <script type='text/javascript' src='js/jqplot.canvasTextRenderer.min.js'></script>
+    <script type='text/javascript' src='js/some/jqplot.themeEngine.js'></script>
+    <script type='text/javascript' src='js/some/jqplot.tableLegendRenderer.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.barRenderer.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.pointLabels.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.categoryAxisRenderer.js'></script>
+    <script type='text/javascript' src='js/plugins/jqplot.canvasGridRenderer.js'></script>
 
 
 </head>
@@ -60,10 +73,13 @@
                 </form>
             </div>
             <div class="compare_float_center">
-
+                <div class="graphContainer">
+                    <button class="change_view">Line/Bar</button>
+                    <div id="chartDiv"> </div>
+                </div>
             </div>
             <div class="compare_float_right">
-                <ul data-bind="foreach: return_active_user()">
+                <ul data-bind="foreach: return_active_user(),active_us: return_active_user()">
                     <li data-bind=" style:{backgroundColor: color },text:name">
 
                     </li>
