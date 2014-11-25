@@ -40,11 +40,11 @@ function getData() {
                 }
                 console.log(allData);
 
-                allData = allData.sort(function(a, b) {
+               /* allData.sort(function(a, b) {
                     a = new Date(a.createdAt.replace(/(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)/, '$2/$3/$1 $4:$5:$6'));
                     b = new Date(b.createdAt.replace(/(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)/, '$2/$3/$1 $4:$5:$6'));
-                    return a - b;
-                });
+                    return a.valueOf() - b.valueOf();
+                });*/
 
                 console.log(allData);
                 render(allData);

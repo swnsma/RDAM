@@ -131,7 +131,11 @@ function render(item) {
             this_graph=1;
 
             var ticks = dayTicks;
-
+            ticks.sort(function(a, b) {
+                a = new Date(a.replace(/(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)/, '$2/$3/$1 $4:$5:$6'));
+                b = new Date(b.replace(/(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)/, '$2/$3/$1 $4:$5:$6'));
+                return a - b;
+            });
             var plot1 = $.jqplot('chartDiv', [dayProduction,dayConsumption], {
                 title: 'Daily production',
                 seriesDefaults:{
@@ -187,6 +191,9 @@ function render(item) {
 
             var ticks = weekTicks;
 
+            ticks.sort(function(a, b) {
+                return a - b;
+            });
             var plot1 = $.jqplot('chartDiv', [weekProduction,weekConsumption], {
                 title: 'Weekly production',
                 seriesDefaults:{
@@ -237,6 +244,9 @@ function render(item) {
             // Ticks should match up one for each y value (category) in the series.
             var ticks = monthTicks;
 
+            ticks.sort(function(a, b) {
+                return a - b;
+            });
             var plot1 = $.jqplot('chartDiv', [monthProduction, monthConsumption], {
                 // The "seriesDefaults" option is an options object that will
                 // be applied to all series in the chart.
