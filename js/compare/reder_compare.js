@@ -11,15 +11,18 @@ var rend;
 
 
 var this_graph=1;
-index=0;
+index=1;
 var a=0;
 length_l=0;
 var users_data=[];
+
 var all=[];
 var FromDT = [];
 var ToDT = [];
 
 var colors=[];
+
+debugger;
 var dayProduction = [];
 var dayConsumption = [];
 
@@ -33,6 +36,7 @@ var dayTicks = [];
 var weekTicks = [];
 var monthTicks = [];
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
+get_first();
 function get_d(item) {
     all = item;
     users_data=users_data.splice(0,1);
@@ -40,14 +44,18 @@ function get_d(item) {
     weekProduction = weekProduction.splice(0,1);
     monthProduction = monthProduction.splice(0,1);
     all_col=[];
+    all_col[0]="#63AD1F";
     for(var i =0;i<all.length;i++)
     {
-        all_col[i]=all[i].color;
+        all_col[i+1]=all[i].color;
     }
     colors=all_col;
+
     if (length_l = item.length) {
-        get_data(all[index].name_table);
+        get_data(all[index-1].name_table);
     }
+    else get_first();
+
 }
 function day(a,b) {
     var c=+b;
@@ -71,6 +79,7 @@ function render() {
         }
         dayProduction[j] = mas1;
     }
+    debugger;
     for (var i = 6; i >= 0; i--) {
         dayTicks[i]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
     }
