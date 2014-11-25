@@ -117,7 +117,23 @@ function render(item) {
                         pad: 1.2
                     }
                 },
-                grid: {borderColor: 'transparent', shadow: false},
+                //grid: {borderColor: 'transparent', shadow: false},
+                grid: {
+                    drawGridLines: false,
+                    gridLineColor: '#cccccc',
+                    background: '#eee',
+                    borderColor: '#999999',
+                    borderWidth: 2.0,
+                    shadow: false,
+                    renderer: $.jqplot.CanvasGridRenderer,
+                    rendererOptions: {}
+                },
+                seriesDefaults: {
+                    renderer: rend,
+                    rendererOptions: {fillToZero: true},
+                    shadow: false,
+                    pointLabels: {show: true}
+                },
                 seriesColors: ['green']
             });
         }
@@ -138,7 +154,23 @@ function render(item) {
                         pad: 1.2
                     }
                 },
-                grid: {borderColor: 'transparent', shadow: false},
+                //grid: {borderColor: 'transparent', shadow: false},
+                grid: {
+                    drawGridLines: false,
+                    gridLineColor: '#cccccc',
+                    background: '#eee',
+                    borderColor: '#999999',
+                    borderWidth: 2.0,
+                    shadow: false,
+                    renderer: $.jqplot.CanvasGridRenderer,
+                    rendererOptions: {}
+                },
+                seriesDefaults: {
+                    renderer: rend,
+                    rendererOptions: {fillToZero: true},
+                    shadow: false,
+                    pointLabels: {show: true}
+                },
                 seriesColors: ['green']
             });
         }
@@ -160,7 +192,23 @@ function render(item) {
                         pad: 1.2
                     }
                 },
-                grid: {borderColor: 'transparent', shadow: false},
+                //grid: {borderColor: 'transparent', shadow: false},
+                grid: {
+                    drawGridLines: false,
+                    gridLineColor: '#cccccc',
+                    background: '#eee',
+                    borderColor: '#999999',
+                    borderWidth: 2.0,
+                    shadow: false,
+                    renderer: $.jqplot.CanvasGridRenderer,
+                    rendererOptions: {}
+                },
+                seriesDefaults: {
+                    renderer: rend,
+                    rendererOptions: {fillToZero: true},
+                    shadow: false,
+                    pointLabels: {show: true}
+                },
                 seriesColors: ['green']
             });
 
