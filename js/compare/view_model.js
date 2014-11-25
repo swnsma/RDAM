@@ -1,4 +1,7 @@
 /**
+ * Created by User on 25.11.2014.
+ */
+/**
  * Created by Таня on 20.11.2014.
  */
 function AppViewModel() {

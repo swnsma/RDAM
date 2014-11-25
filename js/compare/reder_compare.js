@@ -62,8 +62,7 @@ function render() {
         dayProduction[j] = mas1;
     }
     console.log(dayProduction);
-    //var weekProduction = [];
-    //var weekConsumption = [];
+    
     //for (var i = 22; i >=19; i--) {
     //
     //    weekProduction.push(allData[i].Reading2);
