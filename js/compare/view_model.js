@@ -69,6 +69,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
+            this_graph = 1;
             changeGraph(1);
         })
         .mouseenter(function () {
@@ -84,9 +85,10 @@ $(document).ready(function () {
         .addClass('time')
         .text('Weeks')
         .click(function () {
-            changeGraph(2);
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
+            this_graph = 2;
+            changeGraph(2);
         })
         .mouseenter(function () {
             $(this).addClass("on_button")
@@ -100,9 +102,10 @@ $(document).ready(function () {
         .addClass('time')
         .text('Months')
         .click(function () {
-            changeGraph(3);
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
+            this_graph = 3;
+            changeGraph(3);
         })
         .mouseenter(function () {
             $(this).addClass("on_button")
