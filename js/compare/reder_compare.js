@@ -3,7 +3,10 @@ ko.bindingHandlers.active_us = {
     update: function(element, valueAccessor) {
         // First get the latest data that we're bound to
         var value = valueAccessor();
+        alert(1);
+        debugger;
         get_d(value);
+
     }
 };
 index=0;
@@ -14,7 +17,6 @@ var all=[];
 var FromDT = [];
 var ToDT = [];
 
-
 var dayProduction = [];
 var dayConsumption = [];
 
@@ -23,9 +25,6 @@ var weekConsumption = [];
 
 var monthProduction = [];
 var monthConsumption = [];
-
-
-
 
 var dayTicks = [];
 var weekTicks = [];

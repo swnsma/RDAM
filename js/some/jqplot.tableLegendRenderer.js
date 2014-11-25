@@ -28,6 +28,7 @@
  *     "This code is unrestricted: you are free to use it however you like."
  *
  */
+
 (function($) {
     // class $.jqplot.TableLegendRenderer
     // The default legend renderer for jqPlot.
@@ -322,5 +323,6 @@
         }
     };
 })(jQuery);/**
+
  * Created by User on 18.11.2014.
  */
