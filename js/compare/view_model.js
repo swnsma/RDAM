@@ -63,7 +63,7 @@ $(document).ready(function () {
     var $dayButton = $('<div>');
     $dayButton.appendTo($target)
         .appendTo($target)
-        .addClass('time')
+        .addClass('time1')
         .addClass("first")
         .text('Days')
         .click(function () {
@@ -82,7 +82,7 @@ $(document).ready(function () {
     var $weekButton = $('<div>');
     $weekButton
         .appendTo($target)
-        .addClass('time')
+        .addClass('time1')
         .text('Weeks')
         .click(function () {
             $(this).addClass("is_active");
@@ -99,7 +99,7 @@ $(document).ready(function () {
     var $monthButton = $('<div>');
     $monthButton
         .appendTo($target)
-        .addClass('time')
+        .addClass('time1')
         .text('Months')
         .click(function () {
             $(this).addClass("is_active");
