@@ -41,6 +41,16 @@ function AppViewModel() {
         return result;
 
     });
+    self.return_checked =ko.computed( function(){
+        var result = [];
+        for(var i=0;i<self.arrayUsers().length;++i){
+
+            if(self.arrayUsers()[i].active()===true){
+                result.push(self.arrayUsers()[i].name());
+            }
+        }
+        return result;
+    })
 }
 
 

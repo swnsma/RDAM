@@ -11,7 +11,7 @@ ko.bindingHandlers.active_us = {
 var rend;
 
 
-var this_graph=0;
+var this_graph=1;
 index=0;
 var a=0;
 length_l=0;
@@ -33,6 +33,7 @@ var monthConsumption = [];
 var dayTicks = [];
 var weekTicks = [];
 var monthTicks = [];
+var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
 function get_d(item) {
     all = item;
     users_data=users_data.splice(1,1);
@@ -46,6 +47,17 @@ function get_d(item) {
         get_data(all[index].name_table);
     }
 }
+function day(a,b) {
+    var c=+b;
+    return a+" "+monthes[c].slice(0,3)+".";
+}
+
+function mont(a,b)
+{
+    var c=+a;
+    debugger;
+return ""+monthes[c].slice(0,3)+". "+b+"";
+}
 
 function render() {
 
@@ -58,38 +70,63 @@ function render() {
         var mas1 = [];
         for (var i = 6; i >= 0; i--) {
             mas1.push(users_data[j][i].Reading2);
+            dayTicks[i]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
         }
         dayProduction[j] = mas1;
     }
+    for (var i = 6; i >= 0; i--) {
+        dayTicks[i]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
+    }
+
+    for (var j = 0; j < users_data.length; j++) {
+        var mas1 = [];
+        for (var i = 22; i >= 19; i--) {
+            mas1.push(users_data[j][i].Reading2);
+            weekTicks[i-19]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
+        }
+        weekProduction[j] = mas1;
+    }
+    for (var i = 22; i >= 19; i--) {
+        weekTicks[i-19]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
+    }
+
+    for (var j = 0; j < users_data.length; j++) {
+        var mas1 = [];
+        for (var i = 18; i >= 7; i--) {
+            mas1.push(users_data[j][i].Reading2);
+        }
+        monthProduction[j-7] = mas1;
+    }
+    for (var i = 18; i >= 7; i--) {
+
+        //monthTicks[i-7]=mont(users_data[0][i].ToDT.iso.slice(5,7),users_data[0][i].ToDT.iso.slice(0,4));
+    }
     console.log(dayProduction);
-    
-    //for (var i = 22; i >=19; i--) {
-    //
-    //    weekProduction.push(allData[i].Reading2);
-    //    weekConsumption.push(allData[i].Reading1);
-    //    weekTicks.push(allData[i].FromDT.iso.slice(8,10));
-    //}
-    //var monthProduction = [];
-    //var monthConsumption = [];
-    //for (var i = 18; i >= 7; i--) {
-    //
-    //    monthProduction.push(allData[i].Reading2);
-    //    monthConsumption.push(allData[i].Reading1);
-    //    monthTicks.push(allData[i].FromDT.iso.slice(5,7));
-    //}
-    //debugger;
-    changeGraph(1);
+
+    changeGraph(this_graph);
 }
 
 function changeGraph(number) {
-
+var ticks=[];
+    var mas_dat=[];
     if (number == 1) {
+        ticks = dayTicks;
+        mas_dat = dayProduction;
+    }
+    if (number == 2) {
+        ticks = weekTicks;
+        mas_dat = weekProduction;
+    }
+    if (number == 3) {
+        ticks = monthTicks;
+        mas_dat = monthProduction;
+    }
         $('#chartDiv').empty();
         this_graph = 1;
 
-        var ticks = dayTicks;
 
-        var plot1 = $.jqplot('chartDiv', dayProduction, {
+
+        var plot1 = $.jqplot('chartDiv', mas_dat, {
             title: 'Daily production',
             seriesDefaults: {
                 renderer: rend,
@@ -101,8 +138,7 @@ function changeGraph(number) {
             },
 
             series: [
-                {label: 'consumption'},
-                {label: 'production'},
+
             ],
 
             legend: {
@@ -137,115 +173,7 @@ function changeGraph(number) {
             seriesColors: colors
         });
 
-    }
+
+
 }
-//    if (number == 2) {
-//        $('#chartDiv').empty();
-//        this_graph=2;
-//
-//        var ticks = weekTicks;
-//
-//        var plot1 = $.jqplot('chartDiv', [weekProduction,weekConsumption], {
-//            title: 'Weekly production',
-//            seriesDefaults:{
-//                renderer:rend,
-//                rendererOptions: {fillToZero: true},
-//                shadow:false,
-//                pointLabels:{show:true}
-//            },
-//            series:[
-//                {label:'consumption'},
-//                {label:'production'},
-//            ],
-//
-//            legend: {
-//                show: true,
-//                xoffset: 12,
-//                yoffset: 12
-//            },
-//            axes: {
-//
-//                xaxis: {
-//                    renderer: $.jqplot.CategoryAxisRenderer,
-//                    ticks: ticks
-//                },
-//                yaxis: {
-//                    pad: 1.05,
-//                    tickOptions: {formatString: '%d'}
-//                }
-//            },
-//            grid: {
-//                drawGridLines: false,
-//                gridLineColor: '#cccccc',
-//                background: '#eee',
-//                borderColor: '#999999',
-//                borderWidth: 2.0,
-//                shadow: false,
-//                renderer: $.jqplot.CanvasGridRenderer,
-//                rendererOptions: {}
-//            }
-//            //seriesColors: ['green', 'red']
-//        });
-//
-//    }
-//
-//    if (number == 3) {
-//        $('#chartDiv').empty();
-//        this_graph=3;
-//        // Ticks should match up one for each y value (category) in the series.
-//        var ticks = monthTicks;
-//
-//        var plot1 = $.jqplot('chartDiv', [monthProduction, monthConsumption], {
-//            // The "seriesDefaults" option is an options object that will
-//            // be applied to all series in the chart.
-//            title: 'Monthly production',
-//            seriesDefaults: {
-//                renderer: rend,
-//                rendererOptions: {fillToZero: true},
-//                shadow: false,
-//                pointLabels: {show: true}
-//            },
-//            // Custom labels for the series are specified with the "label"
-//            // option on the series option.  Here a series option object
-//            // is specified for each series.
-//            series: [
-//                {label: 'consumption'},
-//                {label: 'production'},
-//            ],
-//            // Show the legend and put it outside the grid, but inside the
-//            // plot container, shrinking the grid to accomodate the legend.
-//            // A value of "outside" would not shrink the grid and allow
-//            // the legend to overflow the container.
-//            legend: {
-//                show: true,
-//                xoffset: 12,
-//                yoffset: 12
-//            },
-//            axes: {
-//                // Use a category axis on the x axis and use our custom ticks.
-//                xaxis: {
-//                    renderer: $.jqplot.CategoryAxisRenderer,
-//                    ticks: ticks
-//                },
-//                // Pad the y axis just a little so bars can get close to, but
-//                // not touch, the grid boundaries.  1.2 is the default padding.
-//                yaxis: {
-//                    pad: 1.05,
-//                    tickOptions: {formatString: '%d'}
-//                }
-//            },
-//            grid: {
-//                drawGridLines: false,
-//                gridLineColor: '#cccccc',
-//                background: '#eee',
-//                borderColor: '#999999',
-//                borderWidth: 2.0,
-//                shadow: false,
-//                renderer: $.jqplot.CanvasGridRenderer,
-//                rendererOptions: {}
-//            }
-//            //seriesColors: ['green', 'red']
-//        });
-//
-//    }
 //
