@@ -3,12 +3,15 @@ ko.bindingHandlers.active_us = {
     update: function(element, valueAccessor) {
         // First get the latest data that we're bound to
         var value = valueAccessor();
-        alert(1);
-        debugger;
+        //debugger;
         get_d(value);
 
     }
 };
+var rend;
+
+
+var this_graph=0;
 index=0;
 var a=0;
 length_l=0;
@@ -34,7 +37,7 @@ function get_d(item) {
     all = item;
     users_data=users_data.splice(1,1);
     dayProduction = dayProduction.splice(1,1);
-    colors=colors.slice(1,1);
+    colors=colors.splice(1,1);
     for(var i =0;i<all.length;i++)
     {
         colors[i]=all[i].color;
@@ -80,9 +83,7 @@ function render() {
 }
 
 function changeGraph(number) {
-    var rend;
 
-    rend = $.jqplot.BarRenderer;
     if (number == 1) {
         $('#chartDiv').empty();
         this_graph = 1;

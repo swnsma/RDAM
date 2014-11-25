@@ -57,6 +57,11 @@ table.jqplot-table-legend
 
 .change_view{
     position: absolute;
-    top:-35px;
+
     right:30px;
+}
+
+#chartDiv{
+    top:30px;
+    margin-bottom: 30px;
 }

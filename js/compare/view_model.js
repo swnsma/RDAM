@@ -98,14 +98,14 @@ $(document).ready(function () {
 
     var change_view = $('.change_view')
         .click(function () {
-
+            //debugger;
             var a = $(this);
             if (a.hasClass("master")) {
-                rend = $.jqplot.BarRenderer;
+                rend = $.jqplot.LineRenderer;
                 changeGraph(this_graph);
             }
             else {
-                rend = $.jqplot.LineRenderer;
+                rend = $.jqplot.BarRenderer;
                 changeGraph(this_graph);
             }
             a.toggleClass("master");
