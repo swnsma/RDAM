@@ -8,12 +8,12 @@ function AppViewModel() {
     self.arrayUsers=ko.observableArray([]);
     getUsers(self);
     self.set_active = function(seat){
-        debugger;
+
         seat.active(!seat.active());
         return true;
     }
     self.return_active_user = ko.computed(function(){
-        debugger;
+
         var result = [];
         for(var i=0;i<self.arrayUsers().length;++i){
 
@@ -42,5 +42,74 @@ function AppViewModel() {
 $(document).ready(function () {
 
     ko.applyBindings(new AppViewModel());
+
+    var $target = $('.graphContainer');
+    var $dayButton = $('<div>');
+    $dayButton.appendTo($target)
+        .appendTo($target)
+        .addClass('time')
+        .addClass("first")
+        .text('Days')
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            changeGraph(1);
+        })
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        })
+        .addClass("is_active");
+    var $weekButton = $('<div>');
+    $weekButton
+        .appendTo($target)
+        .addClass('time')
+        .text('Weeks')
+        .click(function () {
+            changeGraph(2);
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+        })
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+    var $monthButton = $('<div>');
+    $monthButton
+        .appendTo($target)
+        .addClass('time')
+        .text('Months')
+        .click(function () {
+            changeGraph(3);
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+        })
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+
+
+    var change_view = $('.change_view')
+        .click(function () {
+
+            var a = $(this);
+            if (a.hasClass("master")) {
+                rend = $.jqplot.BarRenderer;
+                changeGraph(this_graph);
+            }
+            else {
+                rend = $.jqplot.LineRenderer;
+                changeGraph(this_graph);
+            }
+            a.toggleClass("master");
+
+        });
 
 });
