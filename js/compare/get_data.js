@@ -20,7 +20,7 @@ function get_data(clas) {
                 //alert("ok");
                 users_data[index]=allData;
                 index++;
-                debugger;
+                //debugger;
                 if((index-1)<length_l)
                 get_data(all[index-1].name_table);
                 else{

@@ -17,12 +17,12 @@ length_l=0;
 var users_data=[];
 
 var all=[];
-var FromDT = [];
-var ToDT = [];
+//var FromDT = [];
+//var ToDT = [];
 
 var colors=[];
 
-debugger;
+//debugger;
 var dayProduction = [];
 var dayConsumption = [];
 
@@ -65,7 +65,7 @@ function day(a,b) {
 function mont(a)
 {
     var c=+a;
-    debugger;
+    //debugger;
     return monthes[c-1].slice(0,3);
 }
 
@@ -79,7 +79,7 @@ function render() {
         }
         dayProduction[j] = mas1;
     }
-    debugger;
+    //debugger;
     for (var i = 6; i >= 0; i--) {
         dayTicks[i]=day(users_data[0][i].ToDT.iso.slice(8,10),users_data[0][i].ToDT.iso.slice(5,7));
     }
@@ -101,7 +101,7 @@ function render() {
 
             mas1.push(users_data[j][i].Reading2);
         }
-        debugger;
+        //debugger;
         monthProduction[j] = mas1;
     }
     for (var i = 18; i >= 7; i--) {
@@ -117,6 +117,7 @@ function changeGraph(number) {
 var ticks=[];
     var mas_dat=[];
     var title;
+    var is=false;
     if (number == 1) {
         ticks = dayTicks;
         mas_dat = dayProduction;
@@ -130,7 +131,8 @@ var ticks=[];
     if (number == 3) {
         ticks = monthTicks;
         mas_dat = monthProduction;
-        title='Monthly production'
+        title='Monthly production';
+        is=true;
     }
 
         $('#chartDiv').empty();
@@ -145,7 +147,7 @@ var ticks=[];
                 pointLabels: {show: true},
                 markerOptions: {shadow:false}
             },
-
+            stackSeries: is,
             series: [
 
             ],

@@ -11,11 +11,7 @@ function getUsers(self) {
             request.setRequestHeader('X-Parse-REST-API-Key', 'a6npew12pgZaQJSTeCtPru3cVGS9VmZzG1op4mK8');
         },
         success: function (response) {
-
-
             if (response && response.results && response.results.length) {
-
-
                 var mappedTasks = [];
                 for (var i = 0; i < response.results.length; i++) {
                     var a = response.results[i];
@@ -47,18 +43,13 @@ function get_first() {
             request.setRequestHeader('X-Parse-REST-API-Key', 'a6npew12pgZaQJSTeCtPru3cVGS9VmZzG1op4mK8');
         },
         success: function (response) {
-
-
             if (response && response.results && response.results.length) {
-
-
                 var mappedTasks = [];
                 for (var i = 0; i < response.results.length; i++) {
                     var a = response.results[i];
                     mappedTasks.push(a);
-
                 }
-                debugger;
+                //debugger;
                users_data[0]=mappedTasks;
                 render();
                 /* console.log(mappedTasks);*/

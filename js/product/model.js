@@ -132,7 +132,8 @@ function render(item) {
                     renderer: rend,
                     rendererOptions: {fillToZero: true},
                     shadow: false,
-                    pointLabels: {show: true}
+                    pointLabels: {show: true},
+                    markerOptions: {shadow:false}
                 },
                 seriesColors: ['green']
             });
