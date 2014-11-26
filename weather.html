@@ -29,16 +29,16 @@
 </div><!--end navigation-->
 <div class="main-content">
     <div id="weather-list">
-        <!-- приклад блока -->
         <ul class="weather-list" data-bind="foreach: weather_days">
             <li>
-                <div data-bind="text: ($data).date"></div>
-                <img data-bind="attr: {src: ($data).weatherIconUrl }" alt="" />
-                <div data-bind="text: ($data).weatherDesc"></div>
+                <span data-bind="text: $data.date"></span>
+                <img data-bind="attr: { src: ($data).weatherIconUrl }" alt="" />
+                <span data-bind="text: $data.weatherDesc"></span>
+                <span data-bind="text: $data.tempC"></span> C <br />
+                <span data-bind="text: $data.tempF"></span> F <br />
             </li>
         </ul>
     </div>
-
 </div><!--end main-content-->
 <div class="footer">
     <span >Copyright &copy 2014 All right reserved.</span>
