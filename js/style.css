@@ -71,8 +71,10 @@ table.jqplot-table-legend
 
 .change_view{
     position: absolute;
-
     right:30px;
+}
+.change_view_homepage{
+    top:-34px;
 }
 
 #chartDiv{

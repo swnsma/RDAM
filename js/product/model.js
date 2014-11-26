@@ -15,88 +15,50 @@ var getDay = function (str) {
     var day = str.slice(8, 10);
     return day;
 }
+var sum_days=0;
+var sum_weeks=0;
+var sum_month=0;
+
+var weekProduction = [];
+var monthProduction = [];
+var dayProduction = [];
+var dayTicks =[];
+var weekTicks =[];
+var monthTicks =[];
+
+var rend;
+rend = $.jqplot.BarRenderer;
+
 function render(item) {
-    var FromDT = [];
-    var ToDT = [];
+
     allData = item;
-    var this_graph;
     console.log(allData);
-    var weekProduction = [];
-
-    var monthProduction = [];
-
     //   for (var i = 0; i < allData.length; i++) {
     //    FromDT.push(new DateN(getYear(allData[i].FromDT.iso), getMonth(allData[i].FromDT.iso), getDay(allData[i].FromDT.iso)));
     //    ToDT.push(new DateN(getYear(allData[i].ToDT.iso), getMonth(allData[i].ToDT.iso), getDay(allData[i].ToDT.iso)));
     //}
-    var rend;
 
-    rend=$.jqplot.BarRenderer;
-    var dayProduction = [];
-    var dayTicks =[];
-    var weekTicks =[];
-    var monthTicks =[];
     for (var i = 6; i >= 0; i--) {
-
+        sum_days += allData[i].Reading2;
         dayProduction.push(allData[i].Reading2);
-        dayTicks.push(allData[i].FromDT.iso.slice(0,10));
+        dayTicks.push(allData[i].FromDT.iso.slice(0, 10));
+
     }
-
-    var weekProduction = [];
-    for (var i = 22; i >=19; i--) {
-
+    for (var i = 22; i >= 19; i--) {
+        sum_weeks += allData[i].Reading2;
         weekProduction.push(allData[i].Reading2);
-        weekTicks.push(allData[i].FromDT.iso.slice(8,10));
+        weekTicks.push(allData[i].FromDT.iso.slice(8, 10));
     }
-    var monthProduction = [];
     for (var i = 18; i >= 7; i--) {
-
+        sum_month += allData[i].Reading2;
         monthProduction.push(allData[i].Reading2);
-        monthTicks.push(allData[i].FromDT.iso.slice(5,7));
+        monthTicks.push(allData[i].FromDT.iso.slice(5, 7));
     }
     debugger;
 
     changeGraph(1);
-
-    var $target = $('.graphContainer');
-    var $dayButton = $('<div>');
-    $dayButton.appendTo($target)
-        .appendTo($target)
-        .addClass('time')
-        .addClass("first")
-        .text('Days')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            changeGraph(1);
-        })
-        .mouseenter(function () { $(this).addClass("on_button") })
-        .mouseleave(function () { $(this).removeClass("on_button") })
-        .addClass("is_active");
-    var $weekButton = $('<div>');
-    $weekButton
-        .appendTo($target)
-        .addClass('time')
-        .text('Weeks')
-        .click(function () {
-            changeGraph(2);
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-        })
-        .mouseenter(function () { $(this).addClass("on_button") })
-        .mouseleave(function () { $(this).removeClass("on_button") });
-    var $monthButton = $('<div>');
-    $monthButton
-        .appendTo($target)
-        .addClass('time')
-        .text('Months')
-        .click(function () {
-            changeGraph(3);
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-        })
-        .mouseenter(function () { $(this).addClass("on_button") })
-        .mouseleave(function () { $(this).removeClass("on_button") });
+    $("#co2").html(0.61*sum_days+" kg");
+}
 
 
     function changeGraph(number) {
@@ -114,6 +76,7 @@ function render(item) {
                         pad: 0
                     },
                     yaxis: {
+                        label:"kW",
                         pad: 1.2
                     }
                 },
@@ -214,7 +177,4 @@ function render(item) {
             });
 
         }
-
-
-    }
 }
