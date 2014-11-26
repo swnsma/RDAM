@@ -68,3 +68,23 @@ ul.weather-list > li:first-child {
     padding-right: 10px;
     font-size: 10pt;
 }
+
+#loading {
+    width: 100%;
+    height: 209px;
+    text-align: center;
+}
+
+#loading::before {    /* create a full-height inline block pseudo=element */
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;  /* vertical alignment of the inline element */
+    height: 100%;
+}
+
+#loading img {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}

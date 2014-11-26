@@ -23,6 +23,7 @@ function WeatherModel() {
 
     function renderData(data) {
         var weather = data.data.weather;
+        $('#loading').remove();
         for(var i in weather) {
             self.weather_days.push({
                 date: weather[i].date,
