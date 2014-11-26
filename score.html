@@ -82,6 +82,8 @@
             </div>
             <div class="compare_float_right">
                 <p data-bind="if: return_active_user().length>3">you have reached maximum quantity of users</p>
+
+                <span class="this">this</span>
                 <ul data-bind="foreach: return_active_user(),active_us: return_active_user()">
                     <li data-bind=" style:{backgroundColor: color },text:name">
 
