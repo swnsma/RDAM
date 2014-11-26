@@ -144,12 +144,13 @@ function render(item) {
                         fillToZero: true
                     },
                     shadow:false,
-                    pointLabels:{show:true}
+                    pointLabels:{show:true},
+                    markerOptions: {shadow:false}
                 },
 
                 series:[
-                    {label:'consumption'},
                     {label:'production'},
+                    {label:'consumption'}
                 ],
 
                 legend: {
@@ -200,11 +201,12 @@ function render(item) {
                     renderer:rend,
                     rendererOptions: {fillToZero: true},
                     shadow:false,
-                    pointLabels:{show:true}
+                    pointLabels:{show:true},
+                    markerOptions: {shadow:false}
                 },
                 series:[
-                    {label:'consumption'},
                     {label:'production'},
+                    {label:'consumption'}
                 ],
 
                 legend: {
@@ -255,14 +257,15 @@ function render(item) {
                     renderer: rend,
                     rendererOptions: {fillToZero: true},
                     shadow: false,
-                    pointLabels: {show: true}
+                    pointLabels: {show: true},
+                    markerOptions: {shadow:false}
                 },
                 // Custom labels for the series are specified with the "label"
                 // option on the series option.  Here a series option object
                 // is specified for each series.
-                series: [
-                    {label: 'consumption'},
-                    {label: 'production'},
+                series:[
+                    {label:'production'},
+                    {label:'consumption'}
                 ],
                 // Show the legend and put it outside the grid, but inside the
                 // plot container, shrinking the grid to accomodate the legend.
