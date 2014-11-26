@@ -23,10 +23,13 @@ function WeatherModel() {
 
     function renderData(data) {
         var weather = data.data.weather;
-        alert(weather.length);
         for(var i in weather) {
             self.weather_days.push({
-                date: weather[i].date
+                date: weather[i].date,
+                weatherDesc: weather[i].hourly[0].weatherDesc[0].value,
+                weatherIconUrl: weather[i].hourly[0].weatherIconUrl[0].value,
+                tempC: weather[i].hourly[0].tempC,
+                tempF: weather[i].hourly[0].tempF
             })
         }
     }
