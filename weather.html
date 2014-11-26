@@ -30,9 +30,9 @@
 <div class="main-content">
     <div id="weather-list">
         <!-- приклад блока -->
-        <ul class="weather-list">
+        <ul class="weather-list" data-bind="foreach: weather_days">
             <li>
-                text
+                <div data-bind="text: ($data).date"></div>
             </li>
         </ul>
     </div>
