@@ -17,7 +17,6 @@ function WeatherApi() {
 }
 
 function WeatherModel() {
-
     var self = this;
     self.weather_days = ko.observableArray([]);
 
@@ -31,10 +30,9 @@ function WeatherModel() {
                 weatherIconUrl: weather[i].hourly[0].weatherIconUrl[0].value,
                 tempC: weather[i].hourly[0].tempC,
                 tempF: weather[i].hourly[0].tempF
-            })
+            });
         }
     }
-
 
     var api = new WeatherApi();
     api.getWeather(renderData, function() { alert('error'); });
