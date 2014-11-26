@@ -81,6 +81,7 @@ function render(item) {
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer
             },
             axes: {
+                renderer: $.jqplot.CategoryAxisRenderer,
                 // options for each axis are specified in seperate option objects.
                 xaxis: {
                     label: "Days",
