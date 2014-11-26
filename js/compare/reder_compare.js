@@ -165,6 +165,7 @@ var ticks=[];
                 },
 
                 yaxis: {
+                    label:"kW",
                     pad: 1.05,
                     tickOptions: {formatString: '%d'}
                 }

@@ -168,6 +168,7 @@ function render(item) {
                     },
 
                     yaxis: {
+                        label:"kW",
                         pad: 1.05,
                         tickOptions: {formatString: '%d'}
                     }
@@ -221,6 +222,7 @@ function render(item) {
                         ticks: ticks
                     },
                     yaxis: {
+                        label:"kW",
                         pad: 1.05,
                         tickOptions: {formatString: '%d'}
                     }
@@ -285,6 +287,7 @@ function render(item) {
                     // Pad the y axis just a little so bars can get close to, but
                     // not touch, the grid boundaries.  1.2 is the default padding.
                     yaxis: {
+                        label:"kW",
                         pad: 1.05,
                         tickOptions: {formatString: '%d'}
                     }

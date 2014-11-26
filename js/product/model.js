@@ -62,119 +62,54 @@ function render(item) {
 
 
     function changeGraph(number) {
+        var production;
+
         if (number == 1) {
-            $('#chartDiv').empty();
-            var $plot = $.jqplot('chartDiv', [dayProduction], {
-                title: 'Daily production',
-                axesDefaults: {
-                    labelRenderer: $.jqplot.CanvasAxisLabelRenderer
-                },
-                axes: {
-                    // options for each axis are specified in seperate option objects.
-                    xaxis: {
-                        label: "Days",
-                        pad: 0
-                    },
-                    yaxis: {
-                        label:"kW",
-                        pad: 1.2
-                    }
-                },
-                //grid: {borderColor: 'transparent', shadow: false},
-                grid: {
-                    drawGridLines: false,
-                    gridLineColor: '#cccccc',
-                    background: '#eee',
-                    borderColor: '#999999',
-                    borderWidth: 2.0,
-                    shadow: false,
-                    renderer: $.jqplot.CanvasGridRenderer,
-                    rendererOptions: {}
-                },
-                seriesDefaults: {
-                    renderer: rend,
-                    rendererOptions: {fillToZero: true},
-                    shadow: false,
-                    pointLabels: {show: true},
-                    markerOptions: {shadow:false}
-                },
-                seriesColors: ['green']
-            });
+            production=dayProduction;
         }
         if (number == 2) {
-            $('#chartDiv').empty();
-            var $plot1 = $.jqplot('chartDiv', [weekProduction], {
-                title: 'Weekly production',
-                axesDefaults: {
-                    labelRenderer: $.jqplot.CanvasAxisLabelRenderer
-                },
-                axes: {
-                    // options for each axis are specified in seperate option objects.
-                    xaxis: {
-                        label: "Weeks",
-                        pad: 0
-                    },
-                    yaxis: {
-                        pad: 1.2
-                    }
-                },
-                //grid: {borderColor: 'transparent', shadow: false},
-                grid: {
-                    drawGridLines: false,
-                    gridLineColor: '#cccccc',
-                    background: '#eee',
-                    borderColor: '#999999',
-                    borderWidth: 2.0,
-                    shadow: false,
-                    renderer: $.jqplot.CanvasGridRenderer,
-                    rendererOptions: {}
-                },
-                seriesDefaults: {
-                    renderer: rend,
-                    rendererOptions: {fillToZero: true},
-                    shadow: false,
-                    pointLabels: {show: true}
-                },
-                seriesColors: ['green']
-            });
+          production=weekProduction;
         }
 
         if (number == 3) {
-            $('#chartDiv').empty();
-            var $plot1 = $.jqplot('chartDiv', [monthProduction], {
-                title: 'Monthly production',
-                axesDefaults: {
-                    labelRenderer: $.jqplot.CanvasAxisLabelRenderer
-                },
-                axes: {
-                    // options for each axis are specified in seperate option objects.
-                    xaxis: {
-                        label: "Weeks",
-                        pad: 0
-                    },
-                    yaxis: {
-                        pad: 1.2
-                    }
-                },
-                //grid: {borderColor: 'transparent', shadow: false},
-                grid: {
-                    drawGridLines: false,
-                    gridLineColor: '#cccccc',
-                    background: '#eee',
-                    borderColor: '#999999',
-                    borderWidth: 2.0,
-                    shadow: false,
-                    renderer: $.jqplot.CanvasGridRenderer,
-                    rendererOptions: {}
-                },
-                seriesDefaults: {
-                    renderer: rend,
-                    rendererOptions: {fillToZero: true},
-                    shadow: false,
-                    pointLabels: {show: true}
-                },
-                seriesColors: ['green']
-            });
-
+          production=monthProduction;
         }
+        $('#chartDiv').empty();
+        var $plot = $.jqplot('chartDiv', [production], {
+            title: 'Daily production',
+            axesDefaults: {
+                labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+            },
+            axes: {
+                // options for each axis are specified in seperate option objects.
+                xaxis: {
+                    label: "Days",
+                    pad: 0
+                },
+                yaxis: {
+                    label:"kW",
+                    pad: 1.2,
+                    tickOptions: {formatString: '%d'}
+                }
+            },
+            //grid: {borderColor: 'transparent', shadow: false},
+            grid: {
+                drawGridLines: false,
+                gridLineColor: '#cccccc',
+                background: '#eee',
+                borderColor: '#999999',
+                borderWidth: 2.0,
+                shadow: false,
+                renderer: $.jqplot.CanvasGridRenderer,
+                rendererOptions: {}
+            },
+            seriesDefaults: {
+                renderer: rend,
+                rendererOptions: {fillToZero: true},
+                shadow: false,
+                pointLabels: {show: true},
+                markerOptions: {shadow:false}
+            },
+            seriesColors: ['green']
+        });
 }
