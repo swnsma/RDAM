@@ -75,10 +75,10 @@ ul.weather-list > li:first-child {
     text-align: center;
 }
 
-#loading::before {    /* create a full-height inline block pseudo=element */
+#loading::before {
     content: ' ';
     display: inline-block;
-    vertical-align: middle;  /* vertical alignment of the inline element */
+    vertical-align: middle;
     height: 100%;
 }
 
