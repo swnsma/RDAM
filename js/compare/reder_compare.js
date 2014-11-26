@@ -119,11 +119,21 @@ var ticks=[];
     var title;
     var is=false;
     if (number == 1) {
+        dayTicks.sort(function(a, b) {
+            a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+            b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+            return a - b;
+        });
         ticks = dayTicks;
         mas_dat = dayProduction;
         title='Daily production';
     }
     if (number == 2) {
+        weekTicks.sort(function(a, b) {
+            a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+            b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+            return a - b;
+        });
         ticks = weekTicks;
         mas_dat = weekProduction;
         title='Weekly production'
