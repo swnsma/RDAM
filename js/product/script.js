@@ -9,7 +9,7 @@ $(document).ready(function () {
         .addClass("first")
         .text('Days')
         .click(function () {
-            $("#co2").html(0.61*sum_days+" kg");
+            $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
             changeGraph(1);
@@ -24,7 +24,7 @@ $(document).ready(function () {
         .text('Weeks')
         .click(function () {
             changeGraph(2);
-            $("#co2").html(0.61*sum_weeks+" kg");
+            $("#co2").html((0.61*sum_weeks).toFixed(1)+" kg");
             $(this).addClass("is_active");
 
             $(this).siblings().removeClass("is_active");
@@ -38,7 +38,7 @@ $(document).ready(function () {
         .text('Months')
         .click(function () {
             changeGraph(3);
-            $("#co2").html(0.61*sum_month+" kg");
+            $("#co2").html((0.61*sum_month).toFixed(1)+" kg");
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
         })

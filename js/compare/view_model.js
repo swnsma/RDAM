@@ -7,7 +7,7 @@
 function AppViewModel() {
     var self = this;
     self.search=ko.observable(false);
-    self.search_text=ko.observable();
+    self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
     getUsers(self);
     self.set_active = function(seat){
@@ -45,8 +45,11 @@ function AppViewModel() {
     self.return_active_search = ko.computed(function(){
         var result = [];
         for(var i=0;i<self.return_active_user().length;++i){
-debugger;
-            if(self.return_active_user()[i].name().indexOf(self.search_text())>-1){
+            debugger;
+            console.log(self.search_text());
+            var word = self.return_active_user()[i].name().toUpperCase();
+            var subword = self.search_text().toUpperCase()
+            if (word.indexOf(subword) > -1) {
                 result.push(self.return_active_user()[i]);
             }
         }
@@ -57,9 +60,14 @@ debugger;
         var result = [];
         for(var i=0;i<self.return_no_active_user().length;++i){
 
-            if(self.return_no_active_user()[i].name().indexOf(self.search_text())>-1){
+            var word = self.return_no_active_user()[i].name().toUpperCase();
+            debugger;
+            console.log(self.search_text());
+            var subword = self.search_text().toUpperCase()
+            if (word.indexOf(subword) > -1) {
                 result.push(self.return_no_active_user()[i]);
             }
+
         }
         return result;
     });
@@ -91,7 +99,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph = 1;
+            this_graph(1);
             changeGraph(1);
         })
         .mouseenter(function () {
@@ -109,7 +117,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph = 2;
+            this_graph (2);
             changeGraph(2);
         })
         .mouseenter(function () {
@@ -126,7 +134,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph = 3;
+            this_graph(3);
             changeGraph(3);
         })
         .mouseenter(function () {
@@ -143,11 +151,11 @@ $(document).ready(function () {
             var a = $(this);
             if (a.hasClass("master")) {
                 rend = $.jqplot.LineRenderer;
-                changeGraph(this_graph);
+                changeGraph(this_graph());
             }
             else {
                 rend = $.jqplot.BarRenderer;
-                changeGraph(this_graph);
+                changeGraph(this_graph());
             }
             a.toggleClass("master");
 
