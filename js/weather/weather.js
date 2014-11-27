@@ -30,7 +30,8 @@ function WeatherModel() {
         pressure: ko.observable(),
         winddirDegree: ko.observable(),
         windspeedMiles: ko.observable(),
-        hourly: ko.observableArray([])
+        hourly: ko.observableArray([]),
+        max: ko.observable()
     };
 
     self.renderMoreInfo = function(n) {
@@ -40,6 +41,7 @@ function WeatherModel() {
 
         var el = self.weather_days()[current_active];
         self.weather_days_mi.hourly(el.hourly);
+        self.weather_days_mi.max(el.max);
     };
 
     function renderData(data) {

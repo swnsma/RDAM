@@ -120,5 +120,49 @@ ul.weather-list > li[selected='true'] {
 }
 
 table.hourly {
+    font-size: 10pt;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 1px solid #63AD1F;
+    background-color: #FFF;
+}
 
+table.hourly td, table.hourly th {
+    padding: 1px;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.hourly tr:nth-child(2n) {
+    background-color: #f0f0f0;
+}
+
+table.hourly tr:nth-child(2) {
+    background-color: #666;
+    color: #fff;
+    height: 20px;
+}
+
+table.hourly tr:nth-child(1) {
+    background: #63AD1F;
+    color: #fff;
+    height: 20px;
+}
+
+table.hourly tr td:first-child, table.hourly tr th:first-child {
+    width: 110px;
+    font-weight: bold;
+    text-align: right;
+}
+
+table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:first-child {
+    background-color: #F4EFD4;
+}
+
+.table-hourly-right {
+    float: right;
+    height: 100%;
+    padding: 5px;
 }
