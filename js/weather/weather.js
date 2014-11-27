@@ -29,7 +29,8 @@ function WeatherModel() {
         precipMM: ko.observable(),
         pressure: ko.observable(),
         winddirDegree: ko.observable(),
-        windspeedMiles: ko.observable()
+        windspeedMiles: ko.observable(),
+        hourly: ko.observableArray([])
     };
 
     self.renderMoreInfo = function(n) {
@@ -38,7 +39,7 @@ function WeatherModel() {
         current_active = n;
 
         var el = self.weather_days()[current_active];
-        self.weather_days_mi.humidity(el.humidity);
+        self.weather_days_mi.hourly(el.hourly);
     };
 
     function renderData(data) {
@@ -112,6 +113,8 @@ function WeatherModel() {
         }
 
         self.renderMoreInfo(current_active);
+
+        $('#weather-list').css('display', 'block');
     }
 
     var api = new WeatherApi();
