@@ -31,7 +31,7 @@
     /*width: 80%;*/
     height: 100%;
     background-color: #fff;
-    float: left;
+    float: right;
     /*float: right;*/
 }
 .compare_float_right ul{
@@ -42,7 +42,7 @@
     height: 628px;
     width: 190px;
     /* background-color: #7e4465;*/
-    float: right;
+    float: left;
 
     border: 1px solid rgb(99, 173, 31);
     font-weight: bold;
