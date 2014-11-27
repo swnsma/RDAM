@@ -68,13 +68,7 @@ function WeatherModel() {
         }
 
         function getMaxTemp(h) {
-            var t = {
-                maxtempC: h.maxtempC,
-                maxtempF: h.maxtempF,
-                mintempC: h.mintempC,
-                mintempF: h.mintempF
-            };
-            return t;
+            return { maxtempC: h.maxtempC, maxtempF: h.maxtempF, mintempC: h.mintempC, mintempF: h.mintempF };
         }
 
         var curr = data.current_condition[0];

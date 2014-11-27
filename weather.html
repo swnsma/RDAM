@@ -48,8 +48,6 @@
 
         <div class="bwmore-info">
             <div class="wmore-info">
-                <!--maxTemp <span data-bind="text: weather_days_mi.max().maxtempC"></span> C
-                minTemp <span data-bind="text: weather_days_mi.max().mintempF"></span> C-->
                 <div class="table-hourly-right">
                     <table class="hourly">
                         <tr>
@@ -107,6 +105,10 @@
                             <!-- /ko -->
                         </tr>
                     </table>
+                </div>
+                <div class="temp-left">
+                    maxTemp <span data-bind="text: weather_days()[0].max.mintempC"></span> C<br />
+                    <img src="img/temp.png" alt="" />
                 </div>
             </div>
         </div>

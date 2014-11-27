@@ -98,14 +98,14 @@ ul.weather-list > li:first-child {
 
 .bwmore-info {
     width: 100%;
-    height: 200px;
+    height: 197px;
     box-sizing: border-box;
     padding: 0 5px;
 }
 
 .wmore-info {
+    height: 192px;
     box-sizing: border-box;
-    height: 195px;
     border: 2px solid #63AD1F;
     border-radius: 0 0 5px 5px;
     z-index: 80;
@@ -125,6 +125,7 @@ table.hourly {
     border-collapse: separate;
     border: 1px solid #63AD1F;
     background-color: #FFF;
+    margin: 0;
 }
 
 table.hourly td, table.hourly th {
@@ -163,6 +164,14 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
 
 .table-hourly-right {
     float: right;
+}
+
+.temp-left {
+    float: left;
+}
+
+.table-hourly-right, .temp-left {
     height: 100%;
+    box-sizing: border-box;
     padding: 5px;
 }
