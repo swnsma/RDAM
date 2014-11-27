@@ -125,7 +125,6 @@ function changeGraph(number) {
 var ticks=[];
     var mas_dat=[];
     var title;
-    var is=false;
     if (number == 1) {
         dayTicks.sort(function(a, b) {
             a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
@@ -150,7 +149,6 @@ var ticks=[];
         ticks = monthTicks;
         mas_dat = monthProduction;
         title='Monthly production';
-        is=true;
     }
 
         $('#chartDiv').empty();
@@ -165,7 +163,6 @@ var ticks=[];
                 pointLabels: {show: true},
                 markerOptions: {shadow:false}
             },
-            stackSeries: is,
             series: [
 
             ],
