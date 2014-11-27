@@ -10,12 +10,35 @@ ko.bindingHandlers.active_us = {
 ko.bindingHandlers.show_change= {
     update: function(element) {
         var a=$(element);
-        if(this_graph()===3)
+        if(this_graph()===3){
             a.css("display", "none");
-        else a.css("display", "inline");
+            rend = $.jqplot.LineRenderer;
+        }
+        else {
+            if(is_bar) {
+                rend = $.jqplot.BarRenderer;
+            }
+            a.css("display", "inline");
+        }
     }
 };
 var rend;
+var change_view = function() {
+    //debugger;
+    var a = $('.change_view');
+    if (a.hasClass("master")) {
+        rend = $.jqplot.LineRenderer;
+        changeGraph(this_graph());
+        is_bar=0;
+    }
+    else {
+        rend = $.jqplot.BarRenderer;
+        changeGraph(this_graph());
+        is_bar=1;
+    }
+    a.toggleClass("master");
+};
+
 
 
 var this_graph=ko.observable(1);
@@ -29,7 +52,7 @@ var all=[];
 //var ToDT = [];
 
 var colors=[];
-
+var is_bar=0;
 //debugger;
 var dayProduction = [];
 var dayConsumption = [];
