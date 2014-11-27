@@ -30,16 +30,38 @@ function AppViewModel() {
         /*console.log(result);*/
         return result;
     });
-    self.return_search = ko.computed(function(){
-        var result = [];
-        for(var i=0;i<self.arrayUsers().length;++i){
+    self.return_no_active_user = ko.computed(function(){
 
-            if(self.arrayUsers()[i].name().indexOf(self.search_text())>-1){
+        var result = [];
+        for(var i=0;(i<(self.arrayUsers().length));++i){
+
+            if(self.arrayUsers()[i].active()===false){
                 result.push(self.arrayUsers()[i]);
+            }
+        }
+        /*console.log(result);*/
+        return result;
+    });
+    self.return_active_search = ko.computed(function(){
+        var result = [];
+        for(var i=0;i<self.return_active_user().length;++i){
+debugger;
+            if(self.return_active_user()[i].name().indexOf(self.search_text())>-1){
+                result.push(self.return_active_user()[i]);
             }
         }
         return result;
 
+    });
+    self.return_no_active_search = ko.computed(function(){
+        var result = [];
+        for(var i=0;i<self.return_no_active_user().length;++i){
+
+            if(self.return_no_active_user()[i].name().indexOf(self.search_text())>-1){
+                result.push(self.return_no_active_user()[i]);
+            }
+        }
+        return result;
     });
     self.return_checked =ko.computed( function(){
         var result = [];
