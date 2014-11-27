@@ -24,10 +24,21 @@ function WeatherModel() {
     self.weather_days = ko.observableArray([]);
     var current_active = 0;
 
+    self.weather_days_mi = {
+        humidity: ko.observable(),
+        precipMM: ko.observable(),
+        pressure: ko.observable(),
+        winddirDegree: ko.observable(),
+        windspeedMiles: ko.observable()
+    };
+
     self.renderMoreInfo = function(n) {
         self.weather_days()[current_active].active(false);
         self.weather_days()[n].active(true);
         current_active = n;
+
+        var el = self.weather_days()[current_active];
+        self.weather_days_mi.humidity(el.humidity);
     };
 
     function renderData(data) {
