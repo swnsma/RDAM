@@ -113,6 +113,8 @@ function WeatherModel() {
         }
 
         self.renderMoreInfo(current_active);
+
+        $('#weather-list').css('display', 'block');
     }
 
     var api = new WeatherApi();
