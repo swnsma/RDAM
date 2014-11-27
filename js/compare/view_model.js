@@ -99,7 +99,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph = 1;
+            this_graph(1);
             changeGraph(1);
         })
         .mouseenter(function () {
@@ -117,7 +117,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph = 2;
+            this_graph (2);
             changeGraph(2);
         })
         .mouseenter(function () {
@@ -134,7 +134,7 @@ $(document).ready(function () {
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph = 3;
+            this_graph(3);
             changeGraph(3);
         })
         .mouseenter(function () {
@@ -151,11 +151,11 @@ $(document).ready(function () {
             var a = $(this);
             if (a.hasClass("master")) {
                 rend = $.jqplot.LineRenderer;
-                changeGraph(this_graph);
+                changeGraph(this_graph());
             }
             else {
                 rend = $.jqplot.BarRenderer;
-                changeGraph(this_graph);
+                changeGraph(this_graph());
             }
             a.toggleClass("master");
 

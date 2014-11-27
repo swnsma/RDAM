@@ -7,10 +7,18 @@ ko.bindingHandlers.active_us = {
         get_d(value);
     }
 };
+ko.bindingHandlers.show_change= {
+    update: function(element) {
+        var a=$(element);
+        if(this_graph()===3)
+            a.css("display", "none");
+        else a.css("display", "inline");
+    }
+};
 var rend;
 
 
-var this_graph=1;
+var this_graph=ko.observable(1);
 index=1;
 var a=0;
 length_l=0;
@@ -110,7 +118,7 @@ function render() {
     }
     console.log(dayProduction);
 
-    changeGraph(this_graph);
+    changeGraph(this_graph());
 }
 
 function changeGraph(number) {
