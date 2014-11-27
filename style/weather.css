@@ -21,6 +21,7 @@ ul.weather-list > li {
     padding: 5px;
     position: relative;
     z-index: 100;
+    cursor: pointer;
 }
 
 ul.weather-list > li:first-child {

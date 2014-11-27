@@ -33,9 +33,9 @@
     </div>
     <div id="weather-list">
         <ul class="weather-list" data-bind="foreach: weather_days">
-            <li>
+            <li data-bind="click: function() {$root.renderMoreInfo($index()); }, attr: {selected: $data.active }">
                 <div class="wimg">
-                    <img data-bind="attr: { src: ($data).weatherIconUrl }" alt="" />
+                    <img data-bind="attr: { src: $data.weatherIconUrl }" alt="" />
                 </div>
                 <span class="wdesc" data-bind="text: $data.weatherDesc"></span>
                 <div class="wtemp">
@@ -48,7 +48,7 @@
 
         <div class="bwmore-info">
             <div class="wmore-info">
-
+                <span data-bind="text: 'sdsdds'"></span>
             </div>
         </div>
     </div>

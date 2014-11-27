@@ -9,6 +9,8 @@ function WeatherApi() {
             success: function (response) {
                 if (response) {
                     funcSuccess(response);
+                } else {
+                    funcError();
                 }
             },
             error: funcError
@@ -18,20 +20,87 @@ function WeatherApi() {
 
 function WeatherModel() {
     var self = this;
+
     self.weather_days = ko.observableArray([]);
+    var current_active = 0;
+
+    self.renderMoreInfo = function(n) {
+        self.weather_days()[current_active].active(false);
+        self.weather_days()[n].active(true);
+        current_active = n;
+    };
 
     function renderData(data) {
-        var weather = data.data.weather;
+        data = data.data;
         $('#loading').remove();
-        for(var i in weather) {
+
+        function getHourly(h) {
+            var hourly = [];
+            for(var i in h) {
+                var el = h[i];
+                hourly.push({
+                    weatherDesc: el.weatherDesc[0].value,
+                    weatherIconUrl: el.weatherIconUrl[0].value,
+                    tempC: el.tempC,
+                    tempF: el.tempF,
+                    humidity: el.humidity,
+                    precipMM: el.precipMM,
+                    pressure: el.pressure,
+                    winddirDegree: el.winddirDegree,
+                    windspeedMiles: el.windspeedMiles
+                });
+            }
+            return hourly;
+        }
+
+        function getMaxTemp(h) {
+            var t = {
+                maxtempC: h.maxtempC,
+                maxtempF: h.maxtempF,
+                mintempC: h.mintempC,
+                mintempF: h.mintempF
+            };
+            return t;
+        }
+
+        var curr = data.current_condition[0];
+        self.weather_days.push({
+            active: ko.observable(false),
+            date: data.weather[0].date,
+            weatherDesc: curr.weatherDesc[0].value,
+            weatherIconUrl: curr.weatherIconUrl[0].value,
+            tempC: curr.temp_C,
+            tempF: curr.temp_F,
+            humidity: curr.humidity,
+            precipMM: curr.precipMM,
+            pressure: curr.pressure,
+            winddirDegree: curr.winddirDegree,
+            windspeedMiles: curr.windspeedMiles,
+            hourly: getHourly(data.weather[0].hourly),
+            max: getMaxTemp(data.weather[0])
+        });
+
+        data = data.weather;
+        for(var i = 1; i < data.length; ++i) {
+            curr = data[i].hourly[0];
             self.weather_days.push({
-                date: weather[i].date,
-                weatherDesc: weather[i].hourly[0].weatherDesc[0].value,
-                weatherIconUrl: weather[i].hourly[0].weatherIconUrl[0].value,
-                tempC: weather[i].hourly[0].tempC,
-                tempF: weather[i].hourly[0].tempF
+                active: ko.observable(false),
+                date: data[i].date,
+                weatherDesc: curr.weatherDesc[0].value,
+                weatherIconUrl: curr.weatherIconUrl[0].value,
+                tempC: curr.tempC,
+                tempF: curr.tempF,
+                humidity: curr.humidity,
+                precipMM: curr.precipMM,
+                pressure: curr.pressure,
+                winddirDegree: curr.winddirDegree,
+                windspeedMiles: curr.windspeedMiles,
+                hourly: getHourly(data[i].hourly),
+                max: getMaxTemp(data[i])
             });
         }
+
+        self.renderMoreInfo(current_active);
     }
 
     var api = new WeatherApi();
