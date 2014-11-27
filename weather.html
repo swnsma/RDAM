@@ -48,7 +48,61 @@
 
         <div class="bwmore-info">
             <div class="wmore-info">
-                <span data-bind="text: weather_days_mi.humidity()"></span>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>2:00</th>
+                        <th>5:00</th>
+                        <th>8:00</th>
+                        <th>11:00</th>
+                        <th>14:00</th>
+                        <th>17:00</th>
+                        <th>20:00</th>
+                        <th>23:00</th>
+                    </tr>
+                    <tr>
+                        <td>tempC</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.tempC"></td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <td>weatherDesc</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.weatherDesc"></td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <td>humidity</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.humidity"></td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <td>precipMM</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.precipMM"></td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <td>pressure</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.pressure"></td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <td>winddirDegree</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.winddirDegree"></td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <td>windspeedMiles</td>
+                        <!-- ko foreach: weather_days_mi.hourly -->
+                        <td data-bind="text: $data.windspeedMiles"></td>
+                        <!-- /ko -->
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
