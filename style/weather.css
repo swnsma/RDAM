@@ -13,13 +13,14 @@ ul.weather-list {
 ul.weather-list > li {
     float: left;
     width: 120px;
-    height: 200px;
+    height: 190px;
     border: 2px solid #63AD1F;
     border-radius: 5px 5px 0 0;
     margin-left: 5px;
     background-color: #F4EFD4;
     padding: 5px;
     position: relative;
+    z-index: 100;
 }
 
 ul.weather-list > li:first-child {
@@ -102,9 +103,16 @@ ul.weather-list > li:first-child {
 
 .wmore-info {
     box-sizing: border-box;
-    position: relative;
-    top: 5px;
     height: 95px;
     border: 2px solid #63AD1F;
     border-radius: 0 0 5px 5px;
+    z-index: 80;
+    position: relative;
+    top: -2px;
+    background-color: #F4EFD4;
+}
+
+ul.weather-list > li[selected='true'] {
+    height: 200px;
+    border-bottom: none;
 }
