@@ -34,9 +34,11 @@
     <div id="weather-list">
         <ul class="weather-list" data-bind="foreach: weather_days">
             <li data-bind="click: function() {$root.renderMoreInfo($index()); }, attr: {selected: $data.active }">
-                <span class="wdate" data-bind="text: date.day_name"></span>
-                <span class="wdate" data-bind="text: date.day"></span>
-                <span class="wdate" data-bind="text: date.month_name"></span>
+                <div class="wdate">
+                    <span class="wname" data-bind="text: date.day_name"></span>
+                    <span class="wday" data-bind="text: date.day"></span>
+                    <span class="wname" data-bind="text: date.month_name"></span>
+                </div>
                 <div class="wimg">
                     <img data-bind="attr: { src: $data.weatherIconUrl }" alt="" />
                 </div>

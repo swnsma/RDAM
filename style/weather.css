@@ -168,3 +168,20 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
     box-sizing: border-box;
     padding: 5px;
 }
+
+.wname, .wday {
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 1px;
+    box-sizing: border-box;
+}
+
+.wname {
+    font-size: 11pt;
+}
+
+.wday {
+    font-size: 17pt;
+    font-weight: bold;
+}
