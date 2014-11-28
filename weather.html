@@ -33,19 +33,19 @@
     </div>
     <div id="weather-list">
         <ul class="weather-list" data-bind="foreach: weather_days">
-            <li data-bind="click: function() {$root.renderMoreInfo($index()); }, attr: {selected: $data.active }">
+            <li data-bind="click: function() {$root.renderMoreInfo($index()); }, attr: {selected: active }">
                 <div class="wdate">
                     <span class="wname" data-bind="text: date.day_name"></span>
                     <span class="wday" data-bind="text: date.day"></span>
                     <span class="wname" data-bind="text: date.month_name"></span>
                 </div>
                 <div class="wimg">
-                    <img data-bind="attr: { src: $data.weatherIconUrl }" alt="" />
+                    <img data-bind="attr: { src: weatherIconUrl }" alt="" />
                 </div>
-                <span class="wdesc" data-bind="text: $data.weatherDesc"></span>
+                <span class="wdesc" data-bind="text: weatherDesc"></span>
                 <div class="wtemp">
-                    <span data-bind="text: $data.maxnimtemp.mintempC"></span> -
-                    <span data-bind="text: $data.maxnimtemp.maxtempC"></span> C
+                    <span data-bind="text: maxnimtemp.mintempC"></span> -
+                    <span data-bind="text: maxnimtemp.maxtempC"></span> C
                 </div>
             </li>
         </ul>
@@ -53,8 +53,10 @@
         <div class="bwmore-info">
             <div class="wmore-info">
                 <div class="temp-left">
-                    <img src="img/temp.png" alt="" />
-                    <span data-bind="html: weather_days_mi.tempC"></span> C<br />
+                    <div class="bcurr-temp">
+                        <img src="img/temp.png" alt="" />
+                        <span class="curr-temp-value" data-bind="html: weather_days_mi.tempC"></span> C
+                    </div>
                 </div>
                 <div class="table-hourly-right">
                     <table class="hourly">
@@ -79,37 +81,37 @@
                         <tr>
                             <td>tempC</td>
                             <!-- ko foreach: weather_days_mi.hourly -->
-                            <td data-bind="text: $data.tempC"></td>
+                            <td data-bind="text: tempC"></td>
                             <!-- /ko -->
                         </tr>
                         <tr>
                             <td>humidity</td>
                             <!-- ko foreach: weather_days_mi.hourly -->
-                            <td data-bind="text: $data.humidity"></td>
+                            <td data-bind="text: humidity"></td>
                             <!-- /ko -->
                         </tr>
                         <tr>
                             <td>precipMM</td>
                             <!-- ko foreach: weather_days_mi.hourly -->
-                            <td data-bind="text: $data.precipMM"></td>
+                            <td data-bind="text: precipMM"></td>
                             <!-- /ko -->
                         </tr>
                         <tr>
                             <td>pressure</td>
                             <!-- ko foreach: weather_days_mi.hourly -->
-                            <td data-bind="text: $data.pressure"></td>
+                            <td data-bind="text: pressure"></td>
                             <!-- /ko -->
                         </tr>
                         <tr>
                             <td>winddirDegree</td>
                             <!-- ko foreach: weather_days_mi.hourly -->
-                            <td data-bind="text: $data.winddirDegree"></td>
+                            <td data-bind="text: winddirDegree"></td>
                             <!-- /ko -->
                         </tr>
                         <tr>
                             <td>windspeedMiles</td>
                             <!-- ko foreach: weather_days_mi.hourly -->
-                            <td data-bind="text: $data.windspeedMiles"></td>
+                            <td data-bind="text: windspeedMiles"></td>
                             <!-- /ko -->
                         </tr>
                     </table>
