@@ -33,7 +33,7 @@ function WeatherModel() {
         windspeedMiles: ko.observable(),
         hourly: ko.observableArray([]),
         tempC: ko.observable(),
-        tempF: ko.observable(),
+        tempF: ko.observable()
     };
 
     self.renderMoreInfo = function(n) {
@@ -50,6 +50,18 @@ function WeatherModel() {
     function renderData(data) {
         data = data.data;
         $('#loading').remove();
+
+        function getDate(date) {
+            var d = new Date(date.replace(/(\d+)-(\d+)-(\d+)/, '$2/$3/$1'));
+            var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            var dd = {
+                day_name: days[d.getDay()],
+                day: d.getDay(),
+                month_name: months[d.getMonth()]
+            };
+            return dd;
+        }
 
         function getHourly(h) {
             var hourly = [];
@@ -77,7 +89,7 @@ function WeatherModel() {
         var curr = data.current_condition[0];
         self.weather_days.push({
             active: ko.observable(false),
-            date: data.weather[0].date,
+            date: getDate(data.weather[0].date),
             weatherDesc: curr.weatherDesc[0].value,
             weatherIconUrl: curr.weatherIconUrl[0].value,
             tempC: curr.temp_C,
@@ -96,7 +108,7 @@ function WeatherModel() {
             curr = data[i].hourly[0];
             self.weather_days.push({
                 active: ko.observable(false),
-                date: data[i].date,
+                date: getDate(data[i].date),
                 weatherDesc: curr.weatherDesc[0].value,
                 weatherIconUrl: curr.weatherIconUrl[0].value,
                 tempC: curr.tempC,

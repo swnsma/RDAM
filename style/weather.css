@@ -66,14 +66,7 @@ ul.weather-list > li:first-child {
 }
 
 .wdate {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    text-align: right;
-    width: 100%;
-    padding: 5px;
-    padding-right: 10px;
-    font-size: 10pt;
+
 }
 
 #loading {
