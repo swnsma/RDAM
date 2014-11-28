@@ -25,6 +25,7 @@ function WeatherModel() {
     var current_active = 0;
 
     self.weather_days_mi = {
+        s: this,
         humidity: ko.observable(),
         precipMM: ko.observable(),
         pressure: ko.observable(),
@@ -32,7 +33,7 @@ function WeatherModel() {
         windspeedMiles: ko.observable(),
         hourly: ko.observableArray([]),
         tempC: ko.observable(),
-        tempF: ko.observable()
+        tempF: ko.observable(),
     };
 
     self.renderMoreInfo = function(n) {
