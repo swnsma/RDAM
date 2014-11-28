@@ -14,12 +14,12 @@ ul.weather-list {
 ul.weather-list > li {
     float: left;
     width: 120px;
-    height: 180px;
+    height: 190px;
     border: 2px solid #63AD1F;
-    border-radius: 5px 5px 0 0;
     margin-left: 5px;
+    border-radius: 5px 5px 0 0;
     background-color: #F4EFD4;
-    padding: 5px;
+    padding: 5px 5px 0 5px;
     position: relative;
     z-index: 100;
     cursor: pointer;
@@ -109,7 +109,7 @@ ul.weather-list > li:first-child {
 }
 
 ul.weather-list > li[selected='true'] {
-    height: 189px;
+    height: 199px;
     border-bottom: none;
 }
 
@@ -165,7 +165,6 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
     float: left;
     height: 100%;
     width: 130px;
-    background: red;
 }
 
 .table-hourly-right, .temp-left {
