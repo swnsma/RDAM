@@ -57,7 +57,7 @@ function WeatherModel() {
             var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
             var dd = {
                 day_name: days[d.getDay()],
-                day: d.getDay(),
+                day: d.getDate(),
                 month_name: months[d.getMonth()]
             };
             return dd;
