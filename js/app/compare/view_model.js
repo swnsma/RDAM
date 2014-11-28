@@ -45,7 +45,6 @@ function AppViewModel() {
     self.return_active_search = ko.computed(function(){
         var result = [];
         for(var i=0;i<self.return_active_user().length;++i){
-            debugger;
             console.log(self.search_text());
             var word = self.return_active_user()[i].name().toUpperCase();
             var subword = self.search_text().toUpperCase()
@@ -61,7 +60,6 @@ function AppViewModel() {
         for(var i=0;i<self.return_no_active_user().length;++i){
 
             var word = self.return_no_active_user()[i].name().toUpperCase();
-            debugger;
             console.log(self.search_text());
             var subword = self.search_text().toUpperCase()
             if (word.indexOf(subword) > -1) {
