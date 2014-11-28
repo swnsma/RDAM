@@ -1,20 +1,4 @@
-﻿function DateN(year, month, day) {
-    this.year = year;
-    this.month = month;
-    this.day = day;
-}
-var getYear = function (str) {
-    var year = str.slice(0, 4);
-    return year;
-};
-var getMonth = function (str) {
-    var month = str.slice(5, 7);
-    return month;
-}
-var getDay = function (str) {
-    var day = str.slice(8, 10);
-    return day;
-}
+﻿
 var sum_days=0;
 var sum_weeks=0;
 var sum_month=0;
@@ -30,14 +14,8 @@ var rend;
 rend = $.jqplot.BarRenderer;
 
 function render(item) {
-
     allData = item;
-    console.log(allData);
-    //   for (var i = 0; i < allData.length; i++) {
-    //    FromDT.push(new DateN(getYear(allData[i].FromDT.iso), getMonth(allData[i].FromDT.iso), getDay(allData[i].FromDT.iso)));
-    //    ToDT.push(new DateN(getYear(allData[i].ToDT.iso), getMonth(allData[i].ToDT.iso), getDay(allData[i].ToDT.iso)));
-    //}
-
+    //console.log(allData);
     for (var i = 6; i >= 0; i--) {
         sum_days += allData[i].Reading2;
         dayProduction.push(allData[i].Reading2);
@@ -54,14 +32,10 @@ function render(item) {
         monthProduction.push(allData[i].Reading2);
         monthTicks.push(allData[i].FromDT.iso.slice(5, 7));
     }
-    debugger;
-
-
 
     changeGraph(1);
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
 }
-
 
     function changeGraph(number) {
         var production;
