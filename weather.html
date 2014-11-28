@@ -39,8 +39,6 @@
                 </div>
                 <span class="wdesc" data-bind="text: $data.weatherDesc"></span>
                 <div class="wtemp">
-                    <!--<span data-bind="text: $data.tempC"></span> C |
-                    <span data-bind="text: $data.tempF"></span> F-->
                     <span data-bind="text: $data.maxnimtemp.mintempC"></span> -
                     <span data-bind="text: $data.maxnimtemp.maxtempC"></span> C
                 </div>
@@ -50,6 +48,10 @@
 
         <div class="bwmore-info">
             <div class="wmore-info">
+                <div class="temp-left">
+                    <img src="img/temp.png" alt="" />
+                    <span data-bind="html: weather_days_mi.tempC"></span> C<br />
+                </div>
                 <div class="table-hourly-right">
                     <table class="hourly">
                         <tr>
@@ -107,10 +109,6 @@
                             <!-- /ko -->
                         </tr>
                     </table>
-                </div>
-                <div class="temp-left">
-                    <span data-bind="html: weather_days_mi.tempC"></span> C<br />
-                    <img src="img/temp.png" alt="" />
                 </div>
             </div>
         </div>
