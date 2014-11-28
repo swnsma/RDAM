@@ -1,4 +1,4 @@
-﻿function getData() {
+﻿function getData(func) {
     var options = {
         url: 'https://api.parse.com/1/classes/date/',
         type: 'GET',
@@ -14,10 +14,7 @@
                     var a = response.results[i];
                     allData.push(a);
                 }
-                console.log(allData);
-
-                console.log(allData);
-                render(allData);
+               func(allData);
             }
              },
 
