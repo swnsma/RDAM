@@ -7,7 +7,7 @@ div#weather-list {
 
 ul.weather-list {
     overflow: hidden;
-    margin: 0 0 0 -35px;
+    margin: 0 0 0 5px;
     list-style-type: none;
 }
 
@@ -164,7 +164,8 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
 .temp-left {
     float: left;
     height: 100%;
-    width: 140px;
+    width: 130px;
+    background: red;
 }
 
 .table-hourly-right, .temp-left {
