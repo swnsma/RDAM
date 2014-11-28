@@ -166,7 +166,7 @@
             this._ticks.push(t);
         }
 
-        // we don't have any ticks yet, let's make some!
+        // we don't have any ticks yet, let's make homepage!
         else {
             if (name == 'xaxis' || name == 'x2axis') {
                 dim = this._plotDimensions.width;

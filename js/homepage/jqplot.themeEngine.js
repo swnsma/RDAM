@@ -34,7 +34,7 @@
 (function($) {
     /**
      * Class: $.jqplot.ThemeEngine
-     * Theme Engine provides a programatic way to change some of the  more
+     * Theme Engine provides a programatic way to change homepage of the  more
      * common jqplot styling options such as fonts, colors and grid options.
      * A theme engine instance is created with each plot.  The theme engine
      * manages a collection of themes which can be modified, added to, or
