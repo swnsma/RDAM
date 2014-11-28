@@ -46,8 +46,7 @@ ul {
     color: blue;
 }
 .navigation{
-    min-width: 870px;
-    max-width: 890px;
+    width: 870px;
     margin: 0 auto;
 }
 .navigation ul{
