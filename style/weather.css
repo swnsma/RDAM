@@ -23,6 +23,7 @@ ul.weather-list > li {
     position: relative;
     z-index: 100;
     cursor: pointer;
+    color: #332625;;
 }
 
 ul.weather-list > li:first-child {
@@ -103,7 +104,7 @@ ul.weather-list > li:first-child {
     border-radius: 0 0 5px 5px;
     z-index: 80;
     position: relative;
-    top: -2px;
+    top: -3px;
     background-color: #F4EFD4;
 }
 
@@ -134,7 +135,7 @@ table.hourly tr:nth-child(2n) {
 }
 
 table.hourly tr:nth-child(2) {
-    background-color: #666;
+    background-color: #665554;
     color: #fff;
     height: 20px;
 }
