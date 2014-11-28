@@ -31,7 +31,8 @@ function WeatherModel() {
         winddirDegree: ko.observable(),
         windspeedMiles: ko.observable(),
         hourly: ko.observableArray([]),
-        max: ko.observable()
+        tempC: ko.observable(),
+        tempF: ko.observable()
     };
 
     self.renderMoreInfo = function(n) {
@@ -41,7 +42,8 @@ function WeatherModel() {
 
         var el = self.weather_days()[current_active];
         self.weather_days_mi.hourly(el.hourly);
-        self.weather_days_mi.max(el.max);
+        self.weather_days_mi.tempC(el.tempC);
+        self.weather_days_mi.tempF(el.tempF);
     };
 
     function renderData(data) {
@@ -85,7 +87,7 @@ function WeatherModel() {
             winddirDegree: curr.winddirDegree,
             windspeedMiles: curr.windspeedMiles,
             hourly: getHourly(data.weather[0].hourly),
-            max: getMaxTemp(data.weather[0])
+            maxnimtemp: getMaxTemp(data.weather[0])
         });
 
         data = data.weather;
@@ -104,7 +106,7 @@ function WeatherModel() {
                 winddirDegree: curr.winddirDegree,
                 windspeedMiles: curr.windspeedMiles,
                 hourly: getHourly(data[i].hourly),
-                max: getMaxTemp(data[i])
+                maxnimtemp: getMaxTemp(data[i])
             });
         }
 

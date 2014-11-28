@@ -39,8 +39,10 @@
                 </div>
                 <span class="wdesc" data-bind="text: $data.weatherDesc"></span>
                 <div class="wtemp">
-                    <span data-bind="text: $data.tempC"></span> C |
-                    <span data-bind="text: $data.tempF"></span> F
+                    <!--<span data-bind="text: $data.tempC"></span> C |
+                    <span data-bind="text: $data.tempF"></span> F-->
+                    <span data-bind="text: $data.maxnimtemp.mintempC"></span> -
+                    <span data-bind="text: $data.maxnimtemp.maxtempC"></span> C
                 </div>
                 <span class="wdate" data-bind="text: $data.date"></span>
             </li>
@@ -107,7 +109,7 @@
                     </table>
                 </div>
                 <div class="temp-left">
-                    maxTemp <span data-bind="text: weather_days()[0].max.mintempC"></span> C<br />
+                    <span data-bind="html: weather_days_mi.tempC"></span> C<br />
                     <img src="img/temp.png" alt="" />
                 </div>
             </div>
