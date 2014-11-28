@@ -33,7 +33,7 @@
     </div>
     <div id="weather-list">
         <ul class="weather-list" data-bind="foreach: weather_days">
-            <li data-bind="click: function() {$root.renderMoreInfo($index()); }, attr: {selected: active }">
+            <li data-bind="click: function() { $root.renderMoreInfo($index()); }, attr: { selected: active }">
                 <div class="wdate">
                     <span class="wname" data-bind="text: date.day_name"></span>
                     <span class="wday" data-bind="text: date.day"></span>
