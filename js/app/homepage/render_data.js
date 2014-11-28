@@ -1,6 +1,4 @@
-﻿
-
-var dayProduction = [];
+﻿var dayProduction = [];
 var dayConsumption = [];
 
 var weekProduction = [];
@@ -113,9 +111,6 @@ this_graph=number;
         }
         //seriesColors: colors
     });
-
-
-
 }
 
 function render(item) {
@@ -197,8 +192,5 @@ $(document).ready(function () {
                 changeGraph(this_graph);
             }
             a.toggleClass("master");
-
         });
-
-
 });
