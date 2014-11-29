@@ -165,7 +165,6 @@ function HomePage() {
     var $dayButton = $('<div>');
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
-
     button_constr($dayButton, $target, 1,'Days');
     button_constr($weekButton, $target, 2,'Weeks');
     button_constr($monthButton, $target, 3,'Months');
