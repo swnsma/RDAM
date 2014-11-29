@@ -162,22 +162,12 @@ function HomePage() {
     var $dayButton = $('<div>');
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
-    button_constr($monthButton, $target, 3);
-    button_constr($dayButton, $target, 1);
-    button_constr($weekButton, $target, 2);
+
+    button_constr($dayButton, $target, 1,'Days');
+    button_constr($weekButton, $target, 2,'Weeks');
+    button_constr($monthButton, $target, 3,'Months');
     $('.change_view')
-        .click(function() {
-            var a=$(this);
-            if(a.hasClass("master"))
-            {rend=$.jqplot.BarRenderer;
-                changeGraph(this_graph);
-            }
-            else
-            {rend=$.jqplot.LineRenderer;
-                changeGraph(this_graph);
-            }
-            a.toggleClass("master");
-        });
+        .click(click_change);
 };
 
 manager.add(HomePage);

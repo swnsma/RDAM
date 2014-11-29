@@ -80,23 +80,7 @@ function AppViewModel() {
         return result;
     })
 }
-function button_constr(el,p,n)
-{
-    el.appendTo(p)
-        .addClass('time1')
-        .text('Months')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph=n;
-            changeGraph(n);})
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
-}
+
 
 // Activates knockout.js
 function Score() {
@@ -105,10 +89,10 @@ function Score() {
     var $dayButton = $('<div>');
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
-    button_constr($monthButton, $target, 3);
-    button_constr($dayButton, $target, 1);
-    button_constr($weekButton, $target, 2);
-    $('.change_view')
+    button_constr($dayButton, $target, 1,'Days');
+    button_constr($weekButton, $target, 2,'Weeks');
+    button_constr($monthButton, $target, 3,'Months');
+    $('.change_view').click(click_change);
 }
 
     manager.add(Score);

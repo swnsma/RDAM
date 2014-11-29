@@ -1,9 +1,9 @@
 
-function button_constr(el,p,n)
+function button_constr(el,p,n,text)
 {
     el.appendTo(p)
         .addClass('time1')
-        .text('Months')
+        .text(text)
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
@@ -16,6 +16,20 @@ function button_constr(el,p,n)
             $(this).removeClass("on_button")
         });
 }
+function click_change()
+{
+        var a=$(this);
+        if(a.hasClass("master"))
+        {rend=$.jqplot.BarRenderer;
+            changeGraph(this_graph);
+        }
+        else
+        {rend=$.jqplot.LineRenderer;
+            changeGraph(this_graph);
+        }
+        a.toggleClass("master");
+}
+
 function ScriptManager() {
     var arr_objs = [];
 

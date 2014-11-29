@@ -23,23 +23,6 @@ ko.bindingHandlers.show_change= {
     }
 };
 var rend;
-var change_view = function() {
-    //debugger;
-    var a = $('.change_view');
-    if (a.hasClass("master")) {
-        rend = $.jqplot.LineRenderer;
-        changeGraph(this_graph);
-        is_bar=0;
-    }
-    else {
-        rend = $.jqplot.BarRenderer;
-        changeGraph(this_graph);
-        is_bar=1;
-    }
-    a.toggleClass("master");
-};
-
-
 
 var this_graph=1;
 index=1;
