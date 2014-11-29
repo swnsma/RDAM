@@ -1,27 +1,4 @@
 
-ko.bindingHandlers.active_us = {
-    update: function(element, valueAccessor) {
-        // First get the latest data that we're bound to
-        var value = valueAccessor();
-        //debugger;
-        get_d(value);
-    }
-};
-ko.bindingHandlers.show_change= {
-    update: function(element) {
-        var a=$(element);
-        if(this_graph===3){
-            a.css("display", "none");
-            rend = $.jqplot.LineRenderer;
-        }
-        else {
-            if(is_bar) {
-                rend = $.jqplot.BarRenderer;
-            }
-            a.css("display", "inline");
-        }
-    }
-};
 var rend;
 
 var this_graph=1;
@@ -49,6 +26,30 @@ var monthConsumption = [];
 var dayTicks = [];
 var weekTicks = [];
 var monthTicks = [];
+
+ko.bindingHandlers.active_us = {
+    update: function(element, valueAccessor) {
+        // First get the latest data that we're bound to
+        var value = valueAccessor();
+        //debugger;
+        get_d(value);
+    }
+};
+ko.bindingHandlers.show_change= {
+    update: function(element) {
+        var a=$(element);
+        if(this_graph===3){
+            a.css("display", "none");
+            rend = $.jqplot.LineRenderer;
+        }
+        else {
+            if(is_bar) {
+                rend = $.jqplot.BarRenderer;
+            }
+            a.css("display", "inline");
+        }
+    }
+};
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
 get_first();
 function get_d(item) {
