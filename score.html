@@ -49,36 +49,25 @@
 
 
 
-                        <div class="not_search" data-bind="ifnot: $root.search_text">
-                            <span class="this">this</span>
-                            <ul data-bind="foreach: return_active_user(),active_us: return_active_user()">
-                                <li data-bind=" style:{backgroundColor: color },click: $root.set_active">
-                                    <input data-bind="id:name,value:name,checked: $root.return_checked()" type="checkbox"/>
-                                    <label  data-bind="for:name, text:name"></label>
-                                </li>
-                            </ul>
-                            <ul data-bind=" foreach: return_no_active_user()">
-                                <li data-bind="click: $root.set_active">
-
-                                    <input data-bind="id:name,value:name,checked: $root.return_checked()" type="checkbox"/>
-                                    <label  data-bind="for:name, text:name"></label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="search" data-bind="if: $root.search_text">
+                        <div class="list">
                             <ul data-bind="foreach: return_active_search(),active_us: return_active_user()">
-                                <li data-bind=" style:{backgroundColor: color },click: $root.set_active">
-                                    <input data-bind="id:name,value:name,checked: $root.return_checked()" type="checkbox"/>
-                                    <label  data-bind="for:name, text:name"></label>
+                                <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
+                                    <label >
+                                        <input data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
+                                        <span data-bind="text:name "></span>
+                                    </label>
                                 </li>
                             </ul>
-                            <ul data-bind=" foreach: return_no_active_search">
+                            <ul data-bind=" foreach: return_no_active_search()">
                                 <li data-bind="click: $root.set_active">
-                                    <input data-bind="id:name,value:name,checked: $root.return_checked()" type="checkbox"/>
-                                    <label  data-bind="for:name, text:name"></label>
+                                    <label>
+                                        <input data-bind="id:name,value:name, checked:$root.return_checked()  " type="checkbox"/>
+                                        <span data-bind="text:name"></span>
+                                    </label>
                                 </li>
                             </ul>
                         </div>
+
                     </form>
 
                 </div>
