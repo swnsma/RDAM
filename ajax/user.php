@@ -4,12 +4,12 @@ include_once 'include/user.class.php';
 
 header('Content-type: application/json; charset=utf-8');
 
-date_default_timezone_set('Europe/London');
-
 if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['from'])) {
     $type = $_GET['type'];
     $id = $_GET['id'];
     $from = $_GET['from'];
+
+    date_default_timezone_set('Europe/London');
 
     if (ctype_digit($type) && ctype_digit($id) && valid_date($from)) {
         $type = (int)$type;
