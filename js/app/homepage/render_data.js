@@ -22,76 +22,76 @@ function changeGraph(number) {
     switch (number)
     {
         case 1:
-        dayTicks.sort(function(a, b) {
-            a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
-            b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
-            return a - b;
-        });
-        ticks = dayTicks;
-        mas_dat[0] = dayProduction;
-        mas_dat[1] = dayConsumption;
-        title='Daily production';
-   break;
+            dayTicks.sort(function(a, b) {
+                a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+                b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+                return a - b;
+            });
+            ticks = dayTicks;
+            mas_dat[0] = dayProduction;
+            mas_dat[1] = dayConsumption;
+            title='Daily production';
+            break;
         case 2:
-        weekTicks.sort(function(a, b) {
-            a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
-            b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
-            return a - b;
-        });
-        ticks = weekTicks;
-        mas_dat[0] = weekProduction;
-        mas_dat[1] = dayConsumption;
-        title='Weekly production';
+            weekTicks.sort(function(a, b) {
+                a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+                b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
+                return a - b;
+            });
+            ticks = weekTicks;
+            mas_dat[0] = weekProduction;
+            mas_dat[1] = dayConsumption;
+            title='Weekly production';
 
-        break;
+            break;
         case 3:
-        ticks = monthTicks;
-        mas_dat[0] = monthProduction;
-        mas_dat[1] = dayConsumption;
-        title='Monthly production';
+            ticks = monthTicks;
+            mas_dat[0] = monthProduction;
+            mas_dat[1] = dayConsumption;
+            title='Monthly production';
 
             break;
     }
-this_graph=number;
+    this_graph=number;
     $('#chartDiv').empty();
     var plot1 = $.jqplot('chartDiv', mas_dat, {
         title: title,
-seriesDefault: {
-    showMarker:false
-},
+        seriesDefault: {
+            showMarker:false
+        },
         series: [
             {
-        renderer: rend,
-            rendererOptions: {
-            fillToZero: true
-        },
-        shadow: false,
-            label:"consumption",
+                renderer: rend,
+                rendererOptions: {
+                    fillToZero: true
+                },
+                shadow: false,
+                label:"consumption",
 
-        markerOptions: {shadow:false
-        }
-    },
-   {
-        renderer: rend,
-            rendererOptions: {
-            fillToZero: false
-        },
-        shadow: false,
-            label:"production",
-        markerOptions: {shadow:false}
+                markerOptions: {shadow:false
+                }
+            },
+            {
+                renderer: rend,
+                rendererOptions: {
+                    fillToZero: false
+                },
+                shadow: false,
+                label:"production",
+                markerOptions: {shadow:false}
 
-    },
+            },
             {
 
-                  pointLabels:{
-                 show: true
-                 }
+                pointLabels:{
+                    show: true
+                }
             }
         ],
         highlighter: {show: true, sizeAdjust: 25,
             tooltipAxes:"y",
             bringSeriesToFront:true
-            },
+        },
         legend: {
             show: true,
             location: 'ne',     // compass direction, nw, n, ne, e, se, s, sw, w.
@@ -117,8 +117,8 @@ seriesDefault: {
         },
         cursor: {show: true,
             showHorizontalLine:true,
-        zoom:true,
-        clickReset:true},
+            zoom:true,
+            clickReset:true},
         grid: {
             drawGridLines: false,
             gridLineColor: '#fff',
@@ -153,11 +153,15 @@ function render(item) {
         monthConsumption.push(allData[i].Reading1);
         monthTicks.push(allData[i].FromDT.iso.slice(5, 7));
     }
-    changeGraph(1);
 }
 
 function HomePage() {
-    getData(render);
+    getData(function(data) {
+        render(data);
+        setTimeout(function() {
+            changeGraph(1);
+        }, 1000);
+    });
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
     var $weekButton = $('<div>');

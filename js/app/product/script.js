@@ -1,5 +1,8 @@
 function Product() {
     getData();
+    setTimeout(function() {
+        changeGraph(1);
+    }, 1000);
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
     var $weekButton = $('<div>');
