@@ -80,6 +80,4 @@ function ScriptManager() {
 
 var manager = new ScriptManager();
 
-$(document).ready(function(event) {
-    manager.run();
-});
+$(document).ready(manager.run);
