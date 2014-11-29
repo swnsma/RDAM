@@ -173,4 +173,6 @@ function HomePage() {
         .click(click_change);
 };
 
-manager.add(HomePage);
+$(document).ready(function() {
+    new HomePage();
+});

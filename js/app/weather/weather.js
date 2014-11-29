@@ -137,8 +137,6 @@ function WeatherModel() {
     api.getWeather(renderData, function() { alert('error'); });
 }
 
-function Weather() {
+$(document).ready(function() {
     ko.applyBindings(new WeatherModel(), document.getElementById('weather-list'));
-}
-
-manager.add(Weather);
+});

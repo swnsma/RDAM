@@ -90,4 +90,6 @@ function Score() {
     $('.change_view').click(click_change);
 }
 
-    manager.add(Score);
+$(document).ready(function() {
+    new Score();
+});

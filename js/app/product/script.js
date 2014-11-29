@@ -16,4 +16,6 @@ function Product() {
 
 }
 
-manager.add(Product);
+$(document).ready(function() {
+    new Product();
+});

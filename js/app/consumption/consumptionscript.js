@@ -133,4 +133,6 @@ getData();
 
 }
 
-manager.add(Consumtion);
+$(document).ready(function() {
+    new Consumtion();
+});
