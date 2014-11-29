@@ -68,8 +68,7 @@ seriesDefault: {
         shadow: false,
             label:"consumption",
 
-        markerOptions: {shadow:false,
-            sortMergedLabels: true
+        markerOptions: {shadow:false
         }
     },
    {
