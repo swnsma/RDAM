@@ -18,6 +18,7 @@ function AppViewModel() {
             return true;
         }
     }
+
     self.return_active_user = ko.computed(function(){
 
         var result = [];
