@@ -37,7 +37,7 @@ function render(item) {
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
 }
 
-    function changeGraph(number) {
+function changeGraph(number) {
         var production;
 
         if (number == 1) {

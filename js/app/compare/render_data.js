@@ -38,7 +38,7 @@ ko.bindingHandlers.active_us = {
     }
 };
 
-var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
+
 get_first();
 function get_d(item) {
     all = item;
