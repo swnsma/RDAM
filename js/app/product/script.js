@@ -1,5 +1,4 @@
-
-$(document).ready(function () {
+function Product() {
     getData();
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
@@ -46,4 +45,6 @@ $(document).ready(function () {
         .mouseleave(function () { $(this).removeClass("on_button") });
 
 
-});
+}
+
+manager.add(Product);

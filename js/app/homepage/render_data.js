@@ -156,7 +156,7 @@ function render(item) {
     changeGraph(1);
 }
 
-$(document).ready(function () {
+function HomePage() {
     getData(render);
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
@@ -211,4 +211,6 @@ $(document).ready(function () {
             }
             a.toggleClass("master");
         });
-});
+};
+
+manager.add(HomePage);

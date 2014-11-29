@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function Consumtion() {
     var allData=[];
 
     var dayProduction;
@@ -131,4 +131,6 @@ getData();
         }
     };
 
-});
+}
+
+manager.add(Consumtion);

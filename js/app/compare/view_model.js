@@ -83,7 +83,7 @@ function AppViewModel() {
 
 
 // Activates knockout.js
-$(document).ready(function () {
+function Score() {
 
     ko.applyBindings(new AppViewModel());
 
@@ -146,4 +146,6 @@ $(document).ready(function () {
     $('.change_view')
         .click(change_view);
 
-});
+}
+
+manager.add(Score);
