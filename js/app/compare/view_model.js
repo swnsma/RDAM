@@ -18,6 +18,7 @@ function AppViewModel() {
             return true;
         }
     }
+
     self.return_active_user = ko.computed(function(){
 
         var result = [];
@@ -84,68 +85,15 @@ function AppViewModel() {
 
 // Activates knockout.js
 function Score() {
-
     ko.applyBindings(new AppViewModel());
-
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
-    $dayButton.appendTo($target)
-        .appendTo($target)
-        .addClass('time1')
-        .addClass("first")
-        .text('Days')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph(1);
-            changeGraph(1);
-        })
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        })
-        .addClass("is_active");
     var $weekButton = $('<div>');
-    $weekButton
-        .appendTo($target)
-        .addClass('time1')
-        .text('Weeks')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph (2);
-            changeGraph(2);
-        })
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
     var $monthButton = $('<div>');
-    $monthButton
-        .appendTo($target)
-        .addClass('time1')
-        .text('Months')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph(3);
-            changeGraph(3);
-        })
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
-
-
-    $('.change_view')
-        .click(change_view);
-
+    button_constr($dayButton, $target, 1,'Days');
+    button_constr($weekButton, $target, 2,'Weeks');
+    button_constr($monthButton, $target, 3,'Months');
+    $('.change_view').click(click_change);
 }
 
-manager.add(Score);
+    manager.add(Score);
