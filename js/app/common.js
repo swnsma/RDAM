@@ -1,3 +1,21 @@
+
+function button_constr(el,p,n)
+{
+    el.appendTo(p)
+        .addClass('time1')
+        .text('Months')
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            this_graph(n);
+            changeGraph(n);})
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+}
 function ScriptManager() {
     var arr_objs = [];
 
