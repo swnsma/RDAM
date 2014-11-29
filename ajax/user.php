@@ -26,16 +26,16 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['from'])) {
         if($user->select_data($type, $id, $from)) {
             $user->print_data();
         } else {
-            header("HTTP/1.0 400 Bad Request");
+            header('HTTP/1.0 400 Bad Request');
             //http_response_code(400);
         }
         $user = null;
     } else {
-        header("HTTP/1.0 400 Bad Request");
+        header('HTTP/1.0 400 Bad Request');
         //http_response_code(400);
     }
 } else {
-    header("HTTP/1.0 400 Bad Request");
+    header('HTTP/1.0 400 Bad Request');
     //http_response_code(400); //Bad Request
 }
 
