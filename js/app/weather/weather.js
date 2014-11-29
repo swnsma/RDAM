@@ -18,11 +18,25 @@ function WeatherApi() {
     }
 }
 
+function LoadingBar() {
+    this.enable = function() {
+        $('#loading').css('display', 'block');
+    };
+
+    this.disable = function() {
+        $('#loading').css('display', 'none');
+    };
+}
+
+
 function WeatherModel() {
     var self = this;
 
     self.weather_days = ko.observableArray([]);
+
     var current_active = 0;
+
+    var loading = new LoadingBar();
 
     self.weather_days_mi = {
         s: this,
@@ -49,18 +63,18 @@ function WeatherModel() {
 
     function renderData(data) {
         data = data.data;
-        $('#loading').remove();
+        loading.disable();
 
         function getDate(date) {
             var d = new Date(date.replace(/(\d+)-(\d+)-(\d+)/, '$2/$3/$1'));
             var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
             var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            var dd = {
+            return {
                 day_name: days[d.getDay()],
+                is_day_off: (d.getDay() == 0 || d.getDay() == 6) ? true : false,
                 day: d.getDate() < 10 ? '0' + d.getDate() : d.getDate(),
                 month_name: months[d.getMonth()]
             };
-            return dd;
         }
 
         function getHourly(h) {

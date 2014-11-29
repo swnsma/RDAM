@@ -124,7 +124,7 @@ table.hourly {
 
 table.hourly td, table.hourly th {
     padding: 1px;
-    width: 50px;
+    width: 45px;
     height: 20px;
     text-align: center;
     vertical-align: middle;
@@ -147,10 +147,11 @@ table.hourly tr:nth-child(1) {
 }
 
 table.hourly tr td:first-child, table.hourly tr th:first-child {
-    width: 110px;
+    width: 130px;
     font-weight: bold;
     text-align: right;
     color: #332625;
+    padding-right: 5px;
 }
 
 table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:first-child {
@@ -191,21 +192,32 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
 }
 
 .bcurr-temp {
-    display: table-cell;
+    display: table;
     width: 140px;
     height: 180px;
-    vertical-align:middle;
     font-size: 20pt;
     color: #332625;
     font-weight: bold;
 }
 
 .curr-temp-value {
-    vertical-align:middle;
     position: relative;
     top: -2px;
 }
 
 .bcurr-temp img, .curr-temp-value, .bcurr-temp {
     vertical-align:middle;
+}
+
+.is_day_off {
+    color: #9B4242;
+}
+
+.btemp-img, .bcurr-temp-value {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.btemp-img > img {
+    margin: 0 5px;
 }
