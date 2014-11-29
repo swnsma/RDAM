@@ -1,6 +1,4 @@
-﻿
-
-var dayProduction = [];
+﻿var dayProduction = [];
 var dayConsumption = [];
 
 var weekProduction = [];
@@ -58,22 +56,34 @@ this_graph=number;
     $('#chartDiv').empty();
     var plot1 = $.jqplot('chartDiv', mas_dat, {
         title: title,
-        seriesDefaults: {
-            renderer: rend,
-            rendererOptions: {
-                fillToZero: true
-            },
-            shadow: false,
-            pointLabels: {show: true},
-            markerOptions: {shadow:false}
-        },
-        series: [
 
+        series: [
+            {
+        renderer: rend,
+            rendererOptions: {
+            fillToZero: true
+        },
+        shadow: false,
+            label:"consumption",
+            pointLabels: {show: true},
+        markerOptions: {shadow:false}
+    },
+   {
+        renderer: rend,
+            rendererOptions: {
+            fillToZero: true
+        },
+        shadow: false,
+            label:"production",
+            pointLabels: {show: true},
+        markerOptions: {shadow:false}
+    }
         ],
         legend: {
-            show: false,
-            xoffset: 12,
-            yoffset: 12
+            show: true,
+            location: 'ne',     // compass direction, nw, n, ne, e, se, s, sw, w.
+            xoffset: 12,        // pixel offset of the legend box from the x (or x2) axis.
+            yoffset: 12        // pixel offset of the legend box from the y (or y2) axis.
         },
         axes: {
             xaxis: {
@@ -101,9 +111,6 @@ this_graph=number;
         }
         //seriesColors: colors
     });
-
-
-
 }
 
 function render(item) {
@@ -185,8 +192,5 @@ $(document).ready(function () {
                 changeGraph(this_graph);
             }
             a.toggleClass("master");
-
         });
-
-
 });
