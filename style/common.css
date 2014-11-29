@@ -12,20 +12,20 @@ ul {
     padding: 0;
 }
 
-.header{
+header{
     width: 910px;
     border-bottom: 1px solid rgb(99, 173, 31);
     height: 100px;
     padding: 25px;
 
 }
-.header>a{
+header>a{
     background-color: white;
     display: block;
     float: left;
 }
 
-.header > div {
+header > div {
     overflow: hidden;
     height: 100%;
 }
@@ -41,19 +41,19 @@ ul {
     font-size: 0.8em;
 }
 
-.header a{
+header a{
     text-decoration: none;
     color: blue;
 }
-.navigation{
+nav{
     width: 870px;
     margin: 0 auto;
 }
-.navigation ul{
+nav ul{
     list-style: none;
 }
 
-.navigation ul li{
+nav ul li{
     font-weight: bold;
     font-size: 14px;
     text-align: center;
@@ -63,11 +63,11 @@ ul {
     background-color: rgb(244, 239, 212);
 }
 
-.navigation ul li[selected='true'] {
+nav ul li[selected='true'] {
     background-color: rgb(99, 173, 31);
 }
 
-.navigation ul  a{
+nav ul  a{
     padding: 11px 0;
     text-decoration: none;
     color: black;
@@ -76,10 +76,10 @@ ul {
     width: 100%;
     text-transform: uppercase;
 }
-.navigation ul li:hover{
+nav ul li:hover{
     background-color: rgb(99, 173, 31);
 }
-.footer{
+footer{
 
     padding: 10px 0;
     border-top: 1px solid rgb(99, 173, 31);
@@ -89,7 +89,7 @@ ul {
     clear: both;
 
 }
-.footer >span{
+footer >span{
     text-align: center; display: block;
 }
 
