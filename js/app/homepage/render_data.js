@@ -14,7 +14,6 @@ var rend;
 rend=$.jqplot.BarRenderer;
 var this_graph;
 
-
 function changeGraph(number) {
     var ticks=[];
     var mas_dat=[];
