@@ -37,7 +37,6 @@ function ScriptManager() {
         }
     };
 
-
     this.loading = {
         enable: function() {
             $('#loading').css('display', 'block');
