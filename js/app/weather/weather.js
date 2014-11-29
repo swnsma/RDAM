@@ -18,16 +18,6 @@ function WeatherApi() {
     }
 }
 
-function LoadingBar() {
-    this.enable = function() {
-        $('#loading').css('display', 'block');
-    };
-
-    this.disable = function() {
-        $('#loading').css('display', 'none');
-    };
-}
-
 
 function WeatherModel() {
     var self = this;
@@ -36,7 +26,7 @@ function WeatherModel() {
 
     var current_active = 0;
 
-    var loading = new LoadingBar();
+    //var loading = new LoadingBar();
 
     self.weather_days_mi = {
         s: this,
@@ -99,7 +89,7 @@ function WeatherModel() {
 
     function renderData(data) {
         data = data.data;
-        loading.disable();
+        //loading.disable();
 
         var curr = data.current_condition[0];
         self.weather_days.push({
