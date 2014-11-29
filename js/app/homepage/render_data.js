@@ -160,44 +160,11 @@ function HomePage() {
     getData(render);
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
-    $dayButton.appendTo($target)
-        .appendTo($target)
-        .addClass('time')
-        .addClass("first")
-        .text('Days')
-        .click(function () {
-            changeGraph(1);
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-        })
-        .mouseenter(function () { $(this).addClass("on_button") })
-        .mouseleave(function () { $(this).removeClass("on_button") })
-        .addClass("is_active");
     var $weekButton = $('<div>');
-    $weekButton
-        .appendTo($target)
-        .addClass('time')
-        .text('Weeks')
-        .click(function () {
-            changeGraph(2);
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-        })
-        .mouseenter(function () { $(this).addClass("on_button") })
-        .mouseleave(function () { $(this).removeClass("on_button") });
     var $monthButton = $('<div>');
-    $monthButton
-        .appendTo($target)
-        .addClass('time')
-        .text('Months')
-        .click(function () {
-            changeGraph(3);
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-        })
-        .mouseenter(function () { $(this).addClass("on_button") })
-        .mouseleave(function () { $(this).removeClass("on_button") });
-
+    button_constr($monthButton, $target, 3);
+    button_constr($dayButton, $target, 1);
+    button_constr($weekButton, $target, 2);
     $('.change_view')
         .click(function() {
             var a=$(this);

@@ -7,7 +7,7 @@ function button_constr(el,p,n)
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            this_graph(n);
+            this_graph=n;
             changeGraph(n);})
         .mouseenter(function () {
             $(this).addClass("on_button")

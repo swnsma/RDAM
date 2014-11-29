@@ -10,7 +10,7 @@ ko.bindingHandlers.active_us = {
 ko.bindingHandlers.show_change= {
     update: function(element) {
         var a=$(element);
-        if(this_graph()===3){
+        if(this_graph===3){
             a.css("display", "none");
             rend = $.jqplot.LineRenderer;
         }
@@ -28,12 +28,12 @@ var change_view = function() {
     var a = $('.change_view');
     if (a.hasClass("master")) {
         rend = $.jqplot.LineRenderer;
-        changeGraph(this_graph());
+        changeGraph(this_graph);
         is_bar=0;
     }
     else {
         rend = $.jqplot.BarRenderer;
-        changeGraph(this_graph());
+        changeGraph(this_graph);
         is_bar=1;
     }
     a.toggleClass("master");
@@ -41,7 +41,7 @@ var change_view = function() {
 
 
 
-var this_graph=ko.observable(1);
+var this_graph=1;
 index=1;
 var a=0;
 length_l=0;
@@ -141,7 +141,7 @@ function render() {
     }
     console.log(dayProduction);
 
-    changeGraph(this_graph());
+    changeGraph(this_graph);
 }
 
 function changeGraph(number) {
