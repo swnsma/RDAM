@@ -92,11 +92,12 @@ function changeGraph(number) {
 }
 
 function Product() {
-    getData(render);
-
-    setTimeout(function() {
-        changeGraph(1);
-    }, 1000);
+    getData(function(data) {
+        render(data);
+        setTimeout(function() {
+            changeGraph(1);
+        }, 1000);
+    });
 
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');

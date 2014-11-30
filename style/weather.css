@@ -2,7 +2,6 @@ div#weather-list {
     width: 700px;
     overflow: hidden;
     margin: 5px auto;
-    display: none;
 }
 
 ul.weather-list {
@@ -51,7 +50,7 @@ ul.weather-list > li:first-child {
 .wdesc {
     width: 100%;
     display: block;
-    font-size: 10pt;
+    font-size: 12px;
     font-weight: bold;
 }
 
