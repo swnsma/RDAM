@@ -10,14 +10,7 @@ function AppViewModel() {
     self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
     getUsers(self);
-    self.set_active = function(seat){
-        if(self.return_active_user().length>3&&seat.active()===false){
-        }
-        else{
-            seat.active(!seat.active());
-            return true;
-        }
-    }
+
     self.return_active_user = ko.computed(function(){
 
         var result = [];
@@ -30,26 +23,25 @@ function AppViewModel() {
         /*console.log(result);*/
         return result;
     });
-    self.return_no_active_user = ko.computed(function(){
-
-        var result = [];
-        for(var i=0;(i<(self.arrayUsers().length));++i){
-
-            if(self.arrayUsers()[i].active()===false){
-                result.push(self.arrayUsers()[i]);
-            }
+    self.set_active = function(seat){
+        if(self.return_active_user().length>3&&seat.active()===false){
         }
-        /*console.log(result);*/
-        return result;
-    });
+        else{
+            seat.active(!seat.active());
+            return true;
+        }
+//        return seat.active();
+    }
     self.return_active_search = ko.computed(function(){
         var result = [];
-        for(var i=0;i<self.return_active_user().length;++i){
-            console.log(self.search_text());
-            var word = self.return_active_user()[i].name().toUpperCase();
-            var subword = self.search_text().toUpperCase()
-            if (word.indexOf(subword) > -1) {
-                result.push(self.return_active_user()[i]);
+        for(var i=0;i<self.arrayUsers().length;++i){
+//            console.log(self.search_text());
+            if(self.arrayUsers()[i].active()===true){
+                var word = self.arrayUsers()[i].name().toUpperCase();
+                var subword = self.search_text().toUpperCase();
+                if (word.indexOf(subword) > -1) {
+                    result.push(self.arrayUsers()[i]);
+                }
             }
         }
         return result;
@@ -57,15 +49,15 @@ function AppViewModel() {
     });
     self.return_no_active_search = ko.computed(function(){
         var result = [];
-        for(var i=0;i<self.return_no_active_user().length;++i){
-
-            var word = self.return_no_active_user()[i].name().toUpperCase();
-            console.log(self.search_text());
-            var subword = self.search_text().toUpperCase()
-            if (word.indexOf(subword) > -1) {
-                result.push(self.return_no_active_user()[i]);
+        for(var i=0;i<self.arrayUsers().length;++i){
+//            console.log(self.search_text());
+            if(self.arrayUsers()[i].active()===false){
+                var word = self.arrayUsers()[i].name().toUpperCase();
+                var subword = self.search_text().toUpperCase();
+                if (word.indexOf(subword) > -1) {
+                    result.push(self.arrayUsers()[i]);
+                }
             }
-
         }
         return result;
     });
@@ -82,68 +74,20 @@ function AppViewModel() {
 }
 
 
+
 // Activates knockout.js
-$(document).ready(function () {
-
+function Score() {
     ko.applyBindings(new AppViewModel());
-
     var $target = $('.graphContainer');
     var $dayButton = $('<div>');
-    $dayButton.appendTo($target)
-        .appendTo($target)
-        .addClass('time1')
-        .addClass("first")
-        .text('Days')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph(1);
-            changeGraph(1);
-        })
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        })
-        .addClass("is_active");
     var $weekButton = $('<div>');
-    $weekButton
-        .appendTo($target)
-        .addClass('time1')
-        .text('Weeks')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph (2);
-            changeGraph(2);
-        })
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
     var $monthButton = $('<div>');
-    $monthButton
-        .appendTo($target)
-        .addClass('time1')
-        .text('Months')
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph(3);
-            changeGraph(3);
-        })
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
+    button_constr($dayButton, $target, 1,'Days');
+    button_constr($weekButton, $target, 2,'Weeks');
+    button_constr($monthButton, $target, 3,'Months');
+    $('.change_view').click(click_change);
+}
 
-
-    $('.change_view')
-        .click(change_view);
-
+$(document).ready(function() {
+    new Score();
 });

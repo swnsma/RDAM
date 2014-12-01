@@ -3,7 +3,7 @@ function WeatherApi() {
 
     this.getWeather = function(funcSuccess, funcError) {
         $.ajax({
-            url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=London&format=json&num_of_days=5&key=' + key,
+            url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=Kiev&format=json&num_of_days=5&key=' + key,
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
@@ -18,16 +18,6 @@ function WeatherApi() {
     }
 }
 
-function LoadingBar() {
-    this.enable = function() {
-        $('#loading').css('display', 'block');
-    };
-
-    this.disable = function() {
-        $('#loading').css('display', 'none');
-    };
-}
-
 
 function WeatherModel() {
     var self = this;
@@ -36,10 +26,7 @@ function WeatherModel() {
 
     var current_active = 0;
 
-    var loading = new LoadingBar();
-
     self.weather_days_mi = {
-        s: this,
         humidity: ko.observable(),
         precipMM: ko.observable(),
         pressure: ko.observable(),
@@ -99,7 +86,6 @@ function WeatherModel() {
 
     function renderData(data) {
         data = data.data;
-        loading.disable();
 
         var curr = data.current_condition[0];
         self.weather_days.push({
@@ -139,12 +125,16 @@ function WeatherModel() {
         }
 
         self.renderMoreInfo(current_active);
-
-        $('#weather-list').css('display', 'block');
     }
 
     var api = new WeatherApi();
-    api.getWeather(renderData, function() { alert('error'); });
+    api.getWeather(function(data) {
+        try {
+            renderData(data);
+        } catch(e) {
+            alert('invalid city');
+        }
+    }, function() { alert('error'); });
 }
 
 $(document).ready(function() {

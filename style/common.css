@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding: 0 10px;
     font-family: "Colibri", Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
 }
 
 ul {
@@ -95,4 +96,28 @@ footer >span{
 
 button {
     outline: none;
+}
+
+#loading {
+    width: 100%;
+    height: 209px;
+    text-align: center;
+}
+
+#loading::before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+#loading img {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#data {
+    display: none;
 }

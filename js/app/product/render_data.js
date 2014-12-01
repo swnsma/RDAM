@@ -12,7 +12,6 @@ var monthTicks =[];
 
 var rend;
 rend = $.jqplot.BarRenderer;
-
 function render(item) {
     allData = item;
     //console.log(allData);
@@ -37,22 +36,26 @@ function render(item) {
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
 }
 
-    function changeGraph(number) {
+function changeGraph(number) {
         var production;
-
+        var title;
         if (number == 1) {
             production=dayProduction;
+            title = 'Daily production';
         }
         if (number == 2) {
           production=weekProduction;
+            title = 'Weekly production';
         }
 
         if (number == 3) {
           production=monthProduction;
+            title = 'Monthly production';
         }
         $('#chartDiv').empty();
+    debugger;
         var $plot = $.jqplot('chartDiv', [production], {
-            title: 'Daily production',
+            title:title,
             axesDefaults: {
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer
             },
@@ -74,19 +77,42 @@ function render(item) {
                 drawGridLines: false,
                 gridLineColor: '#cccccc',
                 background: '#eee',
-                borderColor: '#999999',
-                borderWidth: 2.0,
-                shadow: false,
-                renderer: $.jqplot.CanvasGridRenderer,
-                rendererOptions: {}
-            },
-            seriesDefaults: {
-                renderer: rend,
-                rendererOptions: {fillToZero: true},
-                shadow: false,
-                pointLabels: {show: true},
-                markerOptions: {shadow:false}
-            },
-            seriesColors: ['green']
-        });
+    borderColor: '#999999',
+    borderWidth: 2.0,
+    shadow: false,
+    renderer: $.jqplot.CanvasGridRenderer,
+    rendererOptions: {}
+},
+series:[ {
+    renderer: rend,
+        rendererOptions: {fillToZero: true},
+    shadow: false,
+        pointLabels: {show: true},
+    markerOptions: {shadow:false}
+}],
+seriesColors: ['green']
+});
 }
+
+function Product() {
+    getData(function(data) {
+        render(data);
+        setTimeout(function() {
+            changeGraph(1);
+        }, 1000);
+    });
+
+    var $target = $('.graphContainer');
+    var $dayButton = $('<div>');
+    var $weekButton = $('<div>');
+    var $monthButton = $('<div>');
+
+    button_constr($dayButton, $target, 1,'Days');
+    button_constr($weekButton, $target, 2,'Weeks');
+    button_constr($monthButton, $target, 3,'Months');
+
+}
+
+$(document).ready(function() {
+    new Product();
+});

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" href="img/favicon.ico">
     <title>Production</title>
     <link rel="stylesheet" href="style/production.css" type="text/css"/>
     <link rel="stylesheet" href="style/common.css" type="text/css"/>
@@ -9,11 +10,6 @@
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
 
-    <script src="js/vendor/parse-1.3.1.min.js"></script>
-    <script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
-    <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
-    <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
-    <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
 
 </head>
 <body>
@@ -35,30 +31,31 @@
         </ul>
     </nav>
     <div class="main-content">
-        <div class="chart"><h2>Production</h2>
-            <div class="graphContainer">
-                <div id="chartDiv"> </div>
-
-                <script type='text/javascript' src='js/app/product/render_data.js'></script>
-                <script type='text/javascript' src='js/app/product/get_data.js'></script>
-                <script type='text/javascript' src='js/app/product/script.js'></script>
-            </div>
-        </div><!--end chart-->
-        <div class="wrap">
-            <div class="emission">
-            <h2>Avoided CO<sub>2</sub> Emission</h2>
-            <img src="img/fact1.png" class="factory"/>
-                <p class="emm_res" id="co2"></p>
-            </div>
-            <div class="saved_trees">
-                <h2>Saved Trees</h2>
-                <img src="img/tree2.png" class="factory"/>
-                <p class="emm_res">10</p>
-            </div>
+        <div id="loading">
+            <img src="img/loading.gif" alt="loading" />
+        </div>
+        <div id="data">
+            <div class="chart"><h2>Production</h2>
+                <div class="graphContainer">
+                    <div id="chartDiv"> </div>
+                </div>
+            </div><!--end chart-->
+            <div class="wrap">
+                <div class="emission">
+                    <h2>Avoided CO<sub>2</sub> Emission</h2>
+                    <img src="img/fact1.png" class="factory"/>
+                    <p class="emm_res" id="co2"></p>
+                </div>
+                <div class="saved_trees">
+                    <h2>Saved Trees</h2>
+                    <img src="img/tree2.png" class="factory"/>
+                    <p class="emm_res">10</p>
+                </div>
             <span class="fb">You can tell this to your friends on Facebook!
             </span><a name="fb_share" type="button"
-                ></a>
+                    ></a>
 
+            </div>
         </div>
     </div><!--end main-content-->
     <footer>
@@ -68,5 +65,15 @@
 </body>
 <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share"
         type="text/javascript">
+
 </script>
+<script src="js/vendor/parse-1.3.1.min.js"></script>
+<script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
+
+<script src="js/app/common/common.js"></script>
+<script type='text/javascript' src='js/app/product/render_data.js'></script>
+
 </html>

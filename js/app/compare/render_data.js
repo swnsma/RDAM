@@ -1,47 +1,6 @@
 
-ko.bindingHandlers.active_us = {
-    update: function(element, valueAccessor) {
-        // First get the latest data that we're bound to
-        var value = valueAccessor();
-        //debugger;
-        get_d(value);
-    }
-};
-ko.bindingHandlers.show_change= {
-    update: function(element) {
-        var a=$(element);
-        if(this_graph()===3){
-            a.css("display", "none");
-            rend = $.jqplot.LineRenderer;
-        }
-        else {
-            if(is_bar) {
-                rend = $.jqplot.BarRenderer;
-            }
-            a.css("display", "inline");
-        }
-    }
-};
-var rend;
-var change_view = function() {
-    //debugger;
-    var a = $('.change_view');
-    if (a.hasClass("master")) {
-        rend = $.jqplot.LineRenderer;
-        changeGraph(this_graph());
-        is_bar=0;
-    }
-    else {
-        rend = $.jqplot.BarRenderer;
-        changeGraph(this_graph());
-        is_bar=1;
-    }
-    a.toggleClass("master");
-};
 
-
-
-var this_graph=ko.observable(1);
+var this_graph=1;
 index=1;
 var a=0;
 length_l=0;
@@ -66,7 +25,20 @@ var monthConsumption = [];
 var dayTicks = [];
 var weekTicks = [];
 var monthTicks = [];
-var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
+
+var rend;
+
+
+ko.bindingHandlers.active_us = {
+    update: function(element, valueAccessor) {
+        // First get the latest data that we're bound to
+        var value = valueAccessor();
+        //debugger;
+        get_d(value);
+    }
+};
+
+
 get_first();
 function get_d(item) {
     all = item;
@@ -141,7 +113,7 @@ function render() {
     }
     console.log(dayProduction);
 
-    changeGraph(this_graph());
+    changeGraph(this_graph);
 }
 
 function changeGraph(number) {
