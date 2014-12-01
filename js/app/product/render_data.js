@@ -34,6 +34,7 @@ function render(item) {
 
     changeGraph(1);
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_days*0.026).toFixed(1)+" seedlings")
 }
 
 function changeGraph(number) {
@@ -53,7 +54,6 @@ function changeGraph(number) {
             title = 'Monthly production';
         }
         $('#chartDiv').empty();
-    debugger;
         var $plot = $.jqplot('chartDiv', [production], {
             title:title,
             axesDefaults: {
@@ -93,7 +93,21 @@ series:[ {
 seriesColors: ['green']
 });
 }
-
+function co2ForDays()
+{
+    $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_days*0.026).toFixed(1)+" seedlings")
+}
+function co2ForWeeks()
+{
+    $("#co2").html((0.61*sum_weeks).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_weeks*0.026).toFixed(1)+" seedlings")
+}
+function co2ForMonth()
+{
+    $("#co2").html((0.61*sum_month).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_month*0.026).toFixed(1)+" seedlings")
+}
 function Product() {
     getData(function(data) {
         render(data);
@@ -107,9 +121,9 @@ function Product() {
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
 
-    button_constr($dayButton, $target, 1,'Days');
-    button_constr($weekButton, $target, 2,'Weeks');
-    button_constr($monthButton, $target, 3,'Months');
+    button_constr($dayButton, $target, 1,'Days', co2ForDays);
+    button_constr($weekButton, $target, 2,'Weeks', co2ForWeeks);
+    button_constr($monthButton, $target, 3,'Months', co2ForMonth);
 
 }
 

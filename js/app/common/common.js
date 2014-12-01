@@ -25,7 +25,7 @@ function getData(func) {
     $.ajax(options);
 };
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
-function button_constr(el,p,n,text)
+function button_constr(el,p,n,text, func)
 {
     el.appendTo(p)
         .addClass('time1')
@@ -33,6 +33,7 @@ function button_constr(el,p,n,text)
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
+            func();
             this_graph=n;
             changeGraph(n);})
         .mouseenter(function () {
