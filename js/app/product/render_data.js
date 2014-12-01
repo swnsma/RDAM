@@ -12,7 +12,6 @@ var monthTicks =[];
 
 var rend;
 rend = $.jqplot.BarRenderer;
-
 function render(item) {
     allData = item;
     //console.log(allData);
@@ -35,24 +34,28 @@ function render(item) {
 
     changeGraph(1);
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_days*0.026).toFixed(1)+" seedlings")
 }
 
 function changeGraph(number) {
         var production;
-
+        var title;
         if (number == 1) {
             production=dayProduction;
+            title = 'Daily production';
         }
         if (number == 2) {
           production=weekProduction;
+            title = 'Weekly production';
         }
 
         if (number == 3) {
           production=monthProduction;
+            title = 'Monthly production';
         }
         $('#chartDiv').empty();
         var $plot = $.jqplot('chartDiv', [production], {
-            title: 'Daily production',
+            title:title,
             axesDefaults: {
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer
             },
@@ -74,23 +77,37 @@ function changeGraph(number) {
                 drawGridLines: false,
                 gridLineColor: '#cccccc',
                 background: '#eee',
-                borderColor: '#999999',
-                borderWidth: 2.0,
-                shadow: false,
-                renderer: $.jqplot.CanvasGridRenderer,
-                rendererOptions: {}
-            },
-            seriesDefaults: {
-                renderer: rend,
-                rendererOptions: {fillToZero: true},
-                shadow: false,
-                pointLabels: {show: true},
-                markerOptions: {shadow:false}
-            },
-            seriesColors: ['green']
-        });
+    borderColor: '#999999',
+    borderWidth: 2.0,
+    shadow: false,
+    renderer: $.jqplot.CanvasGridRenderer,
+    rendererOptions: {}
+},
+series:[ {
+    renderer: rend,
+        rendererOptions: {fillToZero: true},
+    shadow: false,
+        pointLabels: {show: true},
+    markerOptions: {shadow:false}
+}],
+seriesColors: ['green']
+});
 }
-
+function co2ForDays()
+{
+    $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_days*0.026).toFixed(1)+" seedlings")
+}
+function co2ForWeeks()
+{
+    $("#co2").html((0.61*sum_weeks).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_weeks*0.026).toFixed(1)+" seedlings")
+}
+function co2ForMonth()
+{
+    $("#co2").html((0.61*sum_month).toFixed(1)+" kg");
+    $('#trees').html((0.61*sum_month*0.026).toFixed(1)+" seedlings")
+}
 function Product() {
     getData(function(data) {
         render(data);
@@ -104,9 +121,9 @@ function Product() {
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
 
-    button_constr($dayButton, $target, 1,'Days');
-    button_constr($weekButton, $target, 2,'Weeks');
-    button_constr($monthButton, $target, 3,'Months');
+    button_constr($dayButton, $target, 1,'Days', co2ForDays);
+    button_constr($weekButton, $target, 2,'Weeks', co2ForWeeks);
+    button_constr($monthButton, $target, 3,'Months', co2ForMonth);
 
 }
 

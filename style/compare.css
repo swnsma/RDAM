@@ -33,7 +33,6 @@
     width: 750px;
     /*width: 80%;*/
     height: 100%;
-    background-color: #fff;
     float: right;
     /*float: right;*/
 }
@@ -42,11 +41,11 @@
     padding: 0;
 }
 .compare_float_right{
-    height: 628px;
+    height: 91.5%;
     width: 190px;
     /* background-color: #7e4465;*/
     float: left;
-
+    margin: 6px;
     border: 1px solid rgb(99, 173, 31);
     font-weight: bold;
 
@@ -56,17 +55,17 @@
     background: rgba(208,208,208,0.5);
 }
 .compare_float_right [type='text']{
-    background-color: #47598F;
-    border: none;
-    margin: 0 auto;
-    display: block;
-    margin-top: 10px;
+    background-color: #F4EFD4;
+    border: 1px solid rgb(99, 173, 31);
+    margin: 3px;
+    display: inline-block;
+    width: 95%;
+    height: 95%;
     height: 20px;
-    color: white;
-    width: 150px;
+    color: darkgray;
 }
 .compare_float_right [type='text']:focus{
-    border: none;
+    color: #000000;
 }
 .search{
     width: 100%;
@@ -79,4 +78,44 @@
     line-height: 30px;
     padding-left: 10px;
     border-bottom: 1px solid  rgb(99, 173, 31);
+}
+
+.padding5 {
+    padding: 5px;
+}
+
+.change-view-score {
+    position: absolute;
+    top: 5px;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.compare-graph{
+    top:0px;
+    margin-bottom: 0;
+    margin-top:10px;
+}
+
+.chart-compare{
+    height: 650px;
+    width: 956px;
+    margin:0 auto;
+    border-radius: 10px;
+    border: 2px solid rgb(99, 173, 31);
+    border-top: none;
+    background-color:#eee;
+    margin-bottom: 15px;
+}
+
+.chart-compare h2{
+    padding: 5px;
+    background: rgb(99, 173, 31);
+    color:white;
+
+    border-radius: 8px 8px 0px 0px ;
+    margin:0px auto;
+    text-align: center;
 }

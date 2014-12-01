@@ -49,79 +49,77 @@
                     </div>
                 </li>
             </ul>
-
-            <div class="bwmore-info">
-                <div class="wmore-info">
-                    <div class="temp-left">
-                        <div class="bcurr-temp">
-                            <div class="btemp-img">
-                                <img src="img/temp.png" alt="" />
-                            </div>
-                            <div class="bcurr-temp-value">
-                                <span class="curr-temp-value" data-bind="html: weather_days_mi.tempC"></span> &deg;C
-                            </div>
+            <div class="wmore-info">
+                <div class="temp-left">
+                    <div class="bcurr-temp">
+                        <div class="btemp-img">
+                            <img src="img/temp.png" alt="" />
+                        </div>
+                        <div class="bcurr-temp-value">
+                            <span class="curr-temp-value" data-bind="html: weather_days_mi.tempC"></span> &deg;C
                         </div>
                     </div>
-                    <div class="table-hourly-right">
-                        <table class="hourly">
-                            <tr>
-                                <th></th>
-                                <th colspan="2">Night</th>
-                                <th colspan="2">Morning</th>
-                                <th colspan="2">Day</th>
-                                <th colspan="2">Evening</th>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th>2:00</th>
-                                <th>5:00</th>
-                                <th>8:00</th>
-                                <th>11:00</th>
-                                <th>14:00</th>
-                                <th>17:00</th>
-                                <th>20:00</th>
-                                <th>23:00</th>
-                            </tr>
-                            <tr>
-                                <td>temperature (&deg;C)</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
-                                <td data-bind="text: tempC"></td>
-                                <!-- /ko -->
-                            </tr>
-                            <tr>
-                                <td>humidity</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
-                                <td data-bind="text: humidity"></td>
-                                <!-- /ko -->
-                            </tr>
-                            <tr>
-                                <td>precip (mm)</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
-                                <td data-bind="text: precipMM"></td>
-                                <!-- /ko -->
-                            </tr>
-                            <tr>
-                                <td>pressure</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
-                                <td data-bind="text: pressure"></td>
-                                <!-- /ko -->
-                            </tr>
-                            <tr>
-                                <td>wind degree</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
-                                <td data-bind="text: winddirDegree"></td>
-                                <!-- /ko -->
-                            </tr>
-                            <tr>
-                                <td>wind speed (miles)</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
-                                <td data-bind="text: windspeedMiles"></td>
-                                <!-- /ko -->
-                            </tr>
-                        </table>
-                    </div>
+                </div>
+                <div class="table-hourly-right">
+                    <table class="hourly">
+                        <tr>
+                            <th></th>
+                            <th colspan="2">Night</th>
+                            <th colspan="2">Morning</th>
+                            <th colspan="2">Day</th>
+                            <th colspan="2">Evening</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>2:00</th>
+                            <th>5:00</th>
+                            <th>8:00</th>
+                            <th>11:00</th>
+                            <th>14:00</th>
+                            <th>17:00</th>
+                            <th>20:00</th>
+                            <th>23:00</th>
+                        </tr>
+                        <tr>
+                            <td>temperature (&deg;C)</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: tempC"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>humidity</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: humidity"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>precip (mm)</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: precipMM"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>pressure</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: pressure"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>wind degree</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: winddirDegree"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>wind speed (miles)</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: windspeedMiles"></td>
+                            <!-- /ko -->
+                        </tr>
+                    </table>
                 </div>
             </div>
+
         </div>
     </div>
 </div><!--end main-content-->
