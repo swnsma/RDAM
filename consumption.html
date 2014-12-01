@@ -35,15 +35,10 @@
         </div>
         <div class="data">
             <div class="batteryContainer">
-                <div class="dayBatteryContainer">
-                    <canvas id='dayBattery'></canvas>
-                </div>
-                <div class="weekBatteryContainer">
-                    <canvas id='weekBattery'></canvas>
-                </div>
-                <div class="monthBatteryContainer">
-                    <canvas id='monthBattery'></canvas>
-                </div>
+                <!-- ko foreach: batteries -->
+
+                <canvas class="battery" data-bind="battery: { consumption: consumption, production: production}"></canvas>
+                <!-- /ko -->
             </div>
         </div>
     </div><!--end main-content-->
