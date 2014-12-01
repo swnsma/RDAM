@@ -12,7 +12,6 @@ var monthTicks =[];
 
 var rend;
 rend = $.jqplot.BarRenderer;
-
 function render(item) {
     allData = item;
     //console.log(allData);
@@ -36,7 +35,6 @@ function render(item) {
     changeGraph(1);
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
 }
-
 
 function changeGraph(number) {
         var production;
@@ -79,21 +77,21 @@ function changeGraph(number) {
                 drawGridLines: false,
                 gridLineColor: '#cccccc',
                 background: '#eee',
-                borderColor: '#999999',
-                borderWidth: 2.0,
-                shadow: false,
-                renderer: $.jqplot.CanvasGridRenderer,
-                rendererOptions: {}
-            },
-            seriesDefaults: {
-                renderer: rend,
-                rendererOptions: {fillToZero: true},
-                shadow: false,
-                pointLabels: {show: true},
-                markerOptions: {shadow:false}
-            },
-            seriesColors: ['green']
-        });
+    borderColor: '#999999',
+    borderWidth: 2.0,
+    shadow: false,
+    renderer: $.jqplot.CanvasGridRenderer,
+    rendererOptions: {}
+},
+series:[ {
+    renderer: rend,
+        rendererOptions: {fillToZero: true},
+    shadow: false,
+        pointLabels: {show: true},
+    markerOptions: {shadow:false}
+}],
+seriesColors: ['green']
+});
 }
 
 function Product() {

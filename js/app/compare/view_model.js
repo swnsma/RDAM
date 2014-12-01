@@ -24,7 +24,6 @@ function AppViewModel() {
         return result;
     });
     self.set_active = function(seat){
-        debugger;
         if(self.return_active_user().length>3&&seat.active()===false){
         }
         else{
@@ -52,7 +51,6 @@ function AppViewModel() {
         var result = [];
         for(var i=0;i<self.arrayUsers().length;++i){
 //            console.log(self.search_text());
-            debugger;
             if(self.arrayUsers()[i].active()===false){
                 var word = self.arrayUsers()[i].name().toUpperCase();
                 var subword = self.search_text().toUpperCase();
