@@ -37,22 +37,27 @@ function render(item) {
     $("#co2").html((0.61*sum_days).toFixed(1)+" kg");
 }
 
+
 function changeGraph(number) {
         var production;
-
+        var title;
         if (number == 1) {
             production=dayProduction;
+            title = 'Daily production';
         }
         if (number == 2) {
           production=weekProduction;
+            title = 'Weekly production';
         }
 
         if (number == 3) {
           production=monthProduction;
+            title = 'Monthly production';
         }
         $('#chartDiv').empty();
+    debugger;
         var $plot = $.jqplot('chartDiv', [production], {
-            title: 'Daily production',
+            title:title,
             axesDefaults: {
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer
             },
