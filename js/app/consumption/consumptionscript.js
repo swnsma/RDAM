@@ -2,19 +2,16 @@ $(document).ready(function() {
 
     ko.bindingHandlers.battery = {
         init: function(element, valueAccessor) {
-            // This will be called when the binding is first applied to an element
-            // Set up any initial state, event handlers, etc. here
 
             var value = valueAccessor();
-
 
             var ctx = element.getContext('2d');
             var consumption = value.consumption;
             var production = value.production;
 
             var a = 550;
-
             var b = 150;
+
             if (production <= consumption) {
                 var percentage = production / consumption;
             }
@@ -66,13 +63,8 @@ $(document).ready(function() {
             ctx.beginPath();
             ctx.arc(batteryWidth+93,batteryHeight/2,15,0,Math.PI*2);
             ctx.stroke();
-
-
         },
         update: function(element, valueAccessor) {
-            // This will be called once when the binding is first applied to an element,
-            // and again whenever any observables/computeds that are accessed change
-            // Update the DOM element based on the supplied values here.
         }
     };
 
@@ -83,12 +75,9 @@ $(document).ready(function() {
             arr.push(someData[i]);
         }
 
-
         var viewModelConstructor = function(data){
             this.batteries = data;
         };
-
-
         ko.applyBindings(new viewModelConstructor(arr));
     };
 
