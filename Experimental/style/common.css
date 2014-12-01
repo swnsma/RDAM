@@ -43,6 +43,8 @@ a {
 .nav-item {
     display: table-cell;
     width: 16.6%;
+    padding-left: 4px;
+    padding-right: 4px;
     text-align: center;
     font-size: 22px;
     position: relative;
@@ -67,6 +69,11 @@ a {
     visibility: visible;
 }
 
+.nav-item[selected='true'] .selector {
+    visibility: visible;
+}
+
+
 .nav-item img {
     position: relative;
     display: inline-block;
@@ -78,4 +85,11 @@ a {
     position: relative;
     margin-top: -10px;
     z-index: 2;
+}
+
+.nav-item a {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
