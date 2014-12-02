@@ -23,8 +23,6 @@
 }
 .compare_float_right p{
     text-align: center;
-    color: red;
-    background-color: rgb(244, 239, 212);
 }
 .compare_float_right label *,.compare_float_right label{
     cursor: pointer;

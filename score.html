@@ -49,7 +49,7 @@
                     <div class="compare_float_right">
                         <form action="">
                             <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
-                            <p data-bind="if: return_active_user().length>3">you have reached maximum quantity of users</p>
+                            <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
                             <div class="list">
                                 <span class="this">this</span>
                                 <ul data-bind="foreach: return_active_search(),active_us: return_active_user()">

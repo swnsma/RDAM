@@ -4,6 +4,21 @@
 /**
  * Created by Таня on 20.11.2014.
  */
+
+ko.bindingHandlers.message={
+    update: function(element, valueAccessor){
+        $(element).css({
+            'color':'black'
+        });
+        $(element).text('You can add ' + valueAccessor() +' users');
+        if(valueAccessor()===0){
+            $(element).css({
+                'color':'red'
+        });
+        }
+    }
+}
+
 function AppViewModel() {
     var self = this;
     self.search=ko.observable(false);
