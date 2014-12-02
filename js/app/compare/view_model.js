@@ -96,7 +96,6 @@ function button_constr(el,p,n,text)
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            if(func!==undefined);
             this_graph=n;
             changeGraph(n);})
         .mouseenter(function () {

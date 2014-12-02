@@ -131,7 +131,12 @@ var ticks=[];
         ticks = monthTicks;
         mas_dat = monthProduction;
         title='Monthly production';
+
     }
+    if(number===3)
+    {$('.change_view').css('display','none');}
+    else
+    {$('.change_view').css('display','block');}
 
         $('#chartDiv').empty();
         var plot1 = $.jqplot('chartDiv', mas_dat, {
