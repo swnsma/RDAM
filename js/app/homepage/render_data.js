@@ -102,14 +102,15 @@ function HomePage() {
         chart.data_to_chart(data);
     });
     var $target = $('.graphContainer');
-    var $dayButton = $('<div>');
+    var  bt = $('<div>').addClass('button-center');
+    bt.appendTo($target);
+    var $dayButton = $('<div>').addClass("is_active");
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
-    button_constr(chart.render_graph,$dayButton, $target, 1,'Days');
-    button_constr(chart.render_graph,$weekButton, $target, 2,'Weeks');
-    button_constr(chart.render_graph,$monthButton, $target, 3,'Months');
+    button_constr(chart.render_graph,$dayButton, bt, 1,'Days');
+    button_constr(chart.render_graph,$weekButton, bt, 2,'Weeks');
+    button_constr(chart.render_graph,$monthButton, bt, 3,'Months');
     $('.change_view_homepage').click(click_change(chart.change_view, chart.render_graph));
-    $($dayButton).addClass("is_active");
 };
 
 $(document).ready(function() {
