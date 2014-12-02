@@ -38,6 +38,7 @@ ko.bindingHandlers.active_us = {
 
 
 get_first();
+var line=0;
 function get_d(item) {
     all = item;
     users_data=users_data.splice(0,1);
@@ -134,9 +135,14 @@ var ticks=[];
 
     }
     if(number===3)
-    {$('.change_view').css('display','none');}
+    {$('.change_view').css('display','none');
+        rend=rend_mas[1];}
     else
-    {$('.change_view').css('display','block');}
+    {$('.change_view').css('display','block');
+        if(line)
+            rend=rend_mas[1];
+        else rend=rend_mas[0];
+        }
 
         $('#chartDiv').empty();
         var plot1 = $.jqplot('chartDiv', mas_dat, {

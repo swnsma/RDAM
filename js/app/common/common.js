@@ -43,12 +43,17 @@ function click_change()
 {
         var a=$(this);
         if(a.hasClass("master"))
-        {rend=$.jqplot.BarRenderer;
+        {   rend=$.jqplot.BarRenderer;
+            line=0;
             changeGraph(this_graph);
+
+
         }
         else
-        {rend=$.jqplot.LineRenderer;
+        {   rend=$.jqplot.LineRenderer;
+            line=1;
             changeGraph(this_graph);
+
         }
         a.toggleClass("master");
 }
