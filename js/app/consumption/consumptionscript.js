@@ -9,8 +9,8 @@ $(document).ready(function() {
             var consumption = value.consumption;
             var production = value.production;
 
-            var a = 550;
-            var b = 150;
+            var a = 650;
+            var b = 200;
 
             if (production <= consumption) {
                 var percentage = production / consumption;
@@ -72,8 +72,10 @@ $(document).ready(function() {
 
     var successFunction=function(someData){
         for(var i=0;i<someData.length;i++){
+            someData[i].takenFrom=someData[i].consumption-someData[i].production;
             arr.push(someData[i]);
         }
+
 
         var viewModelConstructor = function(data){
             this.batteries = data;

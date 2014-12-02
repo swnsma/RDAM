@@ -8,7 +8,7 @@
 
 .main-content
 {
-    height: 600px;
+    height: 800px;
 }
 .prodSpan
 {
@@ -18,11 +18,21 @@
     padding-top: 15px;
     height: 30px;
 }
-.prod
+.prodDiv
 {
-    color: rgb(99, 173, 31);
+    display: inline-block;
+    float: left;
+    color: #8BC34A;
+
 }
-.cons
+.takenDiv
 {
-    color: #BF4444;
+    display: inline-block;
+    margin-right: 40px;
+    float: right;
+    color: #FF8A65;
+}
+.label
+{
+    padding: 20px;
 }

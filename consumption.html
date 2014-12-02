@@ -36,8 +36,15 @@
         <div class="data">
             <div class="batteryContainer">
                 <!-- ko foreach: batteries -->
+                <div class="prodDiv label"> <span data-bind='text: date2+ " production"'></span>
+                <span data-bind="text: production+ ' kWatts'"></span>
+                </div>
 
+                <div class="takenDiv label"> <span data-bind='text: date2+ " taken from grid"'></span>
+                    <span data-bind="text: takenFrom+ ' kWatts'"></span>
+                </div>
                 <canvas class="battery" data-bind="battery: { consumption: consumption, production: production}"></canvas>
+
                 <!-- /ko -->
             </div>
         </div>
