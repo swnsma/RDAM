@@ -94,14 +94,14 @@ function AppViewModel() {
 function Score() {
     ko.applyBindings(new AppViewModel());
     var $target = $('.graphContainer');
-    var  bt = $('<div>').addClass('button-center');
-    bt.appendTo($target);
+    var  $bt = $('<div>').addClass('button-center');
+    $bt.appendTo($target);
     var $dayButton = $('<div>').addClass("is_active");
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
-    button_constr($dayButton, bt, 1,'Days');
-    button_constr($weekButton, bt, 2,'Weeks');
-    button_constr($monthButton, bt, 3,'Months');
+    button_constr($dayButton, $bt, 1,'Days');
+    button_constr($weekButton, $bt, 2,'Weeks');
+    button_constr($monthButton, $bt, 3,'Months');
     $('.change_view').click(click_change);
 }
 

@@ -25,7 +25,7 @@
 .time
 {
     display: inline-block;
-    width: 32.5%;
+    width: 240px;
     height: 30px;
     margin-left: 1px;
     cursor:pointer;
@@ -40,7 +40,7 @@
 .time1
 {
     display: inline-block;
-    width: 32%;
+    width: 241px;
     height: 30px;
     margin-left: 1px;
     cursor:pointer;
@@ -50,7 +50,6 @@
     border: 2px solid rgb(113,191,68);
     color:#333;
     background-color: rgb(244, 239, 212);
-
 }
 .on_button
 {
@@ -79,3 +78,9 @@ table.jqplot-table-legend
     margin-left:10px;
 }
 
+
+.button-center {
+    width: 738px;
+    background: red;
+    margin: 0 auto;
+}
