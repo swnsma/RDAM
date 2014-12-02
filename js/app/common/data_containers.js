@@ -36,12 +36,13 @@ function Graph()
     {
         if(self.rend===self.rend_mas[0])
         {
-            self.rend=self.rend_mas[1];
+            self.rend=$.jqplot.LineRenderer;
         }
         else
         {
-            self.rend=self.rend_mas[0];
+            self.rend=$.jqplot.BarRenderer;
         }
+        self.render_graph();
     };
     self.data_to_chart=function(item){
 
@@ -50,22 +51,21 @@ function Graph()
         for (var i = 6; i >= 0; i--) {
             self.days.Production.push(allData[i].Reading2);
             self.days.Consumption.push(allData[i].Reading1);
-            self.days.Ticks.push(allData[i].FromDT.iso.slice(0, 10));
+            self.days.Ticks.push(day(allData[i].ToDT.iso.slice(8,10),allData[i].ToDT.iso.slice(5,7)));
         }
         for (var i = 22; i >= 19; i--) {
             self.weeks.Production.push(allData[i].Reading2);
             self.weeks.Consumption.push(allData[i].Reading1);
-            self.weeks.Ticks.push(allData[i].FromDT.iso.slice(8, 10));
+            self.weeks.Ticks.push(day(allData[i].ToDT.iso.slice(8,10),allData[i].ToDT.iso.slice(5,7)));
         }
         for (var i = 18; i >= 7; i--) {
             self.months.Production.push(allData[i].Reading2);
             self.months.Consumption.push(allData[i].Reading1);
-            self.months.Ticks.push(allData[i].FromDT.iso.slice(5, 7));
+            self.months.Ticks.push(mont(allData[i].ToDT.iso.slice(5,7)));
         }
         setTimeout(function() {
             self.render_graph();
         }, 1000);
-
     }
 
     self.render_graph=function(n){
@@ -112,8 +112,9 @@ function Graph()
         }
         self.options.title=title;
         self.options.axes.xaxis.ticks=ticks;
-        for(var i=0;i<self.options.series.length;i++)
+    for(i=0;i<self.options.series.length;i++)
         self.options.series[i].renderer=self.rend;
+
         if(mas_dat[0]&&mas_dat[0].length)
         {
             $("#chartDiv").empty();

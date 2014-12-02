@@ -15,6 +15,7 @@ function getData(func) {
                     allData.push(a);
                 }
                 func(allData);
+
             }
         },
 
@@ -25,24 +26,19 @@ function getData(func) {
     $.ajax(options);
 };
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
-function button_constr(el,p,n,text, func)
-{
-    el.appendTo(p)
-        .addClass('time1')
-        .text(text)
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            func();
-            this_graph=n;
-            changeGraph(n);})
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
+
+function day(a,b) {
+    var c=+b;
+    return a+" "+monthes[c-1].slice(0,3)+".";
 }
+
+function mont(a)
+{
+    var c=+a;
+    //debugger;
+    return monthes[c-1].slice(0,3);
+}
+
 function click_change()
 {
         var a=$(this);

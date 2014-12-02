@@ -5,7 +5,8 @@ index=1;
 var a=0;
 length_l=0;
 var users_data=[];
-
+var rend_mas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
+var rend=rend_mas[0];
 var all=[];
 //var FromDT = [];
 //var ToDT = [];
@@ -25,9 +26,6 @@ var monthConsumption = [];
 var dayTicks = [];
 var weekTicks = [];
 var monthTicks = [];
-
-var rend;
-
 
 ko.bindingHandlers.active_us = {
     update: function(element, valueAccessor) {
@@ -59,17 +57,6 @@ function get_d(item) {
     }
     else get_first();
 
-}
-function day(a,b) {
-    var c=+b;
-    return a+" "+monthes[c-1].slice(0,3)+".";
-}
-
-function mont(a)
-{
-    var c=+a;
-    //debugger;
-    return monthes[c-1].slice(0,3);
 }
 
 function render() {
@@ -150,7 +137,7 @@ var ticks=[];
         var plot1 = $.jqplot('chartDiv', mas_dat, {
             title: title,
             seriesDefaults: {
-                renderer: rend,
+                renderer:rend,
                 rendererOptions: {
                     fillToZero: true
                 },

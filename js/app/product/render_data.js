@@ -11,7 +11,7 @@ var weekTicks =[];
 var monthTicks =[];
 
 var rend;
-rend = $.jqplot.BarRenderer;
+//rend = $.jqplot.BarRenderer;
 function render(item) {
     allData = item;
     //console.log(allData);
@@ -84,7 +84,7 @@ function changeGraph(number) {
     rendererOptions: {}
 },
 series:[ {
-    renderer: rend,
+//    renderer: rend,
         rendererOptions: {fillToZero: true},
     shadow: false,
         pointLabels: {show: true},
@@ -107,6 +107,25 @@ function co2ForMonth()
 {
     $("#co2").html((0.61*sum_month).toFixed(1)+" kg");
     $('#trees').html((0.61*sum_month*0.026).toFixed(1)+" seedlings")
+}
+function button_constr(el,p,n,text, func)
+{
+    el.appendTo(p)
+        .addClass('time1')
+        .text(text)
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            if(func!==undefined);
+            func();
+            this_graph=n;
+            changeGraph(n);})
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
 }
 function Product() {
     getData(function(data) {

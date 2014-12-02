@@ -89,7 +89,36 @@ function AppViewModel() {
 }
 
 
+function change_rend()
+{
 
+    if(rend===self.rend_mas[0])
+    {
+       rend=self.rend_mas[1];
+    }
+    else
+    {
+       rend=self.rend_mas[0];
+    }
+    changeGraph(this_graph);
+}
+function button_constr(el,p,n,text)
+{
+    el.appendTo(p)
+        .addClass('time1')
+        .text(text)
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            this_graph=n;
+            changeGraph(n);})
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+}
 // Activates knockout.js
 function Score() {
     ko.applyBindings(new AppViewModel());
@@ -100,7 +129,8 @@ function Score() {
     button_constr($dayButton, $target, 1,'Days');
     button_constr($weekButton, $target, 2,'Weeks');
     button_constr($monthButton, $target, 3,'Months');
-    $('.change_view').click(click_change);
+    $('.change_view').click(change_rend);
+    $dayButton.addClass("is_active");
 }
 
 $(document).ready(function() {
