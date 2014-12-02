@@ -88,7 +88,24 @@ function AppViewModel() {
     })
 }
 
-
+function button_constr(el,p,n,text)
+{
+    el.appendTo(p)
+        .addClass('time1')
+        .text(text)
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            if(func!==undefined);
+            this_graph=n;
+            changeGraph(n);})
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+}
 
 // Activates knockout.js
 function Score() {
@@ -108,3 +125,19 @@ function Score() {
 $(document).ready(function() {
     new Score();
 });
+//function button_constr(el,p,text)
+//{
+//    el.appendTo(p)
+//        .addClass('time1')
+//        .text(text)
+//        .click(function () {
+//            $(this).addClass("is_active");
+//            $(this).siblings().removeClass("is_active");
+//        })
+//        .mouseenter(function () {
+//            $(this).addClass("on_button")
+//        })
+//        .mouseleave(function () {
+//            $(this).removeClass("on_button")
+//        });
+//}

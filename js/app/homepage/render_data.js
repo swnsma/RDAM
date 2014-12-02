@@ -190,8 +190,8 @@ function View_model(items)
             self.data_to_rend(self.data[n-1]);
     }
 }
-
-ko.bindingHandlers.change_view;
+//
+//ko.bindingHandlers.change_view;
 ko.bindingHandlers.render_chart={
     update:function(element, valueAccessor, allBindings, viewModel, bindingContext){
         var ticks=[];
