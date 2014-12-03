@@ -8,17 +8,14 @@ $(document).ready(function() {
             var ctx = element.getContext('2d');
             var consumption = value.consumption;
             var production = value.production;
-
-            var a = 650;
+            var a = 500;
             var b = 200;
-
             if (production <= consumption) {
                 var percentage = production / consumption;
             }
             else {
                 percentage = 1;
             }
-
             element.width = a;
             element.height = b;
 
@@ -55,13 +52,13 @@ $(document).ready(function() {
             ctx.fill();
 
             ctx.beginPath();
-            ctx.arc(batteryWidth+100,batteryHeight/2,15,0,Math.PI*2);
+            ctx.arc(batteryWidth+100,batteryHeight/2,20,0,Math.PI*2);
             ctx.stroke();
             ctx.fillStyle = "black";
             ctx.fill();
 
             ctx.beginPath();
-            ctx.arc(batteryWidth+93,batteryHeight/2,15,0,Math.PI*2);
+            ctx.arc(batteryWidth+93,batteryHeight/2,20,0,Math.PI*2);
             ctx.stroke();
         },
         update: function(element, valueAccessor) {

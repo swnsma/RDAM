@@ -8,7 +8,8 @@
 
 .main-content
 {
-    height: 800px;
+    height: 850px;
+    margin-left: 150px;
 }
 .prodSpan
 {
@@ -23,14 +24,16 @@
     display: inline-block;
     float: left;
     color: #8BC34A;
-
+    margin-top: 20px;
 }
 .takenDiv
 {
     display: inline-block;
-    margin-right: 40px;
+    margin-right: 150px;
     float: right;
     color: #FF8A65;
+    margin-top: 20px;
+
 }
 .label
 {
