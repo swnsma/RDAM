@@ -4,6 +4,21 @@
 /**
  * Created by Таня on 20.11.2014.
  */
+
+ko.bindingHandlers.message={
+    update: function(element, valueAccessor){
+        $(element).css({
+            'color':'black'
+        });
+        $(element).text('You can add ' + valueAccessor() +' users');
+        if(valueAccessor()===0){
+            $(element).css({
+                'color':'red'
+        });
+        }
+    }
+}
+
 function AppViewModel() {
     var self = this;
     self.search=ko.observable(false);
@@ -73,21 +88,55 @@ function AppViewModel() {
     })
 }
 
-
+function button_constr(el,p,n,text)
+{
+    el.appendTo(p)
+        .addClass('time1')
+        .text(text)
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            this_graph=n;
+            changeGraph(n);})
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+}
 
 // Activates knockout.js
 function Score() {
     ko.applyBindings(new AppViewModel());
     var $target = $('.graphContainer');
-    var $dayButton = $('<div>');
+    var  $bt = $('<div>').addClass('button-center');
+    $bt.appendTo($target);
+    var $dayButton = $('<div>').addClass("is_active");
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
-    button_constr($dayButton, $target, 1,'Days');
-    button_constr($weekButton, $target, 2,'Weeks');
-    button_constr($monthButton, $target, 3,'Months');
+    button_constr($dayButton, $bt, 1,'Days');
+    button_constr($weekButton, $bt, 2,'Weeks');
+    button_constr($monthButton, $bt, 3,'Months');
     $('.change_view').click(click_change);
 }
 
 $(document).ready(function() {
     new Score();
 });
+//function button_constr(el,p,text)
+//{
+//    el.appendTo(p)
+//        .addClass('time1')
+//        .text(text)
+//        .click(function () {
+//            $(this).addClass("is_active");
+//            $(this).siblings().removeClass("is_active");
+//        })
+//        .mouseenter(function () {
+//            $(this).addClass("on_button")
+//        })
+//        .mouseleave(function () {
+//            $(this).removeClass("on_button")
+//        });
+//}

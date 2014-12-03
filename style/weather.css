@@ -194,3 +194,7 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
 .bcurr-temp img, .curr-temp-value, .bcurr-temp {
     vertical-align:middle;
 }
+
+.is_day_off {
+    color: #9B4242;
+}

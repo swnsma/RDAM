@@ -5,7 +5,8 @@ index=1;
 var a=0;
 length_l=0;
 var users_data=[];
-
+var rend_mas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
+var rend=rend_mas[0];
 var all=[];
 //var FromDT = [];
 //var ToDT = [];
@@ -26,9 +27,6 @@ var dayTicks = [];
 var weekTicks = [];
 var monthTicks = [];
 
-var rend;
-
-
 ko.bindingHandlers.active_us = {
     update: function(element, valueAccessor) {
         // First get the latest data that we're bound to
@@ -40,6 +38,7 @@ ko.bindingHandlers.active_us = {
 
 
 get_first();
+var line=0;
 function get_d(item) {
     all = item;
     users_data=users_data.splice(0,1);
@@ -59,17 +58,6 @@ function get_d(item) {
     }
     else get_first();
 
-}
-function day(a,b) {
-    var c=+b;
-    return a+" "+monthes[c-1].slice(0,3)+".";
-}
-
-function mont(a)
-{
-    var c=+a;
-    //debugger;
-    return monthes[c-1].slice(0,3);
 }
 
 function render() {
@@ -144,13 +132,23 @@ var ticks=[];
         ticks = monthTicks;
         mas_dat = monthProduction;
         title='Monthly production';
+
     }
+    if(number===3)
+    {$('.change_view').css('display','none');
+        rend=rend_mas[1];}
+    else
+    {$('.change_view').css('display','block');
+        if(line)
+            rend=rend_mas[1];
+        else rend=rend_mas[0];
+        }
 
         $('#chartDiv').empty();
         var plot1 = $.jqplot('chartDiv', mas_dat, {
             title: title,
             seriesDefaults: {
-                renderer: rend,
+                renderer:rend,
                 rendererOptions: {
                     fillToZero: true
                 },

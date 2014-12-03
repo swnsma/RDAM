@@ -2,7 +2,7 @@
 var sum_days=0;
 var sum_weeks=0;
 var sum_month=0;
-
+var shown_co2_data=false, shown_trees_data=false;
 var weekProduction = [];
 var monthProduction = [];
 var dayProduction = [];
@@ -11,7 +11,42 @@ var weekTicks =[];
 var monthTicks =[];
 
 var rend;
-rend = $.jqplot.BarRenderer;
+//rend = $.jqplot.BarRenderer;
+(function (){
+    $('#treeInfo')
+        .click(function()
+        {
+            if(shown_trees_data)
+            {
+                shown_trees_data=false;
+                $('span', this).remove();
+                $(this).html('<img src="img/tree2.png" class="factory"/>');
+
+            }
+            else
+            {
+                shown_trees_data=true;
+                $('img', this).remove();
+                $(this).html('<span>Your avoided CO² emission is equal to the amount of CO² emission sequestered by (amount) of tree seedlings over the period of 10 years. 1kg of CO² equals 0.026 seedlings.</span>');
+
+            }
+        });
+    $('#co2Info')
+        .click(function()
+        {
+            if(shown_co2_data)
+            {
+                shown_co2_data=false;
+                $('span', this).remove();
+                $(this).html('<img src="img/fact1.png" class="factory"/>');
+            }
+            else{
+                shown_co2_data=true;
+                $('img', this).remove();
+                $(this).html('<span>The CO² emissie-factor is 0,61kg CO² on 1KWh of energy. Now you see avoid CO² emission for the period of time selected in the chart.</span>')
+            }
+        })
+})();
 function render(item) {
     allData = item;
     //console.log(allData);
@@ -84,7 +119,7 @@ function changeGraph(number) {
     rendererOptions: {}
 },
 series:[ {
-    renderer: rend,
+//    renderer: rend,
         rendererOptions: {fillToZero: true},
     shadow: false,
         pointLabels: {show: true},
@@ -108,6 +143,25 @@ function co2ForMonth()
     $("#co2").html((0.61*sum_month).toFixed(1)+" kg");
     $('#trees').html((0.61*sum_month*0.026).toFixed(1)+" seedlings")
 }
+function button_constr(el,p,n,text, func)
+{
+    el.appendTo(p)
+        .addClass('time1')
+        .text(text)
+        .click(function () {
+            $(this).addClass("is_active");
+            $(this).siblings().removeClass("is_active");
+            if(func!==undefined);
+            func();
+            this_graph=n;
+            changeGraph(n);})
+        .mouseenter(function () {
+            $(this).addClass("on_button")
+        })
+        .mouseleave(function () {
+            $(this).removeClass("on_button")
+        });
+}
 function Product() {
     getData(function(data) {
         render(data);
@@ -117,13 +171,17 @@ function Product() {
     });
 
     var $target = $('.graphContainer');
-    var $dayButton = $('<div>');
+
+    var  bt = $('<div>').addClass('button-center');
+    bt.appendTo($target);
+
+    var $dayButton = $('<div>').addClass("is_active");
     var $weekButton = $('<div>');
     var $monthButton = $('<div>');
 
-    button_constr($dayButton, $target, 1,'Days', co2ForDays);
-    button_constr($weekButton, $target, 2,'Weeks', co2ForWeeks);
-    button_constr($monthButton, $target, 3,'Months', co2ForMonth);
+    button_constr($dayButton, bt, 1,'Days', co2ForDays);
+    button_constr($weekButton, bt, 2,'Weeks', co2ForWeeks);
+    button_constr($monthButton, bt, 3,'Months', co2ForMonth);
 
 }
 

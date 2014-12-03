@@ -1,16 +1,16 @@
-.score_wrapper{
+.score-wrapper{
     width: 100%;
     height: 630px;
     overflow: hidden;
 }
-.compare_float_right ul{
+.compare-float-right ul{
     padding: 10px 0;
     margin: 0;
     list-style: none;
     width: 100%;
 
 }
-.compare_float_right li{
+.compare-float-right li{
 
     min-height: 30px;
     line-height: 30px;
@@ -21,26 +21,24 @@
     position: relative;
     cursor: pointer;
 }
-.compare_float_right p{
+.compare-float-right p{
     text-align: center;
-    color: red;
-    background-color: rgb(244, 239, 212);
 }
-.compare_float_right label *,.compare_float_right label{
+.compare-float-right label *,.compare-float-right label{
     cursor: pointer;
 }
-.compare_float_center{
+.compare-float-center{
     width: 750px;
     /*width: 80%;*/
     height: 100%;
     float: right;
     /*float: right;*/
 }
-.compare_float_right ul{
+.compare-float-right ul{
     margin: 0;
     padding: 0;
 }
-.compare_float_right{
+.compare-float-right{
     height: 91.5%;
     width: 190px;
     /* background-color: #7e4465;*/
@@ -54,7 +52,7 @@
     overflow-x: hidden;
     background: rgba(208,208,208,0.5);
 }
-.compare_float_right [type='text']{
+.compare-float-right [type='text']{
     background-color: #F4EFD4;
     border: 1px solid rgb(99, 173, 31);
     margin: 3px;
@@ -64,7 +62,7 @@
     height: 20px;
     color: darkgray;
 }
-.compare_float_right [type='text']:focus{
+.compare-float-right [type='text']:focus{
     color: #000000;
 }
 .search{

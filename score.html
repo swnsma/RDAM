@@ -40,16 +40,16 @@
                 <div class="chart-compare position-relative">
                 <h2>Compare</h2>
                 <button class="change_view change-view-score" data-bind="show_change">Line/Bar</button>
-                <div class="score_wrapper">
-                    <div class="compare_float_center">
+                <div class="score-wrapper">
+                    <div class="compare-float-center">
                         <div class="graphContainer">
                             <div id="chartDiv" class="compare-graph"> </div>
                         </div>
                     </div>
-                    <div class="compare_float_right">
+                    <div class="compare-float-right">
                         <form action="">
                             <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
-                            <p data-bind="if: return_active_user().length>3">you have reached maximum quantity of users</p>
+                            <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
                             <div class="list">
                                 <span class="this">this</span>
                                 <ul data-bind="foreach: return_active_search(),active_us: return_active_user()">
@@ -86,13 +86,7 @@
 <script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
 <script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
 <script src="js/app/common/common.js"></script>
-<script type='text/javascript' src='js/app/compare/getUsers.js'></script>
-<script type='text/javascript' src='js/app/compare/Users.js'></script>
-<script type='text/javascript' src='js/app/compare/render_data.js'></script>
-<script type='text/javascript' src='js/app/compare/view_model.js'></script>
-<script type='text/javascript' src='js/app/compare/ColorMas.js'></script>
 
-<script type='text/javascript' src='js/app/compare/get_data.js'></script>
 
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
@@ -103,6 +97,12 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
+<script type='text/javascript' src='js/app/compare/getUsers.js'></script>
+<script type='text/javascript' src='js/app/compare/Users.js'></script>
+<script type='text/javascript' src='js/app/compare/render_data.js'></script>
+<script type='text/javascript' src='js/app/compare/view_model.js'></script>
+<script type='text/javascript' src='js/app/compare/ColorMas.js'></script>
+<script type='text/javascript' src='js/app/compare/get_data.js'></script>
 
 </body>
 </html>
