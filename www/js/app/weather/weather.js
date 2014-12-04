@@ -3,7 +3,7 @@ function WeatherApi() {
 
     this.getWeather = function(funcSuccess, funcError) {
         $.ajax({
-            url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=Kiev&format=json&num_of_days=5&key=' + key,
+            url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=Rotterdam&format=json&num_of_days=5&key=' + key,
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
