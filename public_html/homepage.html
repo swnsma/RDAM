@@ -37,7 +37,10 @@
         <div class="chart"><h2>Production and consumption</h2>
             <div class="graphContainer">
                 <button class="change_view change_view_homepage" data-bind="click:change,change_view">Line/Bar</button>
-                <div id="chartDiv" data-bind="render_chart"> </div>
+                <div id="chartDiv" data-bind="render_chart: data_to_rend"> </div>
+                <div class="button-center" data-bind="foreach: buttons">
+                <div data-bind="click:$root.change_data($index),text:$data" class="time1"></div>
+                </div>
             </div>
         </div><!--end chart-->
     </div>
@@ -53,7 +56,6 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>
-
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>

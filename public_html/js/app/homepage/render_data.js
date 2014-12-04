@@ -16,7 +16,6 @@ var options={
             }
         },
         {
-
             rendererOptions: {
                 fillToZero: false
             },
@@ -70,31 +69,36 @@ var options={
 };
 
 function HomePage() {
-//    getData(appView);
-    var chart = new Graph();
-    chart.set_opt(options);
-    getData(function(data) {
-        chart.data_to_chart(data);
-    });
-    var $target = $('.graphContainer');
-    var $bt = $('<div>').addClass('button-center');
-    $bt.appendTo($target);
 
-    var $dayButton = $('<div data-bind="click:change_data(1)">').addClass("is_active");
-    var $weekButton = $('<div data-bind="click:change_data(2)">');
-    var $monthButton = $('<div data-bind="click:change_data(3)">');
-//    button_constr($dayButton, $target,'Days');
-//    button_constr($weekButton, $target,'Weeks');
-//    button_constr($monthButton, $target,'Months');
-    button_constr($dayButton, $bt,'Days',1,chart.render_graph);
-    button_constr($weekButton, $bt,'Weeks',2,chart.render_graph);
-    button_constr($monthButton, $bt,'Months',3,chart.render_graph);
-    $('.change_view_homepage').click(chart.change_view);
-    $dayButton.addClass("is_active");
+//
+//    var $dayButton = $('<div data-bind="click:change_data(1)">').addClass("is_active");
+//    var $weekButton = $('<div data-bind="click:change_data(2)">');
+//    var $monthButton = $('<div data-bind="click:change_data(3)">');
+////    button_constr($dayButton, $target,'Days');
+////    button_constr($weekButton, $target,'Weeks');
+////    button_constr($monthButton, $target,'Months');
+//    button_constr($dayButton, $bt,'Days',1,chart.render_graph);
+//    button_constr($weekButton, $bt,'Weeks',2,chart.render_graph);
+//    button_constr($monthButton, $bt,'Months',3,chart.render_graph);
+//    $('.change_view_homepage').click(chart.change_view);
+//    $dayButton.addClass("is_active");
 };
+function appView(items)
+{
+    var view_m=new View_model(process_data(items));
+    ko.applyBindings(view_m);
+}
 
 $(document).ready(function() {
-    new HomePage();
+    getData(appView);
+//    var chart = new Graph();
+//    chart.set_opt(options);
+//    getData(function(data) {
+//        chart.data_to_chart(data);
+//    });
+//    var $target = $('.graphContainer');
+//    var $bt = $('<div>').addClass('button-center');
+//    $bt.appendTo($target);
 });
 function button_constr(el,p,text,n,func)
 {
@@ -130,11 +134,6 @@ function button_constr(el,p,text,n,func)
 //        });
 //}
 
-function appView(items)
-{
-    var view_m=new View_model(process_data(items));
-    ko.applyBindings(view_m);
-}
 
 function process_data(item){
 
@@ -174,6 +173,7 @@ function View_model(items)
     self.data_to_rend(self.data[0]);
     self.rend_mas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
     self.rend=ko.observable(self.rend_mas[0]);
+    self.buttons=ko.observableArray(['Days','Weeks','Months']);
     self.change=function(){
         if (self.rend() === self.rend_mas[0]) {
             self.rend($.jqplot.LineRenderer);
@@ -183,11 +183,11 @@ function View_model(items)
         }
     };
 
-    self.change_data=function(n)
+    self.change_data=function(index)
     {
-
-            self.this_graph(n);
-            self.data_to_rend(self.data[n-1]);
+        debugger;
+            self.this_graph(index()+1);
+            self.data_to_rend(self.data[index()]);
     }
 }
 //
@@ -197,9 +197,9 @@ ko.bindingHandlers.render_chart={
         var ticks=[];
         var mas_dat=[];
         var title;
-        var self=bindingContext.$root;
-        var to_rend = ko.unwrap(self.data_to_rend);
-        var plot=self.plot;
+        var self=bindingContext.$root;7//
+        var to_rend = ko.unwrap(valueAccessor());
+        //var plot=self.plot;
         to_rend.Ticks.sort(function(a, b) {
             a = new Date(a.replace(/(\d+) (\s+)./, '$2/2000/$1'));
             b = new Date(b.replace(/(\d+) (\s+)./, '$2/2000/$1'));
@@ -212,12 +212,11 @@ ko.bindingHandlers.render_chart={
         self.options.axes.xaxis.ticks=ticks;
         for(i=0;i<self.options.series.length;i++)
         self.options.series[i].renderer=self.rend();
-
-        if(mas_dat[0]&&mas_dat[0].length)
-        {
+        //{
             $("#"+element.id).empty();
+            console.dir(self.options);
             plot= $.jqplot(element.id, mas_dat,self.options);
-        }
+        //}
 
     }
 
