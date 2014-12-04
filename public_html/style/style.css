@@ -22,21 +22,6 @@
     margin-left: 2%;
 }
 
-.time
-{
-    display: inline-block;
-    width: 240px;
-    height: 30px;
-    margin-left: 1px;
-    cursor:pointer;
-    text-align: center;
-    font-size: 25px;
-    border-radius: 3px;
-    border: 2px solid rgb(113,191,68);
-    color:#333;
-    background-color: rgb(244, 239, 212);
-
-}
 .time1
 {
     display: inline-block;
@@ -46,15 +31,13 @@
     cursor:pointer;
     text-align: center;
     font-size: 25px;
-    border-radius: 3px;
-    border: 2px solid rgb(113,191,68);
+    float:left;
+    /*border-radius: 3px;*/
+    /*border: 2px solid rgb(113,191,68);*/
     color:#333;
-    background-color: rgb(244, 239, 212);
+    background-color:rgb(170, 250, 100);
 }
-.on_button
-{
-    background-color:rgb(159, 233, 81);
-}
+
 .is_active
 {
     color:white;
@@ -80,6 +63,6 @@ table.jqplot-table-legend
 
 
 .button-center {
-    width: 738px;
+    width: 726px;
     margin: 0 auto;
 }

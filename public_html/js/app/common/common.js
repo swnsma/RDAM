@@ -15,7 +15,6 @@ function getData(func) {
                     allData.push(a);
                 }
                 func(allData);
-
             }
         },
 
@@ -23,7 +22,10 @@ function getData(func) {
 
         }
     };
+
     $.ajax(options);
+
+
 };
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
 
@@ -35,7 +37,6 @@ function day(a,b) {
 function mont(a)
 {
     var c=+a;
-    //debugger;
     return monthes[c-1].slice(0,3);
 }
 
