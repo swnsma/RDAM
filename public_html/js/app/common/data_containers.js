@@ -125,3 +125,31 @@ function Graph()
 
 }
 
+function View_model(items)
+{
+    self=this;
+    self.data=items;
+    self.this_graph=ko.observable(3);
+    self.options=options;
+    self.plot;
+    self.data_to_rend= ko.observableArray();
+    self.data_to_rend(self.data[0]);
+    self.rend_mas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
+    self.rend=ko.observable(self.rend_mas[0]);
+    self.buttons=ko.observableArray(['Days','Weeks','Months']);
+    self.change=function(){
+        if (self.rend() === self.rend_mas[0]) {
+            self.rend($.jqplot.LineRenderer);
+        }
+        else {
+            self.rend($.jqplot.BarRenderer);
+        }
+    };
+
+    self.change_data=function(index)
+    {
+        self.this_graph(index()+1);
+        self.data_to_rend(self.data[index()]);
+    }
+}
+

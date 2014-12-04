@@ -2,8 +2,8 @@
     height: 630px;
     width: 956px;
     margin:0 auto;
-    border-radius: 10px;
-    border: 2px solid rgb(99, 173, 31);
+    /*border-radius: 10px;*/
+    border: 1px solid #bbb;
     border-top: none;
     background-color:#eee;
     margin-bottom: 15px;
@@ -14,7 +14,7 @@
     background: rgb(99, 173, 31);
     color:white;
 
-    border-radius: 8px 8px 0px 0px ;
+    /*border-radius: 8px 8px 0px 0px ;*/
     margin:0px auto;
     text-align: center;
 }
