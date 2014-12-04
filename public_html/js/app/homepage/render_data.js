@@ -68,72 +68,35 @@ var options={
     //seriesColors: colors
 };
 
-function HomePage() {
 
-//
-//    var $dayButton = $('<div data-bind="click:change_data(1)">').addClass("is_active");
-//    var $weekButton = $('<div data-bind="click:change_data(2)">');
-//    var $monthButton = $('<div data-bind="click:change_data(3)">');
-////    button_constr($dayButton, $target,'Days');
-////    button_constr($weekButton, $target,'Weeks');
-////    button_constr($monthButton, $target,'Months');
-//    button_constr($dayButton, $bt,'Days',1,chart.render_graph);
-//    button_constr($weekButton, $bt,'Weeks',2,chart.render_graph);
-//    button_constr($monthButton, $bt,'Months',3,chart.render_graph);
-//    $('.change_view_homepage').click(chart.change_view);
-//    $dayButton.addClass("is_active");
-};
 function appView(items)
 {
     var view_m=new View_model(process_data(items));
     ko.applyBindings(view_m);
+    button_constr(".time1");
 }
 
 $(document).ready(function() {
     getData(appView);
-//    var chart = new Graph();
-//    chart.set_opt(options);
-//    getData(function(data) {
-//        chart.data_to_chart(data);
-//    });
-//    var $target = $('.graphContainer');
-//    var $bt = $('<div>').addClass('button-center');
-//    $bt.appendTo($target);
 });
-function button_constr(el,p,text,n,func)
+function button_constr(clas)
 {
-    el.appendTo(p)
-        .addClass('time1')
-        .text(text)
+    $(clas)
+
         .click(function () {
             $(this).addClass("is_active");
             $(this).siblings().removeClass("is_active");
-            func(n);
           })
         .mouseenter(function () {
             $(this).addClass("on_button")
         })
         .mouseleave(function () {
             $(this).removeClass("on_button")
-        });
-}
-//function button_constr(el,p,text)
-//{
-//    el.appendTo(p)
-//        .addClass('time1')
-//        .text(text)
-//        .click(function () {
-//            $(this).addClass("is_active");
-//            $(this).siblings().removeClass("is_active");
-//        })
-//        .mouseenter(function () {
-//            $(this).addClass("on_button")
-//        })
-//        .mouseleave(function () {
-//            $(this).removeClass("on_button")
-//        });
-//}
+        })
+        .first()
+        .addClass("is_active");
 
+}
 
 function process_data(item){
 
@@ -185,13 +148,11 @@ function View_model(items)
 
     self.change_data=function(index)
     {
-        debugger;
             self.this_graph(index()+1);
             self.data_to_rend(self.data[index()]);
     }
 }
-//
-//ko.bindingHandlers.change_view;
+
 ko.bindingHandlers.render_chart={
     update:function(element, valueAccessor, allBindings, viewModel, bindingContext){
         var ticks=[];
@@ -219,5 +180,5 @@ ko.bindingHandlers.render_chart={
         //}
 
     }
-
 }
+

@@ -37,7 +37,6 @@ function day(a,b) {
 function mont(a)
 {
     var c=+a;
-    //debugger;
     return monthes[c-1].slice(0,3);
 }
 
