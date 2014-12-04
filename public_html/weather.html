@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="img/favicon.ico">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style/common.css" type="text/css"/>
+    <link rel="stylesheet" href="style/weather.css" type="text/css"/>
+</head>
+<body>
+
+<header>
+    <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
+
+    <div class="text_right">
+        Rooftop Energy B.V.<br/>
+        Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
+        T +31 (0)182 74 80 90  | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
+</header><!--end header-->
+<nav>
+    <ul>
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="production.html">PRODUCTION</a></li>
+        <li><a href="consumption.html">CONSUMPTION</a></li>
+        <li><a href="score.html">score</a></li>
+        <li selected="true"> <a href="weather.html">weather</a></li>
+    </ul>
+</nav><!--end navigation-->
+<div class="main-content">
+    <div id="loading">
+        <img src="img/loading.gif" alt="loading" />
+    </div>
+    <div id="data">
+        <div id="weather-list">
+            <ul class="weather-list" data-bind="foreach: weather_days">
+                <li data-bind="click: function() { $root.renderMoreInfo($index()); }, attr: { selected: active }">
+                    <div class="wdate">
+                        <span class="wname" data-bind="text: date.day_name"></span>
+                        <span class="wday" data-bind="text: date.day, css: { is_day_off: (date.is_day_off === true) }"></span>
+                        <span class="wname" data-bind="text: date.month_name"></span>
+                    </div>
+                    <div class="wimg">
+                        <img data-bind="attr: { src: weatherIconUrl }" alt="" />
+                    </div>
+                    <span class="wdesc" data-bind="text: weatherDesc"></span>
+                    <div class="wtemp">
+                        <span data-bind="text: maxnimtemp.mintempC"></span> -
+                        <span data-bind="text: maxnimtemp.maxtempC"></span> &deg;C
+                    </div>
+                </li>
+            </ul>
+            <div class="wmore-info">
+                <div class="temp-left">
+                    <div class="bcurr-temp">
+                        <div class="btemp-img">
+                            <img src="img/temp.png" alt="" />
+                        </div>
+                        <div class="bcurr-temp-value">
+                            <span class="curr-temp-value" data-bind="html: weather_days_mi.tempC"></span> &deg;C
+                        </div>
+                    </div>
+                </div>
+                <div class="table-hourly-right">
+                    <table class="hourly">
+                        <tr>
+                            <th></th>
+                            <th colspan="2">Night</th>
+                            <th colspan="2">Morning</th>
+                            <th colspan="2">Day</th>
+                            <th colspan="2">Evening</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>2:00</th>
+                            <th>5:00</th>
+                            <th>8:00</th>
+                            <th>11:00</th>
+                            <th>14:00</th>
+                            <th>17:00</th>
+                            <th>20:00</th>
+                            <th>23:00</th>
+                        </tr>
+                        <tr>
+                            <td>temperature (&deg;C)</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: tempC"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>humidity</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: humidity"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>precip (mm)</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: precipMM"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>pressure</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: pressure"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>wind degree</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: winddirDegree"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <tr>
+                            <td>wind speed (miles)</td>
+                            <!-- ko foreach: weather_days_mi.hourly -->
+                            <td data-bind="text: windspeedMiles"></td>
+                            <!-- /ko -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!--end main-content-->
+<footer>
+    <span >Copyright &copy 2014 All right reserved.</span>
+</footer><!--end footer-->
+<script src="js/vendor/jquery-2.1.1.js"></script>
+<script src="js/vendor/knockout/knockout-3.2.0.js"></script>
+<script src="js/app/common/common.js"></script>
+<script src="js/app/weather/weather.js"></script>
+</body>
+</html>

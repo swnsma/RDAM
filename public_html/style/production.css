@@ -1,0 +1,76 @@
+
+body{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.wrap{
+    text-align: center;
+
+}
+.wrap span{
+    padding:5px;
+    font-size: 20pt ;
+}
+.emission{
+    display:inline-block;
+    width:49%;
+    position: relative;
+    background-color:#eee;
+    float:left;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(99, 173, 31);
+    height: 350px;
+
+}
+.emission h2,.saved_trees h2{
+    padding: 10px;
+    background: rgb(99, 173, 31);
+    color:white;
+    border-radius: 7px 7px 0 0;
+    margin:0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 40px;
+
+
+}
+.saved_trees
+{      display:inline-block;
+    width:49%;
+    position: relative;
+    background-color:#eee;
+    float:right;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(99, 173, 31);
+    height: 350px;
+
+}
+#treeInfo, #co2Info{
+    height: 210px;
+}
+
+.factory{
+    width:250px;
+    height:200px;
+    stroke: green;
+    stroke-width: 2;
+    opacity:0.5;
+}
+
+.wrap{
+    position: relative;
+    width:100%;
+    overflow: hidden;
+}
+
+.emm_res
+{
+  text-align: center;
+    font-family: "Levenim MT", Arial, Helvetica, sans-serif;
+    /*float:right;*/
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+    color:#333;
+}

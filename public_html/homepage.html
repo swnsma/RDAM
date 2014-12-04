@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="img/favicon.ico">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="style/common.css" type="text/css"/>
+    <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
+    <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+    <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
+
+</head>
+<body>
+
+<header>
+    <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
+
+    <div class="text_right">
+        Rooftop Energy B.V.<br/>
+        Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
+        T +31 (0)182 74 80 90  | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
+</header><!--end header-->
+<nav>
+    <ul>
+        <li selected="true"><a href="homepage.html">HOME</a></li>
+        <li><a href="production.html">PRODUCTION</a></li>
+        <li><a href="consumption.html">CONSUMPTION</a></li>
+        <li><a href="score.html">score</a></li>
+        <li> <a href="weather.html">weather</a></li>
+    </ul>
+</nav><!--end navigation-->
+<div class="main-content">
+    <div id="loading">
+        <img src="img/loading.gif" alt="loading" />
+    </div>
+    <div id="data">
+        <div class="chart"><h2>Production and consumption</h2>
+            <div class="graphContainer">
+                <button class="change_view change_view_homepage" data-bind="click:change,change_view">Line/Bar</button>
+                <div id="chartDiv" data-bind="render_chart"> </div>
+            </div>
+        </div><!--end chart-->
+    </div>
+</div><!--end main-content-->
+<footer>
+    <span >Copyright &copy 2014 All right reserved.</span>
+</footer><!--end footer-->
+
+<script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
+<script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>
+
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
+
+<script src="js/app/common/common.js"></script>
+<script src="js/app/common/data_containers.js"></script>
+<script type='text/javascript' src='js/app/homepage/render_data.js'></script>
+</body>
+</html>

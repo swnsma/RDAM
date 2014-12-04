@@ -1,0 +1,41 @@
+.batteryContainer
+{
+    height: 200px;
+    width: 750px;
+    margin: auto ;
+
+}
+
+.main-content
+{
+    height: 850px;
+    margin-left: 150px;
+}
+.prodSpan
+{
+    font-size: 20px;
+    display: inline-block;
+    margin-left: 20px;
+    padding-top: 15px;
+    height: 30px;
+}
+.prodDiv
+{
+    display: inline-block;
+    float: left;
+    color: #8BC34A;
+    margin-top: 20px;
+}
+.takenDiv
+{
+    display: inline-block;
+    margin-right: 150px;
+    float: right;
+    color: #FF8A65;
+    margin-top: 20px;
+
+}
+.label
+{
+    padding: 20px;
+}

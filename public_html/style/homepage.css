@@ -1,0 +1,37 @@
+.chart{
+    height: 630px;
+    width: 956px;
+    margin:0 auto;
+    border-radius: 10px;
+    border: 2px solid rgb(99, 173, 31);
+    border-top: none;
+    background-color:#eee;
+    margin-bottom: 15px;
+}
+
+.chart h2{
+    padding: 5px;
+    background: rgb(99, 173, 31);
+    color:white;
+
+    border-radius: 8px 8px 0px 0px ;
+    margin:0px auto;
+    text-align: center;
+}
+
+
+.change_view {
+    color: #000;
+    background-color: rgb(244, 239, 212);
+    border: none;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+}
+.change_view:hover {
+    background-color: rgb(159, 233, 81);
+}
+.change_view:active {
+    background-color: #0B5300;
+    text-shadow: -1px 1px #193047;
+}

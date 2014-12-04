@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Compare</title>
+    <link rel="stylesheet" href="style/common.css" type="text/css"/>
+    <link rel="stylesheet" href="style/compare.css" type="text/css"/>
+    <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+    <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
+    <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
+    <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
+
+        <div class="text_right">
+            Rooftop Energy B.V.<br/>
+            Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
+            T +31 (0)182 74 80 90  | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
+    </header>
+    <nav>
+        <ul>
+            <li > <a href="homepage.html">HOME</a></li>
+            <li><a href="production.html">PRODUCTION</a></li>
+            <li> <a href="consumption.html">CONSUMPTION</a></li>
+            <li selected="true"> <a href="score.html">score</a></li>
+            <li> <a href="weather.html">weather</a></li>
+        </ul>
+    </nav><!--end navigation-->
+    <div class="main-content">
+        <div id="loading" class="loading">
+                <img src="img/loading.gif" alt="loading" />
+            </div>
+
+            <div id="data">
+                <div class="chart-compare position-relative">
+                <h2>Compare</h2>
+                <button class="change_view change-view-score" data-bind="show_change">Line/Bar</button>
+                <div class="score-wrapper">
+                    <div class="compare-float-center">
+                        <div class="graphContainer">
+                            <div id="chartDiv" class="compare-graph"> </div>
+                        </div>
+                    </div>
+                    <div class="compare-float-right">
+                        <form action="">
+                            <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
+                            <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
+                            <div class="list">
+                                <span class="this">this</span>
+                                <ul data-bind="foreach: return_active_search(),active_us: return_active_user()">
+                                    <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
+                                        <label >
+                                            <input data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
+                                            <span data-bind="text:name "></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                <ul data-bind=" foreach: return_no_active_search()">
+                                    <li data-bind="click: $root.set_active">
+                                        <label>
+                                            <input data-bind="id:name,value:name, checked:$root.return_checked()  " type="checkbox"/>
+                                            <span data-bind="text:name"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!--end main-content-->
+    <footer>
+        <span >Copyright &copy 2014 All right reserved.</span>
+
+    </footer><!--end footer-->
+</div><!--end container-->
+<script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
+<script src="js/app/common/common.js"></script>
+
+
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
+<script type='text/javascript' src='js/app/compare/getUsers.js'></script>
+<script type='text/javascript' src='js/app/compare/Users.js'></script>
+<script type='text/javascript' src='js/app/compare/render_data.js'></script>
+<script type='text/javascript' src='js/app/compare/view_model.js'></script>
+<script type='text/javascript' src='js/app/compare/ColorMas.js'></script>
+<script type='text/javascript' src='js/app/compare/get_data.js'></script>
+
+</body>
+</html>
