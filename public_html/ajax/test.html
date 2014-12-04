@@ -2,17 +2,60 @@
 <html>
 <head>
     <title></title>
+    <script src="../js/vendor/jquery-2.1.1.js"></script>
 </head>
+
+<script type="text/javascript">
+    function exampleAjax() {
+        $.ajax({
+            url: 'users_info.php',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response && response.length) {
+                    console.log(response);
+                }
+            },
+            error: function () {
+
+            }
+        });
+    }
+</script>
+
 <body>
-<form action="user.php" method="get">
+
+<h1>user values</h1>
+
+<form action="user_values.php" method="get" target="_blank">
     ID <input type="text" name="id" /><br />
-    TO <input type="text" name="from" /><br />
+    toDT <input type="text" name="todt" /><br />
     <select name="type">
         <option value="1">day</option>
-        <option value="2">month</option>
-        <option value="3">year</option>
+        <option value="1">week</option>
+        <option value="3">month</option>
     </select><br />
     <button>send</button>
 </form>
+
+<h1>users info</h1>
+
+<form action="users_info.php" method="get" target="_blank">
+    from id <input type="text" name="from_id" /><br />
+    fields <input type="text" name="fields" /><br />
+    <button>send</button>
+</form>
+
+<h1>search users</h1>
+
+<form action="search.php" method="get" target="_blank">
+    search_name <input type="text" name="user_name" /><br />
+    fields <input type="text" name="fields" /><br />
+    <button>send</button>
+</form>
+
+
+<button onclick="exampleAjax()">ajax example (console)</button>
+
 </body>
 </html>
