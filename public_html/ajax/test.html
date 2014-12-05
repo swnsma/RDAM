@@ -5,58 +5,86 @@
     <script src="../js/vendor/jquery-2.1.1.js"></script>
 </head>
 
+<body>
+
 <script type="text/javascript">
-    function exampleAjax() {
+    function exampleValues(d) {
+        alert(1);
         $.ajax({
-            url: 'users_info.php',
+            url: 'http://rdam.zz.mu/ajax/user_values.php?id=' + d.text +'&todt=' + d.date +'&type=1',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
                 if (response && response.length) {
-                    console.log(response);
+                    $('#result3').text('result: ' + JSON.stringify(response));
+                } else {
+                    $('#result3').text('result: nothing');
                 }
             },
             error: function () {
-
+                alert('error');
             }
         });
     }
 </script>
+<h1>values</h1>
+<div id="result3"></div>
+id<input type="text" id="svalue3" /><br />
+date<input type="text" id="svalue4" value="last" />
+<button onclick="exampleValues({text: $('#svalue3').val(), date: $('#svalue4').val() })">click</button>
 
-<body>
+<hr />
 
-<h1>user values</h1>
+<script type="text/javascript">
+    function exampleInfo(d) {
+        alert(1);
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + d.text  + '&fields=' + d.fields,
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response && response.length) {
+                    $('#result2').text('result: ' + JSON.stringify(response));
+                } else {
+                    $('#result2').text('result: nothing');
+                }
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+<h1>use info</h1>
+<div id="result2"></div>
+from user id<input type="text" id="svalue2" />
+<button onclick="exampleInfo({text: $('#svalue2').val(), fields: 'city' })">click</button>
 
-<form action="user_values.php" method="get" target="_blank">
-    ID <input type="text" name="id" /><br />
-    toDT <input type="text" name="todt" /><br />
-    <select name="type">
-        <option value="1">day</option>
-        <option value="1">week</option>
-        <option value="3">month</option>
-    </select><br />
-    <button>send</button>
-</form>
+<hr />
 
-<h1>users info</h1>
-
-<form action="users_info.php" method="get" target="_blank">
-    from id <input type="text" name="from_id" /><br />
-    fields <input type="text" name="fields" /><br />
-    <button>send</button>
-</form>
-
-
-<h1>search users</h1>
-
-<form action="search.php" method="get" target="_blank">
-    search_name <input type="text" name="user_name" /><br />
-    fields <input type="text" name="fields" /><br />
-    <button>send</button>
-</form>
-
-
-<button onclick="exampleAjax()">ajax example (console)</button>
+<script type="text/javascript">
+    function exampleSearch(d) {
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax/search.php?user_name=' + d.text + '&fields=' + d.fields,
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response && response.length) {
+                    $('#result').text('result: ' + JSON.stringify(response));
+                } else {
+                    $('#result').text('result: nothing');
+                }
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+<h1>search</h1>
+<div id="result"></div>
+<input type="text" id="svalue" />
+<button onclick="exampleSearch({text: $('#svalue').val(), fields: 'city' })">click</button>
 
 </body>
 </html>
