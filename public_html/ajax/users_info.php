@@ -38,6 +38,7 @@ if ($users_info->select_list($fields, $from_id)) {
     $users_info->print_list();
 } else {
     header('HTTP/1.0 400 Bad Request');
+    print '{ "status": "error", "error_message": "try again later or or change it" }';
 }
 
 $users_info = null;

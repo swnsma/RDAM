@@ -76,6 +76,7 @@ HERE;
     public function print_data() {
         $data = $this->result->fetchAll(PDO::FETCH_ASSOC);
         $size = count($data)-1;
+        print '{ "status": "success", "data": ';
         if ($size >= 0) {
             print '[ ';
             for($i = 0; $i < $size; ++$i) {
@@ -91,6 +92,7 @@ HERE;
         } else {
             print '[ ]';
         }
+        print ' }';
     }
 
     function __destruct() {

@@ -10,7 +10,7 @@ abstract class Users extends Connection {
     }
 
     public function print_list() {
-		print json_encode($this->result->fetchAll(PDO::FETCH_ASSOC));
+        print '{ "status": "success", "data": ' . json_encode($this->result->fetchAll(PDO::FETCH_ASSOC)) . ' }';
     }
 
     protected function check_field($fields) { //change

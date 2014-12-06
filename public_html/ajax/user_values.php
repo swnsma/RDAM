@@ -22,6 +22,7 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
         } else {
             if (!valid_date($to)) {
                 header('HTTP/1.0 400 Bad Request');
+                print '{ "status": "error", "error_message": "invalid values" }';
                 exit();
             }
         }
@@ -41,13 +42,15 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
             $user->print_data();
         } else {
             header('HTTP/1.0 400 Bad Request');
+            print '{ "status": "error", "error_message": "try again later or or change it" }';
         }
         $user = null;
     } else {
-        header('HTTP/1.0 400 Bad Request');
+        print '{ "status": "error", "error_message": "invalid values" }';
     }
 } else {
     header('HTTP/1.0 400 Bad Request');
+    print '{ "status": "error", "error_message": "parameters are missing" }';
 }
 
 function valid_date($date) {
