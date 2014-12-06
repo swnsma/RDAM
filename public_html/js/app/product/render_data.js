@@ -61,9 +61,11 @@ function process_data(item){
     return data;
 }
 
-$(document).ready(function() {
+function Product() {
     getData(appView);
-});
+}
+
+manager.add(Product);
 
 function appView(items)
 {

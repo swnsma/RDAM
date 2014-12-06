@@ -57,6 +57,17 @@ function click_change()
         a.toggleClass("master");
 }
 
+
+function includeJs(jsFilePath) {
+    var js = document.createElement("script");
+
+    js.type = "text/javascript";
+    js.src = jsFilePath;
+
+    document.body.appendChild(js);
+}
+
+
 function LoadingManager() {
     this.enable = function() {
         $('#loading').css('display', 'block');
@@ -69,41 +80,154 @@ function LoadingManager() {
     };
 }
 
+function UserInfo(id, name, city, rating) {
+    this.id = id;
+    this.name = name;
+    this.city = city;
+    this.rating = rating;
+}
+
+function ScriptManager() {
+    var classes = [];
+    var first_func = function(func) { func(); }; //асинхронная
+    var last_func = function() {};
+
+    this.add = function(cl) {
+        if (typeof cl == 'function') {
+            classes.push(cl);
+        }
+    };
+
+    this.initFirstFunc = function(func) {
+        if (typeof func == 'function') {
+            first_func = func;
+        }
+    };
+
+    this.initLastFunc = function(func) {
+        if (typeof func == 'function') {
+            last_func = func;
+        }
+    };
+
+    this.init = function() {
+        $(document).ready(function() {
+            var c = classes;
+            try {
+                first_func(function() {
+                    //alert(current_user.getCity());
+                    for(var i in c) {
+                        new c[i];
+                    }
+                    last_func();
+                });
+            } catch(e) {
+                console.log('ERROR: ' + e.message);
+            } finally {
+                classes = [];
+                first_func = function(func) { func(); };
+                last_func = function() {};
+            }
+        });
+    };
+}
+
 function CurrentUser() {
-    var id = 1;
-    var name = 'user1';
-    var city = 'Alkmaar';
-    var rating = 421;
+    var info = new UserInfo();
 
     this.getId = function() {
-        return id;
+        return info.id;
     };
 
     this.getName = function() {
-        return name;
+        return info.name;
     };
 
     this.getCity = function() {
-        return city;
+        return info.city;
     };
 
     this.getRating = function() {
-        return rating;
+        return info.rating;
     };
 
-    this.getInfoUser = function() {
+    function processData(data) {
+        info = new UserInfo(data.id, data.name, data.city, data.rating);
+        changeMenu(info.id)
+    }
 
+    function saveData() {
+        window.localStorage.setItem('curr_user_info', JSON.stringify(info));
+    }
+
+    function changeMenu(id) {
+        $('#menu > li').each(function() {
+            $(this).children()[0].hash = id;
+        });
+    }
+
+    function getInfoByUser(id, funcSuccess, funcError) {
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + id  + '&fields=city,rating',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response) {
+                    funcSuccess(response);
+                } else {
+                    funcError();
+                }
+            },
+            error: funcError
+        });
+    }
+
+    this.selectCurrentUser = function(func) {
+        var id = getUserDefined();
+        if (id == null) {
+            id = prompt('What is the current user id?', 1);
+            getInfoByUser(id, function(response) {
+                window.location.hash = id;
+                processData(response.data[0]); //temp index array
+                saveData();
+                func();
+            }, function() {
+                alert('error getting user info');
+            });
+        } else {
+            var data = window.localStorage.getItem('curr_user_info');
+            if (data === null) {
+                alert('data user undefined');
+            } else {
+                processData(JSON.parse(data));
+                if (info.id != id) {
+                    getInfoByUser(id, function(response) {
+                        processData(response.data[0]); //temp index array
+                        saveData();
+                        func();
+                    }, function() {
+                        alert('error getting user info');
+                    });
+                } else {
+                    func();
+                }
+            }
+        }
+    };
+
+    function getUserDefined() {
+        var id = window.location.hash.substring(1);
+        if (id == parseInt(id)) {
+            return id;
+        } else {
+            return null;
+        }
     }
 }
 
-function includeJs(jsFilePath) {
-    var js = document.createElement("script");
-
-    js.type = "text/javascript";
-    js.src = jsFilePath;
-
-    document.body.appendChild(js);
-}
 var loading = new LoadingManager();
-
 var current_user = new CurrentUser();
+var manager = new ScriptManager();
+
+manager.initFirstFunc(current_user.selectCurrentUser);
+manager.init();

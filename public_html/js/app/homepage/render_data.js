@@ -1,7 +1,9 @@
 
-$(document).ready(function() {
+function HomePage() {
     getData(appView);
-});
+}
+
+manager.add(HomePage);
 
 
 function appView(items)

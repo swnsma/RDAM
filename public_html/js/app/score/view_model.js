@@ -118,9 +118,14 @@ function Score() {
     $('.change_view').click(click_change);
 }
 
-$(document).ready(function() {
+manager.add(Score);
+
+/*$(document).ready(function() {
     new Score();
-});
+});*/
+
+
+
 //function button_constr(el,p,text)
 //{
 //    el.appendTo(p)

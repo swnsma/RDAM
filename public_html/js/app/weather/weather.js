@@ -137,6 +137,8 @@ function WeatherModel() {
     }, function() { alert('error'); });
 }
 
-$(document).ready(function() {
+function Weather() {
     ko.applyBindings(new WeatherModel(), document.getElementById('weather-list'));
-});
+}
+
+manager.add(Weather);
