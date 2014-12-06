@@ -70,9 +70,29 @@ function LoadingManager() {
 }
 
 function CurrentUser() {
-    var current_id = 1;
-    this.getCurrentUserId = function() {
-        return current_id;
+    var id = 1;
+    var name = 'user1';
+    var city = 'Alkmaar';
+    var rating = 421;
+
+    this.getId = function() {
+        return id;
+    };
+
+    this.getName = function() {
+        return name;
+    };
+
+    this.getCity = function() {
+        return city;
+    };
+
+    this.getRating = function() {
+        return rating;
+    };
+
+    this.getInfoUser = function() {
+
     }
 }
 
@@ -85,3 +105,5 @@ function includeJs(jsFilePath) {
     document.body.appendChild(js);
 }
 var loading = new LoadingManager();
+
+var current_user = new CurrentUser();
