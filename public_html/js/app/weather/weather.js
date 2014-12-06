@@ -1,11 +1,14 @@
-function WeatherApi() {
+function WeatherApi(city) {
     var key = '5014b616aa426e0a5a01ccf7ebc3d';
 
     this.getWeather = function(funcSuccess, funcError) {
         $.ajax({
-            url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=Amsterdam&format=json&num_of_days=5&key=' + key,
+            url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=' + city + '&format=json&num_of_days=5&key=' + key,
             type: 'GET',
             contentType: 'application/json',
+            complete: function() {
+                loading.disable();
+            },
             success: function (response) {
                 if (response) {
                     funcSuccess(response);
@@ -127,7 +130,7 @@ function WeatherModel() {
         self.renderMoreInfo(current_active);
     }
 
-    var api = new WeatherApi();
+    var api = new WeatherApi(current_user.getCity());
     api.getWeather(function(data) {
         try {
             renderData(data);
