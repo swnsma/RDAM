@@ -113,7 +113,6 @@ function ScriptManager() {
             var c = classes;
             try {
                 first_func(function() {
-                    //alert(current_user.getCity());
                     for(var i in c) {
                         new c[i];
                     }
@@ -184,6 +183,7 @@ function CurrentUser() {
         var id = getUserDefined();
         if (id == null) {
             id = prompt('What is the current user id?', 1);
+
             getInfoByUser(id, function(response) {
                 window.location.hash = id;
                 processData(response.data[0]); //temp index array
@@ -192,6 +192,7 @@ function CurrentUser() {
             }, function() {
                 alert('error getting user info');
             });
+
         } else {
             var data = window.localStorage.getItem('curr_user_info');
             if (data === null) {
@@ -199,6 +200,7 @@ function CurrentUser() {
             } else {
                 processData(JSON.parse(data));
                 if (info.id != id) {
+
                     getInfoByUser(id, function(response) {
                         processData(response.data[0]); //temp index array
                         saveData();
@@ -206,6 +208,7 @@ function CurrentUser() {
                     }, function() {
                         alert('error getting user info');
                     });
+
                 } else {
                     func();
                 }
