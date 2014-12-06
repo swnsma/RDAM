@@ -52,11 +52,8 @@ function AppViewModel() {
         for(var i=0;i<self.arrayUsers().length;++i){
 //            console.log(self.search_text());
             if(self.arrayUsers()[i].active()===true){
-                var word = self.arrayUsers()[i].name().toUpperCase();
-                var subword = self.search_text().toUpperCase();
-                if (word.indexOf(subword) > -1) {
                     result.push(self.arrayUsers()[i]);
-                }
+
             }
         }
         return result;

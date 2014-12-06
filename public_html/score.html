@@ -48,7 +48,7 @@
                     </div>
                     <div class="compare-float-right">
                         <form action="">
-                            <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
+
                             <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
                             <div class="list">
                                 <div class="selected_users">
@@ -62,6 +62,7 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
                                 <ul data-bind=" foreach: return_no_active_search()">
                                     <li data-bind="click: $root.set_active">
                                         <label>
