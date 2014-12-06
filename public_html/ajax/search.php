@@ -11,7 +11,7 @@ header('Content-type: application/json; charset=utf-8');
 if (isset($_GET['user_name'])) {
     $user_name = $_GET['user_name'];
     $len_user_name = strlen($user_name);
-    if ($len_user_name > 25 || $len_user_name < 3) {
+    if ($len_user_name <= 25 || $len_user_name > 3) {
         if (isset($_GET['fields'])) {
             $fields = explode(',', $_GET['fields']);
         } else {
