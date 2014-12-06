@@ -149,7 +149,7 @@ function CurrentUser() {
     };
 
     function processData(data) {
-        info = new UserInfo(data.id, data.name, data.city, data.rating);
+        info = new UserInfo(data.id, data.user, data.city, data.rating);
         changeMenu(info.id)
     }
 
