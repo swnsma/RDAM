@@ -15,7 +15,7 @@
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
-                if (response && response.length) {
+                if (response) {
                     $('#result3').text('result: ' + JSON.stringify(response));
                 } else {
                     $('#result3').text('result: nothing');
@@ -43,7 +43,7 @@ date<input type="text" id="svalue4" value="last" />
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
-                if (response && response.length) {
+                if (response) {
                     $('#result2').text('result: ' + JSON.stringify(response));
                 } else {
                     $('#result2').text('result: nothing');
@@ -69,7 +69,7 @@ from user id<input type="text" id="svalue2" />
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
-                if (response && response.length) {
+                if (response) {
                     $('#result').text('result: ' + JSON.stringify(response));
                 } else {
                     $('#result').text('result: nothing');
