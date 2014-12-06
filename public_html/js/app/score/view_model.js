@@ -115,7 +115,7 @@ function Score() {
     button_constr($dayButton, $bt, 1,'Days');
     button_constr($weekButton, $bt, 2,'Weeks');
     button_constr($monthButton, $bt, 3,'Months');
-    $('.change_view').click(click_change);
+    $('.change_view').click(clickChange);
 }
 
 manager.add(Score);

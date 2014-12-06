@@ -4,8 +4,8 @@ function Data()
     this.Consumption =  [];
     this.Ticks = [];
     this.return_en =return_en(this.Production,this.Consumption);
-    this.sum_prod =function(){return sum_n(this.Production);};
-    this.sum_cons ==function(){return sum_n(this.Consumption)};
+    this.sumProd =function(){return sum_n(this.Production);};
+    this.sumCons ==function(){return sum_n(this.Consumption)};
 
 }
 
@@ -33,17 +33,17 @@ function View_model(items)
 {
     self=this;
     self.data=items;
-    self.this_graph=ko.observable(3);
+    self.thisGraph=ko.observable(3);
     self.options=options;
     self.plot;
-    self.data_to_rend= ko.observableArray();
-    self.data_to_rend(self.data[0]);
-    self.rend_mas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
-    self.rend=ko.observable(self.rend_mas[0]);
+    self.dataToRend= ko.observableArray();
+    self.dataToRend(self.data[0]);
+    self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
+    self.rend=ko.observable(self.rendMas[0]);
     self.buttons=ko.observableArray(['Days','Weeks','Months']);
-    self.sum_prod = ko.observable(self.data[0].sum_prod);
+    self.sumProd = ko.observable(self.data[0].sumProd());
     self.change=function(){
-        if (self.rend() === self.rend_mas[0]) {
+        if (self.rend() === self.rendMas[0]) {
             self.rend($.jqplot.LineRenderer);
         }
         else {
@@ -51,11 +51,11 @@ function View_model(items)
         }
     };
 
-    self.change_data=function(index)
-    {
-        self.this_graph(index()+1);
-        self.data_to_rend(self.data[index()]);
-        self.sum_prod(self.data[index()].sum_prod());
+    self.changeData=function(data)
+    {   var index=self.buttons().indexOf(data);
+        self.thisGraph(index+1);
+        self.dataToRend(self.data[index]);
+        self.sumProd(self.data[index].sumProd());
 
     }
 }
@@ -78,7 +78,7 @@ function button_constr(clas)
 }
 
 
-ko.bindingHandlers.render_chart={
+ko.bindingHandlers.renderChart={
     update:function(element, valueAccessor, allBindings, viewModel, bindingContext){
         var ticks=[];
         var mas_dat=[];
@@ -103,4 +103,5 @@ ko.bindingHandlers.render_chart={
         plot= $.jqplot(element.id, mas_dat,self.options);
     }
 }
+
 

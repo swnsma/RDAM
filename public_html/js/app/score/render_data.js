@@ -99,7 +99,6 @@ function render() {
 
         monthTicks[i-7]=mont(users_data[0][i].ToDT.iso.slice(5,7));
     }
-    console.log(dayProduction);
 
     changeGraph(this_graph);
 }
