@@ -70,7 +70,7 @@
 }
 .this{
     display: inline-block;
-    width: 180px;
+    width: 100%;
     height: 30px;
     background-color: rgb(99, 173, 31);
     line-height: 30px;
@@ -96,7 +96,15 @@
     margin-bottom: 0;
     margin-top:10px;
 }
+.selected_users{
+    width: 99%;
+    border: 1px solid #0B5300;
+    height: 155px;
+    margin:  0 auto;
 
+    margin-bottom: 50px;
+    overflow: hidden;
+}
 .chart-compare{
     height: 650px;
     width: 956px;
