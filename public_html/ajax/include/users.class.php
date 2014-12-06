@@ -9,8 +9,8 @@ abstract class Users extends Connection {
         parent::__construct();
     }
 
-    public function print_list() {
-        print '{ "status": "success", "data": ' . json_encode($this->result->fetchAll(PDO::FETCH_ASSOC)) . ' }';
+    public function get_data() {
+        return $this->result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     protected function check_field($fields) { //change

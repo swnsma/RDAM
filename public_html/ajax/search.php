@@ -20,7 +20,7 @@ if (isset($_GET['user_name'])) {
 
         $search = new Search();
         if ($search->select_list($fields, $user_name)) {
-            $search->print_list();
+            print '{ "status": "success", "data": ' . json_encode($search->get_data()) . ' }';
         } else {
             header('HTTP/1.0 400 Bad Request');
             print '{ "status": "error", "error_message": "try again later or or change it" }';

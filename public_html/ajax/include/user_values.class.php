@@ -11,7 +11,7 @@ class UserValues extends Users {
     public function select_data($type, $id, $to) {
         $table = 'user_' . $id;
         switch($type) {
-            case 1: //day
+            case 'day':
                 $request = <<<HERE
                     SELECT
                         DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
@@ -27,7 +27,7 @@ class UserValues extends Users {
                     LIMIT 7
 HERE;
                 break;
-            case 2: //week
+            case 'week':
                 $request = <<<HERE
                     SELECT
                         EXTRACT(WEEK FROM `toDT`) as w,
@@ -44,7 +44,7 @@ HERE;
                     LIMIT 12
 HERE;
                 break;
-            case 3: //month
+            case 'month':
                 $request = <<<HERE
                     SELECT
                         DATE_FORMAT(`toDT`, '%Y-%m') as d,
@@ -73,26 +73,8 @@ HERE;
         }
     }
 
-    public function print_data() {
-        $data = $this->result->fetchAll(PDO::FETCH_ASSOC);
-        $size = count($data)-1;
-        print '{ "status": "success", "data": ';
-        if ($size >= 0) {
-            print '[ ';
-            for($i = 0; $i < $size; ++$i) {
-                print '[ "' . $data[$i]['p'] .
-                    '", "' . $data[$i]['c'] .
-                    '", "' . $data[$i]['d'] .
-                    '" ], ';
-            }
-            print '[ "' . $data[$size]['p'] .
-                '", "' . $data[$size]['c'] .
-                '", "' . $data[$i]['d'] .
-                '" ] ]';
-        } else {
-            print '[ ]';
-        }
-        print ' }';
+    public function get_data() {
+        return $this->result->fetchAll(PDO::FETCH_NUM);
     }
 
     function __destruct() {

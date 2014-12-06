@@ -9,9 +9,8 @@
 
 <script type="text/javascript">
     function exampleValues(d) {
-        alert(1);
         $.ajax({
-            url: 'http://rdam.zz.mu/ajax/user_values.php?id=' + d.text +'&todt=' + d.date +'&type=1',
+            url: 'http://rdam.zz.mu/ajax/user_values.php?id=' + d.text +'&todt=' + d.date +'&type=day',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
@@ -37,7 +36,6 @@ date<input type="text" id="svalue4" value="last" />
 
 <script type="text/javascript">
     function exampleInfo(d) {
-        alert(1);
         $.ajax({
             url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + d.text  + '&fields=' + d.fields,
             type: 'GET',
