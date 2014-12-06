@@ -9,6 +9,7 @@ var api = {
                 request.setRequestHeader('X-Parse-REST-API-Key', 'a6npew12pgZaQJSTeCtPru3cVGS9VmZzG1op4mK8');
             },
             success: function (response) {
+                loading.disable();
                 if (response && response.results && response.results.length) {
                     successFunction(response.results);
                 }

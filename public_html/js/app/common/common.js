@@ -8,6 +8,7 @@ function getData(func) {
             request.setRequestHeader('X-Parse-REST-API-Key', 'a6npew12pgZaQJSTeCtPru3cVGS9VmZzG1op4mK8');
         },
         success: function (response) {
+            loading.disable();
             if (response && response.results && response.results.length) {
                 var allData=[];
                 for (var i = 0; i < response.results.length; i++) {
@@ -57,7 +58,6 @@ function click_change()
 }
 
 function LoadingManager() {
-
     this.enable = function() {
         $('#loading').css('display', 'block');
         $('#data').css('display', 'none');
@@ -67,23 +67,13 @@ function LoadingManager() {
         $('#loading').css('display', 'none');
         $('#data').css('display', 'block');
     };
+}
 
-    var self = this;
-
-    function ajaxSetting() {
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                self.enable();
-            },
-            complete: function(xhr, settings) {
-                self.disable();
-            }
-        });
+function CurrentUser() {
+    var current_id = 1;
+    this.getCurrentUserId = function() {
+        return current_id;
     }
-
-    (function() {
-        ajaxSetting();
-    })();
 }
 
 function includeJs(jsFilePath) {
