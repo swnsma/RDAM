@@ -6,11 +6,11 @@ $(document).ready(function() {
 
 function appView(items)
 {
-    var view_m=new View_model(process_data(items));
-    ko.applyBindings(view_m);
-    button_constr(".time1");
+    var viewM=new View_model(processData(items));
+    ko.applyBindings(viewM);
+    buttonConstr(".time1");
 }
-function button_constr(clas)
+function buttonConstr(clas)
 {
     $(clas)
         .click(function () {
@@ -26,7 +26,7 @@ function button_constr(clas)
         .first()
         .addClass("is_active");
 }
-function process_data(item){
+function processData(item){
 
     allData = item;
     //console.log(allData);

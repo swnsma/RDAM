@@ -1,10 +1,9 @@
 .chart{
-    height: 630px;
+    height: 450px;
     width: 956px;
     margin:0 auto;
     /*border-radius: 10px;*/
     border: 1px solid #bbb;
-    border-top: none;
     background-color:#eee;
     margin-bottom: 15px;
 }
@@ -20,7 +19,7 @@
 }
 
 
-.change_view {
+.change-view {
     color: #000;
     background-color: rgb(244, 239, 212);
     border: none;
@@ -28,10 +27,11 @@
     width: 100px;
     cursor: pointer;
 }
-.change_view:hover {
+.change-view:hover {
     background-color: rgb(159, 233, 81);
 }
-.change_view:active {
+.change-view:active {
     background-color: #0B5300;
     text-shadow: -1px 1px #193047;
 }
+

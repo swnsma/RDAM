@@ -3,9 +3,9 @@
 <head>
     <link rel="icon" href="img/favicon.ico">
     <title>Production</title>
-    <link rel="stylesheet" href="style/production.css" type="text/css"/>
     <link rel="stylesheet" href="style/common.css" type="text/css"/>
     <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
+    <link rel="stylesheet" href="style/production.css" type="text/css"/>
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
@@ -35,31 +35,41 @@
         <img src="img/loading.gif" alt="loading" />
     </div>
     <div id="data">
+
         <div class="chart"><h2>Production</h2>
-            <div class="graphContainer">
-                <button class="change_view change_view_homepage" data-bind="click:change,change_view">Line/Bar</button>
-                <div id="chartDiv" data-bind="render_chart: data_to_rend"> </div>
+            <div class="graph-container">
+                <button class="change-view change-view-homepage" data-bind="click:change">Line/Bar</button>
+                <div id="chartDiv" data-bind="renderChart: dataToRend"> </div>
                 <div class="button-center" data-bind="foreach: buttons">
-                    <div data-bind="click:$root.change_data($index),text:$data" class="time1"></div>
+                    <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
                 </div>
             </div>
         </div><!--end chart-->
-        <div class="wrap">
-            <div class="emission">
-                <h2>Avoided CO<sub>2</sub> Emission</h2>
-                <div id="co2Info"><img src="img/fact1.png" class="factory"/></div>
-                <p class="emm_res" id="co2" data-bind="sum_c: sum_prod"></p>
-            </div>
-            <div class="saved_trees">
-                <h2>Saved Trees</h2>
-                <div id="treeInfo"><img src="img/tree2.png" class="factory"/></div>
-                <p class="emm_res" id="trees" data-bind="sum_t: sum_prod"></p>
-            </div>
-            <span class="fb">You can tell this to your friends on Facebook!
-            </span><a name="fb_share" type="button"
-                ></a>
 
+    </div>
+    <div class="wrap">
+<h2>Produced energy for the current period it's...</h2>
+        <div class="calculate-n">
+            <p class="emm-res" id="trees"  data-bind="sumT: sumProd"></p>
+            <div id="treeInfo"><img src="img/tree2.png" class="factory"/></div>
+            <div class="description">...so much trees was saved</div>
+            <div class="or">or</div>
         </div>
+        <div class="calculate-n">
+            <p class="emm-res" id="co2"  data-bind="sumC: sumProd"></p>
+            <div id="co2Info"><img src="img/fact1.png" class="factory"/></div>
+            <div class="description">...so much CO<sub>2</sub> was avoided</div>
+            <div class="or">or</div>
+        </div>
+        <div class="calculate-n">
+            <p class="emm-res" id="vac" data-bind="sumV: sumProd"></p>
+            <div id="vacHours"><img src="http://icons.iconarchive.com/icons/icons8/ios7/256/Household-Vacuum-Cleaner-icon.png" class="factory"/></div>
+            <div class="description">...so much hours your vacuum cleaner can work</div>
+        </div>
+    </div>
+    <div class="fb">
+                <span>You can tell this to your friends on Facebook!
+                </span><a name="fb_share" type="button" ></a>
     </div>
 </div><!--end main-content-->
 <footer>

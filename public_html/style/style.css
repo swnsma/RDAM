@@ -1,6 +1,6 @@
-.graphContainer
+.graph-container
 {
-    height:450px;
+    height:350px;
     /*width:830px;*/
     width: 100%;
     font-size: 1.2em;
@@ -11,15 +11,12 @@
 
 #chartDiv
 {
-    height:530px;
+    height:350px;
     width:100%;
     margin: auto ;
     font-size: 1.1em;
     top:30px;
     margin-bottom: 30px;
-}
-.time:first-child{
-    margin-left: 2%;
 }
 
 .time1
@@ -49,11 +46,12 @@ table.jqplot-table-legend
     font-size:0.9em;
 }
 
-.change_view{
+.change-view{
     position: absolute;
     right:30px;
+    z-index: 1000;
 }
-.change_view_homepage{
+.change-view-homepage{
     top:-34px;
 }
 .jqplot-yaxis-label
