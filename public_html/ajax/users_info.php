@@ -35,9 +35,10 @@ if (isset($_GET['from_id'])) {
 $users_info = new UsersInfo();
 
 if ($users_info->select_list($fields, $from_id)) {
-    $users_info->print_list();
+    print '{ "status": "success", "data": ' . json_encode($users_info->get_data()) . ' }';
 } else {
     header('HTTP/1.0 400 Bad Request');
+    print '{ "status": "error", "error_message": "try again later or or change it" }';
 }
 
 $users_info = null;

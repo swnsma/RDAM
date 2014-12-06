@@ -13,7 +13,7 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
     $id = $_GET['id'];
     $to = $_GET['todt'];
 
-    if (ctype_digit($type) && ctype_digit($id)) {
+    if (ctype_digit($id)) {
 
         date_default_timezone_set('Europe/London');
 
@@ -22,32 +22,27 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
         } else {
             if (!valid_date($to)) {
                 header('HTTP/1.0 400 Bad Request');
+                print '{ "status": "error", "error_message": "invalid values" }';
                 exit();
             }
         }
 
-        $type = (int)$type;
         $id = (int)$id;
-
-        /*
-        * type:
-        *  1 - day
-        *  2 - week
-        *  3 - month
-        */
 
         $user = new UserValues();
         if($user->select_data($type, $id, $to)) {
-            $user->print_data();
+            print '{ "status": "success", "id": ' . $id . ', "type": "' . $type . '", "data": ' . json_encode($user->get_data()) . ' }';
         } else {
             header('HTTP/1.0 400 Bad Request');
+            print '{ "status": "error", "error_message": "try again later or or change it" }';
         }
         $user = null;
     } else {
-        header('HTTP/1.0 400 Bad Request');
+        print '{ "status": "error", "error_message": "invalid values" }';
     }
 } else {
     header('HTTP/1.0 400 Bad Request');
+    print '{ "status": "error", "error_message": "parameters are missing" }';
 }
 
 function valid_date($date) {

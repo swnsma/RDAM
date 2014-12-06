@@ -9,8 +9,8 @@ abstract class Users extends Connection {
         parent::__construct();
     }
 
-    public function print_list() {
-		print json_encode($this->result->fetchAll(PDO::FETCH_ASSOC));
+    public function get_data() {
+        return $this->result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     protected function check_field($fields) { //change
@@ -22,13 +22,9 @@ abstract class Users extends Connection {
         return true;
     }
 
-    protected function check_user_exists($id) { //change
-        $request = $this->db->prepare('SELECT `id` FROM `users` WHERE `id` = :id');
-        $request->bindParam(':id', $id);
-        $result = $request->execute();
-        if ($result && $request->rowCount() > 0)
-            return true;
-        return false;
+    protected function check_user_exists($id) {
+        $request = $this->db->prepare('SHOW TABLES LIKE \'user_' . $id . '\'');
+        return $request->execute() && $request->rowCount() > 0;
     }
 
 
