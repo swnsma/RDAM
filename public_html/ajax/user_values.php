@@ -29,8 +29,14 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
 
         $id = (int)$id;
 
+        if (isset($_GET['field'])) {
+            $field = $_GET['field'];
+        } else {
+            $field = null;
+        }
+
         $user = new UserValues();
-        if($user->select_data($type, $id, $to)) {
+        if($user->select_data($type, $id, $to, $field)) {
             print '{ "status": "success", "id": ' . $id . ', "type": "' . $type . '", "data": ' . json_encode($user->get_data()) . ' }';
         } else {
             header('HTTP/1.0 400 Bad Request');
