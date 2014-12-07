@@ -82,7 +82,6 @@ HERE;
         }
         if ($this->check_user_exists($id)) {
             $this->result = $this->db->prepare($request);
-            $to = '2012-11-27 03:59';
             $this->result->bindParam(':todt', $to);
             return $this->result->execute();
         } else {
