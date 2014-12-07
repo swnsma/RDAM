@@ -8,7 +8,7 @@ class UsersInfo extends Users {
         parent::__construct();
     }
 
-    public function select_list($fields = null, $form_id = 0) {
+    public function select_list($fields = null, $form_id = 0, $limit = 10) {
         if ($fields == null) {
             $column = '';
         } else {
@@ -18,9 +18,9 @@ class UsersInfo extends Users {
                 return false;
             }
         }
-        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` >= :id LIMIT 10');
-        //$this->result->bindParam(':column', $column);
+        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` >= :id LIMIT :limit');
         $this->result->bindParam(':id', $form_id);
+        $this->result->bindParam(':limit', $limit);
         return $this->result->execute();
     }
 

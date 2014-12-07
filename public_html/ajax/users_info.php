@@ -32,9 +32,17 @@ if (isset($_GET['from_id'])) {
     }
 }
 
+$limit = 10;
+if (isset($_GET['limit'])) {
+    $fl = $_GET['limit'];
+    if (ctype_digit($fl) && $fl > 0 && $fl <=10) {
+        $limit = (int)$fl;
+    }
+}
+
 $users_info = new UsersInfo();
 
-if ($users_info->select_list($fields, $from_id)) {
+if ($users_info->select_list($fields, $from_id, $limit)) {
     print '{ "status": "success", "data": ' . json_encode($users_info->get_data()) . ' }';
 } else {
     header('HTTP/1.0 400 Bad Request');
