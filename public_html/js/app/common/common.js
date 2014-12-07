@@ -182,7 +182,7 @@ function CurrentUser() {
     this.selectCurrentUser = function(func) {
         var id = getUserDefined();
         if (id == null) {
-            id = prompt('What is the current user id?', 1);
+            id = 1; //prompt('What is the current user id?', 1);
 
             getInfoByUser(id, function(response) {
                 window.location.hash = id;
