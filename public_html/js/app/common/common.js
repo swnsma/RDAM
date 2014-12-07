@@ -80,7 +80,7 @@ function LoadingManager() {
 
 function UserInfo(id, name, city, rating) {
     this.id = id;
-    this.name = name;
+    this.user = name;
     this.city = city;
     this.rating = rating;
 }
@@ -137,7 +137,7 @@ function CurrentUser() {
     };
 
     this.getName = function() {
-        return info.name;
+        return info.user;
     };
 
     this.getCity = function() {

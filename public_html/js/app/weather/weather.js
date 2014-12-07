@@ -142,6 +142,7 @@ function WeatherModel() {
 
 function Weather() {
     ko.applyBindings(new WeatherModel(), document.getElementById('weather-list'));
+    alert(current_user.getName());
 }
 
 manager.add(Weather);
