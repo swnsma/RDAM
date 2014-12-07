@@ -52,12 +52,20 @@
                             <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
                             <div class="list">
                                 <div class="selected_users">
-                                    <span class="this">this</span>
-                                    <ul data-bind="foreach: return_active_search(),active_us: return_active_user()">
+                                    <ul data-bind="foreach: return_active_user_higher_current(),active_us: return_active_user()">
+                                        <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
+                                            <label >
+                                                <input data-bind="id:name ,value:name, checked: $root.return_checked()" type="checkbox"/>
+                                                <span data-bind="text:name() "></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <span data-bind="text:current_user().name" class="this">this</span>
+                                    <ul data-bind="foreach: return_active_user_lower_current(),active_us: return_active_user()">
                                         <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
                                             <label >
                                                 <input data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
-                                                <span data-bind="text:name "></span>
+                                                <span data-bind="text:name()"></span>
                                             </label>
                                         </li>
                                     </ul>
@@ -103,7 +111,6 @@
 
 <script src="js/app/common/common.js"></script>
 <script type='text/javascript' src='js/app/score/getUsers.js'></script>
-<script type='text/javascript' src='js/app/score/Users.js'></script>
 <script type='text/javascript' src='js/app/score/render_data.js'></script>
 <script type='text/javascript' src='js/app/score/view_model.js'></script>
 <script type='text/javascript' src='js/app/score/ColorMas.js'></script>

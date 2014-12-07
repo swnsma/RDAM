@@ -74,7 +74,7 @@
     height: 30px;
     background-color: rgb(99, 173, 31);
     line-height: 30px;
-    padding-left: 10px;
+    padding-left: 35px;
     border-bottom: 1px solid  rgb(99, 173, 31);
 }
 
@@ -99,7 +99,7 @@
 .selected_users{
     width: 99%;
     border: 1px solid #0B5300;
-    height: 155px;
+    min-height: 155px;
     margin:  0 auto;
     margin-bottom: 20px;
     overflow: hidden;

@@ -5,6 +5,20 @@
  * Created by Таня on 20.11.2014.
  */
 
+function compareRating(userA, userB) {
+    return userB.rating - userA.rating;
+}
+
+function Users(name,id,active,color,rating){
+    this.name=ko.observable(name);
+    this.id=ko.observable(id);
+    this.active=ko.observable(active);
+    this.name_table='user_'+id;
+    this.color=color;
+    this.rating=rating;
+}
+
+
 ko.bindingHandlers.message={
     update: function(element, valueAccessor){
         $(element).css({
@@ -24,10 +38,13 @@ function AppViewModel() {
     self.search=ko.observable(false);
     self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
+
+    self.current_user=ko.observable(new Users(current_user.getName(),current_user.getId(),null,'#0f0'
+        ,current_user.getRating()));
     getUsers(self);
 
     self.return_active_user = ko.computed(function(){
-
+//    debugger;
         var result = [];
         for(var i=0;(i<(self.arrayUsers().length));++i){
 
@@ -36,6 +53,35 @@ function AppViewModel() {
             }
         }
         /*console.log(result);*/
+        return result;
+    });
+    self.return_active_user_lower_current = ko.computed(function(){
+
+        var result = [];
+        for(var i=0;(i<(self.return_active_user().length));++i){
+
+//            debugger;
+            if(self.return_active_user()[i].rating<=self.current_user().rating){
+                result.push(self.return_active_user()[i]);
+            }
+        }
+        /*console.log(result);*/
+
+        result.sort(compareRating);
+        return result;
+    });
+    self.return_active_user_higher_current = ko.computed(function(){
+
+        var result = [];
+        for(var i=0;(i<(self.return_active_user().length));++i){
+
+//            debugger;
+            if(self.return_active_user()[i].rating>self.current_user().rating){
+                result.push(self.return_active_user()[i]);
+            }
+        }
+        /*console.log(result);*/
+        result.sort(compareRating);
         return result;
     });
     self.set_active = function(seat){
@@ -115,7 +161,7 @@ function Score() {
     button_constr($dayButton, $bt, 1,'Days');
     button_constr($weekButton, $bt, 2,'Weeks');
     button_constr($monthButton, $bt, 3,'Months');
-    $('.change_view').click(clickChange);
+//    $('.change_view').click(clickChange);
 }
 
 manager.add(Score);
