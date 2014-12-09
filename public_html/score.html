@@ -42,7 +42,7 @@
                 <button class="change_view change-view-score" data-bind="show_change">Line/Bar</button>
                 <div class="score-wrapper">
                     <div class="compare-float-center">
-                        <div class="graph-container">
+                        <div class="graph-container graphContainer">
                             <div id="chartDiv" class="compare-graph"> </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <form action="">
 
                             <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
-                            <div class="list">
+                            <div id="list" data-bind="add_data: {data_user: data_user, active_user: return_active_user()}" class="list">
                                 <div class="selected_users">
                                     <ul data-bind="foreach: return_active_user_higher_current(),active_us: return_active_user()">
                                         <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
@@ -62,7 +62,7 @@
                                     </ul>
                                     <span data-bind="text:current_user().name" class="this">this</span>
                                     <ul data-bind="foreach: return_active_user_lower_current(),active_us: return_active_user()">
-                                        <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
+                                        <li data-bind=" style:{backgroundColor: color }, click: $root.set_active">
                                             <label >
                                                 <input data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
                                                 <span data-bind="text:name()"></span>

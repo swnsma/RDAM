@@ -111,20 +111,20 @@ function ScriptManager() {
     this.init = function() {
         $(document).ready(function() {
             var c = classes;
-            try {
+//            try {
                 first_func(function() {
                     for(var i in c) {
                         new c[i];
                     }
                     last_func();
                 });
-            } catch(e) {
-                console.log('ERROR: ' + e.message);
-            } finally {
-                classes = [];
-                first_func = function(func) { func(); };
-                last_func = function() {};
-            }
+//            } catch(e) {
+//                console.log('ERROR: ' + e.message);
+//            } finally {
+//                classes = [];
+//                first_func = function(func) { func(); };
+//                last_func = function() {};
+//            }
         });
     };
 }

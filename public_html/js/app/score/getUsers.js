@@ -37,33 +37,47 @@ function analyze(response,self){
         self.arrayUsers(mappedTasks);
     }
 }
-
-function get_first() {
+function get_date_user(id,type,mas) {
     var options = {
-        url: 'https://api.parse.com/1/classes/date/',
+        url:'http://rdam.zz.mu/ajax/user_values.php?id=' + id +'&todt=' + 'last' +'&type='+type,
         type: 'GET',
         contentType: 'application/json',
-        beforeSend: function (request) {
-            request.setRequestHeader('X-Parse-Application-Id', 'dEruvPYiXg1FAzhn4u47ZP8Yjd7B2Ss6Gqjqi7h3');
-            request.setRequestHeader('X-Parse-REST-API-Key', 'a6npew12pgZaQJSTeCtPru3cVGS9VmZzG1op4mK8');
+        beforeSend: function(response){
+            $('#list').css({
+                'display':'none'
+            });
         },
         success: function (response) {
-            if (response && response.results && response.results.length) {
-                var mappedTasks = [];
-                for (var i = 0; i < response.results.length; i++) {
-                    var a = response.results[i];
-                    mappedTasks.push(a);
-                }
-                //debugger;
-               users_data[0]=mappedTasks;
-               render();
-                /* console.log(mappedTasks);*/
-            }
+            $('#list').css({
+                'display':'block'
+            });
+            console.log(type)
+            add_user(id,mas,response.data);
         },
-
         error: function () {
-
+            alert('ОшибкаЗапроса');
         }
     };
     $.ajax(options);
 };
+function Users_date(id,data){
+    this.id=id;
+    this.data=data;
+}
+function Date_user(time,production,consumption){
+    this.time=time;
+    this.consumption=consumption;
+    this.production=production;
+};
+function add_user(id,mas,response){
+    var mas_date=[];
+
+    for(var i=0;i<response.length;++i){
+        mas_date.push(new Date_user(response[i][0],response[i][1],response[i][2]));
+    }
+
+    mas.push(new Users_date(id,mas_date));
+    console.log('response=');
+    console.log(mas);
+};
+
