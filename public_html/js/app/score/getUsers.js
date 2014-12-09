@@ -25,8 +25,6 @@ function analyze(response,self){
         var mappedTasks = [];
         for (var i = 0; i < response.data.length; i++){
             if(response.data[i].id!=self.current_user().id()) {
-//                debugger;
-//                debugger;
                 var a = response.data[i];
                 var j = i % masColor.length;
                 var b = new Users(a.user, a.id, false, masColor[j],a.rating);
@@ -55,16 +53,13 @@ function get_date_user(id,type,mas,allmas,self) {
             add_user(id,mas,response.data);
             //////////////////////////////////
             //////////////////////////function
-                debugger;
                 var masTik=[];
                 var masDat=[];
                 var array=[];
-                debugger;
                 if(allmas[0]().length!=0) {
                     for(var j=0;j<allmas[0]()[0].data.length;++j){
                         masTik.push(allmas[0]()[0].data[j].time);
                     }
-//                debugger;
 
                     for(var j=0;j<allmas[0]().length;++j ){
                         array=[];
@@ -73,7 +68,6 @@ function get_date_user(id,type,mas,allmas,self) {
                         }
                         masDat.push(array);
                     }
-                    debugger;
                     changeGraph(masTik, masDat, self.title(),self.rend(),self.colors);
                 }
 

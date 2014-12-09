@@ -52,7 +52,6 @@ ko.bindingHandlers.add_data={
         var value_data_user=valueAccessor().data_user;
         var a = viewModel.thisGraph();
         var rend=viewModel.rend();
-//        debugger;
         if(value_active_user.length>=value_data_user()[1]().length) {
             for (var i = 0; i < value_active_user.length; ++i) {
                 for (var j = 0; j < value_data_user()[1]().length; ++j) {
@@ -65,20 +64,18 @@ ko.bindingHandlers.add_data={
                         get_date_user(value_active_user[i].id(), 'day', value.data_user()[0](),value_data_user(),viewModel);
                         get_date_user(value_active_user[i].id(), 'week', value.data_user()[1](),value_data_user(),viewModel);
                         get_date_user(value_active_user[i].id(), 'month', value.data_user()[2](),value_data_user(),viewModel);
-//                        debugger;
+
                         j =value_data_user()[1]().length;
                         i = value_active_user.length;
                     }
                 }
             }
         }else{
-//            debugger;
             for (var j = 0; j < value_data_user()[1]().length; ++j){
                 if(value_active_user.length===0){
                     value_data_user()[0]().splice(1,1);
                     value_data_user()[1]().splice(1,1);
                     value_data_user()[2]().splice(1,1);
-//                    debugger;
                     break;
                 }
                 for (var i = 0; i < value_active_user.length; ++i){
@@ -89,13 +86,11 @@ ko.bindingHandlers.add_data={
                     if(value_data_user()[1]()[j].id!=current_user.getId()
                         &&value_active_user[i].id!= value_data_user()[1]()[j].id
                         &&i===value_active_user.length-1){
-//                        debugger;
                         value_data_user()[0]().splice(j,1);
                         value_data_user()[1]().splice(j,1);
                         value_data_user()[2]().splice(j,1);
                         j =value_data_user()[1]().length;
                         i = value_active_user.length;
-//                        debugger;
                     }
                 }
             }
@@ -105,13 +100,11 @@ ko.bindingHandlers.add_data={
             var masTik=[];
             var masDat=[];
             var array=[];
-//            debugger;
 
             if(value_data_user()[a]().length!=0) {
                 for(var j=0;j<value_data_user()[a]()[0].data.length;++j){
                     masTik.push(value_data_user()[a]()[0].data[j].time);
                 }
-//                debugger;
 
                 for(var j=0;j<value_data_user()[a]().length;++j ){
                     array=[];
@@ -120,8 +113,6 @@ ko.bindingHandlers.add_data={
                     }
                     masDat.push(array);
                 }
-//                debugger;
-                debugger;
                 changeGraph(masTik, masDat, viewModel.title(),rend,viewModel.colors);
             }
             //////////////////////////////////////
@@ -148,7 +139,6 @@ function AppViewModel() {
     self.colors.push("#63AD1F");
     getUsers(self);
     self.return_active_user = ko.computed(function(){
-//    debugger;
         var result = [];
         self.colors=[];
         self.colors.push("#63AD1F");
@@ -165,8 +155,6 @@ function AppViewModel() {
 
         var result = [];
         for(var i=0;(i<(self.return_active_user().length));++i){
-
-//            debugger;
             if(self.return_active_user()[i].rating<=self.current_user().rating){
                 result.push(self.return_active_user()[i]);
             }
@@ -179,8 +167,6 @@ function AppViewModel() {
 
         var result = [];
         for(var i=0;(i<(self.return_active_user().length));++i){
-
-//            debugger;
             if(self.return_active_user()[i].rating>self.current_user().rating){
                 result.push(self.return_active_user()[i]);
             }
@@ -193,7 +179,6 @@ function AppViewModel() {
         if(self.return_active_user().length>3&&seat.active()===false){
         }
         else{
-//            debugger;
             seat.active(!seat.active());
             return true;
         }
@@ -244,7 +229,6 @@ function AppViewModel() {
         else {
             self.rend($.jqplot.BarRenderer);
         }
-//        debugger;
     };
 
     self.changeData=function(data)
