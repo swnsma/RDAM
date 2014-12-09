@@ -14,49 +14,22 @@ ko.bindingHandlers.battery = {
         else {
             percentage = 1;
         }
-        element.width = a;
+
+        element.width =a;
         element.height = b;
 
-        var batteryWidth = a - 200;
+        var batteryWidth =element.width;
         var batteryHeight = element.height;
 
-        ctx.fillStyle = "#8BC34A";
+        ctx.fillStyle = "#8DC53E";
         ctx.lineWidth=2;
-        ctx.strokeRect(100, 0, batteryWidth * percentage, batteryHeight);
-        ctx.fillRect(100, 1, batteryWidth * percentage, batteryHeight-2);
+        ctx.fillRect(0, 0, batteryWidth * percentage, batteryHeight);
 
-        ctx.fillStyle = "#FF8A65 ";
-        ctx.strokeRect(batteryWidth * percentage+100, 0, batteryWidth - batteryWidth * percentage, batteryHeight);
-        ctx.fillRect(batteryWidth * percentage+100, 1, batteryWidth - batteryWidth * percentage, batteryHeight-2);
+        ctx.fillStyle = "#F44336";
 
-
-        ctx.beginPath();
-        ctx.arc(101,batteryHeight/2,batteryHeight/2-1,0.5*Math.PI,Math.PI*1.5);
-        ctx.stroke();
-        ctx.fillStyle = "#8BC34A";
-        ctx.fill();
-
-
-        ctx.beginPath();
-        ctx.arc(batteryWidth*percentage+101,batteryHeight/2,batteryHeight/2-1,0.5*Math.PI,Math.PI*1.5);
-        ctx.stroke();
-        ctx.fillStyle = "#FF8A65";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(batteryWidth+100,batteryHeight/2,batteryHeight/2-1,0,Math.PI*2);
-        ctx.stroke();
-        ctx.fillStyle = "#F4EFD4";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(batteryWidth+100,batteryHeight/2,20,0,Math.PI*2);
-        ctx.stroke();
-        ctx.fillStyle = "black";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(batteryWidth+93,batteryHeight/2,20,0,Math.PI*2);
-        ctx.stroke();
+        ctx.fillRect(batteryWidth * percentage, 0, batteryWidth - batteryWidth * percentage, batteryHeight);
+        ctx.font = "bold 25px sans-serif";
+        ctx.fillStyle='black';
+        ctx.fillText(value.date2+' consumption '+consumption+' kWatts',70,100)
     }
 };

@@ -58,7 +58,7 @@ HERE;
                     GROUP BY
                         EXTRACT(WEEK FROM `toDT`)
                     ORDER BY d DESC
-                    LIMIT 12
+                    LIMIT 4
 HERE;
                 break;
             case 'month':
@@ -73,7 +73,7 @@ HERE;
                     GROUP BY
                         d
                     ORDER BY d DESC
-                    LIMIT 10
+                    LIMIT 12
 HERE;
                 break;
             default:

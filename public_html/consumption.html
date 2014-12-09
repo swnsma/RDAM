@@ -36,15 +36,20 @@
         <div class="data">
             <div class="batteryContainer">
                 <!-- ko foreach: batteries -->
-                <div class="prodDiv label"> <span data-bind='text: date2+ " production"'></span>
-                <span data-bind="text: production+ ' kWatts'"></span>
-                </div>
 
-                <div class="takenDiv label"> <span data-bind='text: date2+ " taken from grid"'></span>
-                    <span data-bind="text: takenFrom+ ' kWatts'"></span>
-                </div>
-                    <canvas class="battery" data-bind="battery: { consumption: consumption, production: production}"></canvas>
+                <div class="battery-rend">
 
+                    <div class="production label">
+                        <img src="img/34736.png"><span data-bind="text:production+' kWatts'"></span>
+                    </div>
+                    <div class="taken-from label">
+                        <span data-bind="text:takenFrom+' kWatts'"></span>  <img src="img/plug.png">
+                    </div>
+
+                    <canvas class="battery"
+                            data-bind="battery: { consumption: consumption, production: production, date2: date2}"></canvas><!--
+                    --><div class="electrode"></div>
+                </div>
                 <!-- /ko -->
             </div>
         </div>
