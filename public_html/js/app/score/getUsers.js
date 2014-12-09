@@ -37,7 +37,7 @@ function analyze(response,self){
         self.arrayUsers(mappedTasks);
     }
 }
-function get_date_user(id,type,mas,allmas,rend) {
+function get_date_user(id,type,mas,allmas,self) {
     var options = {
         url:'http://rdam.zz.mu/ajax/user_values.php?id=' + id +'&todt=' + 'last' +'&type='+type,
         type: 'GET',
@@ -69,12 +69,12 @@ function get_date_user(id,type,mas,allmas,rend) {
                     for(var j=0;j<allmas[0]().length;++j ){
                         array=[];
                         for(var i=0;i<allmas[0]()[j].data.length;++i){
-                            array.push(+allmas[0]()[j].data[i].consumption);
+                            array.push(+allmas[0]()[j].data[i][self.consProd()]);
                         }
                         masDat.push(array);
                     }
                     debugger;
-                    changeGraph(masTik, masDat, 'asd',rend);
+                    changeGraph(masTik, masDat, self.title(),self.rend(),self.colors());
                 }
 
             ////////////////////////////////////////////////

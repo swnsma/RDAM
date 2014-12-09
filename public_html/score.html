@@ -5,8 +5,8 @@
     <link rel="icon" href="img/favicon.ico">
     <title>Compare</title>
     <link rel="stylesheet" href="style/common.css" type="text/css"/>
-    <link rel="stylesheet" href="style/compare.css" type="text/css"/>
     <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
+    <link rel="stylesheet" href="style/compare.css" type="text/css"/>
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
@@ -39,7 +39,8 @@
             <div id="data">
                 <div class="chart-compare position-relative">
                 <h2>Compare</h2>
-                <button class="change-view change-view-score" data-bind="click:change">Line/Bar</button>
+                <button class="change-view change-view-score" data-bind="click:change,visible:$root.thisGraph()!=2">Line/Bar</button>
+                <button class=" change-data-score" data-bind="click:changeConsProd">Cons/Prod</button>
                 <div class="score-wrapper">
                     <div class="compare-float-center">
                         <div class="graph-container">
