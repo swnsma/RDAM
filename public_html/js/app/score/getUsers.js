@@ -37,7 +37,7 @@ function analyze(response,self){
         self.arrayUsers(mappedTasks);
     }
 }
-function get_date_user(id,type,mas,allmas) {
+function get_date_user(id,type,mas,allmas,rend) {
     var options = {
         url:'http://rdam.zz.mu/ajax/user_values.php?id=' + id +'&todt=' + 'last' +'&type='+type,
         type: 'GET',
@@ -74,7 +74,7 @@ function get_date_user(id,type,mas,allmas) {
                         masDat.push(array);
                     }
                     debugger;
-                    changeGraph(masTik, masDat, 'asd');
+                    changeGraph(masTik, masDat, 'asd',rend);
                 }
 
             ////////////////////////////////////////////////

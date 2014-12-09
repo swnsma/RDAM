@@ -35,21 +35,25 @@ ko.bindingHandlers.message={
     }
 }
 ko.bindingHandlers.add_data={
-    init:function(element, valueAccessor){
+    init:function(element, valueAccessor, allBindings, viewModel){
         var value=valueAccessor();
         var value_data_user=valueAccessor().data_user;
         console.log(value.data_user()[1]());
-        get_date_user(current_user.getId(),'day',value.data_user()[0](),value_data_user());
-        get_date_user(current_user.getId(),'week',value.data_user()[1](),value_data_user());
-        get_date_user(current_user.getId(),'month',value.data_user()[2](),value_data_user());
+        var rend = viewModel.rend();
+        get_date_user(current_user.getId(),'day',value.data_user()[0](),value_data_user(),rend);
+        get_date_user(current_user.getId(),'week',value.data_user()[1](),value_data_user(),rend);
+        get_date_user(current_user.getId(),'month',value.data_user()[2](),value_data_user(),rend);
 
 
     },
-    update: function(element, valueAccessor){
-        debugger;
+    update: function(element, valueAccessor, allBindings, viewModel){
+
         var value=valueAccessor();
         var value_active_user=valueAccessor().active_user;
         var value_data_user=valueAccessor().data_user;
+        var a = viewModel.thisGraph();
+        var rend=viewModel.rend();
+        debugger;
         if(value_active_user.length>=value_data_user()[1]().length) {
             for (var i = 0; i < value_active_user.length; ++i) {
                 for (var j = 0; j < value_data_user()[1]().length; ++j) {
@@ -59,9 +63,9 @@ ko.bindingHandlers.add_data={
                     }
                     else if (value_active_user[i].id != value_data_user()[1]()[j].id && j === value_data_user()[1]().length - 1) {
 
-                        get_date_user(value_active_user[i].id(), 'day', value.data_user()[0](),value_data_user());
-                        get_date_user(value_active_user[i].id(), 'week', value.data_user()[1](),value_data_user());
-                        get_date_user(value_active_user[i].id(), 'month', value.data_user()[2](),value_data_user());
+                        get_date_user(value_active_user[i].id(), 'day', value.data_user()[0](),value_data_user(),rend);
+                        get_date_user(value_active_user[i].id(), 'week', value.data_user()[1](),value_data_user(),rend);
+                        get_date_user(value_active_user[i].id(), 'month', value.data_user()[2](),value_data_user(),rend);
                         debugger;
                         j =value_data_user()[1]().length;
                         i = value_active_user.length;
@@ -103,21 +107,22 @@ ko.bindingHandlers.add_data={
             var masDat=[];
             var array=[];
             debugger;
-            if(value_data_user()[0]().length!=0) {
-                for(var j=0;j<value_data_user()[0]()[0].data.length;++j){
-                    masTik.push(value_data_user()[0]()[0].data[j].time);
+
+            if(value_data_user()[a]().length!=0) {
+                for(var j=0;j<value_data_user()[a]()[0].data.length;++j){
+                    masTik.push(value_data_user()[a]()[0].data[j].time);
                 }
 //                debugger;
 
-                for(var j=0;j<value_data_user()[0]().length;++j ){
+                for(var j=0;j<value_data_user()[a]().length;++j ){
                     array=[];
-                    for(var i=0;i<value_data_user()[0]()[j].data.length;++i){
-                        array.push(+value_data_user()[0]()[j].data[i].consumption);
+                    for(var i=0;i<value_data_user()[a]()[j].data.length;++i){
+                        array.push(+value_data_user()[a]()[j].data[i].consumption);
                     }
                     masDat.push(array);
                 }
                 debugger;
-                changeGraph(masTik, masDat, 'asd');
+                changeGraph(masTik, masDat, 'asd',rend);
             }
             //////////////////////////////////////
         }
@@ -157,6 +162,11 @@ function AppViewModel() {
 //        week:ko.observableArray([]),
 //        month:ko.observableArray([])
 //    }
+    self.thisGraph=ko.observable(0);
+
+    self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
+    self.rend=ko.observable(self.rendMas[0]);
+    self.buttons=ko.observableArray(['Days','Weeks','Months']);
     getUsers(self);
 
 
@@ -247,40 +257,30 @@ function AppViewModel() {
         }
         return result;
     })
+
+
+
+    self.change=function(){
+        if (self.rend() === self.rendMas[0]) {
+            self.rend($.jqplot.LineRenderer);
+        }
+        else {
+            self.rend($.jqplot.BarRenderer);
+        }
+    };
+
+    self.changeData=function(data)
+    {   var index=self.buttons().indexOf(data);
+        self.thisGraph(index);
+        debugger;
+    }
 }
 
-function button_constr(el,p,n,text)
-{
-    el.appendTo(p)
-        .addClass('time1')
-        .text(text)
-        .click(function () {
-            $(this).addClass("is_active");
-            $(this).siblings().removeClass("is_active");
-            this_graph=n;
-            changeGraph(n);}
-        /*}*/)
-        .mouseenter(function () {
-            $(this).addClass("on_button")
-        })
-        .mouseleave(function () {
-            $(this).removeClass("on_button")
-        });
-}
 
 // Activates knockout.js
 function Score() {
     ko.applyBindings(new AppViewModel());
-    var $target = $('.graphContainer');
-    var  $bt = $('<div>').addClass('button-center');
-    $bt.appendTo($target);
-    var $dayButton = $('<div>').addClass("is_active");
-    var $weekButton = $('<div>');
-    var $monthButton = $('<div>');
-    button_constr($dayButton, $bt, 1,'Days');
-    button_constr($weekButton, $bt, 2,'Weeks');
-    button_constr($monthButton, $bt, 3,'Months');
-//    $('.change_view').click(clickChange);
+    button_constr(".time1");
 }
 //var rend_mas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
 
