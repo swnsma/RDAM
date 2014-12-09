@@ -49,27 +49,27 @@ ko.bindingHandlers.add_data={
         var value=valueAccessor();
         var value_active_user=valueAccessor().active_user;
         var value_data_user=valueAccessor().data_user;
-        if(value_active_user.length>=value_data_user.week().length) {
+        if(value_active_user.length>=value_data_user()[1]().length) {
             for (var i = 0; i < value_active_user.length; ++i) {
-                for (var j = 0; j < value_data_user.week().length; ++j) {
-                    if (value_active_user[i].id() === value_data_user.week()[j].id) {
+                for (var j = 0; j < value_data_user()[1]().length; ++j) {
+                    if (value_active_user[i].id() === value_data_user()[1]()[j].id) {
 //                        j = value_data_user.week().length;
                         break;
                     }
-                    else if (value_active_user[i].id != value_data_user.week()[j].id && j === value_data_user.week().length - 1) {
+                    else if (value_active_user[i].id != value_data_user()[1]()[j].id && j === value_data_user()[1]().length - 1) {
 
                         get_date_user(value_active_user[i].id(), 'day', value.data_user()[0]());
                         get_date_user(value_active_user[i].id(), 'week', value.data_user()[1]());
                         get_date_user(value_active_user[i].id(), 'month', value.data_user()[2]());
                         debugger;
-                        j =value_data_user.week().length;
+                        j =value_data_user()[1]().length;
                         i = value_active_user.length;
                     }
                 }
             }
         }else{
             debugger;
-            for (var j = 0; j < value_data_user.week().length; ++j){
+            for (var j = 0; j < value_data_user()[1]().length; ++j){
                 if(value_active_user.length===0){
                     value_data_user()[0]().splice(1,1);
                     value_data_user()[1]().splice(1,1);
@@ -78,18 +78,18 @@ ko.bindingHandlers.add_data={
                     break;
                 }
                 for (var i = 0; i < value_active_user.length; ++i){
-                    if(value_active_user[i].id() === value_data_user.week()[j].id){
+                    if(value_active_user[i].id() === value_data_user()[1]()[j].id){
                         break;
                     }
                     else
-                    if(value_data_user.week()[j].id!=current_user.getId()
-                        &&value_active_user[i].id!= value_data_user.week()[j].id
+                    if(value_data_user()[1]()[j].id!=current_user.getId()
+                        &&value_active_user[i].id!= value_data_user()[1]()[j].id
                         &&i===value_active_user.length-1){
 //                        debugger;
                         value_data_user()[0]().splice(j,1);
                         value_data_user()[1]().splice(j,1);
                         value_data_user()[2]().splice(j,1);
-                        j =value_data_user.week().length;
+                        j =value_data_user()[1]().length;
                         i = value_active_user.length;
 //                        debugger;
                     }
@@ -106,10 +106,10 @@ ko.bindingHandlers.add_data={
                 }
 //                debugger;
 
-            for(var j=0;j<value_data_user.day().length;++j ){
+            for(var j=0;j<value_data_user()[0]().length;++j ){
                 array=[];
-                for(var i=0;i<value_data_user.day()[j].data.length;++i){
-                    array.push(+value_data_user.day()[j].data[i].consumption);
+                for(var i=0;i<value_data_user()[0]()[j].data.length;++i){
+                    array.push(+value_data_user()[0]()[j].data[i].consumption);
                 }
                 masDat.push(array);
             }
@@ -126,7 +126,7 @@ function AppViewModel() {
 
     self.current_user=ko.observable(new Users(current_user.getName(),current_user.getId(),null,'#0f0'
         ,current_user.getRating()));
-    self.data_user=ko.observableArray([ko.observableArray([]),ko.observableArray([]),ko.observableArray([])]);
+    self.data_user=ko.observableArray( [ko.observableArray([]),ko.observableArray([]),ko.observableArray([]) ] );
 //    self.data_user={
 //        day: ko.observableArray([]),
 //        week:ko.observableArray([]),
