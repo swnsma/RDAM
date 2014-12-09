@@ -37,10 +37,11 @@ ko.bindingHandlers.message={
 ko.bindingHandlers.add_data={
     init:function(element, valueAccessor){
         var value=valueAccessor();
+        var value_data_user=valueAccessor().data_user;
         console.log(value.data_user()[1]());
-        get_date_user(current_user.getId(),'day',value.data_user()[0]());
-        get_date_user(current_user.getId(),'week',value.data_user()[1]());
-        get_date_user(current_user.getId(),'month',value.data_user()[2]());
+        get_date_user(current_user.getId(),'day',value.data_user()[0](),value_data_user());
+        get_date_user(current_user.getId(),'week',value.data_user()[1](),value_data_user());
+        get_date_user(current_user.getId(),'month',value.data_user()[2](),value_data_user());
 
 
     },
@@ -58,9 +59,9 @@ ko.bindingHandlers.add_data={
                     }
                     else if (value_active_user[i].id != value_data_user()[1]()[j].id && j === value_data_user()[1]().length - 1) {
 
-                        get_date_user(value_active_user[i].id(), 'day', value.data_user()[0]());
-                        get_date_user(value_active_user[i].id(), 'week', value.data_user()[1]());
-                        get_date_user(value_active_user[i].id(), 'month', value.data_user()[2]());
+                        get_date_user(value_active_user[i].id(), 'day', value.data_user()[0](),value_data_user());
+                        get_date_user(value_active_user[i].id(), 'week', value.data_user()[1](),value_data_user());
+                        get_date_user(value_active_user[i].id(), 'month', value.data_user()[2](),value_data_user());
                         debugger;
                         j =value_data_user()[1]().length;
                         i = value_active_user.length;
@@ -95,27 +96,51 @@ ko.bindingHandlers.add_data={
                     }
                 }
             }
-        }
-        var masTik=[];
-        var masDat=[];
-        var array=[];
-        debugger;
-        if(value_data_user()[0]().length!=0) {
+
+
+            //////////////////////////function
+            var masTik=[];
+            var masDat=[];
+            var array=[];
+            debugger;
+            if(value_data_user()[0]().length!=0) {
                 for(var j=0;j<value_data_user()[0]()[0].data.length;++j){
                     masTik.push(value_data_user()[0]()[0].data[j].time);
                 }
 //                debugger;
 
-            for(var j=0;j<value_data_user()[0]().length;++j ){
-                array=[];
-                for(var i=0;i<value_data_user()[0]()[j].data.length;++i){
-                    array.push(+value_data_user()[0]()[j].data[i].consumption);
+                for(var j=0;j<value_data_user()[0]().length;++j ){
+                    array=[];
+                    for(var i=0;i<value_data_user()[0]()[j].data.length;++i){
+                        array.push(+value_data_user()[0]()[j].data[i].consumption);
+                    }
+                    masDat.push(array);
                 }
-                masDat.push(array);
+                debugger;
+                changeGraph(masTik, masDat, 'asd');
             }
-            debugger;
-            changeGraph(masTik, masDat, 'asd');
+            //////////////////////////////////////
         }
+//        var masTik=[];
+//        var masDat=[];
+//        var array=[];
+//        debugger;
+//        if(value_data_user()[0]().length!=0) {
+//                for(var j=0;j<value_data_user()[0]()[0].data.length;++j){
+//                    masTik.push(value_data_user()[0]()[0].data[j].time);
+//                }
+////                debugger;
+//
+//            for(var j=0;j<value_data_user()[0]().length;++j ){
+//                array=[];
+//                for(var i=0;i<value_data_user()[0]()[j].data.length;++i){
+//                    array.push(+value_data_user()[0]()[j].data[i].consumption);
+//                }
+//                masDat.push(array);
+//            }
+//            debugger;
+//            changeGraph(masTik, masDat, 'asd');
+//        }
     }
 }
 function AppViewModel() {

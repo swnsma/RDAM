@@ -37,7 +37,7 @@ function analyze(response,self){
         self.arrayUsers(mappedTasks);
     }
 }
-function get_date_user(id,type,mas) {
+function get_date_user(id,type,mas,allmas) {
     var options = {
         url:'http://rdam.zz.mu/ajax/user_values.php?id=' + id +'&todt=' + 'last' +'&type='+type,
         type: 'GET',
@@ -53,6 +53,31 @@ function get_date_user(id,type,mas) {
             });
             console.log(type)
             add_user(id,mas,response.data);
+            //////////////////////////////////
+            //////////////////////////function
+                debugger;
+                var masTik=[];
+                var masDat=[];
+                var array=[];
+                debugger;
+                if(allmas[0]().length!=0) {
+                    for(var j=0;j<allmas[0]()[0].data.length;++j){
+                        masTik.push(allmas[0]()[0].data[j].time);
+                    }
+//                debugger;
+
+                    for(var j=0;j<allmas[0]().length;++j ){
+                        array=[];
+                        for(var i=0;i<allmas[0]()[j].data.length;++i){
+                            array.push(+allmas[0]()[j].data[i].consumption);
+                        }
+                        masDat.push(array);
+                    }
+                    debugger;
+                    changeGraph(masTik, masDat, 'asd');
+                }
+
+            ////////////////////////////////////////////////
         },
         error: function () {
             alert('ОшибкаЗапроса');
