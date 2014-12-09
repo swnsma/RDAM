@@ -121,7 +121,8 @@ ko.bindingHandlers.add_data={
                     masDat.push(array);
                 }
 //                debugger;
-                changeGraph(masTik, masDat, viewModel.title(),rend);
+                debugger;
+                changeGraph(masTik, masDat, viewModel.title(),rend,viewModel.colors);
             }
             //////////////////////////////////////
         }
@@ -143,14 +144,14 @@ function AppViewModel() {
     self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
     self.rend=ko.observable(self.rendMas[0]);
     self.buttons=ko.observableArray(['Days','Weeks','Months']);
-    self.colors=ko.observableArray([]);
-    self.colors.push("#4bb2c5");
+    self.colors=[];
+    self.colors.push("#63AD1F");
     getUsers(self);
     self.return_active_user = ko.computed(function(){
 //    debugger;
         var result = [];
-        self.colors([]);
-        self.colors.push("#4bb2c5");
+        self.colors=[];
+        self.colors.push("#63AD1F");
         for(var i=0;(i<(self.arrayUsers().length));++i){
 
             if(self.arrayUsers()[i].active()===true){

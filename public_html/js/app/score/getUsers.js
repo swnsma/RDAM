@@ -74,7 +74,7 @@ function get_date_user(id,type,mas,allmas,self) {
                         masDat.push(array);
                     }
                     debugger;
-                    changeGraph(masTik, masDat, self.title(),self.rend(),self.colors());
+                    changeGraph(masTik, masDat, self.title(),self.rend(),self.colors);
                 }
 
             ////////////////////////////////////////////////
