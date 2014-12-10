@@ -5,16 +5,15 @@
     <link rel="icon" href="img/favicon.ico">
     <title>Compare</title>
     <link rel="stylesheet" href="style/common.css" type="text/css"/>
-    <link rel="stylesheet" href="style/compare2.css" type="text/css"/>
     <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
+    <link rel="stylesheet" href="style/compare.css" type="text/css"/>
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="container">
+<div class="container" id="mainContent">
     <header>
         <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
 
@@ -34,113 +33,33 @@
     </nav><!--end navigation-->
     <div class="main-content">
         <div id="loading" class="loading">
-                <img src="img/loading.gif" alt="loading" />
-            </div>
+            <img src="img/loading.gif" alt="loading" />
+        </div>
 
-            <div id="data">
-                <div class="chart-compare position-relative">
+        <div id="data">
+            <div class="chart-compare position-relative">
                 <h2>Compare</h2>
-                <button class="change_view change-view-score" data-bind="show_change">Line/Bar</button>
+                <button class="change-view change-view-score" data-bind="click:change,visible:$root.thisGraph()!=2">Line/Bar</button>
+                <button class=" change-data-score" data-bind="click:changeConsProd">Cons/Prod</button>
                 <div class="score-wrapper">
                     <div class="compare-float-center">
                         <div class="graph-container">
-                            <div id="chartDiv" class="compare-graph"> </div>
-                        </div>
-                        <div class="explanation">
-                            <h3>Statistics for July 30</h3>
-                            <div class="table">
-                                <div class="row header">
-                                    <div class="cell user">
-                                        User
-                                    </div>
-                                    <div class="cell produced">
-                                        Produced
-                                    </div>
-                                    <div class="cell consumed">
-                                        Consumed
-                                    </div>
-                                    <div class="cell achievement">
-                                        Achievement
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="cell user">
-                                        Bob Boons
-                                    </div>
-                                    <div class="cell produced">
-                                        204kW
-                                    </div>
-                                    <div class="cell consumed">
-                                        341kW
-                                    </div>
-                                    <div class="cell achievement">
-                                        Lowest consumer
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="cell user">
-                                        Yang Yeh
-                                    </div>
-                                    <div class="cell produced">
-                                        402kW
-                                    </div>
-                                    <div class="cell consumed">
-                                        948kW
-                                    </div>
-                                    <div class="cell achievement">
-                                        Best producer
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="cell user">
-                                        Eline Rozendaal
-                                    </div>
-                                    <div class="cell produced">
-                                        305kW
-                                    </div>
-                                    <div class="cell consumed">
-                                        290kW
-                                    </div>
-                                    <div class="cell achievement">
-                                        Best ratio
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="cell user">
-                                        Yang Yeh
-                                    </div>
-                                    <div class="cell produced">
-                                        402kW
-                                    </div>
-                                    <div class="cell consumed">
-                                        948kW
-                                    </div>
-                                    <div class="cell achievement">
-                                        Best producer
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="cell user">
-                                        Yang Yeh
-                                    </div>
-                                    <div class="cell produced">
-                                        402kW
-                                    </div>
-                                    <div class="cell consumed">
-                                        948kW
-                                    </div>
-                                    <div class="cell achievement">
-                                        Best producer
-                                    </div>
-                                </div>
+                            <div id="chartDiv"> </div>
+                            <div class="button-center" data-bind="foreach: buttons">
+                                <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
                             </div>
+                        </div>
+                        <div data-bind="foreach: addInfo">
+                            <div data-bind="text: consumption"></div>
+                            <div data-bind="text: production"></div>
+                            <div data-bind="text: achievement"></div>
                         </div>
                     </div>
                     <div class="compare-float-right">
                         <form action="">
 
                             <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
-                            <div class="list">
+                            <div id="list" data-bind="add_data: {data_user: data_user, active_user: return_active_user()}" class="list">
                                 <div class="selected_users">
                                     <ul data-bind="foreach: return_active_user_higher_current(),active_us: return_active_user()">
                                         <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
@@ -152,7 +71,7 @@
                                     </ul>
                                     <span data-bind="text:current_user().name" class="this">this</span>
                                     <ul data-bind="foreach: return_active_user_lower_current(),active_us: return_active_user()">
-                                        <li data-bind=" style:{backgroundColor: color }, click: $root.set_active ">
+                                        <li data-bind=" style:{backgroundColor: color }, click: $root.set_active">
                                             <label >
                                                 <input data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
                                                 <span data-bind="text:name()"></span>
@@ -184,6 +103,7 @@
 
     </footer><!--end footer-->
 </div><!--end container-->
+
 <script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
 <script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
 
@@ -200,6 +120,7 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
 
 <script src="js/app/common/common.js"></script>
+<script src="js/app/common/data_containers.js"></script>
 <script type='text/javascript' src='js/app/score/getUsers.js'></script>
 <script type='text/javascript' src='js/app/score/render_data.js'></script>
 <script type='text/javascript' src='js/app/score/view_model.js'></script>
