@@ -21,15 +21,15 @@ ko.bindingHandlers.battery = {
         var batteryWidth =element.width;
         var batteryHeight = element.height;
 
-        ctx.fillStyle = "#8DC53E";
+        ctx.fillStyle = "#4CAF50";
         ctx.lineWidth=2;
         ctx.fillRect(0, 0, batteryWidth * percentage, batteryHeight);
 
         ctx.fillStyle = "#F44336";
 
         ctx.fillRect(batteryWidth * percentage, 0, batteryWidth - batteryWidth * percentage, batteryHeight);
-        ctx.font = "bold 25px sans-serif";
+        ctx.font = "bold 28px sans-serif";
         ctx.fillStyle='black';
-        ctx.fillText(value.date2+' consumption '+consumption+' kWatts',70,100)
+        ctx.fillText(value.date2+' consumption '+consumption+' kWatts',15,100)
     }
 };
