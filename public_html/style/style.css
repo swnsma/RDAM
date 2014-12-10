@@ -47,7 +47,7 @@ table.jqplot-table-legend
 
 .change-view{
     position: absolute;
-    right:120px;
+    right:15px;
     z-index: 1000;
 }
 .change-view-homepage{
