@@ -6,7 +6,10 @@
  */
 
 
-function compareRating(userA, userB) {
+function compareRatingLess(userA, userB) {
+    return userA.rating - userB.rating;
+}
+function compareRatingMore(userA, userB) {
     return userB.rating - userA.rating;
 }
 
@@ -37,7 +40,6 @@ ko.bindingHandlers.add_data={
     init:function(element, valueAccessor, allBindings, viewModel){
         var value=valueAccessor();
         var value_data_user=valueAccessor().data_user;
-        console.log(value.data_user()[1]());
         var rend = viewModel.rend();
         get_date_user(current_user.getId(),'day',value.data_user()[0](),value_data_user(),viewModel);
         get_date_user(current_user.getId(),'week',value.data_user()[1](),value_data_user(),viewModel);
@@ -46,7 +48,6 @@ ko.bindingHandlers.add_data={
 
     },
     update: function(element, valueAccessor, allBindings, viewModel){
-
         var value=valueAccessor();
         var value_active_user=valueAccessor().active_user;
         var value_data_user=valueAccessor().data_user;
@@ -121,6 +122,7 @@ ko.bindingHandlers.add_data={
 }
 function AppViewModel() {
     var self = this;
+    self.flag=ko.observable(false);
     self.search=ko.observable(false);
     self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
@@ -130,7 +132,7 @@ function AppViewModel() {
     self.ticks=ko.observableArray([]);
     self.current_user=ko.observable(new Users(current_user.getName(),current_user.getId(),null,'#0f0'
         ,current_user.getRating()));
-    self.data_user=ko.observableArray( [ko.observableArray([]),ko.observableArray([]),ko.observableArray([]) ] );
+    self.data_user=ko.observableArray([ ko.observableArray([]),ko.observableArray([]),ko.observableArray([]) ] );
     self.thisGraph=ko.observable(0);
     self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
     self.rend=ko.observable(self.rendMas[0]);
@@ -152,27 +154,131 @@ function AppViewModel() {
         return result;
     });
     self.return_active_user_lower_current = ko.computed(function(){
-
+        function Users_rating(id,rating){
+            this.id=id;
+            this.rating=rating;
+        }
         var result = [];
-        for(var i=0;(i<(self.return_active_user().length));++i){
-            if(self.return_active_user()[i].rating<=self.current_user().rating){
-                result.push(self.return_active_user()[i]);
+
+//        if(self.consProd()==='production')
+//        self.thisGraph()
+        var s=self.return_active_user();
+        var mat =[];
+        var sum=0;
+        var comp=0;
+        var a=self.flag();
+        if(self.data_user()[self.thisGraph()]().length>0) {
+            for (var i = 0; i < self.data_user()[self.thisGraph()]().length; ++i) {
+                sum = 0;
+                for (var j = 0; j < self.data_user()[self.thisGraph()]()[i].data.length; ++j) {
+//                    debugger;
+                    if (self.consProd() === 'production') {
+                        sum += +self.data_user()[self.thisGraph()]()[i].data[j].production;
+                        break;
+                    } else {
+                        sum += +self.data_user()[self.thisGraph()]()[i].data[j].consumption;
+//                        var asd=self.data_user();
+                        break;
+                    }
+                }
+                if(i===0){
+                    comp=sum;
+                    console.log(comp);
+                }
+                else
+                if (self.consProd() === 'production'&&comp>sum) {
+                    mat.push(new Users_rating(self.data_user()[self.thisGraph()]()[i].id,sum));
+
+                }
+                else
+                if (self.consProd() === 'consumption'&&comp<=sum) {
+                    mat.push(new Users_rating(self.data_user()[self.thisGraph()]()[i].id,sum));
+
+
+                }
             }
         }
-        /*console.log(result);*/
-        result.sort(compareRating);
+       var asd=self.data_user();
+        console.log(',kf,kf,kf');
+
+        if (self.consProd() === 'production') {
+            mat.sort(compareRatingMore);
+        }
+        else{
+            mat.sort(compareRatingLess);
+        }
+        console.log(mat);
+        for(var i=0;i<mat.length;++i){
+            for(var j=0;j<self.return_active_user().length;++j){
+
+                if(mat[i].id===self.return_active_user()[j].id()){
+                    result.push(self.return_active_user()[j]);
+                }
+            }
+        }
         return result;
     });
     self.return_active_user_higher_current = ko.computed(function(){
 
+        function Users_rating(id,rating){
+            this.id=id;
+            this.rating=rating;
+        }
+        var a=self.flag();
         var result = [];
-        for(var i=0;(i<(self.return_active_user().length));++i){
-            if(self.return_active_user()[i].rating>self.current_user().rating){
-                result.push(self.return_active_user()[i]);
+//        if(self.consProd()==='production')
+//        self.thisGraph()
+        var s=self.return_active_user();
+        var mat =[];
+        var sum=0;
+        var comp=0;
+        if(self.data_user()[self.thisGraph()]().length>0) {
+            for (var i = 0; i < self.data_user()[self.thisGraph()]().length; ++i) {
+                sum = 0;
+                for (var j = 0; j < self.data_user()[self.thisGraph()]()[i].data.length; ++j) {
+                    if (self.consProd() === 'production') {
+                        sum += +self.data_user()[self.thisGraph()]()[i].data[j].production;
+                        break;
+                    } else {
+                        sum += +self.data_user()[self.thisGraph()]()[i].data[j].consumption;
+                        break;
+                    }
+                }
+                if(i===0){
+                    comp=sum;
+                    console.log(comp);
+                }
+                else
+                if (self.consProd() === 'production'&&comp<=sum) {
+                    mat.push(new Users_rating(self.data_user()[self.thisGraph()]()[i].id,sum));
+
+
+                }
+                else
+                if (self.consProd() === 'consumption'&&comp>sum) {
+                    mat.push(new Users_rating(self.data_user()[self.thisGraph()]()[i].id,sum));
+
+                }
+
             }
         }
-        /*console.log(result);*/
-        result.sort(compareRating);
+        var asd=self.data_user();
+        console.log(',kf,kf,kf');
+        if (self.consProd() === 'production') {
+            mat.sort(compareRatingMore);
+        }
+        else{
+            mat.sort(compareRatingLess);
+        }
+        console.log(mat);
+        for(var i=0;i<mat.length;++i){
+            for(var j=0;j<self.return_active_user().length;++j){
+
+                if(mat[i].id===self.return_active_user()[j].id()){
+                    result.push(self.return_active_user()[j]);
+                }
+            }
+        }
         return result;
     });
     self.set_active = function(seat){

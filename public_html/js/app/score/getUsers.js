@@ -60,7 +60,7 @@ function get_date_user(id,type,mas,allmas,self) {
                     for(var j=0;j<allmas[0]()[0].data.length;++j){
                         masTik.push(allmas[0]()[0].data[j].time);
                     }
-
+                    self.flag(!self.flag())
                     for(var j=0;j<allmas[0]().length;++j ){
                         array=[];
                         for(var i=0;i<allmas[0]()[j].data.length;++i){
@@ -68,7 +68,9 @@ function get_date_user(id,type,mas,allmas,self) {
                         }
                         masDat.push(array);
                     }
+
                     changeGraph(masTik, masDat, self.title(),self.rend(),self.colors);
+                    
                 }
 
             ////////////////////////////////////////////////
@@ -96,7 +98,5 @@ function add_user(id,mas,response){
     }
 
     mas.push(new Users_date(id,mas_date));
-    console.log('response=');
-    console.log(mas);
 };
 
