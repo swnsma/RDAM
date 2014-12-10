@@ -97,6 +97,7 @@
     position: absolute;
     top: 5px;
 }
+
 .change-data-score:hover {
     background-color: rgb(159, 233, 81);
 }
