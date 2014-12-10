@@ -9,8 +9,8 @@ function getUsers(self) {
         success: function (response) {
 
             loading.disable();
-            console.log(current_user.getId());
-            console.log(current_user.getName());
+//            console.log(current_user.getId());
+//            console.log(current_user.getName());
 //            console.log(response.data[0].user)
             analyze(response,self);
 
@@ -47,7 +47,7 @@ function get_date_user(id,type,mas,allmas,self) {
         },
         success: function (response) {
 
-            console.log(type)
+//            console.log(type)
             add_user(id,mas,response.data);
             //////////////////////////////////
             //////////////////////////function
@@ -58,7 +58,22 @@ function get_date_user(id,type,mas,allmas,self) {
                     for(var j=0;j<allmas[0]()[0].data.length;++j){
                         masTik.push(allmas[0]()[0].data[j].time);
                     }
+                    if( masTik.length<8)
+                    {
+                        for(var j=0;j<masTik.length;++j)
+                        {
+                            masTik[j]=day( masTik[j].slice(8,10), masTik[j].slice(5,7));
+                        }
+                    }
+                    else
+                    {
+                        for(var j=0;j<masTik.length;++j)
+                        {
+                        masTik[j]=mont(masTik[j].slice(5,7));
+                        }
+                    }
                     self.flag(!self.flag())
+
                     for(var j=0;j<allmas[0]().length;++j ){
                         array=[];
                         for(var i=0;i<allmas[0]()[j].data.length;++i){
