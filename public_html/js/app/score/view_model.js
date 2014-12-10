@@ -159,8 +159,8 @@ ko.bindingHandlers.add_data={
                     }
                     masDat.push(array);
                 }
-//                masTik.reverse();
-//                masDat.reverse();
+                masTik.reverse();
+                masDat.reverse();
                 changeGraph(masTik, masDat, viewModel.title(),rend,viewModel.colors);
             }
             //////////////////////////////////////
