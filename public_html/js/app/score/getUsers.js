@@ -81,8 +81,8 @@ function get_date_user(id,type,mas,allmas,self) {
                         }
                         masDat.push(array);
                     }
-//                    masDat.reverse();
-//                    masTik.reverse();
+                    masDat.reverse();
+                    masTik.reverse();
                     changeGraph(masTik, masDat, self.title(),self.rend(),self.colors);
                     
                 }
