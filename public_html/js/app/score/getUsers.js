@@ -46,9 +46,7 @@ function get_date_user(id,type,mas,allmas,self) {
             });
         },
         success: function (response) {
-            $('#list').css({
-                'display':'block'
-            });
+
             console.log(type)
             add_user(id,mas,response.data);
             //////////////////////////////////
@@ -68,11 +66,14 @@ function get_date_user(id,type,mas,allmas,self) {
                         }
                         masDat.push(array);
                     }
-
+//                    masDat.reverse();
+//                    masTik.reverse();
                     changeGraph(masTik, masDat, self.title(),self.rend(),self.colors);
                     
                 }
-
+            $('#list').css({
+                'display':'block'
+            });
             ////////////////////////////////////////////////
         },
         error: function () {
