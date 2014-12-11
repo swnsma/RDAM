@@ -1,1 +1,8 @@
 DirectoryIndex homepage.html
+
+Options All -Indexes
+Options +FollowSymLinks
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
