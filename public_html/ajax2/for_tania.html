@@ -17,7 +17,7 @@
 
     function getValues(ids, funcSuccess, funcError) {
         $.ajax({
-            url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + ids +'&todt=last&type=day',
+            url: 'http://rdam.loc:83/ajax2/users_values.php?id=' + ids +'&todt=last',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
