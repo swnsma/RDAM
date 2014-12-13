@@ -10,7 +10,7 @@ class UserValues extends Users {
     }
 
     private function select_day_values($tables, $columns, $to) {
-        $values = array();
+        $this->users_values['day'] = array();
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
@@ -28,14 +28,13 @@ HERE;
             $result = $this->db->prepare($request);
             $result->bindParam(':todt', $to);
             if (!$result->execute()) return false;
-            $values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+            array_push($this->users_values['day'], array('id' => (int)substr($table, 5), "values" => $result->fetchAll(PDO::FETCH_NUM)));
         }
-        $this->users_values['day'] = $values;
         return true;
     }
 
     private function select_week_values($tables, $columns, $to) {
-        $values = array();
+        $this->users_values['week'] = array();
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
@@ -53,14 +52,13 @@ HERE;
             $result = $this->db->prepare($request);
             $result->bindParam(':todt', $to);
             if (!$result->execute()) return false;
-            $values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+            array_push($this->users_values['week'], array('id' => (int)substr($table, 5), "values" => $result->fetchAll(PDO::FETCH_NUM)));
         }
-        $this->users_values['week'] = $values;
         return true;
     }
 
     private function select_month_values($tables, $columns, $to) {
-        $values = array();
+        $this->users_values['month'] = array();
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
@@ -78,9 +76,8 @@ HERE;
             $result = $this->db->prepare($request);
             $result->bindParam(':todt', $to);
             if (!$result->execute()) return false;
-            $values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+            array_push($this->users_values['month'], array('id' => (int)substr($table, 5), "values" => $result->fetchAll(PDO::FETCH_NUM)));
         }
-        $this->users_values['month'] = $values;
         return true;
     }
 

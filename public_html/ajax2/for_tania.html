@@ -6,9 +6,63 @@
 </head>
 <body>
 <script type="text/javascript">
+    var arr_data = [];
+
+    function parseSomeTypeData(data) {
+        var some_type_data = [];
+        if (data == 'undefined') return undefined;
+        for(var i in data) {
+            some_type_data[data[i].id] = {
+                values: {
+                    production: [],
+                    consumption: []
+                },
+                date: []
+            };
+            for(var j in data[i].values) {
+                some_type_data[data[i].id].date.push(data[i].values[j][0]);
+                some_type_data[data[i].id].values.production.push(data[i].values[j][1]);
+                some_type_data[data[i].id].values.consumption.push(data[i].values[j][2]);
+            }
+        }
+        return some_type_data;
+    }
+
     function parseData(data) {
         data = data.data;
-        alert(JSON.stringify(data));
+        arr_data['day'] = parseSomeTypeData(data.day);
+        arr_data['week'] = parseSomeTypeData(data.week);
+        arr_data['month'] = parseSomeTypeData(data.month);
+    }
+
+    function getProduction(type, ids) {
+        var data = arr_data[type];
+        if (data == 'undefined') return null;
+        var result = [];
+        for(var i in ids) {
+            result.push(arr_data[type][ids[i]].values.production);
+        }
+        return result;
+    }
+
+    function getConsumption(type, ids) {
+        var data = arr_data[type];
+        if (data == 'undefined') return null;
+        var result = [];
+        for(var i in ids) {
+            result.push(arr_data[type][ids[i]].values.consumption);
+        }
+        return result;
+    }
+
+    function getDate(type, ids) {
+        var data = arr_data[type];
+        if (data == 'undefined') return null;
+        var result = [];
+        for(var i in ids) {
+            result.push(arr_data[type][ids[i]].date);
+        }
+        return result;
     }
 
     function funcError() {
@@ -23,6 +77,14 @@
             success: function (response) {
                 if (response) {
                     funcSuccess(response);
+                    $('#wait').remove();
+                    $('#click').click(function() {
+                        $(this).css('display', 'none');
+                        $('#p').text(getProduction('week', [1,2]).join(', '));
+                        $('#c').text(getConsumption('week', [1,2]).join(', '));
+                        $('#d').text(getDate('week', [1,2]).join(', '));
+                        $('#v').css('display', 'block');
+                    }).css('display', 'block');
                 } else {
                     funcError();
                 }
@@ -35,6 +97,14 @@
 
     getValues('1,2', parseData, funcError);
 </script>
+<div id="wait">wait...</div>
+<button id="click" style="display: none">click me</button>
+<div id="v" style="display: none">
+    <div id="p"></div>
+    <div id="c"></div>
+    <div id="d"></div>
+</div>
+
 
 
 
