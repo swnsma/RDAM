@@ -12,7 +12,8 @@
         var some_type_data = [];
         if (data == 'undefined') return undefined;
         for(var i in data) {
-            some_type_data[data[i].id] = {
+            var id = data[i].id;
+            some_type_data[id] = {
                 values: {
                     production: [],
                     consumption: []
@@ -20,9 +21,9 @@
                 date: []
             };
             for(var j in data[i].values) {
-                some_type_data[data[i].id].date.push(data[i].values[j][0]);
-                some_type_data[data[i].id].values.production.push(data[i].values[j][1]);
-                some_type_data[data[i].id].values.consumption.push(data[i].values[j][2]);
+                some_type_data[id].date.push(data[i].values[j][0]);
+                some_type_data[id].values.production.push(data[i].values[j][1]);
+                some_type_data[id].values.consumption.push(data[i].values[j][2]);
             }
         }
         return some_type_data;
@@ -40,7 +41,7 @@
         if (data == 'undefined') return null;
         var result = [];
         for(var i in ids) {
-            result.push(arr_data[type][ids[i]].values.production);
+            result.push(data[ids[i]].values.production);
         }
         return result;
     }
@@ -50,7 +51,7 @@
         if (data == 'undefined') return null;
         var result = [];
         for(var i in ids) {
-            result.push(arr_data[type][ids[i]].values.consumption);
+            result.push(data[ids[i]].values.consumption);
         }
         return result;
     }
@@ -60,18 +61,18 @@
         if (data == 'undefined') return null;
         var result = [];
         for(var i in ids) {
-            result.push(arr_data[type][ids[i]].date);
+            result.push(data[ids[i]].date);
         }
         return result;
     }
 
-    function funcError() {
-        alert('111111111111111111111111');
+    function funcError(message) {
+        alert("ERROR: " + message);
     }
 
     function getValues(ids, funcSuccess, funcError) {
         $.ajax({
-            url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + ids +'&todt=last',
+            url: 'http://rdam.loc:83/ajax2/users_values.php?id=' + ids +'&todt=la11st',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
@@ -86,11 +87,12 @@
                         $('#v').css('display', 'block');
                     }).css('display', 'block');
                 } else {
-                    funcError();
+                    funcError('');
                 }
             },
-            error: function () {
-                alert('error');
+            error: function(xhr, status, error) {
+                var err = JSON.parse(xhr.responseText);
+                funcError(err.error_message);
             }
         });
     }
