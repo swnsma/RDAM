@@ -2,17 +2,94 @@
 
 include "users.class.php";
 
-class UsersValues extends Users {
-    private  $users_values = array();
+class UserValues extends Users {
+    private $users_values = array();
 
     function __construct() {
         parent::__construct();
     }
 
-    public function select_data($ids, $type, $to, $field = null) {
+    private function select_day_values($tables, $columns, $to) {
+        $values = array();
+        foreach($tables as $table) {
+            $request = <<<HERE
+                    SELECT
+                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        $columns
+                    FROM
+                        `$table`
+                    WHERE
+                        `toDT` <= :todt
+                    GROUP BY
+                        d
+                    ORDER BY d DESC
+                    LIMIT 7
+HERE;
+            $result = $this->db->prepare($request);
+            $result->bindParam(':todt', $to);
+            if (!$result->execute()) return false;
+            $values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+        }
+        $this->users_values['day'] = $values;
+        return true;
+    }
+
+    private function select_week_values($tables, $columns, $to) {
+        $values = array();
+        foreach($tables as $table) {
+            $request = <<<HERE
+                    SELECT
+                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        $columns
+                    FROM
+                        `$table`
+                    WHERE
+                        `toDT` <= :todt
+                    GROUP BY
+                        EXTRACT(WEEK FROM `toDT`)
+                    ORDER BY d DESC
+                    LIMIT 4
+HERE;
+            $result = $this->db->prepare($request);
+            $result->bindParam(':todt', $to);
+            if (!$result->execute()) return false;
+            $values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+        }
+        $this->users_values['week'] = $values;
+        return true;
+    }
+
+    private function select_month_values($tables, $columns, $to) {
+        $values = array();
+        foreach($tables as $table) {
+            $request = <<<HERE
+                    SELECT
+                        DATE_FORMAT(`toDT`, '%Y-%m') as d,
+                        $columns
+                    FROM
+                        `$table`
+                    WHERE
+                        `toDT` <= :todt
+                    GROUP BY
+                        d
+                    ORDER BY d DESC
+                    LIMIT 12
+HERE;
+            $result = $this->db->prepare($request);
+            $result->bindParam(':todt', $to);
+            if (!$result->execute()) return false;
+            $values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+        }
+        $this->users_values['month'] = $values;
+        return true;
+    }
+
+
+    public function select_data($ids, $to, $type = null, $field = null) {
         $tables = $this->get_tables_exists($ids);
         if (count($tables) == 0)
             return false;
+
         switch($field) {
             case 'consumption':
                 $columns = <<<HERE
@@ -32,65 +109,24 @@ HERE;
                 break;
         }
 
-        foreach($tables as $table) {
-            switch($type) {
-                case 'day':
-                    $request = <<<HERE
-                    SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
-                        $columns
-                    FROM
-                        `$table`
-                    WHERE
-                        `toDT` <= :todt
-                    GROUP BY
-                        d
-                    ORDER BY d DESC
-                    LIMIT 7
-HERE;
-                    break;
-                case 'week':
-                    $request = <<<HERE
-                    SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
-                        $columns
-                    FROM
-                        `$table`
-                    WHERE
-                        `toDT` <= :todt
-                    GROUP BY
-                        EXTRACT(WEEK FROM `toDT`)
-                    ORDER BY d DESC
-                    LIMIT 4
-HERE;
-                    break;
-                case 'month':
-                    $request = <<<HERE
-                    SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m') as d,
-                        $columns
-                    FROM
-                        `$table`
-                    WHERE
-                        `toDT` <= :todt
-                    GROUP BY
-                        d
-                    ORDER BY d DESC
-                    LIMIT 12
-HERE;
-                    break;
-                default:
-                    return false;
-                    break;
-            }
-
-            $result = $this->db->prepare($request);
-            $result->bindParam(':todt', $to);
-            if(!$result->execute())
+        switch($type) {
+            case 'day':
+                $result  = $this->select_day_values($tables, $columns, $to);
                 break;
-            $this->users_values[substr($table, 5)] = $result->fetchAll(PDO::FETCH_NUM);
+            case 'week':
+                $result  = $this->select_week_values($tables, $columns, $to);
+                break;
+            case 'month':
+                $result  = $this->select_month_values($tables, $columns, $to);
+                break;
+            default:
+                $result = ($this->select_day_values($tables, $columns, $to) &&
+                    $this->select_week_values($tables, $columns, $to) &&
+                    $this->select_month_values($tables, $columns, $to));
+                break;
         }
-        return true;
+
+        return $result;
     }
 
     public function get_data() {

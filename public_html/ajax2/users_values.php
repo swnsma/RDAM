@@ -2,8 +2,7 @@
 
 include_once 'include/users_values.class.php';
 
-if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
-    $type = $_GET['type'];
+if (isset($_GET['id']) && isset($_GET['todt'])) {
     $to = $_GET['todt'];
 
     date_default_timezone_set('Europe/London');
@@ -15,7 +14,13 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
             header('HTTP/1.0 400 Bad Request');
             print '{ "status": "error", "error_message": "invalid values" }';
             exit();
-         }
+        }
+    }
+
+    if (isset($_GET['type'])) {
+        $type = $_GET['type'];
+    } else {
+        $type = null;
     }
 
     if (isset($_GET['field'])) {
@@ -26,9 +31,9 @@ if (isset($_GET['type']) && isset($_GET['id']) && isset($_GET['todt'])) {
 
     $ids = array_unique(array_map('intval',  explode(',', $_GET['id'])));
 
-    $users = new UsersValues();
-    if($users->select_data($ids, $type, $to, $field)) {
-        print '{ "status": "success", "type": "' . $type . '", "data": ' . json_encode($users->get_data()) . ' }';
+    $users = new UserValues();
+    if($users->select_data($ids, $to, $type, $field)) {
+        print '{ "status": "success", "data": ' . json_encode($users->get_data()) . ' }';
     } else {
         header('HTTP/1.0 400 Bad Request');
         print '{ "status": "error", "error_message": "try again later or or change it" }';

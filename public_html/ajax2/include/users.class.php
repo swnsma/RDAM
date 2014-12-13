@@ -22,11 +22,6 @@ abstract class Users extends Connection {
         return true;
     }
 
-    protected function check_user_exists($id) {
-        $request = $this->db->prepare('SHOW TABLES LIKE \'user_' . $id . '\'');
-        return $request->execute() && $request->rowCount() > 0;
-    }
-
     protected function get_tables_exists($ids) {
         $id = '\'user_' . implode('\', \'user_', $ids) . '\'';
         $request = $this->db->prepare('SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME IN (' . $id . ') AND TABLE_SCHEMA=\'' . DB_NAME . '\'');

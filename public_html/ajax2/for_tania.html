@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type='text/javascript' src='../js/vendor/jquery-2.1.1.js'></script>
+</head>
+<body>
+<script type="text/javascript">
+    function parseData(data) {
+        data = data.data;
+        alert(JSON.stringify(data));
+    }
+
+    function funcError() {
+        alert('111111111111111111111111');
+    }
+
+    function getValues(ids, funcSuccess, funcError) {
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + ids +'&todt=last&type=day',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response) {
+                    funcSuccess(response);
+                } else {
+                    funcError();
+                }
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+
+    getValues('1,2', parseData, funcError);
+</script>
+
+
+
+</body>
+</html>
