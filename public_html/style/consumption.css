@@ -1,20 +1,9 @@
 .batteryContainer
 {
-    height: 200px;
     width: 450px;
-    margin-left: 130px;
+    margin: auto;
 }
 
-.main-content
-{
-    height: 500px;
-    margin-left: 150px;
-}
-.battery-rend
-{
-    width: 550px;
-    margin-top: 10px;
-}
 .label
 {
     font-family: Verdana,sans-serif;
@@ -24,24 +13,33 @@
     background-color: #BDBDBD;
     padding-left: 5px;
     padding-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
 }
 .production
 {
-    display: inline-block;
-    float: left;
-    margin-left: 10px;
+   margin-left: 10px;
 }
 .taken-from
 {
-
-    display: inline-block;
-    margin-left: 252px;
+    float: right;
+    margin-right: 40px;
 }
 
 .battery
 {
     border-radius: 10px;
     border: 10px solid black;
+    width: 400px;
+    height: 120px;
+    background-color: #F4EFD4;
+    display: inline-block;
+}
+.prod
+{
+    background-color: #4CAF50;
+    height: 100%;
+    display: inline-block;
 }
 .electrode
 {
