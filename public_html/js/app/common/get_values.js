@@ -97,3 +97,5 @@ function Values() {
         });
     }
 }
+
+var values = new Values();
