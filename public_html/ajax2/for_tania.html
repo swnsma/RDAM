@@ -7,33 +7,36 @@
 <body>
 <script type="text/javascript">
     var arr_data = [];
+    arr_data['day'] = []; //
+    arr_data['week'] = [];
+    arr_data['month'] = [];
 
-    function parseSomeTypeData(data) {
-        var some_type_data = [];
-        if (data == 'undefined') return undefined;
+    function parseSomeTypeData(data, type) {
+        if (data == 'undefined') return;
         for(var i in data) {
             var id = data[i].id;
-            some_type_data[id] = {
-                values: {
-                    production: [],
-                    consumption: []
-                },
-                date: []
-            };
+            if (arr_data[type][id] == undefined) {
+                arr_data[type][id] = {
+                    values: {
+                        production: [],
+                        consumption: []
+                    },
+                    date: []
+                };
+            }
             for(var j in data[i].values) {
-                some_type_data[id].date.push(data[i].values[j][0]);
-                some_type_data[id].values.production.push(data[i].values[j][1]);
-                some_type_data[id].values.consumption.push(data[i].values[j][2]);
+                arr_data[type][id].date.push(data[i].values[j][0]);
+                arr_data[type][id].values.production.push(data[i].values[j][1]);
+                arr_data[type][id].values.consumption.push(data[i].values[j][2]);
             }
         }
-        return some_type_data;
     }
 
     function parseData(data) {
         data = data.data;
-        arr_data['day'] = parseSomeTypeData(data.day);
-        arr_data['week'] = parseSomeTypeData(data.week);
-        arr_data['month'] = parseSomeTypeData(data.month);
+        parseSomeTypeData(data.day, 'day');
+        parseSomeTypeData(data.week, 'week');
+        parseSomeTypeData(data.month, 'month');
     }
 
     function getProduction(type, ids) {
@@ -59,33 +62,32 @@
     function getDate(type, ids) {
         var data = arr_data[type];
         if (data == 'undefined') return null;
-        var result = [];
-        for(var i in ids) {
-            result.push(data[ids[i]].date);
+        if (typeof ids == 'object') {
+            if (ids.length != 0)
+                return data[ids[0]].date;
+            else
+                return null;
+        } else {
+            return data[ids].date;
         }
-        return result;
     }
 
     function funcError(message) {
         alert("ERROR: " + message);
     }
 
+    function checkExistsUser(id) {
+        return arr_data['day'][id] != undefined; //будь-який тип, т.к дані приходять одночасно
+    }
+
     function getValues(ids, funcSuccess, funcError) {
         $.ajax({
-            url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + ids +'&todt=la11st',
+            url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + ids +'&todt=last',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
                 if (response) {
                     funcSuccess(response);
-                    $('#wait').remove();
-                    $('#click').click(function() {
-                        $(this).css('display', 'none');
-                        $('#p').text(getProduction('week', [1,2]).join(', '));
-                        $('#c').text(getConsumption('week', [1,2]).join(', '));
-                        $('#d').text(getDate('week', [1,2]).join(', '));
-                        $('#v').css('display', 'block');
-                    }).css('display', 'block');
                 } else {
                     funcError('');
                 }
@@ -97,18 +99,35 @@
         });
     }
 
-    getValues('1,2', parseData, funcError);
+    //приклад використання
+
+    getValues('1', parseData, funcError);
+
+    window.setTimeout(afterFirstRequest, 5000); // змодулюємо ситуацію вручну
+
+    function afterFirstRequest() {
+        if(checkExistsUser(1)) {
+            console.log(JSON.stringify(arr_data['day'][1]));
+            getValues('2,3,4', parseData, funcError);
+            window.setTimeout(afterSecondRequest, 7000);
+        } else {
+            console.log('id = 1 not exists'); // мабуть 1-ий запит викликав помилку або 5 сек. було мало.
+        }
+    }
+
+    function afterSecondRequest() {
+        $('#p').text(getProduction('day', [1,2,3]).join(', '));
+        $('#c').text(getConsumption('day', [1,2,3]).join(', '));
+        $('#d').text(getDate('day', [1,2,3]).join(', '));
+    }
+
+
 </script>
 <div id="wait">wait...</div>
-<button id="click" style="display: none">click me</button>
-<div id="v" style="display: none">
+<div id="v">
     <div id="p"></div>
     <div id="c"></div>
     <div id="d"></div>
 </div>
-
-
-
-
 </body>
 </html>

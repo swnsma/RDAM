@@ -62,7 +62,7 @@ HERE;
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m') as d,
+                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
                         $columns
                     FROM
                         `$table`
