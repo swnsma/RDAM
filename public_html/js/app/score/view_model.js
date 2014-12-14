@@ -54,12 +54,22 @@ ko.bindingHandlers.add_data={
         if(typeg===2){
             type='month'
         }
+
+        if(viewModel.consProd()==='consumption'){
+
+        }
         //masId=current_user.getId();
         debugger;
         viewModel.big_progress_bar(true);
         values.getValues(masId, function(masid) {
-            changeGraph(values.getDate(type,masId),
-                values.getConsumption(type,masId), 'asd',viewModel.rend(),viewModel.colors);
+            if(viewModel.consProd()==='consumption'){
+                changeGraph(values.getDate(type,masId),
+                    values.getConsumption(type,masId), 'Consumption',viewModel.rend(),viewModel.colors);
+            }
+            else{
+                changeGraph(values.getDate(type,masId),
+                    values.getProduction(type,masId), 'Production',viewModel.rend(),viewModel.colors);
+            }
             viewModel.big_progress_bar(false);
         }, function(e){
             alert("Error" + e);
