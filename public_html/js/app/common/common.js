@@ -165,7 +165,7 @@ function CurrentUser() {
 
     function getInfoByUser(id, funcSuccess, funcError) {
         $.ajax({
-            url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + id  + '&fields=city,rating&limit=1',
+            url: 'http://rdam.zz.mu/ajax2/user_info.php?id=' + id  + '&fields=city,rating',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
