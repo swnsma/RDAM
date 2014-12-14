@@ -74,6 +74,10 @@ function Values() {
             if (!this.checkExistsUser(ids[i]))
                 id.push(ids[i]);
         }
+        if (id.length == 0) {
+            funcSuccess([]);
+            return;
+        }
         $.ajax({
             url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + id.join(',') +'&todt=last',
             type: 'GET',
