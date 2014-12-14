@@ -12,7 +12,6 @@
     arr_data['month'] = [];
 
     function parseSomeTypeData(data, type) {
-        if (data == 'undefined') return;
         for(var i in data) {
             var id = data[i].id;
             if (arr_data[type][id] == undefined) {
@@ -103,13 +102,13 @@
 
     getValues('1', parseData, funcError);
 
-    window.setTimeout(afterFirstRequest, 5000); // змодулюємо ситуацію вручну
+    setTimeout(afterFirstRequest, 5000); // змоделюємо ситуацію вручну
 
     function afterFirstRequest() {
         if(checkExistsUser(1)) {
             console.log(JSON.stringify(arr_data['day'][1]));
             getValues('2,3,4', parseData, funcError);
-            window.setTimeout(afterSecondRequest, 7000);
+            setTimeout(afterSecondRequest, 7000);
         } else {
             console.log('id = 1 not exists'); // мабуть 1-ий запит викликав помилку або 5 сек. було мало.
         }
