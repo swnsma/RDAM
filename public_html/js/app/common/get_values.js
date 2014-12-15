@@ -1,4 +1,8 @@
 function Values() {
+    if (arguments.callee.instance)
+        return arguments.callee.instance;
+    arguments.callee.instance = this;
+
     var arr_data = [];
     arr_data['day'] = []; //
     arr_data['week'] = [];
