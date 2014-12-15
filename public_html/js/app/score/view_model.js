@@ -42,10 +42,11 @@ ko.bindingHandlers.add_data={
     update: function(element, valueAccessor, allBindings, viewModel){
         var value=valueAccessor().active_user;
         var masId=[];
+
         for(var i in value){
             masId.push(value[i].id());
         }
-        masId.push(current_user.getId());
+
         var type='day';
         var typeg=viewModel.thisGraph();
         if(typeg===1){
@@ -58,7 +59,7 @@ ko.bindingHandlers.add_data={
         if(viewModel.consProd()==='consumption'){
 
         }
-        //masId=current_user.getId();
+        masId.push(current_user.getId());
         debugger;
         viewModel.big_progress_bar(true);
         values.getValues(masId, function(masid) {
@@ -81,7 +82,6 @@ function AppViewModel() {
     var self = this;
     self.big_progress_bar = ko.observable(false);
     self.flag=ko.observable(false);
-    self.search=ko.observable(false);
     self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
     self.isLine=ko.observable(0);
@@ -96,7 +96,7 @@ function AppViewModel() {
     self.buttons=ko.observableArray(['Days','Weeks','Months']);
     self.lowestCons=ko.observable(0);
     self.highestProd=ko.observable(0);
-    self.colors=[];
+    self.colors=ko.observableArray([]);
     self.isClicked=ko.observable(1);
 
     self.set_active = function(seat){
@@ -109,7 +109,7 @@ function AppViewModel() {
     }
     self.return_active_user = ko.computed(function(){
         self.colors=[];
-        self.colors.push("#63AD1F");
+
         var result = [];
 
         for(var i=0;(i<(self.arrayUsers().length));++i) {
@@ -120,6 +120,7 @@ function AppViewModel() {
             }
 
         }
+        self.colors.push("#63AD1F");
         return result;
     });
 
