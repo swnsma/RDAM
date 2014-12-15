@@ -63,12 +63,14 @@ ko.bindingHandlers.add_data={
         debugger;
         viewModel.big_progress_bar(true);
         values.getValues(masId, function(masid) {
+            var dd = values.getDate(type,masId);
+            viewModel.diapason(dd[0] + ' - ' + dd[dd.length-1]);
             if(viewModel.consProd()==='consumption'){
-                changeGraph(values.getDate(type,masId),
+                changeGraph(dd,
                     values.getConsumption(type,masId), 'Consumption',viewModel.rend(),viewModel.colors);
             }
             else{
-                changeGraph(values.getDate(type,masId),
+                changeGraph(dd,
                     values.getProduction(type,masId), 'Production',viewModel.rend(),viewModel.colors);
             }
             viewModel.big_progress_bar(false);
@@ -81,6 +83,7 @@ ko.bindingHandlers.add_data={
 function AppViewModel() {
     var self = this;
     self.big_progress_bar = ko.observable(false);
+    self.diapason = ko.observable('');
     self.flag=ko.observable(false);
     self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
