@@ -59,7 +59,7 @@ ko.bindingHandlers.add_data={
         if(viewModel.consProd()==='consumption'){
 
         }
-        masId.push(current_user.getId());
+        masId.push(viewModel.current_id);
         debugger;
         viewModel.big_progress_bar(true);
         values.getValues(masId, function(masid) {
@@ -82,6 +82,7 @@ ko.bindingHandlers.add_data={
 }
 function AppViewModel() {
     var self = this;
+    self.current_id =current_user.getId();
     self.big_progress_bar = ko.observable(false);
     self.diapason = ko.observable('');
     self.flag=ko.observable(false);
