@@ -60,7 +60,6 @@ ko.bindingHandlers.add_data={
 
         }
         masId.push(current_user.getId());
-        debugger;
         viewModel.big_progress_bar(true);
         values.getValues(masId, function(masid) {
             var dd = values.getDate(type,masId);

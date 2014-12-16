@@ -1,4 +1,28 @@
-Share = {
+
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Share = {
     vkontakte: function(purl, ptitle, pimg, text) {
         url  = 'http://vkontakte.ru/share.php?';
         url += 'url='          + encodeURIComponent(purl);
@@ -41,4 +65,4 @@ Share = {
     popup: function(url) {
         window.open(url,'','toolbar=0,status=0,width=626,height=436');
     }
-};
+};*/
