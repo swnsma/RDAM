@@ -104,7 +104,7 @@ function Values() {
                         if (response) {
                             parseData(response);
                             funcSuccess(id);
-                            debugger;
+//                            debugger;
                         } else {
                             funcError('');
                         }

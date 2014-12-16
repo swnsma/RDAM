@@ -137,3 +137,12 @@
     margin:0px auto;
     text-align: center;
 }
+#data .time{
+
+    position: absolute;
+    /*top: 10px;*/
+    top: 65px;
+    right: 10px;
+    text-align: center;
+    padding-top: 10px;
+}

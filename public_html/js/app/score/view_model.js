@@ -55,11 +55,11 @@ ko.bindingHandlers.add_data={
             type='month'
         }
         masId.push(current_user.getId());
-        debugger;
+//        debugger;
         viewModel.big_progress_bar(true);
         values.getValues(masId, function(masid) {
             var dd = values.getDate(type,masId);
-            viewModel.diapason(dd[0] + ' - ' + dd[dd.length-1]);
+            viewModel.diapason(dd[0] + ' -- ' + dd[dd.length-1]);
             if(viewModel.consProd()==='consumption'){
                 changeGraph(dd,
                     values.getConsumption(type,masId), 'Consumption',viewModel.rend(),viewModel.colors);
@@ -198,7 +198,7 @@ function AppViewModel() {
     }
     self.changeConsProd=function()
     {
-        debugger;
+//        debugger;
         if (self.consProd()==='production') {
             self.consProd('consumption');
             self.title('Consumption');
