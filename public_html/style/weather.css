@@ -198,3 +198,13 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
 .is_day_off {
     color: #9B4242;
 }
+
+.weather-city {
+    float: right;
+    padding: 3px;
+}
+
+.weather-city > span  {
+    color: #9B4242;
+    font-weight: bold;
+}

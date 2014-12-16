@@ -31,6 +31,7 @@
     </div>
     <div id="data">
         <div id="weather-list">
+            <div class="weather-city">Weather in <span data-bind="text: city"></span></div>
             <ul class="weather-list" data-bind="foreach: weather_days">
                 <li data-bind="click: function() { $root.renderMoreInfo($index()); }, attr: { selected: active }">
                     <div class="wdate">

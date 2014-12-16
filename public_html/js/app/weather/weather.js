@@ -26,6 +26,7 @@ function WeatherModel() {
     var self = this;
 
     self.weather_days = ko.observableArray([]);
+    self.city = current_user.getCity();
 
     var current_active = 0;
 
@@ -142,7 +143,6 @@ function WeatherModel() {
 
 function Weather() {
     ko.applyBindings(new WeatherModel(), document.getElementById('weather-list'));
-    //alert(current_user.getId() + ' ' + current_user.getName() + ' ' + current_user.getCity() + ' ' + current_user.getRating()/100);
 }
 
 manager.add(Weather);
