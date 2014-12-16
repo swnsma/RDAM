@@ -42,11 +42,10 @@ ko.bindingHandlers.add_data={
     update: function(element, valueAccessor, allBindings, viewModel){
         var value=valueAccessor().active_user;
         var masId=[];
-
+        viewModel.bool(!viewModel.bool());
         for(var i in value){
             masId.push(value[i].id());
         }
-
         var type='day';
         var typeg=viewModel.thisGraph();
         if(typeg===1){
@@ -54,10 +53,6 @@ ko.bindingHandlers.add_data={
         }
         if(typeg===2){
             type='month'
-        }
-
-        if(viewModel.consProd()==='consumption'){
-
         }
         masId.push(current_user.getId());
         viewModel.big_progress_bar(true);
@@ -81,6 +76,7 @@ ko.bindingHandlers.add_data={
 }
 function AppViewModel() {
     var self = this;
+    self.bool=ko.observable(false);
     self.big_progress_bar = ko.observable(false);
     self.diapason = ko.observable('');
     self.flag=ko.observable(false);
@@ -178,7 +174,9 @@ function AppViewModel() {
         }
         else {
             self.rend($.jqplot.BarRenderer);
+
         }
+        self.bool(!self.bool());
     };
 
     self.changeData=function(data)
@@ -195,10 +193,11 @@ function AppViewModel() {
         {
             self.rend(self.rendMas[1]);
         }
+
     }
     self.changeConsProd=function()
     {
-
+        debugger;
         if (self.consProd()==='production') {
             self.consProd('consumption');
             self.title('Consumption');
@@ -207,6 +206,7 @@ function AppViewModel() {
             self.consProd('production');
             self.title('Production');
         }
+        self.bool(!self.bool());
     }
 }
 
