@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
+    <meta property="og:title" content="I am greening the planet!" />
+    <meta property="og:description" content="I am greening the planet! See how much good I've done the environment" />
+    <meta property="og:image" content="http://rdam.tk/img/fact1.png" />
 
 
 
@@ -56,22 +59,21 @@
             <div id="treeInfo"><img src="img/tree2.png" class="factory"/></div>
             <div class="description">...seedlings to clean the air for 10 years. </div>
             <p class="emm-res" id="trees"  data-bind="sumT: sumProd"></p>
-            <a class="fb" onclick="Share.facebook('http://rdam.tk/production.html','I am greening the planet','http://rdam.tk/img/tree2.png','I am greening the planet! See how many seedlings did the same job for 10 years.')"></a>
         </div>
         <div class="calculate-n border1">
 
             <div id="co2Info"><img src="img/fact1.png" class="factory"/></div>
             <div class="description">... CO<sub>2</sub> emission was avoided. 1kWh=0.61kg</div>
             <p class="emm-res" id="co2"  data-bind="sumC: sumProd"></p>
-            <a class="fb" onclick="Share.facebook('http://rdam.tk/production.html','I am greening the planet','http://rdam.tk/img/fact1.png','I am greening the planet! See how many kg of CO2 emissions I avoided!')"></a>
         </div>
         <div class="calculate-n">
 
             <div id="vacHours"><img src="http://icons.iconarchive.com/icons/icons8/ios7/256/Household-Vacuum-Cleaner-icon.png" class="factory"/></div>
             <div class="description">... hours your vacuum cleaner can work</div>
             <p class="emm-res" id="vac" data-bind="sumV: sumProd"></p>
-            <a class="fb" onclick="Share.facebook('http://rdam.tk/production.html','I am greening the planet','http://icons.iconarchive.com/icons/icons8/ios7/256/Household-Vacuum-Cleaner-icon.png','I am greening the planet! See how many hours of my vacuum cleaner will work without harm to the environment!')"></a>
         </div>
+        <span>Share on Facebook!</span><div id="fb-root" class="fb"><div class="fb-share-button" data-href="http://rdam.tk/production.html" data-layout="icon"></div></div>
+
     </div>
     </div>
 </div><!--end main-content-->
