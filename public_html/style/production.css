@@ -47,7 +47,7 @@ body{
     background: rgb(99, 173, 31);
     color:white;
     /*border-radius: 8px 8px 0px 0px ;*/
-    margin:0px auto;
+    margin:0 auto;
     text-align: center;
 }
 
@@ -94,6 +94,9 @@ body{
     display: inline-block;
     background: url('../img/fb.png');
     height: 26px;
+}
+.fb span{
+    font-size: 20pt;
 }
 .description
 {

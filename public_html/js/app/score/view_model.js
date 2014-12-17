@@ -213,7 +213,6 @@ function AppViewModel() {
     }
     self.changeConsProd=function()
     {
-        debugger;
         if (self.consProd()==='production') {
             self.consProd('consumption');
             self.title('Consumption');
