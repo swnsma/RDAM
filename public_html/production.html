@@ -9,115 +9,122 @@
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+
+    <meta property="og:title" content="I am greening the planet!" />
+    <meta property="og:description" content="I am greening the planet! See how much benefit I bring the environment!" />
+    <meta property="og:image" content="http://rdam.tk/img/fact1.png"/>
 </head>
 <body>
 <div class="container">
-<header>
-    <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
+    <header>
+        <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
 
-    <div class="text_right">
-        Rooftop Energy B.V.<br/>
-        Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
-        T +31 (0)182 74 80 90  | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
-</header>
-<nav>
-    <ul id="menu">
-        <li> <a href="homepage.html">HOME</a></li>
-        <li  selected="true"><a href="production.html">PRODUCTION</a></li>
-        <li> <a href="consumption.html">CONSUMPTION</a></li>
-        <li> <a href="score.html">score</a></li>
-        <li> <a href="weather.html">weather</a></li>
-    </ul>
-</nav>
-<div class="main-content">
-    <div id="loading">
-        <img src="img/loading.gif" alt="loading" />
-    </div>
-    <div id="data">
+        <div class="text_right">
+            Rooftop Energy B.V.<br/>
+            Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
+            T +31 (0)182 74 80 90 | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
+    </header>
+    <nav>
+        <ul id="menu">
+            <li> <a href="homepage.html">HOME</a></li>
+            <li selected="true"><a href="production.html">PRODUCTION</a></li>
+            <li> <a href="consumption.html">CONSUMPTION</a></li>
+            <li> <a href="score.html">score</a></li>
+            <li> <a href="weather.html">weather</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div id="loading">
+            <img src="img/loading.gif" alt="loading" />
+        </div>
+        <div id="data">
 
-        <div class="chart"><h2>Production</h2>
-            <div class="graph-container">
-                <button class="change-view change-view-homepage" data-bind="click:change">Line/Bar</button>
-                <div id="chartDiv" data-bind="renderChart: dataToRend"> </div>
-                <div class="button-center" data-bind="foreach: buttons">
-                    <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
+            <div class="chart"><h2>Production</h2>
+                <div class="graph-container">
+                    <button class="change-view change-view-homepage" data-bind="click:change">Line/Bar</button>
+                    <div id="chartDiv" data-bind="renderChart: dataToRend"> </div>
+                    <div class="button-center" data-bind="foreach: buttons">
+                        <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
+                    </div>
                 </div>
-            </div>
-        </div><!--end chart-->
-        <div class="wrap">
-            <h2>Produced green energy for the current period it's amount...</h2>
-            <div class="different-metrics">
-                <div class="metric kw">
-                    <div class="image">
-                        <div class="img kw-image"></div>
-                        <div class="value">
-                            <span id="kW" data-bind="sumP: sumProd">2450kw</span>
+            </div><!--end chart-->
+            <div class="wrap">
+                <h2>Green energy produced for the selected period</h2>
+                <div class="different-metrics">
+                    <div class="metric kw">
+                        <div class="image">
+                            <div class="img kw-image"></div>
+                            <div class="value">
+                                <span id="kW" data-bind="sumP: sumProd">2450 kw</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+<span>
+During period shown on the graph your solar plant produced
+</span>
+                            <span id="kWv" data-bind="sumP: sumProd"></span>
                         </div>
                     </div>
-                    <div class="explanation">
-                        <span>
-                            During period shown on the graph your solar plant produced
-                        </span>
-                        <span id="kWv" data-bind="sumP: sumProd"></span>
-                    </div>
-                </div>
-                <div class="metric co2">
-                    <div class="image">
-                        <div class="img co2-image"></div>
-                        <div class="value">
-                            <span id="co2" data-bind="sumC: sumProd"></span>
+                    <div class="metric co2">
+                        <div class="image">
+                            <div class="img co2-image"></div>
+                            <div class="value">
+                                <span id="co2" data-bind="sumC: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <span>Normal production of this amount of energy will cause emission of</span>
+                            <span id="co2v" data-bind="sumC: sumProd"></span>
+                            <span> of CO<sub>2</sub></span>
                         </div>
                     </div>
-                    <div class="explanation">
-                        <span>Normal production of this amount of energy will cause emission of</span>
-                        <span id="co2v" data-bind="sumC: sumProd"></span>
-                        <span> of CO2</span>
-                    </div>
-                </div>
-                <div class="metric car">
-                    <div class="image">
-                        <div class="img car-image"></div>
-                        <div class="value">
-                            <span id="car" data-bind="sumCar: sumProd"></span>
+                    <div class="metric car">
+                        <div class="image">
+                            <div class="img car-image"></div>
+                            <div class="value">
+                                <span id="car" data-bind="sumCar: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+<span>
+Driving
+</span>
+                            <span id="carV" data-bind="sumCar: sumProd"></span>
+<span>
+in an average passenger vehicle will cause the same CO<sub>2</sub> emission
+</span>
                         </div>
                     </div>
-                    <div class="explanation">
-                        <span>
-                            Driving
-                        </span>
-                        <span id="carV" data-bind="sumCar: sumProd"></span>
-                        <span>
-                            in an average passenger vehicle will cause the same CO2 emission
-                        </span>
-                    </div>
-                </div>
-                <div class="metric trees">
-                    <div class="image">
-                        <div class="img trees-image"></div>
-                        <div class="value">
-                            <span id="trees"  data-bind="sumT: sumProd"></span>
+                    <div class="metric trees">
+                        <div class="image">
+                            <div class="img trees-image"></div>
+                            <div class="value" style='width:100px;'>
+                                <span id="trees" data-bind="sumT: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+<span>
+This amount of CO<sub>2</sub> can be sequestered by
+</span>
+                            <span id="treesV" data-bind="sumT: sumProd"></span>
+                            <span> trees during 10 year period</span>
                         </div>
                     </div>
-                    <div class="explanation">
-                        <span>
-                            This amount of CO2 can be sequestered by
-                        </span>
-                        <span id="treesV"  data-bind="sumT: sumProd"></span>
-                        <span> during 10 year period</span>
-                    </div>
                 </div>
+                <div id="fb-root" class="fb"><span>Tell this to your friends!</span><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div></div>
             </div>
         </div>
-    </div>
-</div><!--end main-content-->
-<footer>
-    <span>Copyright &copy 2014 All right reserved.</span>
-</footer>
+    </div><!--end main-content-->
+    <footer>
+        <span>Copyright &copy 2014 All right reserved.</span>
+    </footer>
 </div>
 </body>
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share"
-        type="text/javascript">
+<script
+17:05:57
+src="http://static.ak.fbcdn.net/connect.php/js/FB.Share"
+type="text/javascript">
 
 </script>
 <script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
