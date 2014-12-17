@@ -38,7 +38,13 @@ function WeatherModel() {
         windspeedMiles: ko.observable(),
         hourly: ko.observableArray([]),
         tempC: ko.observable(),
-        tempF: ko.observable()
+        tempF: ko.observable(),
+        sun: ko.observable({
+            moonrise: null,
+            moonset: null,
+            sunrise: null,
+            sunset: null
+        })
     };
 
     self.renderMoreInfo = function(n) {
@@ -50,6 +56,8 @@ function WeatherModel() {
         self.weather_days_mi.hourly(el.hourly);
         self.weather_days_mi.tempC(el.tempC);
         self.weather_days_mi.tempF(el.tempF);
+        console.log(el.sun);
+        self.weather_days_mi.sun(el.sun);
     };
 
     var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -88,6 +96,7 @@ function WeatherModel() {
         return { maxtempC: h.maxtempC, maxtempF: h.maxtempF, mintempC: h.mintempC, mintempF: h.mintempF };
     }
 
+
     function renderData(data) {
         data = data.data;
 
@@ -104,6 +113,7 @@ function WeatherModel() {
             pressure: curr.pressure,
             winddirDegree: curr.winddirDegree,
             windspeedMiles: curr.windspeedMiles,
+            sun: data.weather[0].astronomy[0],
             hourly: getHourly(data.weather[0].hourly),
             maxnimtemp: getMaxTemp(data.weather[0])
         });
@@ -123,6 +133,7 @@ function WeatherModel() {
                 pressure: curr.pressure,
                 winddirDegree: curr.winddirDegree,
                 windspeedMiles: curr.windspeedMiles,
+                sun: data[i].astronomy[0],
                 hourly: getHourly(data[i].hourly),
                 maxnimtemp: getMaxTemp(data[i])
             });
@@ -133,11 +144,11 @@ function WeatherModel() {
 
     var api = new WeatherApi(current_user.getCity());
     api.getWeather(function(data) {
-        try {
+        //try {
             renderData(data);
-        } catch(e) {
-            alert('invalid city');
-        }
+        //} catch(e) {
+          //  alert('invalid city');
+        //}
     }, function() { alert('error'); });
 }
 
