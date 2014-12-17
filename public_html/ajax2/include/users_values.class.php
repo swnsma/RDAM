@@ -14,7 +14,7 @@ class UserValues extends Users {
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        DATE_FORMAT(`toDT`, '%d %b %Y') as d,
                         $columns
                     FROM
                         `$table`
@@ -38,7 +38,7 @@ HERE;
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        DATE_FORMAT(`toDT`, '%d %b %Y') as d,
                         $columns
                     FROM
                         `$table`
@@ -62,7 +62,7 @@ HERE;
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        DATE_FORMAT(`toDT`, '%b %Y') as d,
                         $columns
                     FROM
                         `$table`
@@ -71,7 +71,7 @@ HERE;
                     GROUP BY
                         d
                     ORDER BY d DESC
-                    LIMIT 12
+                    LIMIT 6
 HERE;
             $result = $this->db->prepare($request);
             $result->bindParam(':todt', $to);
