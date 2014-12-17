@@ -22,7 +22,7 @@ class UserValues extends Users {
                         `toDT` <= :todt
                     GROUP BY
                         d
-                    ORDER BY d DESC
+                    ORDER BY `toDT` DESC
                     LIMIT 7
 HERE;
             $result = $this->db->prepare($request);
@@ -46,7 +46,7 @@ HERE;
                         `toDT` <= :todt
                     GROUP BY
                         EXTRACT(WEEK FROM `toDT`)
-                    ORDER BY d DESC
+                    ORDER BY `toDT` DESC
                     LIMIT 4
 HERE;
             $result = $this->db->prepare($request);
@@ -70,7 +70,7 @@ HERE;
                         `toDT` <= :todt
                     GROUP BY
                         d
-                    ORDER BY d DESC
+                    ORDER BY `toDT` DESC
                     LIMIT 6
 HERE;
             $result = $this->db->prepare($request);
