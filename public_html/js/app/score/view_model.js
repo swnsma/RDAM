@@ -40,12 +40,16 @@ ko.bindingHandlers.add_data={
 
     },
     update: function(element, valueAccessor, allBindings, viewModel){
+        //отримання даних з моделі
         var value=valueAccessor().active_user;
         var masId=[];
+        //річ для того що б кнопки працювали
         viewModel.bool(!viewModel.bool());
+        //проходимо по масиву активних ютерів  і беремо idішкі
         for(var i in value){
             masId.push(value[i].id());
         }
+        //вибираємо тип
         var type='day';
         var typeg=viewModel.thisGraph();
         if(typeg===1){
@@ -54,17 +58,28 @@ ko.bindingHandlers.add_data={
         if(typeg===2){
             type='month'
         }
+        //в масив idшішок запикаємо id поточного користувача
         masId.push(current_user.getId());
-        debugger;
         viewModel.big_progress_bar(true);
+        //визивається функція яка буде отримувати дані
+        //masId - масив idішок
+        //function(masid) - функція яка визивається після респонса
+        //function(e) - функція визивається, ящо помилка
+
         values.getValues(masId, function(masid) {
             var dd = values.getDate(type,masId);
             viewModel.diapason(dd[0] + ' - ' + dd[dd.length-1]);
             if(viewModel.consProd()==='consumption'){
+                // якщо в нас вибране споживання то ми малюємо графік за даними по споживанню
                 changeGraph(dd,
                     values.getConsumption(type,masId), 'Consumption',viewModel.rend(),viewModel.colors);
             }
             else{
+                //якщо ж вибране виробництво то ми мал.ємо графік по даними вирибницта
+                //values.getProduction - повертає масив в такому форматі,
+                //який потрібний для графіка
+                //передаються 2 параметри ... тип(день, тиждень, мысяць) та масив idiшок
+                //ця функція знаходиться  в папці комон в файлі get_values
                 changeGraph(dd,
                     values.getProduction(type,masId), 'Production',viewModel.rend(),viewModel.colors);
             }
