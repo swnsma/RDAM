@@ -165,6 +165,14 @@ ko.bindingHandlers.sumV={
     }
 }
 
+//hours of vac cleaning
+ko.bindingHandlers.sumCar={
+    update:function(element,valueAccessor){
+        var sum=valueAccessor()();
+        $("#"+element.id).html((sum*0.61*3.8624256).toFixed(1)+"hours");
+    }
+}
+
 
 
 
