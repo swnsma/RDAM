@@ -223,16 +223,51 @@ function AppViewModel() {
         }
         self.bool(!self.bool());
     }
+
+    self.addInfo = ko.observableArray();
 }
 
 // Activates knockout.js
 function Score() {
-    var appVievM=  new AppViewModel();
+    var appVievM = new AppViewModel();
     ko.applyBindings(appVievM);
     getUsers(appVievM);
     button_constr(".time1");
 
+    //enables click event traking for chart
+    $('#chartDiv').bind('jqplotDataClick',
+        function (ev, seriesIndex, pointIndex, data) {
+            var column = pointIndex;
+            var scale = appVievM.thisGraph();
+            var users = appVievM.return_active_user();
+            var ids = [];
+            ids.push(current_user.getId());
+            var names = [];
+            names.push(current_user.getName());
+            for (var i=0; i<users.length; i++){
+                ids[i] = users[i].id();
+                names[i] = users[i].name();
+            }
+            var v  =values.getDate('day', ids);
+            var date = v[pointIndex];
 
+            var arrcons = values.getConsumption('day', ids);
+            var arrprod = values.getProduction('day', ids);
+
+            appVievM.addInfo([]);
+
+            for (var i=0;i<ids.length;i++){
+                //var cons = values.getConsumption('day', ids)[i][pointIndex];
+                //var prod = values.getProduction('day', ids)[i][pointIndex];
+                cons = arrcons[i][pointIndex];
+                prod = arrprod[i][pointIndex];
+                cons = cons.toFixed(1);
+                prod = prod.toFixed(1);
+                //alert (cons+' '+);
+                appVievM.addInfo.push({name:names[i], consumption:cons+' kWh', production: prod+' 30kWh', achievement:'Lowest consumer'});
+            }
+        }
+    );
 }
 manager.add(Score);
 
