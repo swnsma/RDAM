@@ -6,8 +6,13 @@ ko.bindingHandlers.battery = {
         var consumption = value.consumption;
         var production = value.production;
 
-        var percentage=production/consumption*100;
+        if (production>consumption){
+            var percentage=100;
+        }
+        else {
 
+            percentage = production / consumption * 100;
+        }
 
         element.style.width=percentage+'%';
         //element.innerText='adsdafads'
