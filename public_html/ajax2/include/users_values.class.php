@@ -71,7 +71,7 @@ HERE;
                     GROUP BY
                         d
                     ORDER BY `toDT` DESC
-                    LIMIT 6
+                    LIMIT 12
 HERE;
             $result = $this->db->prepare($request);
             $result->bindParam(':todt', $to);

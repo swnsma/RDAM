@@ -73,6 +73,7 @@ function Values() {
         return arr_data['day'][id] != undefined; //будь-який тип, т.к дані приходять одночасно
     };
 
+    var bool = false;
     this.getValues = function(ids, funcSuccess, funcError) {
         var id = [];
         for(var i in ids) {
