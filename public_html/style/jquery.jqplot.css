@@ -83,6 +83,7 @@
 .jqplot-yMidAxis-tick {
     text-align: center;
     white-space: nowrap;
+    font-size: 10pt;
 }
 
 .jqplot-xaxis-label {
