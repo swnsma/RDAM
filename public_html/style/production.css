@@ -33,7 +33,7 @@ body{
     padding: 3px;
 }
 .wrap span{
-    font-size: 20pt ;
+    /*font-size: 20pt ;*/
 }
 .calculate-n hr{
     position: absolute;
@@ -111,4 +111,82 @@ body{
     right:0px;
     top: 13px;
     font-size: 1.5em;
+}
+
+
+.different-metrics{
+    background-color: #f3f3f3;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    /*text-align: left;*/
+    padding-left:10px;
+}
+
+.metric {
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+}
+
+.image {
+    display: table;
+    position: relative;
+}
+
+.img {
+    display: table-cell;
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+    position: relative;
+}
+
+.kw-image {
+    background-image: url("../img/icons/kw.png");
+}
+
+.trees-image {
+    background-image: url("../img/icons/trees.png");
+}
+
+.co2-image {
+    background-image: url("../img/icons/co2.png");
+}
+
+.vac-image {
+    background-image: url("../img/icons/vac.png");
+}
+
+.value {
+    top: 34px;
+    left: 40px;
+    padding-left: 120px;
+    color: #81f854;
+    font-size: 50px;
+    font-weight: 900;
+    text-shadow: -1px -1px 0 #7d7d7d,
+    1px -1px 0 #7d7d7d,
+    -1px 1px 0 #7d7d7d,
+    1px 1px 0 #7d7d7d,
+    -1px 0px 0 #7d7d7d,
+    0px -1px 0 #7d7d7d,
+    0px 1px 0 #7d7d7d,
+    1px 0px 0 #7d7d7d;
+    background-color: #f9fbfa;
+    border: 1px solid #d7d7d7;
+    height: 80px;
+    border-radius: 40px;
+    padding-right: 25px;
+    font-size: 50px;
+    position: absolute;
+    z-index: 1;
+    line-height: 76px;
+}
+
+.explanation {
+    color: #7d7d7d;
+    font-size: 30px;
+    float: left;
+    width: 40%;
+    margin-top: 20px;
 }
