@@ -1,3 +1,4 @@
+var bool=true;
 function Values() {
     if (arguments.callee.instance)
         return arguments.callee.instance;
@@ -91,15 +92,25 @@ function Values() {
                 url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + id.join(',') + '&todt=last',
                 type: 'GET',
                 contentType: 'application/json',
+                beforeSend: function(){
+                    if(bool==true){
+                        bool=false;
+                    }
+
+                },
                 success: function (response)
                 {
-                    if (response) {
-                        parseData(response);
-                        funcSuccess(id);
-                        debugger;
-                    } else {
-                        funcError('');
+                    if(bool==false) {
+                        if (response) {
+                            parseData(response);
+                            funcSuccess(id);
+//                            debugger;
+                        } else {
+                            funcError('');
+                        }
+                        bool=true;
                     }
+
                 },
                 error: function (xhr, status, error) {
                     var err = JSON.parse(xhr.responseText);

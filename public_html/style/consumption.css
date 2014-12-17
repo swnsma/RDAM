@@ -34,20 +34,31 @@
     height: 120px;
     background-color: #F4EFD4;
     display: inline-block;
+    float: left;
 }
 .prod
 {
     background-color: #4CAF50;
     height: 100%;
-    display: inline-block;
+    white-space: nowrap;
+}
+.prod span
+{
+    margin-left: 30px;
+   font-weight: bold;
+    font-size: 20px;
 }
 .electrode
 {
     width: 20px;
     height: 50px;
     background-color: black;
-    display: inline-block;
-    margin-bottom: 50px;
+    float: left;
+   margin-top: 45px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+}
+footer
+{
+    margin-top: 160px;
 }
