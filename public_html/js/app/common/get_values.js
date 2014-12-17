@@ -1,4 +1,3 @@
-var bool=true;
 function Values() {
     if (arguments.callee.instance)
         return arguments.callee.instance;
