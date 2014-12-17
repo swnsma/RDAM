@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style/common.css" type="text/css"/>
     <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
     <link rel="stylesheet" href="style/compare.css" type="text/css"/>
-    <link rel="stylesheet" href="style/compare2.css" type="text/css"/>
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
     <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
     <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
@@ -55,37 +54,42 @@
                                 <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
                             </div>
                         </div>
-                        <!--<div class="explanation">-->
-                            <!--<h3>Statistics for this period</h3>-->
-                            <!--<div class="table">-->
-                                <!--<div class="row header">-->
-                                    <!--<div class="cell achievement">-->
-                                        <!--Achievement-->
-                                    <!--</div>-->
-                                    <!--<div class="cell user">-->
-                                        <!--Data-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="row">-->
-                                    <!--<div class="cell achievement">-->
-                                        <!--Lowest consumstion-->
-                                    <!--</div>-->
-                                    <!--<div class="cell user" data-bind="text:lowestCons">-->
-
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="row">-->
-                                    <!--<div class="cell achievement">-->
-                                        <!--Best producing-->
-                                    <!--</div>-->
-                                    <!--<div class="cell user" data-bind="text:highestProd">-->
-
-                                    <!--</div>-->
-                                <!--</div>-->
-
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="explanation">
+                            <h3>Statistics for this period</h3>
+                            <div class="table">
+                                <div class="row">
+                                    <div class="cell name">
+                                        User
+                                    </div>
+                                    <div class="cell consumption">
+                                        Consumption
+                                    </div>
+                                    <div class="cell production">
+                                        Production
+                                    </div>
+                                    <div class="cell achievement">
+                                        Achievement
+                                    </div>
+                                </div>
+                                <div data-bind="foreach: addInfo">
+                                    <div class="row">
+                                        <div class="cell name" data-bind="text: name">
+                                            User
+                                        </div>
+                                        <div class="cell consumption" data-bind="text: consumption">
+                                            Consumption
+                                        </div>
+                                        <div class="cell production" data-bind="text: production">
+                                            Production
+                                        </div>
+                                        <div class="cell achievement" data-bind="text: achievement">
+                                            Achievement
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
                     <div class="compare-float-right">
                         <form action="">
 
