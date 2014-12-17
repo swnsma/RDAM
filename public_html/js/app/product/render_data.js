@@ -133,23 +133,35 @@ function appView(items)
     button_constr(".time1");
 }
 
-ko.bindingHandlers.sumC={
+//amount of kW
+ko.bindingHandlers.sumP={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((0.61*sum).toFixed(1)+" kg");
+        $("#"+element.id).html((sum).toFixed(1)+"kW");
     }
 }
 
+//amount of CO2
+ko.bindingHandlers.sumC={
+    update:function(element,valueAccessor){
+        var sum=valueAccessor()();
+        $("#"+element.id).html((0.61*sum).toFixed(1)+"kg");
+    }
+}
+
+//amount of trees
 ko.bindingHandlers.sumT={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((0.61*sum*0.026).toFixed(1)+" seedlings");
+        $("#"+element.id).html((0.61*sum*0.026).toFixed(1)+"trees");
     }
 }
+
+//hours of vac cleaning
 ko.bindingHandlers.sumV={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((sum/1.5).toFixed(1)+" hours");
+        $("#"+element.id).html((sum/1.5).toFixed(1)+"hours");
     }
 }
 
