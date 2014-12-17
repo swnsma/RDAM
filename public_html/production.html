@@ -50,7 +50,7 @@
         <div class="wrap">
             <h2>Produced green energy for the current period it's amount...</h2>
             <div class="different-metrics">
-                <div class="metric">
+                <div class="metric kw">
                     <div class="image">
                         <div class="img kw-image"></div>
                         <div class="value">
@@ -64,7 +64,7 @@
                         <span id="kWv" data-bind="sumP: sumProd"></span>
                     </div>
                 </div>
-                <div class="metric">
+                <div class="metric co2">
                     <div class="image">
                         <div class="img co2-image"></div>
                         <div class="value">
@@ -75,6 +75,23 @@
                         <span>Normal production of this amount of energy will cause emission of</span>
                         <span id="co2v" data-bind="sumC: sumProd"></span>
                         <span> of CO2</span>
+                    </div>
+                </div>
+                <div class="metric car">
+                    <div class="image">
+                        <div class="img car-image"></div>
+                        <div class="value">
+                            <span id="car" data-bind="sumCar: sumProd"></span>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <span>
+                            Driving
+                        </span>
+                        <span id="carV" data-bind="sumCar: sumProd"></span>
+                        <span>
+                            in an average passenger vehicle will cause the same CO2 emission
+                        </span>
                     </div>
                 </div>
                 <div class="metric">
@@ -90,20 +107,6 @@
                         </span>
                         <span id="treesV"  data-bind="sumT: sumProd"></span>
                         <span> during 10 year period</span>
-                    </div>
-                </div>
-                <div class="metric">
-                    <div class="image">
-                        <div class="img vac-image"></div>
-                        <div class="value">
-                            <span id="vac" data-bind="sumV: sumProd"></span>
-                        </div>
-                    </div>
-                    <div class="explanation">
-                        <span>
-                            You can spend this energy by doing vacuum cleaning for
-                        </span>
-                        <span id="vacV" data-bind="sumV: sumProd"></span>
                     </div>
                 </div>
             </div>

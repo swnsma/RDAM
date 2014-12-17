@@ -158,6 +158,10 @@ body{
     background-image: url("../img/icons/vac s.png");
 }
 
+.car-image {
+    background-image: url("../img/icons/car s.png");
+}
+
 .value {
     top: 14px;
     left: 40px;
@@ -191,4 +195,16 @@ body{
     width: 100%;
     margin-top: 20px;
     margin: auto;
+}
+
+.kw {
+    width: 230px;
+}
+
+.co2 {
+    width: 220px;
+}
+
+.car {
+    width: 240px;
 }
