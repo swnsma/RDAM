@@ -118,49 +118,50 @@ body{
     background-color: #f3f3f3;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    /*text-align: left;*/
-    padding-left:10px;
+    padding: 5px;
+    display: table;
 }
 
 .metric {
     display: inline-block;
-    width: 90%;
+    width: 23%;
     text-align: center;
+    float: left;
+    padding-left:5px;
 }
 
 .image {
-    display: table;
     position: relative;
 }
 
 .img {
     display: table-cell;
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     z-index: 2;
     position: relative;
 }
 
 .kw-image {
-    background-image: url("../img/icons/kw.png");
+    background-image: url("../img/icons/kw s.png");
 }
 
 .trees-image {
-    background-image: url("../img/icons/trees.png");
+    background-image: url("../img/icons/trees s.png");
 }
 
 .co2-image {
-    background-image: url("../img/icons/co2.png");
+    background-image: url("../img/icons/co2 s.png");
 }
 
 .vac-image {
-    background-image: url("../img/icons/vac.png");
+    background-image: url("../img/icons/vac s.png");
 }
 
 .value {
-    top: 34px;
+    top: 14px;
     left: 40px;
-    padding-left: 120px;
+    padding-left: 40px;
     color: #81f854;
     font-size: 50px;
     font-weight: 900;
@@ -174,19 +175,20 @@ body{
     1px 0px 0 #7d7d7d;
     background-color: #f9fbfa;
     border: 1px solid #d7d7d7;
-    height: 80px;
+    height: 50px;
     border-radius: 40px;
-    padding-right: 25px;
-    font-size: 50px;
+    padding-right: 15px;
+    font-size: 30px;
     position: absolute;
     z-index: 1;
-    line-height: 76px;
+    line-height: 50px;
 }
 
 .explanation {
     color: #7d7d7d;
-    font-size: 30px;
+    font-size: 19px;
     float: left;
-    width: 40%;
+    width: 100%;
     margin-top: 20px;
+    margin: auto;
 }

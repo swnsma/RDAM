@@ -51,39 +51,39 @@
             <h2>Produced green energy for the current period it's amount...</h2>
             <div class="different-metrics">
                 <div class="metric">
-                    <div class="explanation">
-                         <span>
-                            During period shown on the graph your solar plant produced 24kW
-                        </span>
-                    </div>
                     <div class="image">
                         <div class="img kw-image"></div>
                         <div class="value">
                             <span id="kW" data-bind="sumP: sumProd">2450kw</span>
                         </div>
                     </div>
-                    <a class="fb"
-                       onclick="Share.facebook('http://rdam.tk/production.html'
-                                                ,'I am greening the planet'
-                                                ,'http://icons.iconarchive.com/icons/icons8/ios7/256/Household-Vacuum-Cleaner-icon.png'
-                                                ,'I am greening the planet! See how many hours of my vacuum cleaner will work without harm to the environment!')"
-                    >
-                    </a>
+                    <div class="explanation">
+                        <span>
+                            During period shown on the graph your solar plant produced
+                        </span>
+                        <span id="kWv" data-bind="sumP: sumProd"></span>
+                    </div>
                 </div>
                 <div class="metric">
-                    <div class="explanation">
-                        <span>Normal production of this amount of energy will cause emission of</span>
-                        <span id="co2v" data-bind="sumC: sumProd"></span>
-                        <span> of CO2</span>
-                    </div>
                     <div class="image">
                         <div class="img co2-image"></div>
                         <div class="value">
                             <span id="co2" data-bind="sumC: sumProd"></span>
                         </div>
                     </div>
+                    <div class="explanation">
+                        <span>Normal production of this amount of energy will cause emission of</span>
+                        <span id="co2v" data-bind="sumC: sumProd"></span>
+                        <span> of CO2</span>
+                    </div>
                 </div>
                 <div class="metric">
+                    <div class="image">
+                        <div class="img trees-image"></div>
+                        <div class="value">
+                            <span id="trees"  data-bind="sumT: sumProd"></span>
+                        </div>
+                    </div>
                     <div class="explanation">
                         <span>
                             This amount of CO2 can be sequestered by
@@ -91,25 +91,19 @@
                         <span id="treesV"  data-bind="sumT: sumProd"></span>
                         <span> during 10 year period</span>
                     </div>
-                    <div class="image">
-                        <div class="img trees-image"></div>
-                        <div class="value">
-                            <span id="trees"  data-bind="sumT: sumProd"></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="metric">
-                    <div class="explanation">
-                        <span>
-                            You can spend this energy by doing vacuum cleaning for
-                        </span>
-                        <span id="vacV" data-bind="sumV: sumProd"></span>
-                    </div>
                     <div class="image">
                         <div class="img vac-image"></div>
                         <div class="value">
                             <span id="vac" data-bind="sumV: sumProd"></span>
                         </div>
+                    </div>
+                    <div class="explanation">
+                        <span>
+                            You can spend this energy by doing vacuum cleaning for
+                        </span>
+                        <span id="vacV" data-bind="sumV: sumProd"></span>
                     </div>
                 </div>
             </div>

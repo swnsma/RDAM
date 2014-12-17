@@ -58,10 +58,20 @@
         </header>
         <article class="main-content">
             <div class="home-graph-container" id="home-graph-container">
-                <div class="graph">
+                <canvas id="graph"width="100" height="100"></canvas>
             </div>
         </article>
     </article>
+    <script>
+        var element = document.getElementById("graph");
+        var ctx = element.getContext("2d");
+        ctx.strokeStyle = "#fff";
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(100,100);
+        ctx.stroke();
+        ctx.closePath();
+    </script>
 </body>
 </html>
 
