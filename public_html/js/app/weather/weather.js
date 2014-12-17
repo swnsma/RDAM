@@ -144,11 +144,11 @@ function WeatherModel() {
 
     var api = new WeatherApi(current_user.getCity());
     api.getWeather(function(data) {
-        //try {
+        try {
             renderData(data);
-        //} catch(e) {
-          //  alert('invalid city');
-        //}
+        } catch(e) {
+            alert('invalid city');
+        }
     }, function() { alert('error'); });
 }
 
