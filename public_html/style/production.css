@@ -1,15 +1,13 @@
-body{
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
 .wrap{
     text-align: center;
+    background-color:#eee;
 }
 
 .calculate-n {
     display:inline-block;
     width:320px;
     position: relative;
-    background-color:#eee;
+
     float:left;
     text-align: center;
     /*border-radius: 10px;*/
@@ -20,8 +18,8 @@ body{
     /*margin-bottom: 10px;*/
 }
 .border1{
-    border-left:1px solid  rgb(99, 173, 31);
-    border-right:1px solid  rgb(99, 173, 31);
+    border-left:1px solid rgb(99, 173, 31);
+    border-right:1px solid rgb(99, 173, 31);
     width:318px;
 }
 .calculate-n p{
@@ -50,7 +48,6 @@ body{
     margin:0 auto;
     text-align: center;
 }
-
 
 #treeInfo, #co2Info{
     height: 150px;
@@ -86,7 +83,7 @@ body{
     color:#333;
 }
 /*.data{*/
-    /*position: relative;*/
+/*position: relative;*/
 /*}*/
 .fb{
     margin: 0 auto;
@@ -96,7 +93,8 @@ body{
     height: 26px;
 }
 .fb span{
-    font-size: 20pt;
+    font-size: 19px;
+    margin-left:20px;
 }
 .description
 {
@@ -116,11 +114,10 @@ body{
     font-size: 1.5em;
 }
 
-
 .different-metrics{
-    background-color: #f3f3f3;
+    /*background-color: #f3f3f3;*/
     font-family: 'Lato', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     padding: 5px;
     display: table;
 }
@@ -169,17 +166,10 @@ body{
     top: 14px;
     left: 40px;
     padding-left: 40px;
-    color: #81f854;
+    color: #666;
     font-size: 50px;
     font-weight: 900;
-    text-shadow: -1px -1px 0 #7d7d7d,
-    1px -1px 0 #7d7d7d,
-    -1px 1px 0 #7d7d7d,
-    1px 1px 0 #7d7d7d,
-    -1px 0px 0 #7d7d7d,
-    0px -1px 0 #7d7d7d,
-    0px 1px 0 #7d7d7d,
-    1px 0px 0 #7d7d7d;
+
     background-color: #f9fbfa;
     border: 1px solid #d7d7d7;
     height: 50px;
