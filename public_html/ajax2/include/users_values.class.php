@@ -14,7 +14,7 @@ class UserValues extends Users {
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        DATE_FORMAT(`toDT`, '%d %b %Y') as d,
                         $columns
                     FROM
                         `$table`
@@ -22,7 +22,7 @@ class UserValues extends Users {
                         `toDT` <= :todt
                     GROUP BY
                         d
-                    ORDER BY d DESC
+                    ORDER BY `toDT` DESC
                     LIMIT 7
 HERE;
             $result = $this->db->prepare($request);
@@ -38,7 +38,7 @@ HERE;
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        DATE_FORMAT(`toDT`, '%d %b %Y') as d,
                         $columns
                     FROM
                         `$table`
@@ -46,7 +46,7 @@ HERE;
                         `toDT` <= :todt
                     GROUP BY
                         EXTRACT(WEEK FROM `toDT`)
-                    ORDER BY d DESC
+                    ORDER BY `toDT` DESC
                     LIMIT 4
 HERE;
             $result = $this->db->prepare($request);
@@ -62,7 +62,7 @@ HERE;
         foreach($tables as $table) {
             $request = <<<HERE
                     SELECT
-                        DATE_FORMAT(`toDT`, '%Y-%m-%d') as d,
+                        DATE_FORMAT(`toDT`, '%b %Y') as d,
                         $columns
                     FROM
                         `$table`
@@ -70,8 +70,8 @@ HERE;
                         `toDT` <= :todt
                     GROUP BY
                         d
-                    ORDER BY d DESC
-                    LIMIT 12
+                    ORDER BY `toDT` DESC
+                    LIMIT 6
 HERE;
             $result = $this->db->prepare($request);
             $result->bindParam(':todt', $to);
