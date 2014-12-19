@@ -32,15 +32,18 @@
     <div id="data">
         <div id="weather-list">
             <div class="weather-city">Weather in <span data-bind="text: city"></span></div>
+            <div class="both-fix"></div>
             <ul class="weather-list" data-bind="foreach: weather_days">
-                <li data-bind="click: function() { $root.renderMoreInfo($index()); }, attr: { selected: active }">
+                <li data-bind="click: function() { $parent.renderMoreInfo($index()); }, attr: { selected: active }">
                     <div class="wdate">
-                        <span class="wname" data-bind="text: date.day_name"></span>
-                        <span class="wday" data-bind="text: date.day, css: { is_day_off: (date.is_day_off === true) }"></span>
-                        <span class="wname" data-bind="text: date.month_name"></span>
+                        <!-- ko with: date -->
+                        <span class="wname" data-bind="text: day_name"></span>
+                        <span class="wday" data-bind="text: day, css: { is_day_off: is_day_off }"></span>
+                        <span class="wname" data-bind="text: month_name"></span>
+                        <!-- /ko -->
                     </div>
                     <div class="wimg">
-                        <img data-bind="attr: { src: weatherIconUrl }" alt="" />
+                        <img src="" data-bind="attr: { src: weatherIconUrl }" alt="" />
                     </div>
                     <span class="wdesc" data-bind="text: weatherDesc"></span>
                     <div class="wtemp">
@@ -50,18 +53,24 @@
                 </li>
             </ul>
             <div class="wmore-info">
+                <!-- ko with: weather_days_mi -->
                 <div class="wm">
                     <div class="temp-grad">
                             <div class="btemp-img"><img src="img/temp.png" alt="" /></div>
                     </div>
                     <div class="temp-value">
-                        <span class="curr-temp-value" data-bind="text: weather_days_mi.tempC"></span> &deg;C
+                        <span class="curr-temp-value" data-bind="text: tempC"></span> &deg;C
                     </div>
                     <div class="sun">
-                        <div class="sun-field">Moonrise <span data-bind="text: weather_days_mi.sun().moonrise"></span></div>
-                        <div class="sun-field">Moonset <span data-bind="text: weather_days_mi.sun().moonset"></span></div>
-                        <div class="sun-field">Sunrise <span data-bind="text: weather_days_mi.sun().sunrise"></span></div>
-                        <div class="sun-field">Sunset <span data-bind="text: weather_days_mi.sun().sunset"></span></div>
+                        <div class="sun-hours">
+                            The sun will shine <span data-bind="text: sun().hours"></span>
+                        </div>
+                        <div class="sun-hours-detail">
+                            <div class="sun-field">Moonrise <span data-bind="text: sun().moonrise"></span></div>
+                            <div class="sun-field">Moonset <span data-bind="text: sun().moonset"></span></div>
+                            <div class="sun-field">Sunrise <span data-bind="text: sun().sunrise"></span></div>
+                            <div class="sun-field">Sunset <span data-bind="text: sun().sunset"></span></div>
+                        </div>
                     </div>
                     <div class="table-hourly-right">
                         <table class="hourly">
@@ -85,50 +94,50 @@
                             </tr>
                             <tr>
                                 <td>temperature (&deg;C)</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
+                                <!-- ko foreach: hourly -->
                                 <td data-bind="text: tempC"></td>
                                 <!-- /ko -->
                             </tr>
                             <tr>
                                 <td>humidity</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
+                                <!-- ko foreach: hourly -->
                                 <td data-bind="text: humidity"></td>
                                 <!-- /ko -->
                             </tr>
                             <tr>
                                 <td>precip (mm)</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
+                                <!-- ko foreach: hourly -->
                                 <td data-bind="text: precipMM"></td>
                                 <!-- /ko -->
                             </tr>
                             <tr>
                                 <td>pressure</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
+                                <!-- ko foreach: hourly -->
                                 <td data-bind="text: pressure"></td>
                                 <!-- /ko -->
                             </tr>
                             <tr>
                                 <td>wind degree</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
+                                <!-- ko foreach: hourly -->
                                 <td data-bind="text: winddirDegree"></td>
                                 <!-- /ko -->
                             </tr>
                             <tr>
                                 <td>wind speed (miles)</td>
-                                <!-- ko foreach: weather_days_mi.hourly -->
+                                <!-- ko foreach: hourly -->
                                 <td data-bind="text: windspeedMiles"></td>
                                 <!-- /ko -->
                             </tr>
                         </table>
                     </div>
                 </div>
+                <!-- /ko -->
             </div>
-
         </div>
     </div>
 </div><!--end main-content-->
 <footer>
-    <span >Copyright &copy 2014 All right reserved.</span>
+    <span >Copyright &copy; 2014 All right reserved.</span>
 </footer><!--end footer-->
 </div>
 <script src="js/vendor/jquery-2.1.1.js"></script>

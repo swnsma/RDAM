@@ -20,6 +20,10 @@ ul {
     padding: 0;
 }
 
+.both-fix {
+    clear: both;
+}
+
 header{
     width: 910px;
     border-bottom: 1px solid rgb(99, 173, 31);

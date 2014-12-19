@@ -39,12 +39,7 @@ function WeatherModel() {
         hourly: ko.observableArray([]),
         tempC: ko.observable(),
         tempF: ko.observable(),
-        sun: ko.observable({
-            moonrise: null,
-            moonset: null,
-            sunrise: null,
-            sunset: null
-        })
+        sun: ko.observable({})
     };
 
     self.renderMoreInfo = function(n) {
@@ -56,9 +51,22 @@ function WeatherModel() {
         self.weather_days_mi.hourly(el.hourly);
         self.weather_days_mi.tempC(el.tempC);
         self.weather_days_mi.tempF(el.tempF);
-        console.log(el.sun);
-        self.weather_days_mi.sun(el.sun);
+        var sun = el.sun;
+        sun.hours = getSunHours(sun.sunrise, sun.sunset);
+        self.weather_days_mi.sun(sun);
     };
+
+    function getSunHours(from, to) {
+        function getMinuteFromTime(time) {
+            return parseInt(time.substr(0, 2))*60 + parseInt(time.substr(3, 2)) +
+                ( time.substr(6, 2) == 'AM' ? 0 : 720 );
+        }
+
+        return (function(minute) {
+            var m = (minute/60) - ((minute/60) % 1);
+            return m + ' hours ' + ( minute - m*60) + ' minutes';
+        })(Math.abs(getMinuteFromTime(to) - getMinuteFromTime(from)));
+    }
 
     var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];

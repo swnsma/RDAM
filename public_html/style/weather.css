@@ -224,3 +224,21 @@ table.hourly tr:nth-child(2) th:first-child, table.hourly tr:nth-child(1) th:fir
 .sun-field {
     padding: 3px;
 }
+
+.sun-hours {
+    padding: 10px;
+    text-align: center;
+}
+
+.sun-hours > span {
+    display: block;
+    margin: 0 auto;
+    color: #9B4242;
+    font-weight: bold;
+}
+
+.sun-hours-detail {
+    width: 120px;
+    margin: 0 auto;
+    font-size: 10pt;
+}
