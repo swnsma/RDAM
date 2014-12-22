@@ -20,9 +20,6 @@ function AppViewModel(){
     {
 
         var index=self.buttons().indexOf(data);
-        if(index===2){
-            self.rend(self.rend[1]);
-        }
         self.thisGraph(index);
     }
 }
@@ -38,8 +35,9 @@ ko.bindingHandlers.showGraph={
                     'display':'block'
                 })
                 debugger;
+                var dd = values.getDate('day',masId)
                 viewModel.first_loading(true);
-                changeGraph(values.getDate('day',masId),values.gertProCon('day',masId),'title',viewModel.rend(),['#444','#368']);
+                changeGraph(dd,values.gertProCon('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#f21','#190'],true);
             },
             function(e){
                 alert(e);
@@ -60,7 +58,8 @@ ko.bindingHandlers.showGraph={
             }
 
                 debugger;
-                changeGraph(values.getDate(type, masId), values.gertProCon(type, masId), 'title', viewModel.rend(), ['#444','#368']);
+            var dd = values.getDate(type, masId)
+                changeGraph(dd, values.gertProCon(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#f21','#190'],true);
 
         }
 

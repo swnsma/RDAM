@@ -1,7 +1,8 @@
 
-function changeGraph(ticks,mas_dat,title,rend,colors) {
+function changeGraph(ticks,mas_dat,title,rend,colors,showlegeng) {
     $('#chartDiv').empty();
-    plot1= $.jqplot('chartDiv', mas_dat, {
+
+    var option={
         seriesColors: colors,
         title: title,
         seriesDefaults: {
@@ -17,9 +18,11 @@ function changeGraph(ticks,mas_dat,title,rend,colors) {
 
         ],
         legend: {
+
             show: false,
             xoffset: 12,
-            yoffset: 12
+            yoffset: 12,
+            labels: ['consumption','production']
         },
         axes: {
             xaxis: {
@@ -45,5 +48,10 @@ function changeGraph(ticks,mas_dat,title,rend,colors) {
             renderer: $.jqplot.CanvasGridRenderer,
             rendererOptions: {}
         }
-    });
+    }
+    if(showlegeng){
+        option.legend.show=true;
+    }
+
+    plot1= $.jqplot('chartDiv', mas_dat, option);
 }

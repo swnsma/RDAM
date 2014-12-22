@@ -41,8 +41,8 @@ function Values() {
         if (data == 'undefined') return null;
         var result = [];
         for(var i in ids) {
-            result.push(data[ids[i]].values.production);
-            result.push(data[ids[i]].values.consumption)
+            result.push(data[ids[i]].values.consumption);
+            result.push(data[ids[i]].values.production)
         }
         return result;
     }
