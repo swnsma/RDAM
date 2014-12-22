@@ -6,7 +6,9 @@
     color: #585858;
     font-family: 'Lato:300', sans-serif;
 }
-
+.main-content{
+    animation: apa 2s;
+}
 .weather-list {
     overflow: hidden;
     margin: 0;

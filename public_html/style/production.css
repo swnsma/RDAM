@@ -1,6 +1,7 @@
 .wrap{
     text-align: center;
     background-color:#eee;
+    animation: apa 2s;
 }
 
 .calculate-n {

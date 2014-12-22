@@ -3,7 +3,10 @@
     width: 450px;
     margin: auto;
 }
-
+.main-content{
+    animation: apa 2s;
+    overflow: hidden;
+}
 .label
 {
     font-family: Verdana,sans-serif;
