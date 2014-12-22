@@ -3,7 +3,7 @@
  */
 function getUsers(self) {
     var options = {
-        url: 'http://rdam.zz.mu/ajax2/users_info.php?from_id=' + 1  + '&fields=rating',
+        url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + 1  + '&fields=rating',
         type: 'GET',
         contentType: 'application/json',
         success: function (response) {
