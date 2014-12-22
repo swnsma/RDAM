@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../js/vendor/jquery-2.1.1.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+    function exampleValues(d) {
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax/user_values.php?id=' + d.text +'&todt=' + d.date +'&type=day',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response) {
+                    $('#result3').text('result: ' + JSON.stringify(response));
+                } else {
+                    $('#result3').text('result: nothing');
+                }
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+<h1>values</h1>
+<div id="result3"></div>
+id<input type="text" id="svalue3" /><br />
+date<input type="text" id="svalue4" value="last" />
+<button onclick="exampleValues({text: $('#svalue3').val(), date: $('#svalue4').val() })">click</button>
+
+<hr />
+
+<script type="text/javascript">
+    function exampleInfo(d) {
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + d.text  + '&fields=' + d.fields,
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response) {
+                    $('#result2').text('result: ' + JSON.stringify(response));
+                } else {
+                    $('#result2').text('result: nothing');
+                }
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+<h1>use info</h1>
+<div id="result2"></div>
+from user id<input type="text" id="svalue2" />
+<button onclick="exampleInfo({text: $('#svalue2').val(), fields: 'city' })">click</button>
+
+<hr />
+
+<script type="text/javascript">
+    function exampleSearch(d) {
+        $.ajax({
+            url: 'http://rdam.zz.mu/ajax/search.php?user_name=' + d.text + '&fields=' + d.fields,
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response) {
+                    $('#result').text('result: ' + JSON.stringify(response));
+                } else {
+                    $('#result').text('result: nothing');
+                }
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+<h1>search</h1>
+<div id="result"></div>
+<input type="text" id="svalue" />
+<button onclick="exampleSearch({text: $('#svalue').val(), fields: 'city' })">click</button>
+
+</body>
+</html>
