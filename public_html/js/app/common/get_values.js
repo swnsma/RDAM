@@ -36,6 +36,16 @@ function Values() {
         parseSomeTypeData(data.month, 'month');
     }
 
+    this.gertProCon=function(type, ids){
+        var data = arr_data[type];
+        if (data == 'undefined') return null;
+        var result = [];
+        for(var i in ids) {
+            result.push(data[ids[i]].values.production);
+            result.push(data[ids[i]].values.consumption)
+        }
+        return result;
+    }
     this.getProduction = function(type, ids) {
         var data = arr_data[type];
         if (data == 'undefined') return null;

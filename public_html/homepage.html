@@ -34,12 +34,13 @@
         <img src="img/loading.gif" alt="loading" />
     </div>
     <div id="data">
-        <div class="chart"><h2>Production and consumption</h2>
-            <div class="graph-container">
-                <button class="change-view change-view-homepage" data-bind="click:change">Line/Bar</button>
-                <div id="chartDiv" data-bind="renderChart: dataToRend"> </div>
-                <div class="button-center" data-bind="foreach: buttons">
-                <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
+        <button class="change-view change-view-homepage" data-bind="click:$root.changeConsProd">Line/Bar</button>
+        <div class="chart">
+            <h2>Production and consumption</h2>
+            <div data-bind="showGraph:{}" class="graph-container">
+                <div id="chartDiv"> </div>
+                <div class="button-center"  data-bind="foreach:buttons" id="buttonCenter">
+                    <div data-bind="click:$root.changeData, text:$data" class="time1"></div>
                 </div>
             </div>
         </div><!--end chart-->
@@ -60,10 +61,12 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
-<script type="text/javascript" src='js/vendor/somelibrary.js'></script>
+<!--<script type="text/javascript" src='js/vendor/somelibrary.js'></script>-->
 <script src="js/app/common/options.js"></script>
+<script src="js/app/common/get_values.js"></script>
 <script src="js/app/common/common.js"></script>
-<script src="js/app/common/data_containers.js"></script>
-<script type='text/javascript' src='js/app/homepage/render_data.js'></script>
+<!--<script src="js/app/common/data_containers.js"></script>-->
+<script src="js/app/common/changeGraph.js"></script>
+<script type='text/javascript' src='js/app/homepage/view_model.js'></script>
 </body>
 </html>

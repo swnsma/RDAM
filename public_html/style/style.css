@@ -51,7 +51,7 @@ table.jqplot-table-legend
     z-index: 1000;
 }
 .change-view-homepage{
-    top:-34px;
+    margin-top: 5px;
 }
 .jqplot-yaxis-label
 {

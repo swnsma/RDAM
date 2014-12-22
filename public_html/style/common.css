@@ -169,6 +169,7 @@ button {
 
 #data {
     display: none;
+    position: relative;
 }
 
 .loading {
