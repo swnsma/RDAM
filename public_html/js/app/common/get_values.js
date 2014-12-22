@@ -89,7 +89,7 @@ function Values() {
         {
 
             $.ajax({
-                url: 'http://rdam.zz.mu/ajax2/users_values.php?id=' + id.join(',') + '&todt=last',
+                url: 'http://rdam.zz.mu/ajax/users_values.php?id=' + id.join(',') + '&todt=last',
                 type: 'GET',
                 contentType: 'application/json',
                 beforeSend: function(){
