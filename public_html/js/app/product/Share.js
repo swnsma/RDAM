@@ -4,15 +4,11 @@
     {
         if(a[i].content=='http://rdam.zz.mu/img/ForShare.png')
         {
-            console.log(a[i].content);
             a[i].content= window.location.protocol+'//'+window.location.host+'/img/ForShare.png';
-            console.log(a[i].content);
         }
         if(a[i].content=='http://rdam.zz.mu/production.html')
         {
-            console.log(a[i].content);
             a[i].content=window.location.href;
-            console.log(a[i].content);
         }
     }
     $('.fb-share-button', '#fb-root').attr({'data-href':window.location.href});
