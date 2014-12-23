@@ -11,7 +11,7 @@
         if(a[i].content=='http://rdam.zz.mu/production.html')
         {
             console.log(a[i].content);
-            a[i].content=window.location.protocol+'//'+window.location.host+window.location.pathname;
+            a[i].content=window.location.href;
             console.log(a[i].content);
         }
     }
