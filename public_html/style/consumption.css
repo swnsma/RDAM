@@ -4,7 +4,7 @@
     margin: auto;
 }
 .main-content{
-    animation: apa 2s;
+    animation: apa 1500ms;
     overflow: hidden;
 }
 .label
