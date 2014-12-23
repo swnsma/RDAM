@@ -34,7 +34,6 @@ ko.bindingHandlers.showGraph={
                 $('#data').css({
                     'display':'block'
                 })
-                debugger;
                 var dd = values.getDate('day',masId)
                 viewModel.first_loading(true);
                 changeGraph(dd,values.gertProCon('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#990011','#001199'],true);
@@ -49,7 +48,6 @@ ko.bindingHandlers.showGraph={
         if(viewModel.first_loading()) {
             var masId = [current_user.getId()];
             viewModel.thisGraph();
-            debugger;
             var type = 'day';
             if (viewModel.thisGraph() === 1) {
                 type = 'week';
@@ -57,7 +55,7 @@ ko.bindingHandlers.showGraph={
                 type = 'month';
             }
 
-                debugger;
+
             var dd = values.getDate(type, masId)
                 changeGraph(dd, values.gertProCon(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#990011','#001199'],true);
 
