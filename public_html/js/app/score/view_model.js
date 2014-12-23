@@ -68,7 +68,15 @@ ko.bindingHandlers.add_data={
 
         values.getValues(masId, function(masid) {
             var dd = values.getDate(type,masId);
+
             viewModel.diapason(dd[0] + ' - ' + dd[dd.length-1]);
+            if(type=='week'){
+                var d = new Date();
+                var a =3600*24*1000*7;
+                d.setTime(Date.parse(dd[0]) - a);
+                viewModel.diapason( d.getDate()+ ' '+m_names[d.getMonth()]+' '+ d.getFullYear()+ ' - '+ dd[dd.length-1]);
+                console.log(d.toLocaleString());
+            }
             if(viewModel.consProd()==='consumption'){
                 // якщо в нас вибране споживання то ми малюємо графік за даними по споживанню
                 changeGraph(dd,
@@ -292,7 +300,9 @@ function Score() {
             }
             Users[best_n].achievement = 'Best producer';
             Users[lowest_n].achievement = 'Lowest consumer';
-            debugger;
+            if(best_n==lowest_n){
+                Users[best_n].achievement='Best in the peer group';
+            }
             for (var i=0; i<Users.length;i++){
                 appVievM.addInfo.push({
                                         name: Users[i].name,

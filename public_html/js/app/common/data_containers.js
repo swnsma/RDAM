@@ -30,9 +30,7 @@
 //    }
 //}
 
-var m_names = new Array("Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul", "Aug", "Sep",
-    "Oct", "Nov", "Dec");
+
 
 function AppViewModel(items,legend){
     var self= this;
