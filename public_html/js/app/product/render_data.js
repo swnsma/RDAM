@@ -169,7 +169,7 @@ ko.bindingHandlers.showGraph={
                 $('#data').css({
                     'display':'block'
                 })
-                debugger;
+
                 var dd = values.getDate('day',masId)
                 viewModel.first_loading(true);
                 var product = values.getProduction('day',masId);
@@ -190,7 +190,7 @@ ko.bindingHandlers.showGraph={
         if(viewModel.first_loading()) {
             var masId = [current_user.getId()];
             viewModel.thisGraph();
-            debugger;
+
             var type = 'day';
             if (viewModel.thisGraph() === 1) {
                 type = 'week';
@@ -198,7 +198,7 @@ ko.bindingHandlers.showGraph={
                 type = 'month';
             }
 
-            debugger;
+
             var dd = values.getDate(type, masId)
             var product = values.getProduction(type,masId);
             var sum = 0;
