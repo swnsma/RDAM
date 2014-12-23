@@ -36,7 +36,7 @@ function Values() {
         parseSomeTypeData(data.month, 'month');
     }
 
-    this.gertProCon=function(type, ids){
+    this.getProCon=function(type, ids){
         var data = arr_data[type];
         if (data == 'undefined') return null;
         var result = [];
