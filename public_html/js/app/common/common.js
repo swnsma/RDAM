@@ -25,7 +25,9 @@ function getData(func) {
     };
     $.ajax(options);
 };
-
+var m_names = new Array("Jan", "Feb", "Mar",
+    "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+    "Oct", "Nov", "Dec");
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
 
 function day(a,b) {
