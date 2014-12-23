@@ -25,6 +25,7 @@ function getData(func) {
     };
     $.ajax(options);
 };
+
 var monthes=['January','February', 'March','April','May','June','July','August','September','October','November','December'];
 
 function day(a,b) {
