@@ -21,7 +21,8 @@ ko.bindingHandlers.sumP={
 ko.bindingHandlers.sumC={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((0.61*sum).toFixed(1)+"kg");
+        //&nbsp - nonbreak space
+        $("#"+element.id).html((0.61*sum).toFixed(1)+"&nbspkg");
     }
 }
 
@@ -29,7 +30,8 @@ ko.bindingHandlers.sumC={
 ko.bindingHandlers.sumT={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((0.61*sum*0.026).toFixed(1)+"trees");
+        //&nbsp - nonbreak space
+        $("#"+element.id).html((0.61*sum*0.026).toFixed(1)+"&nbsptrees");
     }
 }
 
@@ -37,7 +39,8 @@ ko.bindingHandlers.sumT={
 ko.bindingHandlers.sumV={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((sum/1.5).toFixed(1)+"hours");
+        //&nbsp - nonbreak space
+        $("#"+element.id).html((sum/1.5).toFixed(1)+"&nbsphours");
     }
 }
 
@@ -45,7 +48,8 @@ ko.bindingHandlers.sumV={
 ko.bindingHandlers.sumCar={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((sum*0.61*3.8624256).toFixed(1)+"km");
+        //&nbsp - nonbreak space
+        $("#"+element.id).html((sum*0.61*3.8624256).toFixed(1)+"&nbspkm");
     }
 }
 

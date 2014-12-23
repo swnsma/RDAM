@@ -52,20 +52,20 @@
                 </div>
             </div><!--end chart-->
             <div class="wrap">
-                <h2>Green energy produced for the selected period</h2>
+                <h2>During period shown on the graph your solar plant produced <span id="kWv" data-bind="sumP: sumProd"></span></h2>
                 <div class="different-metrics">
-                    <div class="metric kw">
+                    <div class="metric vac">
                         <div class="image">
-                            <div class="img kw-image"></div>
+                            <div class="img vac-image"></div>
                             <div class="value">
-                                <span id="kW" data-bind="sumP: sumProd">2450 kw</span>
+                                <span id="vac" data-bind="sumV: sumProd"></span>
                             </div>
                         </div>
                         <div class="explanation">
-<span>
-During period shown on the graph your solar plant produced
-</span>
-                            <span id="kWv" data-bind="sumP: sumProd"></span>
+                            <span>
+                            You can spend this energy by doing vacuum cleaning during
+                            </span>
+                            <span id="vacV" data-bind="sumV: sumProd"></span>
                         </div>
                     </div>
                     <div class="metric co2">
@@ -89,13 +89,13 @@ During period shown on the graph your solar plant produced
                             </div>
                         </div>
                         <div class="explanation">
-<span>
-Driving
-</span>
+                            <span>
+                            Driving
+                            </span>
                             <span id="carV" data-bind="sumCar: sumProd"></span>
-<span>
-in an average passenger vehicle will cause the same CO<sub>2</sub> emission
-</span>
+                            <span>
+                            in an average passenger vehicle will cause the same CO<sub>2</sub> emission
+                            </span>
                         </div>
                     </div>
                     <div class="metric trees">
@@ -106,9 +106,9 @@ in an average passenger vehicle will cause the same CO<sub>2</sub> emission
                             </div>
                         </div>
                         <div class="explanation">
-<span>
-This amount of CO<sub>2</sub> can be sequestered by
-</span>
+                            <span>
+                            This amount of CO<sub>2</sub> can be sequestered by
+                            </span>
                             <span id="treesV" data-bind="sumT: sumProd"></span>
                             <span> trees during 10 year period</span>
                         </div>
