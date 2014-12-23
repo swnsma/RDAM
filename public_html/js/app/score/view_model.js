@@ -107,8 +107,8 @@ function AppViewModel() {
     self.search_text=ko.observable('');
     self.arrayUsers=ko.observableArray([]);
     self.isLine=ko.observable(0);
-    self.consProd=ko.observable('consumption');
-    self.title=ko.observable('Consumption');
+    self.consProd=ko.observable('production');
+    self.title=ko.observable('Production');
     self.ticks=ko.observableArray([]);
     self.current_user=ko.observable(new Users(current_user.getName(),current_user.getId(),null,'#0f0'
         ,current_user.getRating()));
