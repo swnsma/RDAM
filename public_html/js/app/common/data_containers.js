@@ -30,6 +30,10 @@
 //    }
 //}
 
+var m_names = new Array("Jan", "Feb", "Mar",
+    "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+    "Oct", "Nov", "Dec");
+
 function AppViewModel(items,legend){
     var self= this;
     self.data=items;
@@ -69,10 +73,7 @@ ko.bindingHandlers.showGraph={
                 });
                 var dd = values.getDate('day',masId);
                 viewModel.first_loading(true);
-                var d = new Date();
-                var a =3600*24*1000*7;
-                d.setTime(Date.parse(dd[0]) - a);
-                console.log(d.toLocaleString());
+
                 var product = viewModel.data('day',masId);
                 var sum = 0;
                 for(var i in product[0]){
@@ -100,12 +101,20 @@ ko.bindingHandlers.showGraph={
             var dd = values.getDate(type, masId);
             var product = viewModel.data(type,masId);
             var sum = 0;
+            var firstdd = dd[0];
+            if(type=='week'){
+                var d = new Date();
+                var a =3600*24*1000*7;
+                d.setTime(Date.parse(dd[0]) - a);
+                firstdd= d.getDate()+ ' '+m_names[d.getMonth()]+' '+ d.getFullYear();
+                console.log(d.toLocaleString());
+            }
 
             for(var i in product[0]){
                 sum+=product[0][i];
             }
             viewModel.sumProd(sum);
-            changeGraph(dd, product, dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#EAA228','#4BB2C5'],viewModel.legend);
+            changeGraph(dd, product, firstdd+ ' - '+dd[dd.length-1], viewModel.rend(), ['#EAA228','#4BB2C5'],viewModel.legend);
 
         }
 
