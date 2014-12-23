@@ -150,7 +150,7 @@ function AppViewModel(){
         {
             self.rend($.jqplot.LineRenderer)
         }
-    }
+    };
     self.changeData=function(data)
     {
 
@@ -165,12 +165,12 @@ ko.bindingHandlers.showGraph={
             function(masid){
                 $('#loading').css({
                     'display':'none'
-                })
+                });
                 $('#data').css({
                     'display':'block'
-                })
+                });
 
-                var dd = values.getDate('day',masId)
+                var dd = values.getDate('day',masId);
                 viewModel.first_loading(true);
                 var product = values.getProduction('day',masId);
                 var sum = 0;
@@ -199,7 +199,7 @@ ko.bindingHandlers.showGraph={
             }
 
 
-            var dd = values.getDate(type, masId)
+            var dd = values.getDate(type, masId);
             var product = values.getProduction(type,masId);
             var sum = 0;
             for(var i in product[0]){
