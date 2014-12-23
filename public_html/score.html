@@ -19,11 +19,12 @@
 <div class="container">
     <header>
         <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
-
         <div class="text_right">
             Rooftop Energy B.V.<br/>
             Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
-            T +31 (0)182 74 80 90  | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
+            T +31 (0)182 74 80 90  | E
+            <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a>
+        </div>
     </header>
     <nav>
         <ul id="menu">
@@ -33,45 +34,74 @@
             <li selected="true"> <a href="score.html">score</a></li>
             <li> <a href="weather.html">weather</a></li>
         </ul>
-    </nav><!--end navigation-->
+    </nav>
     <div class="main-content">
         <div id="loading" class="loading">
-                <img src="img/loading.gif" alt="loading" />
-            </div>
+            <img src="img/loading.gif" alt="loading" />
+        </div>
+        <div id="data">
+            <div class="compare">
+                <h2>
+                    <span>Compare</span>
+                    <button class="button float-right" data-bind="click:change,visible:$root.thisGraph()!=2">Line/Bar</button>
+                    <button class="button float-right" data-bind="click:changeConsProd">Cons/Prod</button>
+                </h2>
+                <div class="table margin5px width99p">
+                    <div class="compare-float-right">
+                        <form action="">
+                            <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
+                            <div id="list" data-bind="add_data:{active_user: return_active_user()}" class="list">
+                                <div class="selected_users">
+                                    <span data-bind="text:current_user().name" class="this user">this</span>
+                                    <ul data-bind="foreach: return_active_user_lower_current(),active_us: return_active_user()">
+                                        <li class="user" data-bind=" style:{backgroundColor: color }, click: $root.set_active">
+                                            <label >
+                                                <input class="check-box" data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
+                                                <span data-bind="text:name()"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
+                                <ul data-bind=" foreach: return_no_active_search()">
+                                    <li class="user" data-bind="click: $root.set_active">
+                                        <label>
+                                            <input data-bind="id:name,value:name, checked:$root.return_checked()  " type="checkbox"/>
+                                            <span data-bind="text:name"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
 
-            <div id="data">
-                <div class="chart-compare position-relative">
-                <h2>Compare</h2>
-                <button class="change-view change-view-score" data-bind="click:change,visible:$root.thisGraph()!=2">Line/Bar</button>
-                <button class=" change-data-score" data-bind="click:changeConsProd">Cons/Prod</button>
-                <div class="score-wrapper">
+                        </form>
+
+                    </div>
                     <div class="compare-float-center">
                         <div class="time" data-bind="text: diapason">111</div>
-
-                        <div class="graph-container">
+                        <div class="compare-graph">
                             <div id="chartDiv"> </div>
-                            <div class="button-center" data-bind="foreach: buttons">
-                                <div data-bind="click:$root.changeData,text:$data" class="time1"></div>
+                            <div class="table width99p" data-bind="foreach: buttons">
+                                <div data-bind="click:$root.changeData,text:$data" class="time-button"></div>
                             </div>
-                        </div><!--
+                        </div>
                         <div class="explanation">
                             <h3>Statistics for this period</h3>
                             <div class="table">
-                                <div class="row">
-                                    <div class="cell name">
-                                        User
+                                    <div class="row head-row">
+                                        <div class="cell name">
+                                            User
+                                        </div>
+                                        <div class="cell consumption">
+                                            Consumption
+                                        </div>
+                                        <div class="cell production">
+                                            Production
+                                        </div>
+                                        <div class="cell achievement">
+                                            Achievement
+                                        </div>
                                     </div>
-                                    <div class="cell consumption">
-                                        Consumption
-                                    </div>
-                                    <div class="cell production">
-                                        Production
-                                    </div>
-                                    <div class="cell achievement">
-                                        Achievement
-                                    </div>
-                                </div>
-                                <div data-bind="foreach: addInfo">
+                                <!-- ko foreach: addInfo -->
                                     <div class="row">
                                         <div class="cell name" data-bind="text: name">
                                             User
@@ -86,50 +116,18 @@
                                             Achievement
                                         </div>
                                     </div>
-                                </div>
+                                <!-- /ko -->
                             </div>
-                        </div>-->
-                    </div>
-                    <div class="compare-float-right">
-                        <form action="">
-
-                            <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
-                            <div id="list" data-bind="add_data:{active_user: return_active_user()}" class="list">
-                                <div class="selected_users">
-                                    <span data-bind="text:current_user().name" class="this">this</span>
-                                    <ul data-bind="foreach: return_active_user_lower_current(),active_us: return_active_user()">
-                                        <li data-bind=" style:{backgroundColor: color }, click: $root.set_active">
-                                            <label >
-                                                <input data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
-                                                <span data-bind="text:name()"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
-                                <ul data-bind=" foreach: return_no_active_search()">
-                                    <li data-bind="click: $root.set_active">
-                                        <label>
-                                            <input data-bind="id:name,value:name, checked:$root.return_checked()  " type="checkbox"/>
-                                            <span data-bind="text:name"></span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </form>
-
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div><!--end main-content-->
+    </div>
     <footer>
         <span >Copyright &copy 2014 All right reserved.</span>
-
-    </footer><!--end footer-->
-</div><!--end container-->
+    </footer>
+</div>
 <script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
 <script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
 

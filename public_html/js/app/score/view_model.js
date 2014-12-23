@@ -237,6 +237,15 @@ function Score() {
     //enables click event traking for chart
     $('#chartDiv').bind('jqplotDataClick',
         function (ev, seriesIndex, pointIndex, data) {
+            function User(name, production, consumption, achievement){
+                this.name = name;
+                this.production = production;
+                this.consumption = consumption;
+                this.achievement = achievement;
+            }
+
+            var Users = [];
+
             var column = pointIndex;
             var scale = appVievM.thisGraph();
             var users = appVievM.return_active_user();
@@ -245,10 +254,10 @@ function Score() {
             var names = [];
             names.push(current_user.getName());
             for (var i=0; i<users.length; i++){
-                ids[i] = users[i].id();
-                names[i] = users[i].name();
+                ids.push(users[i].id());
+                names.push(users[i].name());
             }
-            var v  =values.getDate('day', ids);
+            var v  = values.getDate('day', ids);
             var date = v[pointIndex];
 
             var arrcons = values.getConsumption('day', ids);
@@ -257,14 +266,40 @@ function Score() {
             appVievM.addInfo([]);
 
             for (var i=0;i<ids.length;i++){
-                //var cons = values.getConsumption('day', ids)[i][pointIndex];
-                //var prod = values.getProduction('day', ids)[i][pointIndex];
+                var cons = values.getConsumption('day', ids)[i][pointIndex];
+                var prod = values.getProduction('day', ids)[i][pointIndex];
                 cons = arrcons[i][pointIndex];
                 prod = arrprod[i][pointIndex];
                 cons = cons.toFixed(1);
                 prod = prod.toFixed(1);
-                //alert (cons+' '+);
-                appVievM.addInfo.push({name:names[i], consumption:cons+' kWh', production: prod+' 30kWh', achievement:'Lowest consumer'});
+                Users.push( new User(names[i],cons, prod,'') );
+            }
+
+            //best producer and lowest consumer
+            var best = Users[0].production;
+            var best_n = 0;
+            var lowest = Users[0].consumption;
+            var lowest_n = 0;
+            for (var i = 1; i<Users.length; i++){
+                if (Users[i].production > best){
+                    best = Users[i].production;
+                    best_n = i;
+                }
+                if (Users[i].consumption < lowest){
+                    lowest = Users[i].consumption;
+                    lowest_n = i;
+                }
+            }
+            Users[best_n].achievement = 'Best producer';
+            Users[lowest_n].achievement = 'Lowest consumer';
+            debugger;
+            for (var i=0; i<Users.length;i++){
+                appVievM.addInfo.push({
+                                        name: Users[i].name,
+                                        consumption: Users[i].consumption+' kWh',
+                                        production: Users[i].production+' kWh',
+                                        achievement: Users[i].achievement
+                                        });
             }
         }
     );
