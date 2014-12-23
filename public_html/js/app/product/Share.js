@@ -5,7 +5,7 @@
         if(a[i].content=='http://rdam.zz.mu/img/ForShare.png')
         {
             console.log(a[i].content);
-            a[i].content= window.location.protocol+'//'+window.location.host+'/img/ForShare.jpg';
+            a[i].content= window.location.protocol+'//'+window.location.host+'/img/ForShare.png';
             console.log(a[i].content);
         }
     }
