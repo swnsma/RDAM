@@ -48,13 +48,13 @@ function AppViewModel(items,legend){
         {
             self.rend($.jqplot.LineRenderer)
         }
-    }
+    };
     self.changeData=function(data)
     {
 
         var index=self.buttons().indexOf(data);
         self.thisGraph(index);
-    }
+    };
 }
 ko.bindingHandlers.showGraph={
     init: function(element, valueAccessor, allBindings, viewModel){
@@ -63,11 +63,11 @@ ko.bindingHandlers.showGraph={
             function(masid){
                 $('#loading').css({
                     'display':'none'
-                })
+                });
                 $('#data').css({
                     'display':'block'
-                })
-                var dd = values.getDate('day',masId)
+                });
+                var dd = values.getDate('day',masId);
                 viewModel.first_loading(true);
                 var d = new Date();
                 var a =3600*24*1000*7;
@@ -105,7 +105,6 @@ ko.bindingHandlers.showGraph={
                 sum+=product[0][i];
             }
             viewModel.sumProd(sum);
-            debugger;
             changeGraph(dd, product, dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#EAA228','#4BB2C5'],viewModel.legend);
 
         }
