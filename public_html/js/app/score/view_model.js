@@ -292,7 +292,9 @@ function Score() {
             }
             Users[best_n].achievement = 'Best producer';
             Users[lowest_n].achievement = 'Lowest consumer';
-            debugger;
+            if(best_n==lowest_n){
+                Users[best_n].achievement='Best in the peer group';
+            }
             for (var i=0; i<Users.length;i++){
                 appVievM.addInfo.push({
                                         name: Users[i].name,
