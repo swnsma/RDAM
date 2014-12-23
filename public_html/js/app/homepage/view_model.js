@@ -37,7 +37,7 @@ ko.bindingHandlers.showGraph={
                 debugger;
                 var dd = values.getDate('day',masId)
                 viewModel.first_loading(true);
-                changeGraph(dd,values.gertProCon('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#f21','#190'],true);
+                changeGraph(dd,values.gertProCon('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#990011','#001199'],true);
             },
             function(e){
                 alert(e);
@@ -59,7 +59,7 @@ ko.bindingHandlers.showGraph={
 
                 debugger;
             var dd = values.getDate(type, masId)
-                changeGraph(dd, values.gertProCon(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#f21','#190'],true);
+                changeGraph(dd, values.gertProCon(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#990011','#001199'],true);
 
         }
 

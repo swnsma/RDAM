@@ -33,7 +33,7 @@ function changeGraph(ticks,mas_dat,title,rend,colors,showlegeng) {
             },
 
             yaxis: {
-                label:"kW",
+                label:"kWh",
                 pad: 1.05,
                 tickOptions: {formatString: '%d'}
             }
