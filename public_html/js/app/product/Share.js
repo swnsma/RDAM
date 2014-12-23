@@ -2,7 +2,7 @@
     var a=$('meta', 'head');
     for(var i=0; i< a.length; i++)
     {
-        if(a[i].content=='http://rdam.zz.mu/img/ForShare.jpg')
+        if(a[i].content=='http://rdam.zz.mu/img/ForShare.png')
         {
             console.log(a[i].content);
             a[i].content= window.location.protocol+'//'+window.location.host+'/img/ForShare.jpg';
