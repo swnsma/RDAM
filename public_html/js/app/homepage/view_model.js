@@ -36,7 +36,7 @@ ko.bindingHandlers.showGraph={
                 })
                 var dd = values.getDate('day',masId)
                 viewModel.first_loading(true);
-                changeGraph(dd,values.gertProCon('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#990011','#001199'],true);
+                changeGraph(dd,values.gertProCon('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#EAA228','#4BB2C5'],true);
             },
             function(e){
                 alert(e);
@@ -57,7 +57,7 @@ ko.bindingHandlers.showGraph={
 
 
             var dd = values.getDate(type, masId)
-                changeGraph(dd, values.gertProCon(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#990011','#001199'],true);
+                changeGraph(dd, values.gertProCon(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#EAA228','#4BB2C5'],true);
 
         }
 

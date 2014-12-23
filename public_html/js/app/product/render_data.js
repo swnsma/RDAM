@@ -178,7 +178,7 @@ ko.bindingHandlers.showGraph={
                     sum+=product[0][i];
                 }
                 viewModel.sumProd(sum);
-                changeGraph(dd,values.getProduction('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#990011','#001199']);
+                changeGraph(dd,values.getProduction('day',masId),dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#4BB2C5']);
             },
             function(e){
                 alert(e);
@@ -206,7 +206,7 @@ ko.bindingHandlers.showGraph={
                 sum+=product[0][i];
             }
             viewModel.sumProd(sum);
-            changeGraph(dd, values.getProduction(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#990011','#001199']);
+            changeGraph(dd, values.getProduction(type, masId), dd[0]+ ' - '+dd[dd.length-1], viewModel.rend(), ['#4BB2C5']);
         }
 
     }
