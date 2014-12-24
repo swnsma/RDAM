@@ -13,7 +13,7 @@ manager.add(Product);
 ko.bindingHandlers.sumP={
     update:function(element,valueAccessor){
         var sum=valueAccessor()();
-        $("#"+element.id).html((sum).toFixed(1)+"kW");
+        $("#"+element.id).html((sum).toFixed(1)+" kWh");
     }
 }
 
