@@ -203,8 +203,22 @@ function AppViewModel() {
         self.bool(!self.bool());
     };
 
+    //what range is selected 'day' 'week' 'month'
+    self.currentRange = ko.observable('day');
     self.changeData=function(data)
     {
+        switch  (data){
+            case "Days":
+                self.currentRange('day');
+                break;
+            case "Weeks":
+                self.currentRange('week');
+                break;
+            case "Months":
+                self.currentRange('month');
+                break;
+        }
+
         if (self.isLine()) {
             self.rend($.jqplot.LineRenderer);
         }
@@ -233,6 +247,47 @@ function AppViewModel() {
     }
 
     self.addInfo = ko.observableArray();
+    self.sortedByConsumption = ko.observable(false);
+    self.sortAddInfoConsumption = function (){
+        self.sortedByConsumption(true);
+        self.sortedByProduction(false);
+        var array = self.addInfo();
+        for (var i=0;i<array.length;i++){
+            for (var j=0;j<array.length;j++){
+                if (parseFloat(array[i].consumption) < parseFloat(array[j].consumption)){
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+
+        //refresh observable array
+        var data = self.addInfo().slice(0);
+        self.addInfo([]);
+        self.addInfo(data);
+    }
+    self.sortedByProduction = ko.observable(false)
+    self.sortAddInfoProduction = function (){
+        self.sortedByConsumption(false);
+        self.sortedByProduction(true);
+        var array = self.addInfo();
+        for (var i=0;i<array.length;i++){
+            for (var j=0;j<array.length;j++){
+                if (parseFloat(array[i].production) > parseFloat(array[j].production)){
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+
+        //refresh observable array
+        var data = self.addInfo().slice(0);
+        self.addInfo([]);
+        self.addInfo(data);
+    }
+    self.selectedDate = ko.observable();
 }
 
 // Activates knockout.js
@@ -240,7 +295,7 @@ function Score() {
     var appVievM = new AppViewModel();
     ko.applyBindings(appVievM);
     getUsers(appVievM);
-    button_constr(".time1");
+    button_constr(".time-button");
 
     //enables click event traking for chart
     $('#chartDiv').bind('jqplotDataClick',
@@ -265,17 +320,74 @@ function Score() {
                 ids.push(users[i].id());
                 names.push(users[i].name());
             }
-            var v  = values.getDate('day', ids);
+            var diapason = appVievM.currentRange();
+            var v  = values.getDate(appVievM.currentRange(), ids);
             var date = v[pointIndex];
 
-            var arrcons = values.getConsumption('day', ids);
-            var arrprod = values.getProduction('day', ids);
+            if (appVievM.currentRange()=='week'){
+                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                var period=' from ';
+                var day = parseInt(date);
+                var month = date.substring(3,6);
+                var year = date.substring(7,11);
+                year = parseInt(year);
+                switch (month){
+                    case 'Jan':
+                        month = 0;
+                        break;
+                    case 'Feb':
+                        month = 1;
+                        break;
+                    case 'Mar':
+                        month = 2;
+                        break;
+                    case 'Apr':
+                        month = 3;
+                        break;
+                    case 'May':
+                        month = 4;
+                        break;
+                    case 'Jun':
+                        month = 5;
+                        break;
+                    case 'Jul':
+                        month = 6;
+                        break;
+                    case 'Aug':
+                        month = 7;
+                        break;
+                    case 'Sep':
+                        month = 8;
+                        break;
+                    case 'Oct':
+                        month = 9;
+                        break;
+                    case 'Nov':
+                        month = 10;
+                        break;
+                    case 'Dec':
+                        month = 11;
+                        break;
+                }
+                var JSDate = new Date (year, month, day);
+
+                JSDate.setDate(JSDate.getDate()-7)
+                period += JSDate.getDate()+"'th "+months[JSDate.getMonth()]+' '+JSDate.getFullYear();
+                period += ' to '+day+"'th "+months[month]+' '+year;
+                appVievM.selectedDate('period '+period);
+            } else {
+                appVievM.selectedDate(date);
+            }
+
+
+            var arrcons = values.getConsumption(appVievM.currentRange(), ids);
+            var arrprod = values.getProduction(appVievM.currentRange(), ids);
 
             appVievM.addInfo([]);
 
             for (var i=0;i<ids.length;i++){
-                var cons = values.getConsumption('day', ids)[i][pointIndex];
-                var prod = values.getProduction('day', ids)[i][pointIndex];
+                var cons = values.getConsumption(appVievM.currentRange(), ids)[i][pointIndex];
+                var prod = values.getProduction(appVievM.currentRange(), ids)[i][pointIndex];
                 cons = arrcons[i][pointIndex];
                 prod = arrprod[i][pointIndex];
                 cons = cons.toFixed(1);

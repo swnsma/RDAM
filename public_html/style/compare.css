@@ -159,6 +159,11 @@
     background-color: rgb(170, 250, 100);
 }
 
+.is_active {
+    background-color: #63AD1F;
+    color: #fff;
+}
+
 .time-button:hover{
     background-color: #63AD1F;
     color: #fff;
@@ -166,14 +171,15 @@
 
 .explanation h3{
     text-align: center;
-    font-size: 30px;
-    margin: 5px 0;
+    margin: 20px 0 5px 0;
     font-weight: 100;
+    font-size: 20px;
 }
 
 .explanation .table{
     display: block;
     border: 1px solid rgb(99, 173, 31);
+    border-top: none;
     width: 100%;
     height: 173px;
     text-align: center;
@@ -191,12 +197,32 @@
 }
 
 .head-row {
+    width: 100%;
+    font-size: 18px;
+    height: 27px;
     background-color: #63AD1F;
     color: #fff;
 }
 
+.head-row .consumption:hover {
+    background-color: #AAFA64;
+    color: #fff;
+    cursor: pointer;
+}
+
+.head-row .production:hover {
+    background-color: #AAFA64;
+    color: #fff;
+    cursor: pointer;
+}
+
+.head-row .cell{
+    height: 27px;
+}
+
 .explanation .cell {
     display: inline-block;
+    line-height: 26px;
 }
 
 .explanation .name {

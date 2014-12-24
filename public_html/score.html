@@ -85,17 +85,19 @@
                             </div>
                         </div>
                         <div class="explanation">
-                            <h3>Statistics for this period</h3>
+                            <h3>Statistics for <span data-bind="text: selectedDate"></span></h3>
                             <div class="table">
-                                    <div class="row head-row">
+                                    <div class="head-row">
                                         <div class="cell name">
                                             User
                                         </div>
-                                        <div class="cell consumption">
+                                        <div class="cell consumption" data-bind="click:sortAddInfoConsumption">
                                             Consumption
+                                            <img src="img/icons/sort-down.png" data-bind="style: {visibility: sortedByConsumption() ? 'visible' : 'hidden'}">
                                         </div>
-                                        <div class="cell production">
+                                        <div class="cell production"  data-bind="click:sortAddInfoProduction">
                                             Production
+                                            <img src="img/icons/sort-up.png" data-bind="style: {visibility: sortedByProduction() ? 'visible' : 'hidden'}">
                                         </div>
                                         <div class="cell achievement">
                                             Achievement
