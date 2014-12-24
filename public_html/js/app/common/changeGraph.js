@@ -22,7 +22,7 @@ function changeGraph(ticks,mas_dat,title,rend,colors,showlegeng) {
             show: false,
             xoffset: 12,
             yoffset: 12,
-            labels: ['production','consumption']
+            labels: ['consumption','production']
         },
         axes: {
             xaxis: {

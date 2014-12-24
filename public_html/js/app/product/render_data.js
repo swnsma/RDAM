@@ -4,7 +4,7 @@
 function Product() {
     var app= new AppViewModel(values.getProduction,false);
     ko.applyBindings(app);
-    button_constr($('.time1'));
+    button_constr($('.period'));
 }
 
 manager.add(Product);

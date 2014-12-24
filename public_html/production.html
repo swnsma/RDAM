@@ -41,13 +41,13 @@
             <img src="img/loading.gif" alt="loading" />
         </div>
         <div id="data">
-            <button class="change-view change-view-homepage" data-bind="click:$root.changeConsProd">Line/Bar</button>
+            <button class="change-view change-view-homepage" data-bind="click:$root.changeAppearance">Line/Bar</button>
 
             <div class="chart"><h2>Production</h2>
                 <div data-bind="showGraph:{}" class="graph-container">
                     <div id="chartDiv"> </div>
                     <div class="button-center"  data-bind="foreach:buttons" id="buttonCenter">
-                        <div data-bind="click:$root.changeData, text:$data" class="time1"></div>
+                        <div data-bind="click:$root.changeData, text:$data" class="period"></div>
                     </div>
                 </div>
             </div><!--end chart-->

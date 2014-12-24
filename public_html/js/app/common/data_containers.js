@@ -1,36 +1,3 @@
-//
-//function View_model(items)
-//{
-//    self=this;
-//    self.data=items;
-//    self.thisGraph=ko.observable(3);
-//    self.options=options;
-//    self.plot;
-//    self.dataToRend= ko.observableArray();
-//    self.dataToRend(self.data[0]);
-//    self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
-//    self.rend=ko.observable(self.rendMas[0]);
-//    self.buttons=ko.observableArray(['Days','Weeks','Months']);
-//    self.sumProd = ko.observable(self.data[0].sumProd());
-//    self.change=function(){
-//        if (self.rend() === self.rendMas[0]) {
-//            self.rend($.jqplot.LineRenderer);
-//        }
-//        else {
-//            self.rend($.jqplot.BarRenderer);
-//        }
-//    };
-//
-//    self.changeData=function(data)
-//    {   var index=self.buttons().indexOf(data);
-//        self.thisGraph(index+1);
-//        self.dataToRend(self.data[index]);
-//        self.sumProd(self.data[index].sumProd());
-//
-//    }
-//}
-
-
 
 function AppViewModel(items,legend){
     var self= this;
@@ -38,22 +5,15 @@ function AppViewModel(items,legend){
     self.buttons=ko.observableArray(['Days','Weeks','Months']);
     self.thisGraph=ko.observable(0);
     self.first_loading=ko.observable(false);
-    self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
-    self.rend=ko.observable($.jqplot.BarRenderer);
     self.sumProd=ko.observable(0);
     self.legend=legend;
-    self.changeConsProd=function()
+    self.appearance=ko.observable(true);
+    self.changeAppearance=function()
     {
-        if(self.rend()===$.jqplot.LineRenderer){
-            self.rend($.jqplot.BarRenderer)
-        }else
-        {
-            self.rend($.jqplot.LineRenderer)
-        }
+        self.appearance(!self.appearance());
     };
     self.changeData=function(data)
     {
-
         var index=self.buttons().indexOf(data);
         self.thisGraph(index);
     };
@@ -61,6 +21,13 @@ function AppViewModel(items,legend){
 ko.bindingHandlers.showGraph={
     init: function(element, valueAccessor, allBindings, viewModel){
         var masId = [current_user.getId()];
+        var rend;
+        if(viewModel.appearance()){
+            rend=$.jqplot.BarRenderer;
+        }else
+        {
+           rend=$.jqplot.LineRenderer;
+        }
         values.getValues(masId,
             function(masid){
                 $('#loading').css({
@@ -78,7 +45,7 @@ ko.bindingHandlers.showGraph={
                     sum+=product[0][i];
                 }
                 viewModel.sumProd(sum);
-                changeGraph(dd,product,dd[0]+' - '+dd[dd.length-1],viewModel.rend(),['#EAA228','#4BB2C5'],viewModel.legend);
+                changeGraph(dd,product,dd[0]+' - '+dd[dd.length-1],rend,['#EAA228','#4BB2C5'],viewModel.legend);
             },
             function(e){
                 alert(e);
@@ -90,6 +57,13 @@ ko.bindingHandlers.showGraph={
         if(viewModel.first_loading()) {
             var masId = [current_user.getId()];
             viewModel.thisGraph();
+            var rend;
+            if(viewModel.appearance()){
+                rend=$.jqplot.BarRenderer;
+            }else
+            {
+                rend=$.jqplot.LineRenderer;
+            }
             var type = 'day';
             if (viewModel.thisGraph() === 1) {
                 type = 'week';
@@ -112,7 +86,7 @@ ko.bindingHandlers.showGraph={
                 sum+=product[0][i];
             }
             viewModel.sumProd(sum);
-            changeGraph(dd, product, firstdd+ ' - '+dd[dd.length-1], viewModel.rend(), ['#EAA228','#4BB2C5'],viewModel.legend);
+            changeGraph(dd, product, firstdd+ ' - '+dd[dd.length-1], rend, ['#EAA228','#4BB2C5'],viewModel.legend);
 
         }
 

@@ -35,40 +35,6 @@ function day(a,b) {
     return a+" "+monthes[c-1].slice(0,3)+".";
 }
 
-function mont(a)
-{
-    var c=+a;
-    return monthes[c-1].slice(0,3);
-}
-
-function click_change()
-{
-    var a=$(this);
-    if(a.hasClass("master"))
-    {   rend=$.jqplot.BarRenderer;
-        line=0;
-        changeGraph(this_graph);
-
-
-    }
-    else
-    {   rend=$.jqplot.LineRenderer;
-        line=1;
-        changeGraph(this_graph);
-
-    }
-    a.toggleClass("master");
-}
-
-function includeJs(jsFilePath) {
-    var js = document.createElement("script");
-
-    js.type = "text/javascript";
-    js.src = jsFilePath;
-
-    document.body.appendChild(js);
-}
-
 function LoadingManager() {
     this.enable = function() {
         $('#loading').css('display', 'block');

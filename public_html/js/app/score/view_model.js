@@ -233,7 +233,7 @@ function AppViewModel() {
         }
 
     }
-    self.changeConsProd=function()
+    self.changeAppearance=function()
     {
         if (self.consProd()==='production') {
             self.consProd('consumption');
