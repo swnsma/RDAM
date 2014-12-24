@@ -1,5 +1,5 @@
 
-function AppViewModel(items,legend){
+function AppViewModel(items,legend,get_type){
     var self= this;
     self.data=items;
     self.buttons=ko.observableArray(['Days','Weeks','Months']);
@@ -7,6 +7,7 @@ function AppViewModel(items,legend){
     self.first_loading=ko.observable(false);
     self.sumProd=ko.observable(0);
     self.legend=legend;
+    self.get_type=get_type;
     self.appearance=ko.observable(true);
     self.changeAppearance=function()
     {
@@ -49,7 +50,7 @@ ko.bindingHandlers.showGraph={
             },
             function(e){
                 alert(e);
-            }
+            },viewModel.get_type
 
         )
     },

@@ -2,7 +2,7 @@
 
 
 function Product() {
-    var app= new AppViewModel(values.getProduction,false);
+    var app= new AppViewModel(values.getProduction,false,'&field=production');
     ko.applyBindings(app);
     button_constr($('.period'));
 }

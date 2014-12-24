@@ -84,7 +84,7 @@ function Values() {
     };
 
     var bool = false;
-    this.getValues = function(ids, funcSuccess, funcError) {
+    this.getValues = function(ids, funcSuccess, funcError,type) {
         var id = [];
         for(var i in ids) {
             if (!this.checkExistsUser(ids[i]))
@@ -99,7 +99,7 @@ function Values() {
         {
 
             $.ajax({
-                url: 'http://rdam.zz.mu/ajax/users_values.php?id=' + id.join(',') + '&todt=last',
+                url: 'http://rdam.zz.mu/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
                 type: 'GET',
                 contentType: 'application/json',
                 beforeSend: function(){

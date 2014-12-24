@@ -94,7 +94,7 @@ ko.bindingHandlers.add_data={
             viewModel.big_progress_bar(false);
         }, function(e){
             alert("Error" + e);
-        });
+        },'');
 
     }
 }
