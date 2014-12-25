@@ -7,7 +7,12 @@ function Values() {
     arr_data['day'] = []; //
     arr_data['week'] = [];
     arr_data['month'] = [];
-
+    function parseWeeksDate(weekDate){
+        var d = new Date();
+        var magicNumbers =3600*24*1000*7;
+        d.setTime(Date.parse(weekDate) - magicNumbers);
+        return d.getDate()+ ' '+m_names[d.getMonth()]+' '+ d.getFullYear()+ ' - ' + weekDate;
+    }
     function parseSomeTypeData(data, type) {
         for(var i in data) {
             var id = data[i].id;
@@ -22,7 +27,13 @@ function Values() {
             }
             var l = data[i].values.length-1;
             for(var j = l; j >= 0; --j) {
+
+                if(type=="week"){
+                    arr_data[type][id].date.push(parseWeeksDate(data[i].values[j][0]));
+                }else{
                 arr_data[type][id].date.push(data[i].values[j][0]);
+                }
+
                 arr_data[type][id].values.production.push(+data[i].values[j][1]);
                 arr_data[type][id].values.consumption.push(+data[i].values[j][2]);
             }
@@ -92,7 +103,6 @@ function Values() {
         }
         if (id.length == 0) {
             funcSuccess([]);
-            return;
         }
 //        debugger;
         else
@@ -114,7 +124,7 @@ function Values() {
                         if (response) {
                             parseData(response);
                             funcSuccess(id);
-//                            debugger;
+                            //debugger;
                         } else {
                             funcError('');
                         }

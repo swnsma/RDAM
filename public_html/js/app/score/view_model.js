@@ -68,14 +68,10 @@ ko.bindingHandlers.add_data={
 
         values.getValues(masId, function(masid) {
             var dd = values.getDate(type,masId);
-
-            viewModel.diapason(dd[0] + ' - ' + dd[dd.length-1]);
             if(type=='week'){
-                var d = new Date();
-                var a =3600*24*1000*7;
-                d.setTime(Date.parse(dd[0]) - a);
-                viewModel.diapason( d.getDate()+ ' '+m_names[d.getMonth()]+' '+ d.getFullYear()+ ' - '+ dd[dd.length-1]);
-                console.log(d.toLocaleString());
+                viewModel.diapason(dd[0].slice(0, dd[0].indexOf('-')-1) + ' - ' + dd[dd.length-1].slice(0, dd[dd.length-1].indexOf('-')-1));
+            }else{
+            viewModel.diapason(dd[0] + ' - ' + dd[dd.length-1]);
             }
             if(viewModel.consProd()==='consumption'){
                 // якщо в нас вибране споживання то ми малюємо графік за даними по споживанню

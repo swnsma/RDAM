@@ -9,12 +9,10 @@ function AppViewModel(items,legend,get_type){
     self.legend=legend;
     self.get_type=get_type;
     self.appearance=ko.observable(true);
-    self.changeAppearance=function()
-    {
+    self.changeAppearance=function(){
         self.appearance(!self.appearance());
     };
-    self.changeData=function(data)
-    {
+    self.changeData=function(data){
         var index=self.buttons().indexOf(data);
         self.thisGraph(index);
     };
@@ -61,8 +59,7 @@ ko.bindingHandlers.showGraph={
             var rend;
             if(viewModel.appearance()){
                 rend=$.jqplot.BarRenderer;
-            }else
-            {
+            }else{
                 rend=$.jqplot.LineRenderer;
             }
             var type = 'day';
@@ -70,32 +67,24 @@ ko.bindingHandlers.showGraph={
                 type = 'week';
             } else if (viewModel.thisGraph() === 2) {
                 type = 'month';
-            };
+            }
             var dd = values.getDate(type, masId);
             var product = viewModel.data(type,masId);
             var sum = 0;
-            var firstdd = dd[0];
             if(type=='week'){
-                var d = new Date();
-                var a =3600*24*1000*7;
-                d.setTime(Date.parse(dd[0]) - a);
-                firstdd= d.getDate()+ ' '+m_names[d.getMonth()]+' '+ d.getFullYear();
-                console.log(d.toLocaleString());
+                var periodDate = dd[0].slice(0, dd[0].indexOf('-')-1) + ' - ' + dd[dd.length-1].slice(0, dd[dd.length-1].indexOf('-')-1);
             }
-
             for(var i in product[0]){
                 sum+=product[0][i];
             }
             viewModel.sumProd(sum);
-            changeGraph(dd, product, firstdd+ ' - '+dd[dd.length-1], rend, ['#EAA228','#4BB2C5'],viewModel.legend);
+            changeGraph(dd, product, periodDate, rend, ['#EAA228','#4BB2C5'],viewModel.legend);
 
         }
 
     }
 }
-
-function button_constr(clas)
-{
+function button_constr(clas){
     $(clas)
         .click(function () {
             $(this).addClass("is_active");
@@ -110,5 +99,3 @@ function button_constr(clas)
         .first()
         .addClass("is_active");
 }
-
-

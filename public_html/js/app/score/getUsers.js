@@ -1,6 +1,3 @@
-/**
- * Created by Таня on 20.11.2014.
- */
 function getUsers(self) {
     var options = {
         url: 'http://rdam.zz.mu/ajax/users_info.php?from_id=' + 1  + '&fields=rating',
@@ -9,9 +6,6 @@ function getUsers(self) {
         success: function (response) {
 
             loading.disable();
-//            console.log(current_user.getId());
-//            console.log(current_user.getName());
-//            console.log(response.data[0].user)
             analyze(response,self);
 
         },
@@ -19,7 +13,7 @@ function getUsers(self) {
         }
     };
     $.ajax(options);
-};
+}
 function analyze(response,self){
     if (response && response.data && response.data.length) {
         var mappedTasks = [];
