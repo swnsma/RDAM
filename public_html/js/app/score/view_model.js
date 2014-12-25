@@ -5,20 +5,11 @@
  * Created by Таня on 20.11.2014.
  */
 
-
-function compareRatingLess(userA, userB) {
-    return userA.rating - userB.rating;
-}
-function compareRatingMore(userA, userB) {
-    return userB.rating - userA.rating;
-}
-
-function Users(name,id,active,color,rating){
+function Users(name,id,active,color){
     this.name=ko.observable(name);
     this.id=ko.observable(id);
     this.active=ko.observable(active);
     this.color=color;
-    this.rating=rating;
 }
 
 
@@ -34,7 +25,8 @@ ko.bindingHandlers.message={
         });
         }
     }
-}
+};
+
 ko.bindingHandlers.add_data={
     init:function(element, valueAccessor, allBindings, viewModel){
 
@@ -93,7 +85,8 @@ ko.bindingHandlers.add_data={
         },'');
 
     }
-}
+};
+
 function AppViewModel() {
     var self = this;
     self.bool=ko.observable(false);
@@ -106,8 +99,7 @@ function AppViewModel() {
     self.consProd=ko.observable('production');
     self.title=ko.observable('Production');
     self.ticks=ko.observableArray([]);
-    self.current_user=ko.observable(new Users(current_user.getName(),current_user.getId(),null,'#0f0'
-        ,current_user.getRating()));
+    self.current_user=ko.observable(new Users(current_user.getName(),current_user.getId(),null,'#0f0'));
     self.thisGraph=ko.observable(0);
     self.rendMas=[$.jqplot.BarRenderer,$.jqplot.LineRenderer];
     self.rend=ko.observable(self.rendMas[0]);
@@ -124,7 +116,8 @@ function AppViewModel() {
             seat.active(!seat.active());
             return true;
         }
-    }
+    };
+
     self.return_active_user = ko.computed(function(){
         self.colors=[];
 
@@ -185,7 +178,7 @@ function AppViewModel() {
             }
         }
         return result;
-    })
+    });
 
     self.change=function(){
         self.isLine(!self.isLine());
@@ -228,7 +221,8 @@ function AppViewModel() {
             self.rend(self.rendMas[1]);
         }
 
-    }
+    };
+
     self.changeAppearance=function()
     {
         if (self.consProd()==='production') {
@@ -240,7 +234,7 @@ function AppViewModel() {
             self.title('Production');
         }
         self.bool(!self.bool());
-    }
+    };
 
     self.addInfo = ko.observableArray();
     self.sortedByConsumption = ko.observable(false);
@@ -262,7 +256,8 @@ function AppViewModel() {
         var data = self.addInfo().slice(0);
         self.addInfo([]);
         self.addInfo(data);
-    }
+    };
+
     self.sortedByProduction = ko.observable(false)
     self.sortAddInfoProduction = function (){
         self.sortedByConsumption(false);
@@ -282,7 +277,8 @@ function AppViewModel() {
         var data = self.addInfo().slice(0);
         self.addInfo([]);
         self.addInfo(data);
-    }
+    };
+
     self.selectedDate = ko.observable();
 }
 

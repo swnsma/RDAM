@@ -19,7 +19,7 @@ class UserInfo extends Users {
             }
         }
         $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` = :id');
-        $this->result->bindParam(':id', $id);
+        $this->result->bindParam(':id', $id, PDO::PARAM_INT);
         return $this->result->execute() &&  $this->result->rowCount() > 0;
     }
 

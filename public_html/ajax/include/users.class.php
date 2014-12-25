@@ -14,7 +14,7 @@ abstract class Users extends Connection {
     }
 
     protected function check_field($fields) { //change
-        $fields_db = array('city', 'rating');
+        $fields_db = array('city', 'descr', 'photo');
         foreach ($fields as $field) {
             if (!in_array($field, $fields_db))
                 return false;

@@ -7,6 +7,7 @@ function Values() {
     arr_data['day'] = []; //
     arr_data['week'] = [];
     arr_data['month'] = [];
+
     function parseWeeksDate(weekDate){
         var d = new Date();
         var magicNumbers =3600*24*1000*7;
@@ -27,11 +28,10 @@ function Values() {
             }
             var l = data[i].values.length-1;
             for(var j = l; j >= 0; --j) {
-
                 if(type=="week"){
                     arr_data[type][id].date.push(parseWeeksDate(data[i].values[j][0]));
                 }else{
-                arr_data[type][id].date.push(data[i].values[j][0]);
+                    arr_data[type][id].date.push(data[i].values[j][0]);
                 }
 
                 arr_data[type][id].values.production.push(+data[i].values[j][1]);
@@ -56,7 +56,8 @@ function Values() {
             result.push(data[ids[i]].values.consumption)
         }
         return result;
-    }
+    };
+
     this.getProduction = function(type, ids) {
         var data = arr_data[type];
         if (data == 'undefined') return null;
@@ -95,6 +96,7 @@ function Values() {
     };
 
     var bool = false;
+
     this.getValues = function(ids, funcSuccess, funcError,type) {
         var id = [];
         for(var i in ids) {
@@ -103,13 +105,9 @@ function Values() {
         }
         if (id.length == 0) {
             funcSuccess([]);
-        }
-//        debugger;
-        else
-        {
-
+        } else {
             $.ajax({
-                url: 'http://rdam.zz.mu/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
+                url: 'http://rdam.tk/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
                 type: 'GET',
                 contentType: 'application/json',
                 beforeSend: function(){

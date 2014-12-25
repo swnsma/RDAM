@@ -47,11 +47,16 @@ function LoadingManager() {
     };
 }
 
-function UserInfo(id, name, city, rating) {
+function UserInfo(id, name, city, photo, descr) {
     this.id = id;
     this.user = name;
     this.city = city;
-    this.rating = rating;
+    if (photo) {
+        this.photo = 'cdn/users/' + id + '/' + photo;
+    } else {
+        this.photo = 'cdn/general/default_avatar.jpg';
+    }
+    this.descr = descr;
 }
 
 function ScriptManager() {
@@ -113,12 +118,16 @@ function CurrentUser() {
         return info.city;
     };
 
-    this.getRating = function() {
-        return info.rating;
+    this.getPhoto = function() {
+        return info.photo;
+    };
+
+    this.getDescr = function() {
+        return info.descr;
     };
 
     function processData(data) {
-        info = new UserInfo(data.id, data.user, data.city, data.rating);
+        info = new UserInfo(data.id, data.user, data.city, data.photo, data.descr);
         changeMenu(info.id)
     }
 
@@ -134,7 +143,7 @@ function CurrentUser() {
 
     function getInfoByUser(id, funcSuccess, funcError) {
         $.ajax({
-            url: 'http://rdam.zz.mu/ajax/user_info.php?id=' + id  + '&fields=city,rating',
+            url: 'http://rdam.tk/ajax/user_info.php?id=' + id  + '&fields=city,photo,descr',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
