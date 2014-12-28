@@ -286,7 +286,7 @@ function AppViewModel() {
 function Score() {
     var appVievM = new AppViewModel();
     ko.applyBindings(appVievM);
-    getUsers(appVievM);
+    getUsers(appVievM,analyze);
     button_constr(".time-button");
 
     //enables click event traking for chart

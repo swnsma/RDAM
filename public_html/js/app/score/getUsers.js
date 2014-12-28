@@ -1,4 +1,4 @@
-function getUsers(self) {
+function getUsers(self,success) {
     var options = {
         url: 'http://rdam.tk/ajax/users_info.php?from_id=' + 1,
         type: 'GET',
@@ -6,7 +6,7 @@ function getUsers(self) {
         success: function (response) {
             debugger;
             loading.disable();
-            analyze(response,self);
+            success(response,self);
 
         },
         error: function () {
