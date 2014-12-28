@@ -5,7 +5,7 @@ include_once 'include/users_values.class.php';
 if (isset($_GET['id']) && isset($_GET['todt'])) {
     $to = $_GET['todt'];
 
-    date_default_timezone_set('Europe/London');
+    date_default_timezone_set(TIME_ZONE);
 
     if ($to == 'last') {
         $to = date('Y-m-d H:i');

@@ -5,4 +5,10 @@ define('DB_NAME', 'rdam');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'root');
 
+define('TIME_ZONE', 'Europe/London');
+
+define('LOG_FILE', 'logs/log.txt');
+define('IMAGES_FOLDER', 'cdn/users/');
+define('TMP_FOLDER', 'tmp/');
+
 ?>

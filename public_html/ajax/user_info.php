@@ -5,6 +5,7 @@ include_once 'include/user_info.class.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if (ctype_digit($id)) {
+        $id = (int)$id;
         if (isset($_GET['fields'])) {
             $fields = explode(',', $_GET['fields']);
         } else {

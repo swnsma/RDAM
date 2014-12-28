@@ -1,2 +1,5 @@
 .idea
-logs
+logs/access.log
+logs/error.log
+logs/log.txt
+public_html/tmp/*.tmp
