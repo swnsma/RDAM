@@ -25,7 +25,7 @@ abstract class Users extends Connection {
     protected function get_tables_exists($ids) {
         $id = '\'user_' . implode('\', \'user_', $ids) . '\'';
         $request = $this->db->prepare('SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME IN (' . $id . ') AND TABLE_SCHEMA=\'' . DB_NAME . '\'');
-        if ($request->execute()) {
+        if ($request->execute() && $request->rowCount() > 0) {
             return $request->fetchAll(PDO::FETCH_COLUMN, 0);
         } else {
             return null;
