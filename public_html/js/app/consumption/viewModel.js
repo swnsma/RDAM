@@ -1,15 +1,13 @@
-function ViewModel(data){
-    var that= this;
+function ViewModel() {
+    var that = this;
 
     that.batteries = ko.observableArray([]);
-    that.activate = function(){
-        api.getData(function(someData){
-            var result=[];
-            for(var i=0;i<someData.length;i++){
-                someData[i].takenFrom=someData[i].consumption-someData[i].production;
-                result.push(someData[i]);
-            }
-            that.batteries(result);
-        })
+    that.activate = function () {
+        var id = window.location.hash.substring(1);
+        api.getData(id, function (someValues) {
+            var result = [];
+            parseData(someValues, result);
+            that.batteries(result)
+        }, '');
     }
 };
