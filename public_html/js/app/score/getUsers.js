@@ -1,11 +1,10 @@
 function getUsers(self,success) {
     var options = {
-        url: 'http://rdam.tk/ajax/users_info.php?from_id=' + 1,
+        url: 'http://rdam.tk/ajax/users_info.php?from_id=' + 1+'&&fields=city,photo,descr',
         type: 'GET',
         contentType: 'application/json',
         success: function (response) {
             debugger;
-            loading.disable();
             success(response,self);
 
         },
@@ -15,6 +14,8 @@ function getUsers(self,success) {
     $.ajax(options);
 }
 function analyze(response,self){
+
+    loading.disable();
     if (response && response.data && response.data.length) {
         var mappedTasks = [];
         for (var i = 0; i < response.data.length; i++){

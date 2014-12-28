@@ -47,9 +47,24 @@ h1{
     vertical-align: top;
     width: 250px;
     /*background-color: #1e7e04;*/
-    color: #ffffff;
+    /*color: #ffffff;*/
     background-color: #ffffff;
 
+}
+.wrapper_left ul{
+    list-style: none;
+    margin: 5px 0;
+    padding: 0;
+}
+.wrapper_left li{
+    line-height: 30px;
+    padding: 0 10px;
+    border-bottom: 1px solid #000000;
+}
+.wrapper_left li:hover{
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #33c505;
 }
 .wrapper_left .inner-wrapper{
     width: 250px;
@@ -99,25 +114,25 @@ textarea{
     height: 50px;
 }
 
-table{
+.main .new-user table{
     width: 100%;
 
 }
-table td:first-child{
+.main .new-user table td:first-child{
     width: 30%;
     text-align: right;
 }
-table td:last-child{
+.main .new-user table td:last-child{
     width: 70%;
 }
-table td:last-child>*{
+.main .new-user table td:last-child>*{
     width: 100%;
 }
-tr{
+.main .new-user tr{
     border-bottom: 1px solid #ffffff;
 
 }
-td{
+.main .new-user td{
     padding: 10px 0;
     border-bottom: 1px solid #ffffff;
 }
@@ -127,4 +142,42 @@ td{
 }
 .buttons>*{
     width: 48%;
+}
+.wrapper_left .info{
+    width: 690px;
+    padding: 0 10px;
+}
+.info .img{
+    float: left;
+    width: 250px;
+    margin:0 10px;
+    text-align: center;
+}
+.info .img img{
+    max-width: 250px;
+}
+.info table{
+    border-collapse: collapse;
+    width: 430px;
+}
+.info tr{
+    background-color: #ffffff;
+    border-bottom: 1px dashed #000000;
+    line-height: 30px;
+}
+.info td:first-child{
+    padding-left: 10px;
+    width: 30%;
+    font-weight: bold;
+}
+.info td:last-child{
+    font-style: italic;
+}
+.info .edit{
+    display: inline-block;
+    font-style: italic;
+    text-align: center;
+    border-bottom: 1px dashed red;
+    color: red;
+    cursor: pointer;
 }

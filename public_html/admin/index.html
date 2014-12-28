@@ -6,17 +6,34 @@
 </head>
 <body>
 <header>
+    <!--ko if: page.type()===0-->
     <h1> Bac office</h1>
+    <!--/ko-->
+    <!--ko if: page.type()===1-->
+    <h1> Create new User</h1>
+    <!--/ko-->
+    <!--ko if: page.type()===2-->
+    <h1 data-bind="text:current_user().name"> </h1>
+    <!--/ko-->
+    <!--ko if: page.type()===3-->
+    <h1 data-bind="text:current_user().name"> </h1>
+    <!--/ko-->
 
 </header>
 <div class="head_table">
     <div class="table-row">
         <div class="wrapper_left">
             <div class="inner-wrapper">
-                <button class="new-user" type="button">Create new User</button>
+                <button data-bind="click: page.click.to_p1" class="new-user" type="button">Create new User</button>
+                <ul data-bind="foreach:user.array">
+                    <li data-bind="text:name, click:$root.page.click.to_p2">
+
+                    </li>
+                </ul>
             </div>
         </div>
         <div id="main" class="main">
+            <!--ko if: page.type()===1-->
             <form name="form" action="" class="new-user">
                 <table>
                     <tr>
@@ -24,7 +41,7 @@
                             Name:
                         </td>
                         <td>
-                            <input name="name" type="text" />
+                            <input name="name" data-bind="value:current_user().name" type="text" />
                         </td>
                     </tr>
                     <tr>
@@ -32,33 +49,118 @@
                             Description:
                         </td>
                         <td>
-                            <textarea name="description"></textarea>
+                            <textarea data-bind="value:current_user().desc" name="description"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Photo:
+                            City:
                         </td>
                         <td>
-                            <input name="photo" type="file"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Data:
-                        </td>
-                        <td>
-                            <input name="data" type="file"/>
+                            <input data-bind="value:current_user().city" name="city" type="text" />
                         </td>
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button type="submit">Submit</button>
-                    <button type="reset">reset</button>
+                    <button data-bind="click: page.click.to_p2" type="submit">Submit</button>
+                    <button  type="reset">reset</button>
                 </div>
             </form>
+            <!--/ko-->
+            <!--ko if: page.type()===2-->
+            <div class="info">
+                <div class="img">
+                    <img src="../../public_html/cdn/users/549e9584e0bb5.jpg">
+                    <span data-bind="click:page.click.to_p3" class="edit">Edit</span>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td data-bind="text:current_user().name">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            City:
+                        </td>
+                        <td data-bind="text:current_user().city">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Description:
+                        </td>
+                        <td data-bind="text:current_user().desc">
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--/ko-->
+            <!--ko if: page.type()===3-->
+            <div class="edit">
+                <form name="formname" action="">
+                    <table>
+                        <tr>
+                            <td>
+                                name:
+                            </td>
+                            <td>
+                                <input type="text" name="edit_name" data-bind="value:current_user().name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                city:
+                            </td>
+                            <td>
+                                <input type="text" name="edit_name" data-bind="value:current_user().city"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                description:
+                            </td>
+                            <td>
+                                <textarea data-bind="value:current_user().desc"> </textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                photo:
+                            </td>
+                            <td>
+                                <input type="file"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                add data:
+                            </td>
+                            <td>
+                                <input type="file"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="buttons">
+                        <button type="submit">submit</button>
+                        <button type="reset">reset</button>
+
+                    </div>
+                </form>
+
+            </div>
+            <!--/ko-->
         </div>
     </div>
+    <script type='text/javascript' src='../js/vendor/jquery-2.1.1.js'></script>
+    <script type='text/javascript' src='../js/vendor/knockout/knockout-3.2.0.js'></script>
+
+    <script type='text/javascript' src='../js/app/score/ColorMas.js'></script>
     <script type='text/javascript' src='../js/app/score/getUsers.js'></script>
     <script type='text/javascript' src='js/view_model.js'></script>
 </div>
