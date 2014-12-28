@@ -1,50 +1,13 @@
-function ViewModel(){
-    var that= this;
+function ViewModel() {
+    var that = this;
 
     that.batteries = ko.observableArray([]);
-    that.activate = function(){
+    that.activate = function () {
         var id = window.location.hash.substring(1);
-        api.getData(id,function (someValues) {
-            function Battery(consumption, production, date2) {
-
-                this.consumption = consumption;
-                this.production = production;
-                this.date2 = date2;
-                this.takenFrom = Math.round(consumption-production)
-            }
+        api.getData(id, function (someValues) {
             var result = [];
-            var dayConsumption=Math.round(someValues.data.day[0].values[0][1]);
-            var dayProduction=Math.round(someValues.data.day[0].values[0][2]);
-            var d = new Date(someValues.data.day[0].values[6][0]);
-            var weekday = new Array(7);
-            weekday[0]=  "Sunday";
-            weekday[1] = "Monday";
-            weekday[2] = "Tuesday";
-            weekday[3] = "Wednesday";
-            weekday[4] = "Thursday";
-            weekday[5] = "Friday";
-            weekday[6] = "Saturday";
-            var n = weekday[d.getDay()];
-            var dayBattery = new Battery(dayConsumption, dayProduction, n);
-            result.push(dayBattery);
-            var weekConsumption=Math.round(someValues.data.week[0].values[0][1]);
-            var weekProduction=Math.round(someValues.data.week[0].values[0][2]);
-            var weekBattery = new Battery(weekConsumption,weekProduction, 'Last week');
-            result.push(weekBattery);
-
-            var monthConsumption=Math.round(someValues.data.month[0].values[0][1]);
-            var monthProduction=Math.round(someValues.data.month[0].values[0][2]);
-            var monthDate=someValues.data.month[0].values[0][0];
-            var monthBattery = new Battery(monthConsumption,monthProduction,monthDate);
-
-
-            result.push(monthBattery);
-
-
+            parseData(someValues, result);
             that.batteries(result)
-
-        },'');
-
-
+        }, '');
     }
 };
