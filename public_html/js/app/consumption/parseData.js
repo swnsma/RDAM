@@ -3,8 +3,12 @@ function Battery(consumption, production, date2) {
     this.consumption = consumption;
     this.production = production;
     this.date2 = date2;
-    this.takenFrom = Math.round(consumption - production)
-
+    if(production>consumption){
+        this.takenFrom=0
+    }
+    else {
+        this.takenFrom = Math.round(consumption - production)
+    }
 };
 
 var parseData = function (someValues, result) {
