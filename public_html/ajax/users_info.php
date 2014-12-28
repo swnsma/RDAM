@@ -3,7 +3,7 @@
 include_once 'include/users_info.class.php';
 
 if (isset($_GET['fields'])) {
-    $fields = explode(',', $_GET['fields']);
+    $fields = array_unique(explode(',', $_GET['fields']));
 } else {
     $fields = null;
 }

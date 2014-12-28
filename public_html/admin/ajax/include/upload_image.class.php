@@ -97,7 +97,7 @@ class UploadImage extends Upload {
 
             if (!$db->set_current_file_name($id, $file)) {
                 unlink($folder . $file);
-                throw new RuntimeException('failed to update the information about the current photo. Photos lost');
+                throw new RuntimeException('failed to update the information about the current photo.');
             }
 
             $db = null;

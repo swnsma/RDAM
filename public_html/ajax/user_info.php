@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     if (ctype_digit($id)) {
         $id = (int)$id;
         if (isset($_GET['fields'])) {
-            $fields = explode(',', $_GET['fields']);
+            $fields = array_unique(explode(',', $_GET['fields']));
         } else {
             $fields = null;
         }

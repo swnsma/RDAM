@@ -22,10 +22,7 @@ class Log {
     }
 
     public function write($message, $type = LOGTYPES::INFO) {
-        if (fwrite($this->descr, '[' . $type . ']: ' . $message . ' /' . date('Y-m-d H:i:s') . '/' . PHP_EOL) === FALSE) {
-            return false;
-        }
-        return true;
+        return fwrite($this->descr, '[' . $type . ']: ' . $message . ' /' . date('Y-m-d H:i:s') . '/' . PHP_EOL) === true;
     }
 
     function __destruct() {

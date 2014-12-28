@@ -52,7 +52,7 @@ function UserInfo(id, name, city, photo, descr) {
     this.user = name;
     this.city = city;
     if (photo) {
-        this.photo = 'cdn/users/' + id + '/' + photo;
+        this.photo = 'cdn/users/' + photo;
     } else {
         this.photo = 'cdn/general/default_avatar.jpg';
     }
