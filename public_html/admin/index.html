@@ -2,8 +2,63 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="styles/common.css" type="text/css"/>
 </head>
 <body>
+<header>
+    <h1> Bac office</h1>
 
+</header>
+<div class="head_table">
+    <div class="table-row">
+        <div class="wrapper_left">
+            <div class="inner-wrapper">
+                <button class="new-user" type="button">Create new User</button>
+            </div>
+        </div>
+        <div id="main" class="main">
+            <form name="form" action="" class="new-user">
+                <table>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <input name="name" type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Description:
+                        </td>
+                        <td>
+                            <textarea name="description"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Photo:
+                        </td>
+                        <td>
+                            <input name="photo" type="file"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Data:
+                        </td>
+                        <td>
+                            <input name="data" type="file"/>
+                        </td>
+                    </tr>
+                </table>
+                <div class="buttons">
+                    <button type="submit">Submit</button>
+                    <button type="reset">reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

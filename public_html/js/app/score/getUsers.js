@@ -4,7 +4,7 @@ function getUsers(self) {
         type: 'GET',
         contentType: 'application/json',
         success: function (response) {
-
+            debugger;
             loading.disable();
             analyze(response,self);
 
