@@ -12,8 +12,8 @@ if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr']
     $city = full_trim($_POST['city']);
     $descr = full_trim($_POST['descr']);
 
-    if (preg_match('/^[\p{L} \.\'\-]{8,25}$/', $user_name)
-        && preg_match('/^[\p{L} \-]{8,25}$/', $city)
+    if (preg_match('/^[\p{L} \.\'\-]{5,25}$/', $user_name)
+        && preg_match('/^[\p{L} \-]{5,25}$/', $city)
         && preg_match('/^[\p{L} \(\)\'\"\d\-]{30,300}$/m', $descr)) {
 
         $user = new AddUser();

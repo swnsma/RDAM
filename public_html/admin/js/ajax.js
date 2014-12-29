@@ -47,7 +47,9 @@ Ajax.prototype._gen_func = function(func) {
 
 Ajax.prototype.check_exists_city = function(city, func) {
     var key = '5014b616aa426e0a5a01ccf7ebc3d';
+    var success = func.success;
     func = this._gen_func(func);
+    func.success = success;
     $.ajax({
         url: 'http://api.worldweatheronline.com/free/v2/weather.ashx?q=' + city + '&format=json&num_of_days=5&key=' + key,
         type: 'GET',
@@ -55,6 +57,7 @@ Ajax.prototype.check_exists_city = function(city, func) {
         beforeSend: func.before,
         complete: func.after,
         success: function(response) {
+            console.log(response);
             if (response.data.weather) {
                 func.success(true);
             } else {

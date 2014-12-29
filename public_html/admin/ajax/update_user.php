@@ -14,12 +14,12 @@ if (isset($_POST['id'])) {
 
         if (isset($_POST['user_name'])) {
             $user_name = full_trim($_POST['user_name']);
-            if (!preg_match('/^[\p{L} \.\'\-]{8,25}$/', $user_name)) exit_ttwp();
+            if (!preg_match('/^[\p{L} \.\'\-]{5,25}$/', $user_name)) exit_ttwp();
         }
 
         if (isset($_POST['city'])) {
             $city = full_trim($_POST['city']);
-            if (!preg_match('/^[\p{L} \-]{8,25}$/', $city)) exit_ttwp();
+            if (!preg_match('/^[\p{L} \-]{5,25}$/', $city)) exit_ttwp();
         }
 
         if (isset($_POST['descr'])) {

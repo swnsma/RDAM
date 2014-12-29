@@ -6,10 +6,12 @@ body{
     height:100%;
     background-color: #eee;
 }
+
 html {
     height: 100%;
     width: 100%;
 }
+
 header{
     background-color: #000000;
     width: 960px;
@@ -18,21 +20,25 @@ header{
     text-align: center;
     margin: 0 auto;
 }
+
 h1{
     margin: 0;
     padding: 0;
 }
+
 .head_table {
     margin: 0 auto;
     width: 960px;
     height: 100%;
     display: table;
 }
+
 .table-row{
     display: table-row;
     width: 100%;
     height: 100%;
 }
+
 .wrapper_left,.main{
     padding: 20px 0;
     display: table-cell;
@@ -40,22 +46,25 @@ h1{
     /*overflow: hidden;*/
     outline: 1px solid #e9e9e9;
 }
+
 .wrapper_left .inner-wrapper{
     width: 250px;
 }
+
 .wrapper_left {
     vertical-align: top;
     width: 250px;
     /*background-color: #1e7e04;*/
     /*color: #ffffff;*/
     background-color: #ffffff;
-
 }
+
 .wrapper_left ul{
     list-style: none;
     margin: 5px 0;
     padding: 0;
 }
+
 .wrapper_left li{
     line-height: 30px;
     padding: 0 10px;
@@ -66,14 +75,17 @@ h1{
     cursor: pointer;
     background-color: #33c505;
 }
+
 .wrapper_left .inner-wrapper{
     width: 250px;
 }
+
 .main{
     width: 100%;
     background-color: #cccccc
 
 }
+
 .wrapper_left .new-user{
     width: 230px;
     margin: 0 10px;
@@ -89,6 +101,7 @@ h1{
     border: none;
 
 }
+
 .buttons>*{
     height: 30px;
     display: inline-block;
@@ -101,6 +114,7 @@ h1{
     /*color: #cccccc;*/
     border: none;
 }
+
 .main .new-user{
     width: 500px;
     height: 100%;
@@ -108,6 +122,7 @@ h1{
     /*background-color: #ffffff;*/
 
 }
+
 textarea{
     resize: none;
     padding: 1px;
@@ -118,61 +133,75 @@ textarea{
     width: 100%;
 
 }
+
 .main .new-user table td:first-child{
     width: 30%;
     text-align: right;
 }
+
 .main .new-user table td:last-child{
     width: 70%;
 }
+
 .main .new-user table td:last-child>*{
     width: 100%;
 }
+
 .main .new-user tr{
     border-bottom: 1px solid #ffffff;
-
 }
+
 .main .new-user td{
     padding: 10px 0;
     border-bottom: 1px solid #ffffff;
 }
+
 .buttons{
     margin: 0 auto;
     width: 50%;
 }
+
 .buttons>*{
     width: 48%;
 }
+
 .wrapper_left .info{
     width: 690px;
     padding: 0 10px;
 }
+
 .info .img{
     float: left;
     width: 250px;
     margin:0 10px;
     text-align: center;
 }
+
 .info .img img{
     max-width: 250px;
 }
+
 .info table{
     border-collapse: collapse;
     width: 430px;
 }
+
 .info tr{
     background-color: #ffffff;
     border-bottom: 1px dashed #000000;
     line-height: 30px;
 }
+
 .info td:first-child{
     padding-left: 10px;
     width: 30%;
     font-weight: bold;
 }
+
 .info td:last-child{
     font-style: italic;
 }
+
 .info .edit{
     display: inline-block;
     font-style: italic;
@@ -180,4 +209,8 @@ textarea{
     border-bottom: 1px dashed red;
     color: red;
     cursor: pointer;
+}
+
+input[invalid='true'], textarea[invalid='true'] {
+    background-color: red;
 }
