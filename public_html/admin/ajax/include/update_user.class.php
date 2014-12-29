@@ -46,7 +46,7 @@ class UpdateUser extends Connection {
     }
 
     public function get_data() {
-        return $this->result->fetchAll(PDO::FETCH_ASSOC);
+        return $this->result->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 
     function __destruct() {

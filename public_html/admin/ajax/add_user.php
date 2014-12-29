@@ -3,6 +3,10 @@
 include_once 'include/add_user.class.php';
 include_once 'include/log.class.php';
 
+/*print $_POST['city'] . 'eee';
+print $_POST['user_name'] . 'eee';
+print $_POST['descr'] . 'eee';*/
+
 if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr'])) {
     $user_name = full_trim($_POST['user_name']);
     $city = full_trim($_POST['city']);
@@ -17,7 +21,7 @@ if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr']
 
         if ($user->add($user_name, $city, $descr)) {
             $log->write('added a new user ' . $user_name);
-            print '{ "status": "success", "id": ' . $user->get_id() . ' }';
+            print '{ "status": "success", "data": { "id": ' . $user->get_id() . ' } }';
         } else {
             $log->write('failed to add a new user', LOGTYPES::CRITICAL);
             header('HTTP/1.0 400 Bad Request');

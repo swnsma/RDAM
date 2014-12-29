@@ -15,7 +15,7 @@ if (!isset($_POST['id']) || !isset($_FILES['photo']['error']) || is_array($_FILE
         $log = new Log();
         if ($upload->check_file_error() && $upload->upload($id)) {
             $log->write('photo was changed to the user with id 1');
-            print '{ "status": "success", "id": ' . $id . ', "photo": "' . $upload->get_upload_file_name() . '" }';
+            print '{ "status": "success", "data": { "id": ' . $id . ', "photo": "' . $upload->get_upload_file_name() . '" } }';
         } else {
             $log->write($upload->get_error(), LOGTYPES::CRITICAL);
             header('HTTP/1.0 400 Bad Request');

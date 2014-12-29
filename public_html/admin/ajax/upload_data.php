@@ -20,7 +20,7 @@ if (!isset($_POST['id']) || !isset($_FILES['data']['error']) || is_array($_FILES
         $log = new Log();
         if ($upload->check_file_error() && $upload->upload($id, $ignore_first_line)) {
             $log->write( $upload->get_count_rows() . ' records have been added to the user with id ' . $id);
-            print '{ "status": "success", "id": ' . $id . ', "insert_rows": ' . $upload->get_count_rows() . ' }';
+            print '{ "status": "success", "data": { "id": ' . $id . ', "insert_rows": ' . $upload->get_count_rows() . ' } }';
         } else {
             $log->write($upload->get_error(), LOGTYPES::CRITICAL);
             header('HTTP/1.0 400 Bad Request');
