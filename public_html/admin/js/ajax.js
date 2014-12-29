@@ -91,7 +91,7 @@ Ajax.prototype.update_user_info = function(data, func) {
         success: func.success,
         error: func.error
     });
-}
+};
 
 var ajax = new Ajax();
 
