@@ -1,8 +1,11 @@
-DirectoryIndex homepage.html
-
 Options All -Indexes
 Options +FollowSymLinks
 
-RewriteEngine On
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?rdam.loc:83$
+RewriteCond %{REQUEST_URI} !^/site/
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /site/$1
+RewriteCond %{HTTP_HOST} ^(www.)?rdam.loc:83$
+RewriteRule ^(/)?$ site/homepage.html [L]
