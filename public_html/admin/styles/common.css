@@ -70,10 +70,15 @@ h1{
     padding: 0 10px;
     border-bottom: 1px solid #000000;
 }
+
 .wrapper_left li:hover{
     font-weight: bold;
     cursor: pointer;
     background-color: #33c505;
+}
+
+.wrapper_left li[active='true'] {
+    background-color: #1e7e04;
 }
 
 .wrapper_left .inner-wrapper{

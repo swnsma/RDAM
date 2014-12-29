@@ -2,9 +2,7 @@
  * Created by Таня on 28.12.2014.
  */
 
-function CreateUser() {
-    var self = this;
-
+function InfoUser() {
     function genField() {
         return {
             text: ko.observable(''),
@@ -12,11 +10,92 @@ function CreateUser() {
         };
     }
 
-    self.user_name = genField();
-    self.city = genField();
-    self.descr = genField();
+    this.user_name = genField();
+    this.city = genField();
+    this.descr = genField();
 
-    self.curr_operation = ko.observable('');
+    this.curr_operation = ko.observable('');
+}
+
+function UpdateUser(user) {
+    var self = this;
+    InfoUser.call(self);
+
+    self.id = ko.observable(user.id);
+    self.user_name.text(user.user_name);
+    self.city.text(user.city);
+    self.descr.text(user.descr);
+
+    self.send = function() {
+        if (valid.user_name(self.user_name.text())) {
+            self.user_name.invalid(false);
+            if (valid.descr(self.descr.text())) {
+                self.descr.invalid(false);
+                var city = self.city.text();
+                if (valid.city(city)) {
+                    self.city.invalid(false);
+                    ajax.check_exists_city(city, {
+                        before: function() {
+                            self.curr_operation('check the relevance of the city');
+                        },
+                        success: function(status) {
+                            if (status) {
+                                ajax.update_user_info({
+                                    id: self.id(),
+                                    user_name: self.user_name.text(),
+                                    city: self.city.text(),
+                                    descr: self.descr.text()
+                                }, {
+                                    before: function() {
+                                        self.curr_operation('the process of creating user');
+                                    },
+                                    after: function() {
+
+                                    },
+                                    success: function(data) {
+                                        alert('user update ' + JSON.stringify(data));
+                                    },
+                                    error: function(error) {
+                                        self.curr_operation(error);
+                                    }
+                                });
+
+                            } else {
+                                self.curr_operation('this city isn\'t supported');
+                            }
+                        },
+                        after: function() {
+
+                        },
+                        error: function(error) {
+                            self.curr_operation('can\'t get the data. try again later');
+                        }
+                    });
+                } else {
+                    self.city.invalid(true);
+                }
+            } else {
+                self.descr.invalid(true);
+            }
+        } else {
+            self.user_name.invalid(true);
+        }
+        return false;
+    }
+}
+
+function CurrentUser(user) {
+    this.id = user.id;
+    this.user_name = user.user_name;
+    this.city = user.city;
+    this.photo = user.photo;
+    this.descr = user.descr;
+}
+
+function CreateUser() {
+    var self = this;
+
+    InfoUser.call(self);
 
     self.send = function() {
         if (valid.user_name(self.user_name.text())) {
@@ -82,9 +161,27 @@ function AppViewModel() {
 
     self.users = ko.observableArray([]);
 
-    self.current_user=ko.observable();
+    this.current_user=ko.observable(new CurrentUser({
+        id: null,
+        user_name: null,
+        city: null,
+        descr: null,
+        photo: null
+    }));
 
     self.create_user = ko.observable(new CreateUser);
+    self.update_user = ko.observable(new UpdateUser({
+        id: null,
+        user_name: null,
+        city: null,
+        descr: null,
+        photo: null
+    }));
+
+    self.edit = function(user) {
+        self.update_user(new UpdateUser(user));
+        self.active_page(3);
+    }
 }
 
 $(document).ready(function () {
@@ -93,13 +190,17 @@ $(document).ready(function () {
     getUsers(appVievM.users, analyze_function);
 });
 
-function User_class(id,name,color,city,photo,desc){
-    this.id=id;
-    this.name=name;
-    this.color=color;
-    this.city=city;
-    this.photo=photo;
-    this.desc=desc;
+function User_class(id, name, color, city, photo, descr){
+    this.id = id;
+    this.user_name = name;
+    this.color = color;
+    this.city = city;
+    if (photo) {
+        this.photo = '../cdn/users/' + photo;
+    } else {
+        this.photo = '../cdn/general/default_avatar.jpg';
+    }
+    this.descr = descr;
 }
 
 function analyze_function(response,self){

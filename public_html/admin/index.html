@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
     <title></title>
     <link rel="stylesheet" href="styles/common.css" type="text/css"/>
 </head>
@@ -13,7 +14,7 @@
     <h1>Create new User</h1>
     <!-- /ko -->
     <!-- ko if: active_page() === 2 -->
-    <h1 data-bind="text: current_user().name"> </h1>
+    <h1 data-bind="text: current_user().user_name"> </h1>
     <!-- /ko -->
 </header>
 <div class="head_table">
@@ -22,11 +23,14 @@
             <div class="inner-wrapper">
                 <button data-bind="click: function() { active_page(1); }" class="new-user" type="button">Create new User</button>
                 <ul data-bind="foreach: users">
-                    <li data-bind="text: name"></li>
+                    <li data-bind="text: user_name, attr: {active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
                 </ul>
             </div>
         </div>
         <div id="main" class="main">
+            <!-- ko if: active_page() === 0 -->
+                початкова сторінка
+            <!-- /ko -->
             <!-- ko if: active_page() === 1 -->
             <!-- ko with: create_user() -->
             <form name="form" action="" class="new-user">
@@ -59,47 +63,50 @@
             <!-- /ko -->
             <!-- /ko -->
             <!-- ko if: active_page() === 2 -->
+            <!-- ko with: current_user() -->
             <div class="info">
                 <div class="img">
-                    <img data-bind="attr{src:'../../public_html/cdn/users/'+current_user().photo}" >
-                    <span data-bind="" class="edit">Edit</span>
+                    <img data-bind="attr: { src: photo }" >
+                    <span data-bind="click: $parent.edit" class="edit">Edit</span>
                 </div>
                 <table>
                     <tr>
                         <td>Name:</td>
-                        <td data-bind="text:current_user().name"></td>
+                        <td data-bind="text: user_name"></td>
                     </tr>
                     <tr>
                         <td>City:</td>
-                        <td data-bind="text:current_user().city"></td>
+                        <td data-bind="text: city"></td>
                     </tr>
                     <tr>
                         <td>Description:</td>
-                        <td data-bind="text:current_user().desc"></td>
+                        <td data-bind="text: descr"></td>
                     </tr>
                 </table>
             </div>
             <!-- /ko -->
+            <!-- /ko -->
             <!-- ko if: active_page() === 3 -->
+            <!-- ko with: update_user() -->
             <div class="edit">
                 <form name="formname" action="">
                     <table>
                         <tr>
                             <td>name:</td>
                             <td>
-                                <input type="text" name="edit_name" data-bind="value:current_user().name"/>
+                                <input type="text" name="edit_name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }"/>
                             </td>
                         </tr>
                         <tr>
                             <td>city:</td>
                             <td>
-                                <input type="text" name="edit_name" data-bind="value:current_user().city"/>
+                                <input type="text" name="edit_name" data-bind="value: city.text, attr: { invalid: user_name.invalid }"/>
                             </td>
                         </tr>
                         <tr>
                             <td>description:</td>
                             <td>
-                                <textarea data-bind="value:current_user().desc"> </textarea>
+                                <textarea data-bind="value: descr.text, attr: { invalid: user_name.invalid }"> </textarea>
                             </td>
                         </tr>
                         <tr>
@@ -116,11 +123,13 @@
                         </tr>
                     </table>
                     <div class="buttons">
-                        <button type="submit">submit</button>
+                        <button type="submit" data-bind="click: send">submit</button>
                         <button type="reset">reset</button>
                     </div>
+                    <span data-bind="text: curr_operation()"></span>
                 </form>
             </div>
+            <!-- /ko -->
             <!-- /ko -->
         </div>
     </div>
