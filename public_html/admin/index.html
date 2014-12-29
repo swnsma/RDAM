@@ -62,7 +62,7 @@
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button data-bind="click: page.click.to_p2" type="submit">Submit</button>
+                    <button data-bind="click: page.click.to_p3" type="submit">Submit</button>
                     <button  type="reset">reset</button>
                 </div>
             </form>
@@ -70,7 +70,7 @@
             <!--ko if: page.type()===2-->
             <div class="info">
                 <div class="img">
-                    <img src="../../public_html/cdn/users/549e9584e0bb5.jpg">
+                    <img data-bind="attr{src:'../../public_html/cdn/users/'+current_user().photo}" >
                     <span data-bind="click:page.click.to_p3" class="edit">Edit</span>
                 </div>
                 <table>

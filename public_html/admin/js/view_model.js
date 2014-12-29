@@ -12,7 +12,7 @@ function AppViewModel() {
 
         }
     }
-    self.page.click.to_p1=function(root){
+    self.page.click.to_p1=function(){
         self.current_user(new User_class())
         self.page.type(1);
     }
@@ -22,6 +22,7 @@ function AppViewModel() {
         self.page.type(2);
     }
     self.page.click.to_p3=function(root){
+        debugger;
         self.page.type(3);
     }
     self.current_user=ko.observable();
