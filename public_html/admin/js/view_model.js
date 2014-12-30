@@ -26,12 +26,31 @@ function UpdateUser(user) {
     self.city.text(user.city);
     self.descr.text(user.descr);
 
-    self.update_data = function() {
-
+    self.update_image = function() {
+        alert(document.getElementById('formPhoto'));
+        ajax.load_image(
+            new FormData(document.getElementById('formPhoto')),
+            {
+                success: function(data) { console.log(data); },
+                error: function(error) { console.log(error); },
+                before: function() { console.log('before'); },
+                after: function() { console.log('after'); }
+            },
+            function () {}
+        );
     };
 
-    self.update_image = function() {
-
+    self.update_data = function() {
+        ajax.load_data(
+            new FormData(document.getElementById('formData')),
+            {
+                success: function(data) { console.log(data); },
+                error: function(error) { console.log(error); },
+                before: function() { console.log('before'); },
+                after: function() { console.log('after'); }
+            },
+            function () {}
+        );
     };
 
     self.update_info = function() {
