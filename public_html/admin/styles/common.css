@@ -131,7 +131,7 @@ h1{
     border: none;
 }
 
-.main .new-user{
+.main .new-user, .edit table{
     width: 500px;
     height: 100%;
     margin: 0 auto;
@@ -150,28 +150,35 @@ textarea{
 
 }
 
-.main .new-user table td:first-child{
+.main .new-user table td:first-child,
+.edit table td:first-child{
     width: 30%;
     text-align: right;
 }
 
-.main .new-user table td:last-child{
+.main .new-user table td:last-child,
+.edit table td:last-child{
     width: 70%;
 }
 
-.main .new-user table td:last-child>*{
+.main .new-user table td:last-child>*,
+.edit table td:last-child>*{
     width: 100%;
 }
 
-.main .new-user tr{
+.main .new-user tr,
+.edit table tr{
     border-bottom: 1px solid #ffffff;
 }
 
-.main .new-user td{
+.main .new-user td,
+.edit table td{
     padding: 10px 0;
     border-bottom: 1px solid #ffffff;
 }
-
+.edit table textarea{
+    height: 100px;
+}
 .buttons{
     margin: 0 auto;
     width: 50%;
@@ -200,9 +207,11 @@ textarea{
     border-collapse: collapse;
     width: 430px;
 }
-
+.info>*{
+    background-color: #efefef;
+}
 .info tr{
-    background-color: #ffffff;
+
     border-bottom: 1px dashed #000000;
     line-height: 30px;
 }
@@ -244,4 +253,7 @@ input[invalid='true'], textarea[invalid='true'] {
     max-width: 465px;
     min-width: 465px;
     overflow: hidden;
+}
+.table-info tr td{
+    vertical-align: top;
 }

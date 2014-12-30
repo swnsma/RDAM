@@ -18,7 +18,7 @@ class UsersInfo extends Users {
                 return false;
             }
         }
-        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` >= :id LIMIT 10');
+        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` >= :id'); # LIMIT 10
         $this->result->bindParam(':id', $form_id, PDO::PARAM_INT);
         return $this->result->execute();
     }

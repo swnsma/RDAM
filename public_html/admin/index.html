@@ -67,12 +67,6 @@
             <div class="info">
                 <div class="table info-table">
                     <div class="table-row">
-                        <div class="table-cell bphoto">
-                            <div class="img">
-                                <img data-bind="attr: { src: photo }" >
-                            </div>
-                            <span data-bind="click: $parent.edit" class="edit">Edit</span>
-                        </div>
                         <div class="table-cell binfo">
                             <table class="table-info">
                                 <tr>
@@ -89,11 +83,19 @@
                                 </tr>
                             </table>
                         </div>
+                        <div class="table-cell bphoto">
+                            <div class="img">
+                                <img data-bind="attr: { src: photo }" >
+                            </div>
+                            <span data-bind="click: $parent.edit" class="edit">Edit</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <!-- /ko -->
             <!-- /ko -->
+
             <!-- ko if: active_page() === 3 -->
             <!-- ko with: update_user() -->
             <div class="edit">
@@ -139,6 +141,7 @@
             </div>
             <!-- /ko -->
             <!-- /ko -->
+
         </div>
     </div>
 </div>
