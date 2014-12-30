@@ -207,9 +207,11 @@ textarea{
     border-collapse: collapse;
     width: 430px;
 }
-
+.info>*{
+    background-color: #efefef;
+}
 .info tr{
-    background-color: #ffffff;
+
     border-bottom: 1px dashed #000000;
     line-height: 30px;
 }
