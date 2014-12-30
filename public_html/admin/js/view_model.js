@@ -44,8 +44,11 @@ function UpdateUser(user) {
     };
 
     self.update_data = function() {
+        var a =document.getElementById('formData');
+        alert(a);
         ajax.load_data(
-            new FormData(document.getElementById('formData')),
+
+            new FormData(a),
             {
                 success: function(data) { console.log(data); },
                 error: function(error) { console.log(error); },
