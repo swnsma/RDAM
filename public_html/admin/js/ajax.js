@@ -7,11 +7,12 @@ Ajax.prototype._gen_func = function(func) {
 
     if (func.success) {
         result_func.success = function(data) {
-            if (data.status == 'success') {
+            console.log(data);
+            /*if (data.status == 'success') {
                 func.success(data.data);
             } else if (func.error) {
                 func.error('status is not success');
-            }
+            }*/
         }
     } else {
         result_func.success = function() {};
@@ -19,12 +20,14 @@ Ajax.prototype._gen_func = function(func) {
 
     if (func.error) {
         result_func.error = function(xhr, status, error) {
+            console.log(xhr.responseText);
             var err = JSON.parse(xhr.responseText);
-            if (err.error_message) {
+            console.log(err);
+            /*if (err.error_message) {
                 func.error(err.error_message);
             } else {
                 func.error('unknown error');
-            }
+            }*/
         }
     } else {
         result_func.error = function() {};
@@ -93,6 +96,50 @@ Ajax.prototype.update_user_info = function(data, func) {
         complete: func.after,
         success: func.success,
         error: func.error
+    });
+};
+
+Ajax.prototype.load_image = function(data, func, progress) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'upload_image.php',
+        type: 'post',
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload) {
+                myXhr.upload.addEventListener('progress', progress, false);
+            }
+            return myXhr;
+        },
+        beforeSend: func.before,
+        success: func.success,
+        error: func.error,
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+};
+
+Ajax.prototype.load_data = function(data, func, progress) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'upload_data.php',
+        type: 'post',
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload) {
+                myXhr.upload.addEventListener('progress', progress, false);
+            }
+            return myXhr;
+        },
+        beforeSend: func.before,
+        success: func.success,
+        error: func.error,
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
     });
 };
 
