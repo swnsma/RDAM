@@ -121,31 +121,38 @@
                         </tr>
                     </table>
                     <div class="buttons">
-                        <button type="submit" data-bind="click: send">submit</button>
+                        <button type="button" data-bind="click: update_info">submit</button>
                         <button type="reset">reset</button>
                     </div>
                     <table>
                         <tr>
                             <td>photo:</td>
                             <td>
-                                <input type="file"/>
+                                <form id="formPhoto">
+                                    <input data-bind="value: id" name="id"  type="hidden" value="" />
+                                    <input name="photo" type="file" />
+                                </form>
                             </td>
                         </tr>
                     </table>
                     <div class="buttons">
-                        <button type="submit" data-bind="click: send">submit</button>
+                        <button type="button" data-bind="click: update_image">submit</button>
                         <button type="reset">reset</button>
                     </div>
                     <table>
                         <tr>
                             <td>add data:</td>
                             <td>
-                                <input type="file"/>
+                                <form id="formData">
+                                    <input data-bind="value: id" name="id" type="hidden" value="" />
+                                    <label><input type="checkbox" value="true" checked="checked" />ignore</label>
+                                    <input name="data" type="file" />
+                                </form>
                             </td>
                         </tr>
                     </table>
                     <div class="buttons">
-                        <button type="submit" data-bind="click: send">submit</button>
+                        <button type="button" data-bind="click: update_data">submit</button>
                         <button type="reset">reset</button>
                     </div>
                     <span data-bind="text: curr_operation()"></span>

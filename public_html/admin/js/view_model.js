@@ -26,7 +26,15 @@ function UpdateUser(user) {
     self.city.text(user.city);
     self.descr.text(user.descr);
 
-    self.send = function() {
+    self.update_data = function() {
+
+    };
+
+    self.update_image = function() {
+
+    };
+
+    self.update_info = function() {
         if (valid.user_name(self.user_name.text())) {
             self.user_name.invalid(false);
             if (valid.descr(self.descr.text())) {
@@ -82,6 +90,8 @@ function UpdateUser(user) {
         }
         return false;
     }
+
+
 }
 
 function CurrentUser(user) {
