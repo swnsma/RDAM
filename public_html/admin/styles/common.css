@@ -16,6 +16,7 @@ header{
     background-color: #000000;
     width: 960px;
     height: 50px;
+    line-height: 50px;
     color: #ffffff;
     text-align: center;
     margin: 0 auto;
@@ -33,14 +34,23 @@ h1{
     display: table;
 }
 
+.table {
+    display: table;
+}
+
 .table-row{
     display: table-row;
     width: 100%;
     height: 100%;
 }
 
+.table-cell {
+    display: table-cell;
+    vertical-align: top;
+}
+
 .wrapper_left,.main{
-    padding: 20px 0;
+    padding: 5px 0;
     display: table-cell;
     /*height: 100%;*/
     /*overflow: hidden;*/
@@ -79,6 +89,8 @@ h1{
 
 .wrapper_left li[active='true'] {
     background-color: #1e7e04;
+    font-weight: bold;
+    cursor: default;
 }
 
 .wrapper_left .inner-wrapper{
@@ -88,7 +100,6 @@ h1{
 .main{
     width: 100%;
     background-color: #cccccc
-
 }
 
 .wrapper_left .new-user{
@@ -175,15 +186,14 @@ textarea{
     padding: 0 10px;
 }
 
-.info .img{
-    float: left;
-    width: 250px;
-    margin:0 10px;
+.img{
+    width: 230px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.info .img img{
-    max-width: 250px;
+.img img{
+    max-width: 220px;
 }
 
 .info table{
@@ -218,4 +228,20 @@ textarea{
 
 input[invalid='true'], textarea[invalid='true'] {
     background-color: red;
+}
+
+.info-table {
+    margin: 5px;
+}
+
+.bphoto {
+    max-width: 250px;
+    text-align: center;
+}
+
+.binfo, .table-info {
+    width: 465px;
+    max-width: 465px;
+    min-width: 465px;
+    overflow: hidden;
 }

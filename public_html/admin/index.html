@@ -65,24 +65,32 @@
             <!-- ko if: active_page() === 2 -->
             <!-- ko with: current_user() -->
             <div class="info">
-                <div class="img">
-                    <img data-bind="attr: { src: photo }" >
-                    <span data-bind="click: $parent.edit" class="edit">Edit</span>
+                <div class="table info-table">
+                    <div class="table-row">
+                        <div class="table-cell bphoto">
+                            <div class="img">
+                                <img data-bind="attr: { src: photo }" >
+                            </div>
+                            <span data-bind="click: $parent.edit" class="edit">Edit</span>
+                        </div>
+                        <div class="table-cell binfo">
+                            <table class="table-info">
+                                <tr>
+                                    <td>Name:</td>
+                                    <td data-bind="text: user_name"></td>
+                                </tr>
+                                <tr>
+                                    <td>City:</td>
+                                    <td data-bind="text: city"></td>
+                                </tr>
+                                <tr>
+                                    <td>Description:</td>
+                                    <td data-bind="text: descr"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <table>
-                    <tr>
-                        <td>Name:</td>
-                        <td data-bind="text: user_name"></td>
-                    </tr>
-                    <tr>
-                        <td>City:</td>
-                        <td data-bind="text: city"></td>
-                    </tr>
-                    <tr>
-                        <td>Description:</td>
-                        <td data-bind="text: descr"></td>
-                    </tr>
-                </table>
             </div>
             <!-- /ko -->
             <!-- /ko -->
