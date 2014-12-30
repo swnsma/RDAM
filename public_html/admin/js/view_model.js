@@ -27,9 +27,12 @@ function UpdateUser(user) {
     self.descr.text(user.descr);
 
     self.update_image = function() {
-        alert(document.getElementById('formPhoto'));
+        var a =document.getElementById('formData');
+        alert(a);
+
+        debugger;
         ajax.load_image(
-            new FormData(document.getElementById('formPhoto')),
+            new FormData(a),
             {
                 success: function(data) { console.log(data); },
                 error: function(error) { console.log(error); },
