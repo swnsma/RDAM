@@ -115,7 +115,7 @@ function AppViewModel() {
         var l = self.arrayUsers().length;
         var id = 0;
         if (l != 0) {
-            id = self.arrayUsers()[l-1].id;
+            id = self.arrayUsers()[l-1].id();
         }
         getUsers2(id+1, self);
     };
