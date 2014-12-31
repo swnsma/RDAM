@@ -7,7 +7,7 @@ function getUsers(self,success) {
         type: 'GET',
         contentType: 'application/json',
         success: function (response) {
-            debugger;
+            loading.disable();
             success(response,self);
 
         },
@@ -16,9 +16,24 @@ function getUsers(self,success) {
     };
     $.ajax(options);
 }
-function analyze(response,self){
 
-    loading.disable();
+function getUsers2(from_id, self) {
+    $.ajax({
+        url: 'http://rdam.tk/ajax/users_info.php',
+        type: 'GET',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: {
+            from_id: from_id,
+            fields: 'city,photo,descr'
+        },
+        success: function(response) {
+            analyze(response, self);
+        }
+    });
+}
+
+function analyze(response,self){
     if (response && response.data && response.data.length) {
         var mappedTasks = [];
         for (var i = 0; i < response.data.length; i++){
