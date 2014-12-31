@@ -125,38 +125,40 @@
                         <button type="reset">reset</button>
                     </div>
                 </form>
+                <form id="formPhoto">
                     <table>
                         <tr>
                             <td>photo:</td>
                             <td>
-                                <form id="formPhoto">
-                                    <input data-bind="value: id" name="id"  type="hidden" value="" />
-                                    <input name="photo" type="file" />
-                                </form>
+                                <input data-bind="value: id" name="id"  type="hidden" value="" />
+                                <input name="photo" type="file" />
                             </td>
                         </tr>
                     </table>
+                    <progress id="photoProgress"></progress>
                     <div class="buttons">
                         <button type="button" data-bind="click: update_image">submit</button>
                         <button type="reset">reset</button>
                     </div>
+                </form>
+                <form id="formData">
                     <table>
                         <tr>
                             <td>add data:</td>
                             <td>
-                                <form id="formData">
-                                    <input data-bind="value: id" name="id" type="hidden" value="" />
-                                    <label><input type="checkbox" value="true" checked="checked" />ignore</label>
-                                    <input name="data" type="file" />
-                                </form>
+                                <input data-bind="value: id" name="id" type="hidden" value="" />
+                                <label><input type="checkbox" value="true" checked="checked" />ignore</label>
+                                <input name="data" type="file" />
                             </td>
                         </tr>
                     </table>
+                    <progress id="dataProgress"></progress>
                     <div class="buttons">
                         <button type="button" data-bind="click: update_data">submit</button>
                         <button type="reset">reset</button>
                     </div>
-                    <span data-bind="text: curr_operation()"></span>
+                </form>
+                <span data-bind="text: curr_operation()"></span>
             </div>
             <!-- /ko -->
             <!-- /ko -->

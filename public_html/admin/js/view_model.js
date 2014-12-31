@@ -159,6 +159,7 @@ function CreateUser() {
                                     },
                                     success: function(data) {
                                         alert('user created id = ' + data.id);
+                                        self.curr_operation('user created');
                                     },
                                     error: function(error) {
                                         self.curr_operation(error);
