@@ -293,6 +293,10 @@ input[invalid='true'], textarea[invalid='true'] {
 
 }
 
+progress {
+    display: none;
+}
+
 .st {
     width: 100%;
     margin: 5px;

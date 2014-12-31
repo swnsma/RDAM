@@ -73,28 +73,60 @@ function UpdateUser(user) {
     self.descr.text(user.descr);
 
     self.update_image = function() {
+        var pp = $('#photoProgress');
         ajax.load_image(
             new FormData(document.getElementById('formPhoto')),
             {
-                success: function(data) { console.log(data); },
-                error: function(error) { console.log(error); },
-                before: function() { console.log('before'); },
-                after: function() { console.log('after'); }
+                success: function(data) {
+                    alert('image updated')
+                },
+                error: function(error) {
+                    alert(error);
+                },
+                before: function() {
+                    pp.css('display', 'block');
+                },
+                after: function() {
+                    pp.css('display', 'none');
+                }
             },
-            function () {}
+            function(e) {
+                if(e.lengthComputable){
+                    pp.attr({
+                        value: e.loaded,
+                        max: e.total
+                    });
+                }
+            }
         );
     };
 
     self.update_data = function() {
+        var pd = $('#photoData');
         ajax.load_data(
             new FormData(document.getElementById('formData')),
             {
-                success: function(data) { console.log(data); },
-                error: function(error) { console.log(error); },
-                before: function() { console.log('before'); },
-                after: function() { console.log('after'); }
+                success: function(data) {
+                    alert('data updated. Inserted ' + data.insert_rows + ' new records')
+                },
+                error: function(error) {
+                    alert(error);
+                },
+                before: function() {
+                    pd.css('display', 'block');
+                },
+                after: function() {
+                    pd.css('display', 'none');
+                }
             },
-            function () {}
+            function(e) {
+                if(e.lengthComputable){
+                    $('#dataProgress').attr({
+                        value: e.loaded,
+                        max: e.total
+                    });
+                }
+            }
         );
     };
 
@@ -122,11 +154,11 @@ function UpdateUser(user) {
 }
 
 function CurrentUser(user) {
-    this.id = user.id;
-    this.user_name = user.user_name;
-    this.city = user.city;
-    this.photo = user.photo;
-    this.descr = user.descr;
+    this.id = ko.observable(user.id);
+    this.user_name = ko.observable(user.user_name);
+    this.city = ko.observable(user.city);
+    this.photo = ko.observable(user.photo);
+    this.descr = ko.observable(user.descr);
 }
 
 function CreateUser(func) {
@@ -190,10 +222,10 @@ function AppViewModel() {
         self.active_page(2);
     }));
 
-    self.update_user = ko.observable(new UpdateUser(undefined_user));
+    self.update_user = ko.observable(new UpdateUser(undefined_user, self));
 
     self.edit = function(user) {
-        self.update_user(new UpdateUser(user));
+        self.update_user(new UpdateUser(user, self));
         self.active_page(3);
     };
 }

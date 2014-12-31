@@ -87,7 +87,7 @@ Ajax.prototype.create_user = function(data, func) {
     func = this._gen_func(func);
     $.ajax({
         url: url + 'admin/ajax/add_user.php',
-        type: "POST",
+        type: 'POST',
         dataType: 'json',
         data: data,
         beforeSend: func.before,
@@ -101,7 +101,7 @@ Ajax.prototype.update_user_info = function(data, func) {
     func = this._gen_func(func);
     $.ajax({
         url: url + 'admin/ajax/update_user.php',
-        type: "POST",
+        type: 'POST',
         dataType: 'json',
         data: data,
         beforeSend: func.before,
@@ -117,7 +117,7 @@ Ajax.prototype.load_image = function(data, func, progress) {
     $.ajax({
         url: url + 'admin/ajax/upload_image.php',
         type: 'POST',
-        xhr: self._custom_xhr(progress),
+        xhr: function() { return self._custom_xhr(progress) },
         beforeSend: func.before,
         success: func.success,
         error: func.error,
@@ -134,7 +134,7 @@ Ajax.prototype.load_data = function(data, func, progress) {
     $.ajax({
         url: url + 'admin/ajax/upload_data.php',
         type: 'POST',
-        xhr: self._custom_xhr(progress),
+        xhr: function() { return self._custom_xhr(progress) },
         beforeSend: func.before,
         success: func.success,
         error: func.error,
@@ -149,7 +149,7 @@ Ajax.prototype.get_users = function(from_id, func) {
     func = this._gen_func(func);
     $.ajax({
         url: url + 'ajax/users_info.php',
-        type: "GET",
+        type: 'GET',
         contentType: 'application/json',
         dataType: 'json',
         data: {
@@ -167,7 +167,7 @@ Ajax.prototype.search = function(user_name, func) {
     func = this._gen_func(func);
     $.ajax({
         url: url + 'ajax/search.php',
-        type: "GET",
+        type: 'GET',
         contentType: 'application/json',
         dataType: 'json',
         data: {
