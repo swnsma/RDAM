@@ -93,6 +93,10 @@
                                     <td>Description:</td>
                                     <td data-bind="text: descr"></td>
                                 </tr>
+                                <tr>
+                                    <td>Url:</td>
+                                    <td><a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a></td>
+                                </tr>
                             </table>
                         </div>
                         <div class="table-cell bphoto">
@@ -121,13 +125,13 @@
                         <tr>
                             <td>city:</td>
                             <td>
-                                <input type="text" name="edit_name" data-bind="value: city.text, attr: { invalid: user_name.invalid }"/>
+                                <input type="text" name="edit_name" data-bind="value: city.text, attr: { invalid: city.invalid }"/>
                             </td>
                         </tr>
                         <tr>
                             <td>description:</td>
                             <td>
-                                <textarea data-bind="value: descr.text, attr: { invalid: user_name.invalid }"> </textarea>
+                                <textarea data-bind="value: descr.text, attr: { invalid: descr.invalid }"> </textarea>
                             </td>
                         </tr>
                     </table>
