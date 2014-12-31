@@ -69,6 +69,7 @@
                                     </ul>
                                 </div>
                                 <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
+                                <div style="overflow-y: auto; height: 300px">
                                 <ul data-bind=" foreach: return_no_active_search()">
                                     <li class="user" data-bind="click: $root.set_active">
                                         <label>
@@ -78,6 +79,7 @@
                                     </li>
                                 </ul>
                                 <a href="#" data-bind="click: upload_users">upload users</a>
+                                </div>
                             </div>
 
                         </form>
