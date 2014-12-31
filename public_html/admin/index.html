@@ -56,7 +56,7 @@
                     <tr>
                         <td>Description:</td>
                         <td>
-                            <textarea data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
+                            <textarea placeholder="30-300 letters" data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -139,7 +139,7 @@
                 <form id="formPhoto">
                     <table>
                         <tr>
-                            <td>photo:</td>
+                            <td>photo: (gif, png, jpg)</td>
                             <td>
                                 <input data-bind="value: id" name="id"  type="hidden" value="" />
                                 <input name="photo" type="file" />
@@ -155,7 +155,7 @@
                 <form id="formData">
                     <table>
                         <tr>
-                            <td>add data:</td>
+                            <td>add data: (csv)</td>
                             <td>
                                 <input data-bind="value: id" name="id" type="hidden" value="" />
                                 <label><input type="checkbox" value="true" checked="checked" />ignore</label>
