@@ -7,12 +7,11 @@ Ajax.prototype._gen_func = function(func) {
 
     if (func.success) {
         result_func.success = function(data) {
-            console.log(data);
-            /*if (data.status == 'success') {
+            if (data.status == 'success') {
                 func.success(data.data);
             } else if (func.error) {
                 func.error('status is not success');
-            }*/
+            }
         }
     } else {
         result_func.success = function() {};
@@ -22,12 +21,11 @@ Ajax.prototype._gen_func = function(func) {
         result_func.error = function(xhr, status, error) {
             console.log(xhr.responseText);
             var err = JSON.parse(xhr.responseText);
-            console.log(err);
-            /*if (err.error_message) {
+            if (err.error_message) {
                 func.error(err.error_message);
             } else {
                 func.error('unknown error');
-            }*/
+            }
         }
     } else {
         result_func.error = function() {};
