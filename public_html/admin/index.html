@@ -27,7 +27,7 @@
                 <ul data-bind="foreach: search_users">
                     <li data-bind="text: user_name, attr: { active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
                 </ul>
-                <a href="#" data-bind="click: search_disable">повернутись назад</a>
+                <a class="bac" href="#" data-bind="click: search_disable">Bac</a>
                 <!-- /ko -->
                 <!-- ko if: !search_active() -->
                 <ul data-bind="foreach: users">
@@ -41,7 +41,7 @@
         </div>
         <div id="main" class="main">
             <!-- ko if: active_page() === 0 -->
-                початкова сторінка
+                <!--початкова сторінка-->
             <!-- /ko -->
             <!-- ko if: active_page() === 1 -->
             <!-- ko with: create_user() -->

@@ -89,11 +89,11 @@ h1{
 .wrapper_left li:hover{
     font-weight: bold;
     cursor: pointer;
-    background-color: #33c505;
+    background-color: #e9e9e9;
 }
 
 .wrapper_left li[active='true'] {
-    background-color: #1e7e04;
+    background-color: #999999;
     font-weight: bold;
     cursor: default;
 }
@@ -114,7 +114,8 @@ h1{
     display: inline-block;
     font-family: Impact;
     font-size: 1.5em;
-    background-color: #1e7e04;
+    /*background-color: #1e7e04;*/
+    background-color: #cccccc;
     outline: none;
     box-shadow: none;
     cursor: pointer;
@@ -128,14 +129,20 @@ h1{
     display: inline-block;
     font-family: Impact;
     font-size: 1.5em;
-    background-color: #1e7e04;
+    /*background-color: #1e7e04;*/
     outline: none;
     box-shadow: none;
     cursor: pointer;
+
     /*color: #cccccc;*/
     border: none;
+    border-bottom: 1px dashed #0c4880;
+    background-color: #cccccc;
+    color: #0c4880;
 }
-
+.buttons>*:first-child{
+    margin-right: 50px;
+}
 .main .new-user, .edit table{
     width: 500px;
     /*height: 100%;*/
@@ -170,15 +177,17 @@ textarea{
     width: 100%;
 }
 
-.main .new-user tr,
-.edit table tr{
+.main .new-user tr{
     border-bottom: 1px solid #ffffff;
 }
 
-.main .new-user td,
-.edit table td{
+.main .new-user td
+{
     padding: 10px 0;
     border-bottom: 1px solid #ffffff;
+}
+.edit table td{
+    padding: 10px 0;
 }
 .edit table textarea{
     height: 100px;
@@ -188,9 +197,6 @@ textarea{
     width: 50%;
 }
 
-.buttons>*{
-    width: 48%;
-}
 
 .wrapper_left .info{
     width: 690px;
@@ -238,7 +244,13 @@ textarea{
     color: red;
     cursor: pointer;
 }
-
+.edit form{
+    border: 1px solid #999999;
+    display: block;
+    margin: 5px 40px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
 input[invalid='true'], textarea[invalid='true'] {
     background-color: red;
 }
@@ -269,7 +281,7 @@ input[invalid='true'], textarea[invalid='true'] {
 
 .cts > input, .cbs > button {
     padding: 3px;
-    border: 1px solid green;
+    border: 1px solid #666666;
 }
 
 .cbs > button {
@@ -293,9 +305,18 @@ input[invalid='true'], textarea[invalid='true'] {
 .upload-users > a {
     text-decoration: none;
     font-size: 10pt;
-    color: green;
+    color: #0c4880;
 }
 
 .upload-users > a:hover {
     text-decoration: underline;
+}
+.bac{
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+progress{
+    margin: 0 auto;
+    margin-left: 70px;
 }

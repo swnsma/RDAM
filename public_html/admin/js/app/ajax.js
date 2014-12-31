@@ -1,4 +1,5 @@
 var url = 'http://rdam.loc:83/';
+//var url = 'http://rdam/public_html/';
 
 function Ajax() {}
 
