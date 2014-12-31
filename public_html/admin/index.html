@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="styles/common.css" type="text/css"/>
+    <title>Back office</title>
+    <link rel="stylesheet" href="styles/admin.css" type="text/css"/>
 </head>
 <body>
 <header>
@@ -13,7 +13,7 @@
     <!-- ko if: active_page() === 1 -->
     <h1>Create new User</h1>
     <!-- /ko -->
-    <!-- ko if: active_page() === 2 -->
+    <!-- ko if: active_page() === 2 || active_page() === 3 -->
     <h1 data-bind="text: current_user().user_name"> </h1>
     <!-- /ko -->
 </header>
@@ -22,9 +22,19 @@
         <div class="wrapper_left">
             <div class="inner-wrapper">
                 <button data-bind="click: function() { active_page(1); }" class="new-user" type="button">Create new User</button>
-                <ul data-bind="foreach: users">
-                    <li data-bind="text: user_name, attr: {active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
+                <div data-bind="search: search_users"> </div>
+                <!-- ko if: search_active() -->
+                <ul data-bind="foreach: search_users">
+                    <li data-bind="text: user_name, attr: { active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
                 </ul>
+                <a href="#" data-bind="click: search_disable">повернутись назад</a>
+                <!-- /ko -->
+                <!-- ko if: !search_active() -->
+                <ul data-bind="foreach: users">
+                    <li data-bind="text: user_name, attr: { active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
+                </ul>
+                <a href="#" data-bind="upload_users: users">upload users</a>
+                <!-- /ko -->
             </div>
         </div>
         <div id="main" class="main">
@@ -95,7 +105,6 @@
             </div>
             <!-- /ko -->
             <!-- /ko -->
-
             <!-- ko if: active_page() === 3 -->
             <!-- ko with: update_user() -->
             <div class="edit">
@@ -162,16 +171,13 @@
             </div>
             <!-- /ko -->
             <!-- /ko -->
-
         </div>
     </div>
 </div>
 <script type='text/javascript' src='../site/js/vendor/jquery-2.1.1.js'></script>
 <script type='text/javascript' src='../site/js/vendor/knockout/knockout-3.2.0.js'></script>
-<script type='text/javascript' src='../site/js/app/score/ColorMas.js'></script>
-<script type='text/javascript' src='../site/js/app/score/getUsers.js'></script>
-<script type='text/javascript' src='js/validator.js'></script>
-<script type='text/javascript' src='js/ajax.js'></script>
-<script type='text/javascript' src='js/view_model.js'></script>
+<script type='text/javascript' src='js/app/validator.js'></script>
+<script type='text/javascript' src='js/app/ajax.js'></script>
+<script type='text/javascript' src='js/app/admin.vm.js'></script>
 </body>
 </html>

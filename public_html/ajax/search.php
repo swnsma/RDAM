@@ -5,7 +5,7 @@ include_once 'include/search.class.php';
 if (isset($_GET['user_name'])) {
     $user_name = $_GET['user_name'];
     $len_user_name = strlen($user_name);
-    if ($len_user_name <= 25 && $len_user_name > 5) {
+    if ($len_user_name <= 25 && $len_user_name >= 5) {
         if (isset($_GET['fields'])) {
             $fields = array_unique(explode(',', $_GET['fields']));
         } else {
