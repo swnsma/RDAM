@@ -5,11 +5,16 @@ body{
     padding: 0;
     height:100%;
     background-color: #eee;
+    display: none;
 }
 
 html {
     height: 100%;
     width: 100%;
+}
+
+input {
+    outline: none;
 }
 
 header{
@@ -253,6 +258,44 @@ input[invalid='true'], textarea[invalid='true'] {
     min-width: 465px;
     overflow: hidden;
 }
+
 .table-info tr td{
     vertical-align: top;
+}
+
+.cts, .cts > input {
+    width: 180px;
+}
+
+.cts > input, .cbs > button {
+    padding: 3px;
+    border: 1px solid green;
+}
+
+.cbs > button {
+    padding: 3px 5px;
+    border-left: none;
+}
+
+.tcb {
+
+}
+
+.st {
+    width: 100%;
+    margin: 5px;
+}
+
+.upload-users {
+    text-align: center;
+}
+
+.upload-users > a {
+    text-decoration: none;
+    font-size: 10pt;
+    color: green;
+}
+
+.upload-users > a:hover {
+    text-decoration: underline;
 }

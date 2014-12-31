@@ -33,7 +33,9 @@
                 <ul data-bind="foreach: users">
                     <li data-bind="text: user_name, attr: { active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
                 </ul>
-                <a href="#" data-bind="upload_users: users">upload users</a>
+                <div class="upload-users">
+                    <a href="#" data-bind="upload_users: users">upload users</a>
+                </div>
                 <!-- /ko -->
             </div>
         </div>

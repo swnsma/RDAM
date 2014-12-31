@@ -212,8 +212,11 @@ function User(user){
 
 ko.bindingHandlers.search = {
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-        element.innerHTML = '<input type="text" id="textSearch" /> ' +
-            '<button type="button" id="buttonSearch"/>search</button>';
+        element.innerHTML = '<div class="table st">' +
+            '<div class="table-row"><div class="table-cell cts">' +
+            '<input type="text" id="textSearch" />' +
+            '</div><div class="table-cell cbs"><button type="button" id="buttonSearch"/>search</button></div></div>' +
+            '<div id="searchInfo"></div>';
         var ts = $('#textSearch');
         var bs = $('#buttonSearch');
         ts.keypress(function(e){
@@ -227,14 +230,22 @@ ko.bindingHandlers.search = {
             var user_name = ts.val();
             if (valid.user_name(user_name)) {
                 ts.removeAttr('invalid');
+                var si = $('#searchInfo');
                 ajax.search(user_name, {
+                    before: function() {
+                        si.text('please. wait...');
+                    },
                     success: function(data) {
-                        for(var i in data) {
-                            valueAccessor().push(new User(data[i]));
+                        if (data.length == 0) {
+                            si.text('on the search didn\'t match');
+                        } else {
+                            for(var i in data) {
+                                valueAccessor().push(new User(data[i]));
+                            }
                         }
                     },
                     error: function(message) {
-                        alert(message);
+                        si.text('error: ' + message);
                     }
                 });
             } else {
@@ -274,5 +285,6 @@ ko.bindingHandlers.upload_users = {
 
 $(document).ready(function () {
     ko.applyBindings(new AppViewModel());
+    $('body').css('display', 'block');
 });
 
