@@ -27,7 +27,7 @@ function UpdateUser(user) {
     self.descr.text(user.descr);
 
     self.update_image = function() {
-        var a =document.getElementById('formData');
+        var a =document.getElementById('formPhoto');
         alert(a);
 
         debugger;
