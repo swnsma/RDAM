@@ -27,7 +27,7 @@
                 <ul data-bind="foreach: search_users">
                     <li data-bind="text: user_name, attr: { active: $parent.current_user().id == id }, click: function() { $parent.current_user($data); $parent.active_page(2); }"></li>
                 </ul>
-                <a class="bac" href="#" data-bind="click: search_disable">Bac</a>
+                <a class="bac" href="#" data-bind="click: search_disable">Back</a>
                 <!-- /ko -->
                 <!-- ko if: !search_active() -->
                 <ul data-bind="foreach: users">
