@@ -47,7 +47,7 @@ HERE;
             $l = $limit;
         }
         $this->users_values['week'] = array();
-        foreach($tables as $table) {
+        foreach($tables as $table) { //EXTRACT(WEEK FROM `toDT`)
             $request = <<<HERE
                     SELECT
                         DATE_FORMAT(`toDT`, '%d %b %Y') as d,
@@ -57,7 +57,7 @@ HERE;
                     WHERE
                         `toDT` <= :todt
                     GROUP BY
-                        EXTRACT(WEEK FROM `toDT`)
+                        DATE_FORMAT(`toDT`, '%u')
                     ORDER BY `toDT` DESC
                     LIMIT :limit
 HERE;
