@@ -17,8 +17,12 @@ if (isset($_GET['id']) && isset($_GET['todt'])) {
         }
     }
 
+    $limit = null;
     if (isset($_GET['type'])) {
         $type = $_GET['type'];
+        if (isset($_GET['limit']) && ctype_digit($_GET['limit'])) {
+            $limit = (int)$_GET['limit'];
+        }
     } else {
         $type = null;
     }
@@ -32,7 +36,7 @@ if (isset($_GET['id']) && isset($_GET['todt'])) {
     $ids = array_unique(array_map('intval',  explode(',', $_GET['id'])));
 
     $users = new UserValues();
-    if($users->select_data($ids, $to, $type, $field)) {
+    if($users->select_data($ids, $to, $type, $field, $limit)) {
         print '{ "status": "success", "data": ' . json_encode($users->get_data()) . ' }';
     } else {
         header('HTTP/1.0 400 Bad Request');
