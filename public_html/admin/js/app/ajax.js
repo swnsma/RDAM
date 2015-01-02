@@ -1,4 +1,4 @@
-var url = 'http://rdam.tk/';
+var url = 'http://rdam.loc:83/';
 //var url = 'http://rdam/public_html/';
 
 function Ajax() {}
@@ -178,6 +178,23 @@ Ajax.prototype.search = function(user_name, func) {
         complete: func.after,
         success: func.success,
         error: func.error
+    });
+};
+
+Ajax.prototype.load_skin = function(data, func, progress) {
+    func = this._gen_func(func);
+    var self = this;
+    $.ajax({
+        url: url + 'admin/ajax/upload_skin.php',
+        type: 'POST',
+        xhr: function() { return self._custom_xhr(progress) },
+        beforeSend: func.before,
+        success: func.success,
+        error: func.error,
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
     });
 };
 

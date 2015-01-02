@@ -1,7 +1,7 @@
 <?php
 
-include_once 'include/update_user.class.php';
-include_once 'include/log.class.php';
+include_once  __DIR__ . '/../../include/update_user.class.php';
+include_once  __DIR__ . '/../../include/log.class.php';
 
 if (isset($_POST['id'])) {
     $id = $_POST['id'];

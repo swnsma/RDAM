@@ -1,12 +1,24 @@
 <?php
 
-include "users.class.php";
+include_once __DIR__ . '/users.class.php';
 
 class UserValues extends Users {
-    private $users_values = array();
+    private $users_values = array(),
+        $values_db;
 
     function __construct() {
         parent::__construct();
+        $this->values_db = Connection::conn_values_db();
+    }
+
+    private function get_tables_exists($ids) {
+        $id = '\'user_' . implode('\', \'user_', $ids) . '\'';
+        $request = $this->values_db->prepare('SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME IN (' . $id . ') AND TABLE_SCHEMA=\'' . DB_NAME_V . '\'');
+        if ($request->execute() && $request->rowCount() > 0) {
+            return $request->fetchAll(PDO::FETCH_COLUMN, 0);
+        } else {
+            return null;
+        }
     }
 
     private function select_day_values($tables, $columns, $to, $limit = null) {
@@ -29,7 +41,7 @@ class UserValues extends Users {
                     ORDER BY `toDT` DESC
                     LIMIT :limit
 HERE;
-            $result = $this->db->prepare($request);
+            $result = $this->values_db->prepare($request);
             $result->bindParam(':todt', $to);
             $result->bindParam(':limit', $l, PDO::PARAM_INT);
             if (!$result->execute()) return false;
@@ -61,7 +73,7 @@ HERE;
                     ORDER BY `toDT` DESC
                     LIMIT :limit
 HERE;
-            $result = $this->db->prepare($request);
+            $result = $this->values_db->prepare($request);
             $result->bindParam(':todt', $to);
             $result->bindParam(':limit', $l, PDO::PARAM_INT);
             if (!$result->execute()) return false;
@@ -93,7 +105,7 @@ HERE;
                     ORDER BY `toDT` DESC
                     LIMIT :limit
 HERE;
-            $result = $this->db->prepare($request);
+            $result = $this->values_db->prepare($request);
             $result->bindParam(':todt', $to);
             $result->bindParam(':limit', $l, PDO::PARAM_INT);
             if (!$result->execute()) return false;
@@ -110,7 +122,6 @@ HERE;
         $tables = $this->get_tables_exists($ids);
         if (count($tables) == 0)
             return false;
-
         switch($field) {
             case 'consumption':
                 $columns = <<<HERE
@@ -156,6 +167,7 @@ HERE;
 
     function __destruct() {
         parent::__destruct();
+        $this->values_db = null;
     }
 }
 

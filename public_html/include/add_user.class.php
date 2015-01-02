@@ -1,16 +1,19 @@
 <?php
 
-include_once 'include/connection.class.php';
+include_once  __DIR__ . '/connection.class.php';
 
-class AddUser extends Connection {
-    private $id = null;
+class AddUser {
+    private $id = null,
+        $server_db,
+        $values_db;
 
     function __construct() {
-        parent::__construct();
+        $this->server_db = Connection::conn_db();
+        $this->values_db = Connection::conn_values_db();
     }
 
     private function create_record_in_user($user_name, $city, $descr) {
-        $result = $this->db->prepare('INSERT INTO `users` (`id`, `user`, `city`, `descr`, `photo`) VALUES (NULL, :user_name, :city, :descr, NULL)');
+        $result = $this->server_db->prepare('INSERT INTO `users` (`id`, `user`, `city`, `descr`, `photo`) VALUES (NULL, :user_name, :city, :descr, NULL)');
         return $result->execute(array(
             ':user_name' => $user_name,
             ':city' => $city,
@@ -29,16 +32,16 @@ class AddUser extends Connection {
                 PRIMARY KEY (`readingid`)
             ) ENGINE=MyISAM
 HERE;
-        return $this->db->query($request);
+        return $this->values_db->query($request);
     }
 
     private function drop_user_record() {
-        return $this->db->query('DELETE FROM `users` WHERE `id` = ' . $this->id);
+        return $this->server_db->query('DELETE FROM `users` WHERE `id` = ' . $this->id);
     }
 
     public function add($user_name, $city, $descr) {
         if ($this->create_record_in_user($user_name, $city, $descr)) {
-            $this->id = $this->db->lastInsertId();
+            $this->id = $this->server_db->lastInsertId();
             if ($this->create_table_for_values()) {
                 return true;
             } else {
@@ -53,7 +56,8 @@ HERE;
     }
 
     function __destruct() {
-        parent::__destruct();
+        $this->server_db = null;
+        $this->values_db = null;
     }
 }
 

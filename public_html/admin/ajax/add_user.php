@@ -1,11 +1,7 @@
 <?php
 
-include_once 'include/add_user.class.php';
-include_once 'include/log.class.php';
-
-/*print $_POST['city'] . 'eee';
-print $_POST['user_name'] . 'eee';
-print $_POST['descr'] . 'eee';*/
+include_once __DIR__ . '/../../include/add_user.class.php';
+include_once __DIR__ . '/../../include/log.class.php';
 
 if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr'])) {
     $user_name = full_trim($_POST['user_name']);

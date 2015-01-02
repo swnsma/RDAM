@@ -1,14 +1,13 @@
 <?php
 
-include_once 'include/users.class.php';
+include_once __DIR__ . '/users.class.php';
 
-class Search extends Users {
-
+class UsersInfo extends Users {
     function __construct() {
         parent::__construct();
     }
 
-    public function select_list($fields, $user_name) {
+    public function select_list($fields = null, $form_id = 0) {
         if ($fields == null) {
             $column = '';
         } else {
@@ -18,9 +17,8 @@ class Search extends Users {
                 return false;
             }
         }
-        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `user` LIKE :user LIMIT 10');
-        $user_name = '%' . $user_name . '%';
-        $this->result->bindParam(':user', $user_name);
+        $this->result = $this->server_db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` >= :id LIMIT 10');
+        $this->result->bindParam(':id', $form_id, PDO::PARAM_INT);
         return $this->result->execute();
     }
 
@@ -28,3 +26,5 @@ class Search extends Users {
         parent::__destruct();
     }
 }
+
+?>

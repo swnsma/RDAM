@@ -1,6 +1,6 @@
 <?php
 
-include_once 'include/user_info.class.php';
+include_once __DIR__ . '/../include/user_info.class.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

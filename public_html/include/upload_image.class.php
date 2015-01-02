@@ -1,15 +1,17 @@
 <?php
 
-include_once 'include/connection.class.php';
-include_once 'include/upload.class.php';
+include_once __DIR__ . '/connection.class.php';
+include_once __DIR__ . '/upload.class.php';
 
-class InfoPhoto extends Connection {
+class InfoPhoto {
+    private $server_db;
+
     function __construct() {
-        parent::__construct();
+        $this->server_db = Connection::conn_db();
     }
 
     public function get_previous_file_name($id) {
-        $result = $this->db->prepare('SELECT `photo` FROM `users` WHERE `id` = :id');
+        $result = $this->server_db->prepare('SELECT `photo` FROM `users` WHERE `id` = :id');
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         if ($result->execute() && $result->rowCount() > 0) {
             return $result->fetchAll(PDO::FETCH_ASSOC)[0]['photo'];
@@ -18,20 +20,20 @@ class InfoPhoto extends Connection {
     }
 
     public function set_current_file_name($id, $filename) {
-        $result = $this->db->prepare('UPDATE `users` SET `photo` = :photo WHERE `id` = :id');
+        $result = $this->server_db->prepare('UPDATE `users` SET `photo` = :photo WHERE `id` = :id');
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':photo', $filename);
         return $result->execute();
     }
 
     function __destruct() {
-        parent::__destruct();
+        $this->server_db = null;
     }
 }
 
 class UploadImage extends Upload {
-    private $upload_file_name = null;
-    private $quality = 80;
+    private $upload_file_name = null,
+        $quality = 80;
 
     private $mime_types = array(
         'jpg' => 'image/jpeg',

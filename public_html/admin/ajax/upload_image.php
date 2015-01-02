@@ -1,7 +1,7 @@
 <?php
 
-include_once 'include/upload_image.class.php';
-include_once 'include/log.class.php';
+include_once  __DIR__ . '/../../include/upload_image.class.php';
+include_once  __DIR__ . '/../../include/log.class.php';
 
 if (!isset($_POST['id']) || !isset($_FILES['photo']['error']) || is_array($_FILES['photo']['error'])) {
     header('HTTP/1.0 400 Bad Request');

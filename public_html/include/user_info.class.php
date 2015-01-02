@@ -1,14 +1,13 @@
 <?php
 
-include_once 'include/users.class.php';
+include_once __DIR__ . '/users.class.php';
 
-class UsersInfo extends Users {
-
+class UserInfo extends Users {
     function __construct() {
         parent::__construct();
     }
 
-    public function select_list($fields = null, $form_id = 0) {
+    public function select_list($id, $fields = null) {
         if ($fields == null) {
             $column = '';
         } else {
@@ -18,9 +17,9 @@ class UsersInfo extends Users {
                 return false;
             }
         }
-        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` >= :id LIMIT 10');
-        $this->result->bindParam(':id', $form_id, PDO::PARAM_INT);
-        return $this->result->execute();
+        $this->result = $this->server_db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` = :id');
+        $this->result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $this->result->execute() &&  $this->result->rowCount() > 0;
     }
 
     function __destruct() {

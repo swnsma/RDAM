@@ -1,9 +1,9 @@
 <?php
 
 abstract class Upload {
-    protected $file = null;
-    protected $error = null;
-    protected $max_size = 4194304; // 4 mb
+    protected $file = null,
+        $error = null,
+        $max_size = 4194304; // 4 mb
 
     function __construct($files) {
         $this->file = $files;

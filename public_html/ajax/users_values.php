@@ -1,6 +1,6 @@
 <?php
 
-include_once 'include/users_values.class.php';
+include_once __DIR__ . '/../include/users_values.class.php';
 
 if (isset($_GET['id']) && isset($_GET['todt'])) {
     $to = $_GET['todt'];

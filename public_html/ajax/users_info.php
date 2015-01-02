@@ -1,6 +1,6 @@
 <?php
 
-include_once 'include/users_info.class.php';
+include_once __DIR__ . '/../include/users_info.class.php';
 
 if (isset($_GET['fields'])) {
     $fields = array_unique(explode(',', $_GET['fields']));

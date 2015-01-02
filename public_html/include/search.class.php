@@ -1,14 +1,13 @@
 <?php
 
-include_once 'include/users.class.php';
+include_once __DIR__ . '/users.class.php';
 
-class UserInfo extends Users {
-
+class Search extends Users {
     function __construct() {
         parent::__construct();
     }
 
-    public function select_list($id, $fields = null) {
+    public function select_list($fields, $user_name) {
         if ($fields == null) {
             $column = '';
         } else {
@@ -18,14 +17,13 @@ class UserInfo extends Users {
                 return false;
             }
         }
-        $this->result = $this->db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `id` = :id');
-        $this->result->bindParam(':id', $id, PDO::PARAM_INT);
-        return $this->result->execute() &&  $this->result->rowCount() > 0;
+        $this->result = $this->server_db->prepare('SELECT `id`, `user`' . $column . 'FROM `users` WHERE `user` LIKE :user LIMIT 10');
+        $user_name = '%' . $user_name . '%';
+        $this->result->bindParam(':user', $user_name);
+        return $this->result->execute();
     }
 
     function __destruct() {
         parent::__destruct();
     }
 }
-
-?>

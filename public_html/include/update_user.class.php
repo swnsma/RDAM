@@ -1,12 +1,13 @@
 <?php
 
-include_once 'include/connection.class.php';
+include_once  __DIR__ . '/connection.class.php';
 
-class UpdateUser extends Connection {
-    private $result = null;
+class UpdateUser {
+    private $result = null,
+        $server_db;
 
     function __construct() {
-        parent::__construct();
+        $this->server_db = Connection::conn_db();
     }
 
     public function update($id, $user_name, $city, $descr) {
@@ -23,7 +24,7 @@ class UpdateUser extends Connection {
             array_push($fields, '`descr` = :descr');
         }
 
-        $result = $this->db->prepare('UPDATE `users` SET ' . implode(', ', $fields) . ' WHERE `id`= :id');
+        $result = $this->server_db->prepare('UPDATE `users` SET ' . implode(', ', $fields) . ' WHERE `id`= :id');
         $result->bindParam(':id', $id, PDO::PARAM_INT);
 
         if ($user_name != null) {
@@ -40,7 +41,7 @@ class UpdateUser extends Connection {
     }
 
     public function select_info($id) {
-        $this->result = $this->db->prepare('SELECT * FROM `users` WHERE `id` = :id');
+        $this->result = $this->server_db->prepare('SELECT * FROM `users` WHERE `id` = :id');
         $this->result->bindParam(':id', $id, PDO::PARAM_INT);
         return $this->result->execute() && $this->result->rowCount() > 0;
     }
@@ -50,7 +51,7 @@ class UpdateUser extends Connection {
     }
 
     function __destruct() {
-        parent::__destruct();
+        $this->server_db = null;
     }
 }
 

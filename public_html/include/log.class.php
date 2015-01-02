@@ -1,6 +1,6 @@
 <?php
 
-include_once '../../../conf/conf.php';
+include_once  __DIR__ . '/../../conf/conf.php';
 
 class LOGTYPES {
     const ERROR = 'ERROR';

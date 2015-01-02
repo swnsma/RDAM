@@ -1,13 +1,16 @@
 <?php
 
-include_once 'include/upload.class.php';
-include_once 'include/connection.class.php';
+include_once  __DIR__ . '/upload.class.php';
+include_once  __DIR__ . '/connection.class.php';
 
-class SaveData extends Connection {
-    private $count_row = 0;
+class SaveData {
+    private $count_row = 0,
+        $server_db,
+        $values_db;
 
     function __construct() {
-        parent::__construct();
+        $this->server_db = Connection::conn_db();
+        $this->values_db = Connection::conn_values_db_infile();
     }
 
     public function get_count_insert_rows() {
@@ -15,7 +18,7 @@ class SaveData extends Connection {
     }
 
     public function check_exists_user($id) {
-        $result = $this->db->prepare('SELECT `id` from `users` where id = :id');
+        $result = $this->server_db->prepare('SELECT `id` from `users` where id = :id');
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute() && $result->rowCount() > 0;
     }
@@ -25,7 +28,7 @@ class SaveData extends Connection {
         $request =<<<HERE
             DROP TABLE IF EXISTS `$temp_name`;
 HERE;
-        if (!$this->db->query($request)) return false;
+        if (!$this->values_db->query($request)) return false;
 
         $request =<<<HERE
             CREATE TABLE `$temp_name` (
@@ -36,7 +39,7 @@ HERE;
             ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 HERE;
 
-        if (!$this->db->query($request)) return false;
+        if (!$this->values_db->query($request)) return false;
 
         $file = str_replace('\\', '\\\\', $file);
 
@@ -54,7 +57,7 @@ HERE;
                 (readingid, toDT, production, consumption);
 HERE;
 
-        if (!$this->db->query($request)) return false;
+        if (!$this->values_db->query($request)) return false;
 
         $request =<<<HERE
             INSERT INTO `user_$id` (
@@ -66,20 +69,21 @@ HERE;
                 CONVERT( REPLACE(consumption, ',', '.'), DECIMAL(10, 2) )
             FROM `$temp_name`;
 HERE;
-        $result = $this->db->query($request);
+        $result = $this->values_db->query($request);
         if (!$result) return false;
         $this->count_row = $result->rowCount();
 
         $request =<<<HERE
             DROP TABLE `$temp_name`;
 HERE;
-        $this->db->query($request);
+        $this->values_db->query($request);
 
         return true;
     }
 
     function __destruct() {
-        parent::__destruct();
+        $this->server_db = null;
+        $this->values_db = null;
     }
 }
 

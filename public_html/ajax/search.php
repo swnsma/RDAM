@@ -1,6 +1,6 @@
 <?php
 
-include_once 'include/search.class.php';
+include_once __DIR__ . '/../include/search.class.php';
 
 if (isset($_GET['user_name'])) {
     $user_name = $_GET['user_name'];
