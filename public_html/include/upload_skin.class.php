@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__ . '/upload.class.php';
+include_once __DIR__ . '/skin.class.php';
 
 class UploadSkin extends Upload {
     private $info = null,
@@ -15,16 +16,29 @@ class UploadSkin extends Upload {
         parent::__construct($files);
     }
 
-    private function get_info_from_file($ext, $file) {
-        if ($ext == 'rar') {
-            if(($rar_file = rar_open($file))
-                || ($entry = rar_entry_get($rar_file, 'descr.json'))) {
-                return null;
+    private function get_info_from_file($ext, $file, $name) { //че-то я накрутил лишнего
+        $descr = null;
+
+        if ($ext == 'rar'
+            && ($rar_file = rar_open($file))
+            && (true == $entry = rar_entry_get($rar_file, $name . '\description.json'))) {
+            $fn =  '../../' . TMP_FOLDER . '/' . uniqid() . '.json';
+            if ($entry->extract(false, $fn)) {
+                $descr = $this->parse_descr(file_get_contents($fn));
+                unlink($fn);
             }
-            print 124567890;
-        } else {
-            return null;
+            rar_close($rar_file);
         }
+
+        if ($ext == 'zip') {
+            $zip = new ZipArchive();
+            if($zip->open($file) === true) {
+                $descr = $this->parse_descr($zip->getFromName($name . '\description.json'));
+            }
+            $zip->close();
+        }
+
+        return $descr;
     }
 
     private function get_type_file($file) {
@@ -38,6 +52,21 @@ class UploadSkin extends Upload {
         }
     }
 
+    private function parse_descr($descr) {
+        $data = json_decode($descr);
+        if (json_last_error() != JSON_ERROR_NONE) return null;
+
+        if (isset($data->name)
+            && isset($data->version)
+            && isset($data->author)) {
+            if (!isset($data->comment)) {
+                $data->comment = null;
+            }
+            return $data;
+        }
+        return null;
+    }
+
     public function upload() {
         try {
             if ($this->check_size()) {
@@ -47,32 +76,36 @@ class UploadSkin extends Upload {
             $tmp_name = $this->file['tmp_name'];
 
             $info = new finfo(FILEINFO_MIME_TYPE);
-            print $info->file($tmp_name);
+
             if ((!in_array($info->file($tmp_name), $this->mime_types)
                 || (null === $ext = $this->get_type_file($tmp_name)))) {
                 throw new RuntimeException('invalid file format');
             }
 
-            $name = basename($tmp_name);
-            $path = '../../storage/skins/' . $name;
-            if (is_dir($path)) {
-                throw new RuntimeException('this template already exists');
-            }
+            $name = uniqid() . '.' . $ext;
+            $path = '../../' . SKINS_FOLDER;
 
-            if (!mkdir($path)) {
-                throw new RuntimeException('unable to process template');
-            }
-
-            $file = $path . '/' . $name . '.' . $ext;
+            $file = $path . '/' . $name;
             if (!move_uploaded_file($tmp_name, $file)) {
                 throw new RuntimeException('failed to move uploaded file');
             }
 
-            if (null === $info = $this->get_info_from_file($ext, $file)) {
+            if (null === $descr = $this->get_info_from_file($ext, $file, pathinfo($this->file['name'], PATHINFO_FILENAME))) {
                 unlink($file);
-                rmdir($path);
                 throw new RuntimeException('failed to read the file description');
             }
+            $descr->filename = $name;
+
+            $skin = new Skin();
+            if (null === $id = $skin->save_skin($descr)) {
+                unlink($file);
+                throw new RuntimeException('failed to save the file template');
+            }
+            $skin = null;
+
+            $descr->id = $id;
+
+            $this->info = $descr;
 
             return true;
         } catch(RuntimeException $e) {

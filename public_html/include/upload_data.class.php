@@ -1,7 +1,7 @@
 <?php
 
 include_once  __DIR__ . '/upload.class.php';
-include_once  __DIR__ . '/connection.class.php';
+include_once  __DIR__ . '/skin.class.php';
 
 class SaveData {
     private $count_row = 0,

@@ -35,17 +35,15 @@ HERE;
         return $this->values_db->query($request);
     }
 
-    private function drop_user_record() {
-        return $this->server_db->query('DELETE FROM `users` WHERE `id` = ' . $this->id);
-    }
-
     public function add($user_name, $city, $descr) {
+        $this->server_db->beginTransaction();
         if ($this->create_record_in_user($user_name, $city, $descr)) {
             $this->id = $this->server_db->lastInsertId();
             if ($this->create_table_for_values()) {
+                $this->server_db->commit();
                 return true;
             } else {
-                $this->drop_user_record();
+                $this->server_db->rollBack();
                 return false;
             }
         }

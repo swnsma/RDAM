@@ -32,8 +32,8 @@ class InfoPhoto {
 }
 
 class UploadImage extends Upload {
-    private $upload_file_name = null,
-        $quality = 80;
+    private $upload_file_name = null;
+    private $quality = 80;
 
     private $mime_types = array(
         'jpg' => 'image/jpeg',
