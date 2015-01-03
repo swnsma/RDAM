@@ -35,17 +35,25 @@ HERE;
         return $this->values_db->query($request);
     }
 
+    private function create_record_in_auth() {
+        return $this->server_db->query('INSERT INTO `auth` (`id`) VALUES (NULL)');
+    }
+
     public function add($user_name, $city, $descr) {
         $this->server_db->beginTransaction();
-        if ($this->create_record_in_user($user_name, $city, $descr)) {
-            $this->id = $this->server_db->lastInsertId();
-            if ($this->create_table_for_values()) {
-                $this->server_db->commit();
-                return true;
+        try {
+            if ($this->create_record_in_user($user_name, $city, $descr)
+                && $this->create_record_in_auth()) {
+                $this->id = $this->server_db->lastInsertId();
+                if (!$this->create_table_for_values()) throw new Exception();
             } else {
-                $this->server_db->rollBack();
-                return false;
+                throw new Exception();
             }
+            $this->server_db->commit();
+            return true;
+        } catch(Exception $e) {
+            $this->server_db->rollBack();
+            return false;
         }
     }
 

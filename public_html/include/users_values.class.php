@@ -23,7 +23,7 @@ class UserValues extends Users {
 
     private function select_day_values($tables, $columns, $to, $limit = null) {
         $l = 7;
-        if ($limit != null && $limit <= 40) {
+        if ($limit != null && $limit <= 42) {
             $l = $limit;
         }
         $this->users_values['day'] = array();
@@ -55,7 +55,7 @@ HERE;
 
     private function select_week_values($tables, $columns, $to, $limit = null) {
         $l = 4;
-        if ($limit != null && $limit <= 12) {
+        if ($limit != null && $limit <= 24) {
             $l = $limit;
         }
         $this->users_values['week'] = array();
