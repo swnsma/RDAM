@@ -71,8 +71,11 @@ ko.bindingHandlers.showGraph={
             var dd = values.getDate(type, masId);
             var product = viewModel.data(type,masId);
             var sum = 0;
+            var periodDate;
             if(type=='week'){
-                var periodDate = dd[0].slice(0, dd[0].indexOf('-')-1) + ' - ' + dd[dd.length-1].slice(0, dd[dd.length-1].indexOf('-')-1);
+                periodDate = dd[0].slice(0, dd[0].indexOf('-')-1) + ' - ' + dd[dd.length-1].slice(0, dd[dd.length-1].indexOf('-')-1);
+            }else{
+                periodDate = dd[0]+' - '+ dd[dd.length-1];
             }
             for(var i in product[0]){
                 sum+=product[0][i];
