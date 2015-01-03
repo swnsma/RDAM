@@ -7,16 +7,24 @@ class Skin {
         $this->server_db = Connection::conn_db();
     }
 
-    function get_list_skins() {
+    public function get_list_skins() {
+        $request = $this->server_db->query('SELECT `id`, `name`, `author`, `version`, `comment` FROM `templates`');
+        if ($request) {
+            return $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return null;
+    }
+
+    public function del_skin($name) {
 
     }
 
-    function del_skin($name) {
+    public function current_skin() {
 
     }
 
-    function save_skin($info) {
-        $request = $this->server_db->prepare('INSERT INTO `rdam`.`templates` (`id`, `name`, `author`, `version`, `comment`, `filename`) VALUES (NULL, :name, :author, :version, :comment, :filename);');
+    public function save_skin($info) {
+        $request = $this->server_db->prepare('INSERT INTO `templates` (`id`, `name`, `author`, `version`, `comment`, `filename`) VALUES (NULL, :name, :author, :version, :comment, :filename);');
         if ($request->execute(array(
                 ':name' => $info->name,
                 ':author' => $info->author,
@@ -24,13 +32,13 @@ class Skin {
                 ':comment' => $info->comment,
                 ':filename' => $info->filename
             ))) {
-            return $this->server_db->lastInsertId();
+            return (int)$this->server_db->lastInsertId();
         } else {
             return null;
         }
     }
 
-    function select_skin($name) {
+    public function select_skin($name) {
 
     }
 

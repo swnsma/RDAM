@@ -40,6 +40,21 @@ class Connection {
         }
     }
 
+    public static function test_conn_values_db(
+                            $server = DB_SERVER_V,
+                            $name = DB_NAME_V,
+                            $user = DB_USER_V,
+                            $pass = DB_PASSWORD_V,
+                            $port = 3306) {
+        try {
+            new PDO('mysql:host=' . $server . ';port=' . $port . ';dbname=' . $name, $user, $pass,
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            return true;
+        } catch(PDOException $e) {
+            return false;
+        }
+    }
+
     function __destruct() {}
 }
 
