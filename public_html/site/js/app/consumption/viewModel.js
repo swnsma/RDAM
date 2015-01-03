@@ -7,7 +7,9 @@ function ViewModel() {
         api.getData(id, function (someValues) {
             var result = [];
             parseData(someValues, result);
+
             that.batteries(result)
+
         }, '');
     }
 };

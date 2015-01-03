@@ -36,15 +36,10 @@
             <div class="batteryContainer">
                 <!-- ko foreach: batteries -->
                 <div class="battery-rend">
-                        <div data-bind="text:production+' kWh'" class="label production"></div>
-                        <div data-bind="text:takenFrom+' kWh'" class="label taken-from"></div>
+                    <div data-bind="text: date2" class="date"></div>
+                    <div data-bind="text:consumption +' kWh'" class="totalConsumption"></div>
+                    <div class="prod" data-bind="battery: { consumption: consumption, takenFrom: takenFrom}"></div>
 
-                    <div class="battery">
-                        <div class="prod" data-bind="battery: { consumption: consumption, production: production}">
-                            <span data-bind=" text: date2+' total consumption '+ consumption +' kWh'"></span>
-                        </div>
-                    </div>
-                    <div class="electrode"></div>
 
                 </div>
                 <!-- /ko -->
@@ -60,6 +55,10 @@
 
 <script src="js/vendor/parse-1.3.1.min.js"></script>
 <script type="text/javascript" src="js/vendor/somelibrary.js"></script>
+
+<script type="text/javascript" src="js/vendor/plugins_jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
+
 
 <script src="js/app/common/common.js"></script>
 <script type="text/javascript" src="js/app/consumption/battery.bindingHandler.js" ></script>
