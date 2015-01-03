@@ -4,9 +4,9 @@ ko.bindingHandlers.battery = {
         var production=value.consumption;
         var takenFrom=value.takenFrom;
 
-        var textBox= $('<div>');
+        /*var textBox= $('<div>');
         textBox.addClass('pieChartTextBox');
-        textBox.appendTo(element);
+        textBox.appendTo(element);*/
 
         var chart = $('<div>');
         chart.appendTo(element);
@@ -14,13 +14,14 @@ ko.bindingHandlers.battery = {
         var data=[['Consumption',production],['Taken from grid',takenFrom]];
         var plot1 = jQuery.jqplot (chart.attr('id'), [data],
             {
-                seriesColors: ["#1EC269", "#F45E4D"],
+                seriesColors: ["#4BB2C5", "#2d6a76"],
 
                 seriesDefaults: {
                     renderer: jQuery.jqplot.DonutRenderer,
                     rendererOptions: {
-                        diameter: 200,
+                        diameter: 250,
                         showDataLabels: true,
+                        startAngle: -90,
                         shadowOffset: 0,
                         shadowDepth: 0,
                         shadowAlpha: 0
@@ -28,7 +29,8 @@ ko.bindingHandlers.battery = {
                 },
                 grid: {
                     drawBorder:false,
-                    shadow: false
+                    shadow: false,
+                    background: '#fff'
                 },
                 highlighter: {
                     show: true,
@@ -44,9 +46,9 @@ ko.bindingHandlers.battery = {
         var production = value.consumption;
         var takenFrom = value.takenFrom;
 
-        var textBox = $('<div>');
+        /*var textBox = $('<div>');
         textBox.addClass('pieChartTextBox');
-        textBox.appendTo(element);
+        textBox.appendTo(element);*/
 
         var chart = $('<div>');
         chart.appendTo(element);
@@ -58,13 +60,14 @@ ko.bindingHandlers.battery = {
 
         var plot1 = jQuery.jqplot(chart.attr('id'), [data],
             {
-                seriesColors: ["#1EC269", "#F45E4D"],
+                seriesColors: ["#4BB2C5", "#2d6a76"],
 
                 seriesDefaults: {
                     renderer: jQuery.jqplot.DonutRenderer,
                     rendererOptions: {
-                        diameter: 200,
+                        diameter: 250,
                         showDataLabels: true,
+                        startAngle: -90,
                         shadowOffset: 0,
                         shadowDepth: 0,
                         shadowAlpha: 0
@@ -72,7 +75,8 @@ ko.bindingHandlers.battery = {
                 },
                 grid: {
                     drawBorder:false,
-                    shadow: false
+                    shadow: false,
+                    background: '#fff'
                 },
                 highlighter: {
                     show: true,

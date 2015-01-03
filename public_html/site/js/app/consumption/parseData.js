@@ -14,7 +14,7 @@ function Battery(consumption, production, date2) {
 var parseData = function (someValues, result) {
     var dayConsumption = Math.round(someValues.data.day[0].values[0][1]);
     var dayProduction = Math.round(someValues.data.day[0].values[0][2]);
-    var d = new Date(someValues.data.day[0].values[6][0]);
+    var d = new Date(someValues.data.day[0].values[0][0]);
     var weekday = new Array(7);
     weekday[0] = "Sunday";
     weekday[1] = "Monday";
@@ -24,11 +24,13 @@ var parseData = function (someValues, result) {
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
     var n = weekday[d.getDay()];
-    var dayBattery = new Battery(dayConsumption, dayProduction, n);
+    var dayBattery = new Battery(dayConsumption, dayProduction, n+', '+(someValues.data.day[0].values[0][0]));
     result.push(dayBattery);
+    n=someValues.data.week[0].values[1][0]+' - '+someValues.data.week[0].values[0][0];
+    console.log(n);
     var weekConsumption = Math.round(someValues.data.week[0].values[0][1]);
     var weekProduction = Math.round(someValues.data.week[0].values[0][2]);
-    var weekBattery = new Battery(weekConsumption, weekProduction, 'Last week');
+    var weekBattery = new Battery(weekConsumption, weekProduction, n);
     result.push(weekBattery);
 
     var monthConsumption = Math.round(someValues.data.month[0].values[0][1]);
