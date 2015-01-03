@@ -13,7 +13,7 @@ class Log {
     private $descr;
 
     function __construct($file = LOG_FILE) {
-        if (!$this->descr = fopen('../../../' . $file, 'a+')) {
+        if (!$this->descr = fopen('../../' . $file, 'a+')) {
             header('HTTP/1.0 500 Internal Server Error');
             exit();
         }
@@ -22,7 +22,7 @@ class Log {
     }
 
     public function write($message, $type = LOGTYPES::INFO) {
-        return fwrite($this->descr, '[' . $type . ']: ' . $message . ' /' . date('Y-m-d H:i:s') . '/' . PHP_EOL) === true;
+        return fwrite($this->descr, '[' . $type . ']: ' . $message . ' /' . date('Y-m-d H:i:s') . '/' . PHP_EOL);
     }
 
     function __destruct() {
