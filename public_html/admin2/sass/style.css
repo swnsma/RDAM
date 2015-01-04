@@ -1,0 +1,125 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: #bfbfbf;
+  z-index: 1000;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+.content-left {
+  margin-top: 50px;
+  position: fixed;
+  width: 250px;
+  background-color: #e6e6e6;
+  height: 100%;
+  display: table-cell;
+}
+.content-left .operation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.content-left .operation li {
+  line-height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid #cccccc;
+  font-weight: 400;
+  cursor: pointer;
+}
+.content-left .operation li:hover {
+  background: #bfbfbf;
+}
+.content-left .operation li[active='true'] {
+  background: #fff;
+  font-weight: bold;
+  cursor: auto;
+}
+.content-right {
+  position: absolute;
+  left: 250px;
+  top: 50px;
+  right: 0;
+  overflow-x: auto;
+  height: 100%;
+}
+.content-right-users {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+.content-right-users li {
+  min-width: 300px;
+  position: relative;
+  background: #e6e6e6;
+  min-height: 150px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  width: 96%;
+  margin: 10px 2%;
+  border-radius: 5px;
+}
+.content-right-users li .info .img-user {
+  max-height: 130px;
+  margin: 10px;
+  float: right;
+}
+.content-right-users li .info .img-user img {
+  margin: 0 auto;
+  display: block;
+}
+.content-right-users li .info .city {
+  margin: 0;
+  font-size: 0.8em;
+  font-style: italic;
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+.content-right-users li .info h2 {
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+.content-right-users li .info p {
+  padding: 0 10px;
+  text-indent: 10px;
+}
+.content-right-users li .edit {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #d9d9d9;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+}
+.content-right-users li:hover .edit {
+  transition: 1s;
+  font-weight: bold;
+  background: #cccccc;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
