@@ -11,11 +11,11 @@ if (isset($_POST['id'])) {
         $log = new Log();
         $skin = new Skin();
 
-        if ($skin->del_skin($id)) {
-            $log->write('the template with id ' . $id . ' has been removed', LOGTYPES::WARNING);
+        if ($skin->select_skin($id)) {
+            $log->write('the current template has been changed', LOGTYPES::WARNING);
             print '{ "status": "success", "data": { "id": '. $id . '} }';
         } else {
-            $log->write('the template with id ' . $id . ' has not been removed', LOGTYPES::CRITICAL);
+            $log->write('the current template has not been changed', LOGTYPES::CRITICAL);
             header('HTTP/1.0 400 Bad Request');
             print '{ "status": "error", "error_message": "' . $skin->get_error() . '" }';
         }

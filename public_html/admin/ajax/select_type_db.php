@@ -17,14 +17,19 @@ if (isset($_POST['id']) && isset($_POST['type'])) {
         $id = (int)$id;
 
         $st = new SelectTypeDB();
+        $log = new Log();
 
         if ($st->select_type($id, $type)) {
+            $log->write('unable to select the type of database for user with id ' . $id);
             print '{ "status": "success", "data": { "id": ' . $id . ', "type_db": ' . $type . '} }';
         } else {
+            $log->write('unable to select the type of database for user with id ' . $id , LOGTYPES::CRITICAL);
             header('HTTP/1.0 400 Bad Request');
             print '{ "status": "error", "error_message": "try again later or or change it" }';
         }
+
         $st = null;
+        $log = null;
     } else {
         header('HTTP/1.0 400 Bad Request');
         print '{ "status": "error", "error_message": "invalid values" }';

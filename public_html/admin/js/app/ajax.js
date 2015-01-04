@@ -240,4 +240,67 @@ Ajax.prototype.set_auth_db = function(data, func) {
     });
 };
 
+Ajax.prototype.get_auth_db = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/set_auth_db.php',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.select_type_db = function(data, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/set_auth_db.php',
+        type: 'GET',
+        dataType: 'json',
+        data: data,
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.del_skin = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/del_skin.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.select_skin = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/select_skin.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+
 var ajax = new Ajax();

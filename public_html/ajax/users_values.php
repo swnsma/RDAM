@@ -34,17 +34,22 @@ if (isset($_GET['id']) && isset($_GET['todt'])) {
         $field = null;
     }
 
-    $ids = array_unique(array_map('intval',  explode(',', $_GET['id'])));
+    $ids = explode(',', $_GET['id']);
+    if (count($ids) > 10) {
+        $ids = array_unique(array_map('intval',  $ids));
 
-    $users = new UserValues();
-    if($users->select_data($ids, $to, $type, $field, $limit)) {
-        print '{ "status": "success", "data": ' . json_encode($users->get_data()) . ' }';
+        $users = new UserValues();
+        if($users->select_data($ids, $to, $type, $field, $limit)) {
+            print '{ "status": "success", "data": ' . json_encode($users->get_data()) . ' }';
+        } else {
+            header('HTTP/1.0 400 Bad Request');
+            print '{ "status": "error", "error_message": "try again later or or change it" }';
+        }
+        $users = null;
     } else {
         header('HTTP/1.0 400 Bad Request');
-        print '{ "status": "error", "error_message": "try again later or or change it" }';
+        print '{ "status": "error", "error_message": "invalid values" }';
     }
-    $users = null;
-
 } else {
     header('HTTP/1.0 400 Bad Request');
     print '{ "status": "error", "error_message": "parameters are missing" }';

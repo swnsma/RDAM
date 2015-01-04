@@ -29,7 +29,10 @@ if (isset($_POST['id'])
             && AuthDB::valid_pass($pass)
         ) {
             $auth = new AuthDB();
+            $log = new Log();
+
             if ($auth->update_auth($id, $server, $name, $user, $pass, $port)) {
+                $log->write('auth data has been change for user with id ' . $id);
                 print '{ "status": "success", "data": ' .
                     '{ "id": ' . $id . ', ' .
                     '"db_server": "' . $server . '", ' .
@@ -38,9 +41,12 @@ if (isset($_POST['id'])
                     '"db_user": "' . $user . '", ' .
                     '"db_password": "' . $pass . '" } }';
             } else {
+                $log->write('unable to change auth data for database for user with id ' . $id , LOGTYPES::CRITICAL);
                 header('HTTP/1.0 400 Bad Request');
                 print '{ "status": "error", "error_message": "try again later or or change it" }';
             }
+
+            $log = null;
             $auth = null;
             exit();
         }
