@@ -22,6 +22,7 @@ if (isset($_GET['id']) && isset($_GET['todt'])) {
         $type = $_GET['type'];
         if (isset($_GET['limit']) && ctype_digit($_GET['limit'])) {
             $limit = (int)$_GET['limit'];
+            if ($limit <= 0) $limit = 1;
         }
     } else {
         $type = null;
