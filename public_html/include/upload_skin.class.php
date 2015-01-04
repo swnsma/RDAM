@@ -16,12 +16,12 @@ class UploadSkin extends Upload {
         parent::__construct($files);
     }
 
-    private function get_info_from_file($ext, $file, $name) { //че-то я накрутил лишнего
+    private function get_info_from_file($ext, $file) { //че-то я накрутил лишнего
         $descr = null;
 
         if ($ext == 'rar'
             && ($rar_file = rar_open($file))
-            && (true == $entry = rar_entry_get($rar_file, $name . '\description.json'))) {
+            && (true == $entry = rar_entry_get($rar_file, 'description.json'))) {
             $fn =  '../../' . TMP_FOLDER . '/' . uniqid() . '.json';
             if ($entry->extract(false, $fn)) {
                 $descr = $this->parse_descr(file_get_contents($fn));
@@ -33,7 +33,7 @@ class UploadSkin extends Upload {
         if ($ext == 'zip') {
             $zip = new ZipArchive();
             if($zip->open($file) === true) {
-                $descr = $this->parse_descr($zip->getFromName($name . '\description.json'));
+                $descr = $this->parse_descr($zip->getFromName('description.json'));
             }
             $zip->close();
         }
@@ -90,7 +90,7 @@ class UploadSkin extends Upload {
                 throw new RuntimeException('failed to move uploaded file');
             }
 
-            if (null === $descr = $this->get_info_from_file($ext, $file, pathinfo($this->file['name'], PATHINFO_FILENAME))) {
+            if (null === $descr = $this->get_info_from_file($ext, $file)) {
                 unlink($file);
                 throw new RuntimeException('failed to read the file description');
             }

@@ -1,7 +1,6 @@
 
 function changeGraph(ticks,mas_dat,title,rend,colors,showlegeng) {
     $('#chartDiv').empty();
-
     var option={
         seriesColors: colors,
         title: title,

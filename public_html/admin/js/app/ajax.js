@@ -1,4 +1,4 @@
-var url = 'http://rdam.tk/';
+var url = 'http://rdam.loc:83/';
 //var url = 'http://rdam/public_html/';
 
 function Ajax() {}
@@ -197,5 +197,110 @@ Ajax.prototype.load_skin = function(data, func, progress) {
         processData: false
     });
 };
+
+Ajax.prototype.list_skins = function(func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/list_skin.php',
+        type: 'GET',
+        contentType: 'application/json',
+        dataType: 'json',
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.test_conn = function(data, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/test_conn.php',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.set_auth_db = function(data, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/set_auth_db.php',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.get_auth_db = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/set_auth_db.php',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.select_type_db = function(data, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/set_auth_db.php',
+        type: 'GET',
+        dataType: 'json',
+        data: data,
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.del_skin = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/del_skin.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.select_skin = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'admin/ajax/select_skin.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
 
 var ajax = new Ajax();
