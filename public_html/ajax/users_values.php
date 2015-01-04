@@ -35,7 +35,7 @@ if (isset($_GET['id']) && isset($_GET['todt'])) {
     }
 
     $ids = explode(',', $_GET['id']);
-    if (count($ids) > 10) {
+    if (count($ids) < 10) {
         $ids = array_unique(array_map('intval',  $ids));
 
         $users = new UserValues();
