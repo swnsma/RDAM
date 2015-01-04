@@ -1,7 +1,6 @@
 <?php
 
 include_once __DIR__ . '/../../conf/conf.php';
-include_once __DIR__ . '/../../conf/conf_values.php';
 
 class Connection {
     function __construct() {}
