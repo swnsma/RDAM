@@ -1,6 +1,6 @@
 <?php
 
-include_once  __DIR__ . '/../../include/set_auth_db.class.php';
+include_once  __DIR__ . '/../../include/auth_db.class.php';
 include_once  __DIR__ . '/../../include/log.class.php';
 
 if (isset($_POST['id'])
@@ -22,13 +22,13 @@ if (isset($_POST['id'])
         $user = $_POST['user'];
         $pass = $_POST['pass'];
 
-        if (SetAuthDB::valid_port($port)
-            && SetAuthDB::valid_name($name)
-            && SetAuthDB::valid_user($user)
-            && SetAuthDB::valid_server($server)
-            && SetAuthDB::valid_pass($pass)
+        if (AuthDB::valid_port($port)
+            && AuthDB::valid_name($name)
+            && AuthDB::valid_user($user)
+            && AuthDB::valid_server($server)
+            && AuthDB::valid_pass($pass)
         ) {
-            $auth = new SetAuthDB();
+            $auth = new AuthDB();
             if ($auth->update_auth($id, $server, $name, $user, $pass, $port)) {
                 print '{ "status": "success", "data": ' .
                     '{ "id": ' . $id . ', ' .
