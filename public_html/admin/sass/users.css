@@ -1,0 +1,60 @@
+.users {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.users li {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f2f2f2;
+  position: relative;
+  padding-bottom: 30px;
+}
+.users li .info {
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+.users li .info .img-user {
+  width: 100px;
+  float: right;
+  text-align: center;
+}
+.users li .info .img-user img {
+  max-width: 100px;
+  margin: 0 auto;
+  max-height: 100px;
+}
+.users li .info h2 {
+  text-align: center;
+  margin: 0;
+}
+.users li .info .city {
+  display: block;
+  font-size: 0.8em;
+  text-align: center;
+  font-style: italic;
+}
+.users li .edit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 30px;
+  background-color: #cccccc;
+  cursor: pointer;
+}
+.users li .edit:hover {
+  background-color: #333333;
+  color: #fff;
+  font-weight: bold;
+  transition: 3s;
+}
+.users li:hover {
+  background-color: #fcfcfc;
+  transition: 1s;
+}
+
+/*# sourceMappingURL=users.css.map */

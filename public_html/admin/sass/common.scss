@@ -1,0 +1,42 @@
+$width100: 100%;
+$height100: 100%;
+$color-black: #000;
+$color-white: #fff;
+textarea{
+  resize: none;
+}
+body,html{
+  height: $height100;
+  margin: 0;
+  padding: 0;
+  background-color: darken($color-white,10%);
+}
+body{
+  padding: 0 10px;
+}
+.content{
+  width: 960px;
+  margin: 0 auto;
+}
+header{
+  background: $color-black;
+  color: $color-white;
+  position: relative;
+  .logo{
+    position: absolute;
+    left: 10px;
+    color: $color-white;
+    line-height: 50px;
+  }
+
+}
+h1{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 50px;
+  a{
+    color: $color-white;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,44 @@
+textarea {
+  resize: none;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #e6e6e6;
+}
+
+body {
+  padding: 0 10px;
+}
+
+.content {
+  width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  background: #000;
+  color: #fff;
+  position: relative;
+}
+header .logo {
+  position: absolute;
+  left: 10px;
+  color: #fff;
+  line-height: 50px;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 50px;
+}
+h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=common.css.map */
