@@ -5,49 +5,130 @@
     <title>admin</title>
     <link rel="stylesheet" href="sass/common.css" type="text/css"/>
     <link rel="stylesheet" href="sass/new.css" type="text/css"/>
+    <style>
+        form table tr td:last-child {
+            padding:5px;
+            width:200px
+        }
+        form table tr td:last-child > *{
+            padding:3px 20px;
+            margin:0;
+            margin-left: 5px;
+            border-radius: 5px;
+            width: 80px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .delete{
+            background-color: #D23535;
+        }
+        .select{
+            background-color: #6685a4;
+            border-color: #49627a;;
+        }
+
+        .tftable {
+            font-size:20px;
+            color:#303030;
+            width:100%;
+            border-width: 1px;
+            border-collapse: collapse;
+        }
+        .tftable th {
+            font-size:20px;
+            background-color:#bbb;
+            padding: 8px;
+            }
+        .tftable tr {
+            background-color:#f3f3f3;
+        }
+        .tftable td {
+            font-size:20px;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #f3f3f3;
+        }
+        .tftable tr:hover {
+            background-color:#bbb;
+        }
+        form table tr td:last-child > *:hover {
+            background-color: inherit;
+            transition: none;
+        }
+
+    </style>
 </head>
 <body>
 <div class="content">
     <header>
         <a class="logo" href="index1.html">Back office</a>
         <h1>
-            Create new user
+            Select design
         </h1>
     </header>
+
     <div class="wrapper">
             <form method="post" enctype="multipart/form-data">
                 <input type="file" name="skin">
                 <input type="submit" value="Upload">
-                <table>
+
+                <table class="tftable" border="1">
                     <tr>
                         <th>Name</th>
                         <th>Author</th>
                         <th>Version</th>
                         <th>Comment</th>
-                        <th></th>
-                    </tr>
                     <tr>
-                        <td>name1</td>
-                        <td>author1</td>
-                        <td>version1</td>
-                        <td>Comment1</td>
+                    <tr>
                         <td>
-                            <a href="#">delete</a>
-                            <a href="#">select</a>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    <td>
+                        <a  class="delete">Delete</a>
+                        <a class="select">Select</a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <a  class="delete">Delete</a>
+                            <a class="select">Select</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>name1</td>
-                        <td>author1</td>
-                        <td>version1</td>
-                        <td>Comment1</td>
-                        <td>
-                            <a href="#">delete</a>
-                            <a href="#">select</a>
-                        </td>
-                    </tr>
+
+
                 </table>
             </form>
+        <style type="text/css">
+
+        </style>
+
+
 
 
 
