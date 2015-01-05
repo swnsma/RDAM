@@ -303,5 +303,4 @@ Ajax.prototype.select_skin = function(id, func) {
     });
 };
 
-
 var ajax = new Ajax();
