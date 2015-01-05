@@ -11,14 +11,6 @@ header .logo {
 .buttons {
   width: 100%;
 }
-
-.curr_oper {
-    position: relative;
-    top: 5px;
-    text-align: center;
-    padding: 5px;
-}
-
 .buttons button {
   width: 49%;
   cursor: pointer;
@@ -35,7 +27,7 @@ header .logo {
   transition: 3s;
 }
 
-form {
+form.form {
   border: 1px solid #999999;
   width: 500px;
   margin: 20px auto;
@@ -43,41 +35,41 @@ form {
   border-radius: 5px;
   padding: 10px;
 }
-form:hover {
+form.form:hover {
   background-color: #fff;
   transition: 3s;
   border: 1px solid #cccccc;
 }
-form table {
+form.form table {
   width: 100%;
 }
-form table tr td {
+form.form table tr td {
   border-bottom: 1px solid #b3b3b3;
   padding: 10px 0;
 }
-form table tr td:first-child {
+form.form table tr td:first-child {
   text-align: right;
   padding-right: 10px;
 }
-form table tr td:last-child {
+form.form table tr td:last-child {
   width: 100%;
 }
-form table tr td:last-child textarea {
+form.form table tr td:last-child textarea {
   line-height: normal;
   padding: 10px 0;
 }
-form table tr td:last-child > * {
+form.form table tr td:last-child > * {
   line-height: 40px;
   width: 98%;
   padding: 0 1px;
   border: 1px solid gray;
   border-radius: 5px;
 }
-form table tr td:last-child > *:hover {
+form.form table tr td:last-child > *:hover {
   background-color: #e6e6e6;
   transition: 3s;
 }
-form table tr td:last-child > *:focus {
+form.form table tr td:last-child > *:focus {
   outline: none;
   box-shadow: none;
   border: 1px solid #0c4880;
