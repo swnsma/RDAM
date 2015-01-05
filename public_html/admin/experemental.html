@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="sass/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <!--ko if: active_page() === 0 -->
+    <h1>User list</h1>
+    <!-- /ko-->
+
+    <!--ko if: active_page() === 1 -->
+    <h1>Create new User</h1>
+    <!-- /ko-->
+</header>
+<div class="content">
+    <div class="content-left">
+        <ul class="operation">
+            <li active="true"> user list </li>
+            <li data-bind="click: function(){ active_page(1);}"> create new user</li>
+            <li> define data source </li>
+            <li> select design </li>
+        </ul>
+    </div>
+    <div class="content-right">
+        <!--ko if: active_page() === 0 -->
+        <ul data-bind="foreach: users" class="content-right-users">
+            <li>
+                <div class="info">
+                    <div class="img-user">
+                        <img data-bind="attr: { src: photo }" >
+                        <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
+                    </div>
+                    <h2 data-bind="text: user_name" >Bob Boons</h2>
+                    <span data-bind="text: city" class="city"> Amsterdam</span>
+                    <p  data-bind="text: descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
+                </div>
+                <span class="edit">edit</span>
+            </li>
+        </ul>
+        <div class="upload-users">
+            <a href="#" data-bind="upload_users: users">Next users</a>
+        </div>
+        <!-- /ko-->
+
+
+        <!-- ko if: active_page() === 1 -->
+        <!-- ko with: create_user() -->
+        <form name="form" action="" class="new-user">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>
+                        <textarea placeholder="max 300 letters" data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        <input data-bind="value: city.text, attr: { invalid: city.invalid }" name="city" type="text" />
+                    </td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <button data-bind="click: send" type="submit">Submit</button>
+                <button  type="reset">reset</button>
+            </div>
+            <span data-bind="text: curr_operation()"></span>
+        </form>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+<script type='text/javascript' src='../site/js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='../site/js/vendor/knockout/knockout-3.2.0.js'></script>
+<script type='text/javascript' src='js/app/validator.js'></script>
+<script type='text/javascript' src='js/app/ajax.js'></script>
+<script type='text/javascript' src='js/app/admin.vm.js'></script>
+
+</body>
+</html>
