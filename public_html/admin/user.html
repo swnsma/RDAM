@@ -18,6 +18,16 @@
             <span>Current user name</span>
             <!--/ko-->
         </h1>
+        <!-- ko if: active_page() === 1 -->
+        <form class="type-db">
+            <label data-bind="click:function(){bd_type(0); return true}">
+                <input checked type="radio" name="radio" value="0">Our DB
+            </label>
+            <label data-bind="click:function(){bd_type(1); return true}">
+                <input type="radio" name="radio" value="0">Custom DB
+            </label>
+        </form>
+        <!--/ko-->
     </header>
     <div class="wrapper">
         <!-- ko if: active_page() === 0 -->
@@ -42,6 +52,7 @@
 
         <!-- ko if: active_page() === 1 -->
         <div class="edit-page">
+            <!-- ko if: bd_type() === 0 -->
             <form class="decoration-line" name="formname" action="">
                 <h2 data-bind="animation:{}" id="edit1-click">edit information about name, city, description</h2>
                 <div class="editer" id="edit1">
@@ -71,43 +82,97 @@
                 </div>
                 </div>
             </form>
+
             <form id="formPhoto">
                 <h2 data-bind="animation:{}" id="edit2-click">edit  photo</h2>
                 <div class="editer" id="edit2">
                 <table >
                     <tr>
-                        <td>photo: (gif, png, jpg)</td>
-                        <td>
+                        <td class="text-align-center">
+                            <span>(gif, png, jpg)</span>
                             <input name="id"  type="hidden" value="" />
-                            <input name="photo" type="file" />
+                            <input class="normal-line-hei" name="photo" type="file" />
                         </td>
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button type="button" data-bind="">save</button>
+                    <button type="button" data-bind="">upload</button>
                     <button type="reset">reset</button>
                 </div>
                 </div>
             </form>
             <form id="formData">
-                <h2 data-bind="animation:{}" id="edit3-click">edit data</h2>
+                <h2 data-bind="animation:{}" id="edit3-click">add data(cvs)</h2>
                 <div class="editer" id="edit3">
                 <table >
                     <tr>
-                        <td>add data: (csv)</td>
-                        <td>
+                        <td class="text-align-center">
                             <input name="id" type="hidden" value="" />
-                            <label><input type="checkbox" value="true" checked="checked" />ignore</label>
-                            <input name="data" type="file" />
+                            <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
+                            <input class="normal-line-hei" name="data" type="file" />
                         </td>
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button type="button">submit</button>
+                    <button type="button">upload</button>
                     <button type="reset">reset</button>
                 </div>
                 </div>
             </form>
+            <!-- /ko -->
+
+            <!-- ko if: bd_type() === 1 -->
+            <form class="decoration-line" name="formname" action="">
+                <h2 data-bind="animation:{}" id="edit4-click">
+                    custom DB settings
+                </h2>
+                <div id="edit4">
+                    <table >
+                        <tr>
+                            <td>id:</td>
+                            <td>
+                                <input type="text" name="edit_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>server:</td>
+                            <td>
+                                <input type="text" name="edit_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>name:</td>
+                            <td>
+                                <input type="text" name="edit_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>user:</td>
+                            <td>
+                                <input type="text" name="edit_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>pass:</td>
+                            <td>
+                                <input type="text" name="edit_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>port:</td>
+                            <td>
+                                <input type="text" name="edit_name" />
+                            </td>
+                        </tr>
+
+                    </table>
+                    <div class="buttons">
+                        <button type="button" data-bind="">set auth</button>
+                        <button type="reset">test connection</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /ko -->
         </div>
         <!-- /ko -->
     </div>

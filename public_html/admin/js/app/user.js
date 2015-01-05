@@ -11,9 +11,8 @@ function AppViewModel() {
     self.current_user=ko.observable(undefined_user);
     self.active_page = ko.observable(0);
     self.users = ko.observableArray([]);
-    self.edit = function(user) {
-        self.active_page(3);
-    };
+    self.bd_type=ko.observable(0);
+
 }
 
 function User(user){
@@ -66,6 +65,9 @@ ko.bindingHandlers.animation={
             'display':'none'
         });
         $('#edit3').css({
+            'display':'none'
+        });
+        $('#edit4').css({
             'display':'none'
         });
         $(element)

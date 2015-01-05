@@ -79,6 +79,13 @@
   transition: 1s;
 }
 
+.type-db {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -10px;
+}
+
 .edit-page {
   border: 1px solid #999999;
   width: 500px;
@@ -86,6 +93,9 @@
   background-color: #f2f2f2;
   border-radius: 5px;
   padding: 10px;
+}
+.edit-page table {
+  width: 100%;
 }
 .edit-page h2 {
   margin: 0;
@@ -117,7 +127,6 @@
 }
 .edit-page .editer table tr td:first-child {
   padding-right: 10px;
-  width: 20%;
 }
 .edit-page .editer table tr td:last-child {
   width: 80%;
@@ -132,8 +141,18 @@
   padding: 0 1px;
   border-radius: 5px;
 }
+.edit-page .editer table tr td:last-child > *.normal-line-hei {
+  line-height: normal;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
 .edit-page .decoration-line tr td {
+  padding: 10px 0;
   border-bottom: 1px solid #b3b3b3;
+}
+.edit-page .decoration-line tr td:first-child {
+  width: 10%;
 }
 .edit-page .decoration-line tr td:last-child > * {
   line-height: 40px;
@@ -163,6 +182,10 @@
   color: #fff;
   display: block;
   width: 100%;
+}
+
+.text-align-center, .text-align-center * {
+  text-align: center;
 }
 
 /*# sourceMappingURL=users.css.map */
