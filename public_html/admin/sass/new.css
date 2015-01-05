@@ -11,6 +11,14 @@ header .logo {
 .buttons {
   width: 100%;
 }
+
+.curr_oper {
+    position: relative;
+    top: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
 .buttons button {
   width: 49%;
   cursor: pointer;
