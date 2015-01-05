@@ -11,14 +11,12 @@
 <div class="content">
     <header>
         <a class="logo" href="index.html">Back office</a>
-        <h1>
-            Change design
-        </h1>
+        <h1>Change design</h1>
     </header>
     <div class="wrapper">
-        <form class="form width500px" method="post" enctype="multipart/form-data">
+        <form class="form width500px" id="uploadTemplate" method="post" enctype="multipart/form-data">
             <input type="file" name="skin">
-            <input type="submit" value="Upload">
+            <input data-bind="click: upload_template" type="submit" value="Upload template">
         </form>
         <form>
             <table class="template">
@@ -32,13 +30,17 @@
                 </tr>
                 <!-- ko foreach: templates -->
                 <tr data-bind="attr: { active: active }">
-                    <td class="checkbox"><input type="checkbox" data-bind="checked: active"/></td>
+                    <td class="checkbox">
+                        <input type="checkbox" data-bind="checked: active, click: function() { $parent.select_design($data); }"/>
+                    </td>
                     <td class="name" data-bind="text: name"></td>
                     <td class="author" data-bind="text: author"></td>
                     <td class="version" data-bind="text: version"></td>
                     <td class="comment" data-bind="text: comment"></td>
                     <td class="oper">
-                        <a href="#"><img class="delete" src="img/delete.png" /></a>
+                        <a href="#" data-bind="click: function() { $parent.delete_template($data); }">
+                            <img class="delete" src="img/delete.png" />
+                        </a>
                     </td>
                 </tr>
                 <!-- /ko -->
