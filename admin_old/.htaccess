@@ -1,0 +1,14 @@
+DirectoryIndex index.html
+
+Options All -Indexes
+Options +FollowSymLinks
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+#AuthUserFile /home/u924440589/pass/.htpasswd
+#AuthUserFile D:\projects\sites\rdam\pass/.htpasswd
+#AuthType Basic
+#AuthName "Login/password"
+#Require valid-user
