@@ -17,13 +17,11 @@ label{
 .from-grid{
     width: 150px;
     display: table-cell;
-    border: 1px solid #e0e0e0;
     color: #2d6a76;
 }
 .from-panel{
     width: 150px;
     display: table-cell;
-    border: 1px solid #e0e0e0;
     height: 50px;
     color: #4BB2C5;
 }
@@ -33,9 +31,8 @@ label{
 .wrapper span{
     font-size: 20pt;
 }
-.main-content{
+#data{
     animation: apa 1s;
-    overflow: hidden;
 }
 .prod{
     margin-top: 30px;
