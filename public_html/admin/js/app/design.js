@@ -26,7 +26,7 @@ function Template(data) {
     this.author = data.author;
     this.version = data.version;
     this.comment = data.comment;
-    this.active = data.active == 1? true : false;
+    this.active = data.active == 1 ? true : false;
 
 }
 
