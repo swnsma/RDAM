@@ -1,0 +1,86 @@
+header {
+  position: relative;
+}
+header .logo {
+  position: absolute;
+  left: 10px;
+  color: #fff;
+  line-height: 50px;
+}
+
+.buttons {
+  width: 100%;
+}
+
+.curr_oper {
+    position: relative;
+    top: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+.buttons button {
+  width: 49%;
+  cursor: pointer;
+  border: none;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  background-color: #96c7f5;
+  outline: 1px solid #999999;
+}
+.buttons button:hover {
+  background-color: #0c4880;
+  transition: 3s;
+}
+
+form {
+  border: 1px solid #999999;
+  width: 500px;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+}
+form:hover {
+  background-color: #fff;
+  transition: 3s;
+  border: 1px solid #cccccc;
+}
+form table {
+  width: 100%;
+}
+form table tr td {
+  border-bottom: 1px solid #b3b3b3;
+  padding: 10px 0;
+}
+form table tr td:first-child {
+  text-align: right;
+  padding-right: 10px;
+}
+form table tr td:last-child {
+  width: 100%;
+}
+form table tr td:last-child textarea {
+  line-height: normal;
+  padding: 10px 0;
+}
+form table tr td:last-child > * {
+  line-height: 40px;
+  width: 98%;
+  padding: 0 1px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+form table tr td:last-child > *:hover {
+  background-color: #e6e6e6;
+  transition: 3s;
+}
+form table tr td:last-child > *:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #0c4880;
+}
+
+/*# sourceMappingURL=new.css.map */

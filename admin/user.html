@@ -9,13 +9,13 @@
 <body>
 <div class="content">
     <header>
-        <a class="logo" href="index.html">Back office</a>
+        <a class="logo" href="index1.html">Back office</a>
         <h1>
             <!-- ko if: active_page() === 0 -->
             List User
             <!--/ko-->
             <!-- ko if: active_page() === 1 -->
-            <span>Current user name</span>
+            <span data-bind="text:$root.current_user().user_name"></span>
             <!--/ko-->
         </h1>
     </header>
@@ -25,14 +25,14 @@
             <li>
                 <div class="info">
                     <div class="img-user">
-                        <img scr="http://rdam.tk/cdn/default/default_avatar.jpg" />
-                        <a href="#">rdam.tk/#1</a>
+                        <img data-bind="attr: { src: photo }" >
+                        <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
                     </div>
-                    <h2>Bob Boons</h2>
-                    <span class="city"> Amsterdam</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
+                    <h2 data-bind="text: user_name" >Bob Boons</h2>
+                    <span data-bind="text: city" class="city"> Amsterdam</span>
+                    <p  data-bind="text: descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
                 </div>
-                <span class="edit">edit</span>
+                <span data-bind="click: function(){ debugger; $root.current_user($data);$root.active_page(1);}" class="edit">edit</span>
             </li>
         </ul>
         <div class="upload-users">
@@ -49,19 +49,19 @@
                     <tr>
                         <td>name:</td>
                         <td>
-                            <input type="text" name="edit_name" />
+                            <input type="text" name="edit_name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }"/>
                         </td>
                     </tr>
                     <tr>
                         <td>city:</td>
                         <td>
-                            <input type="text" name="edit_name" />
+                            <input type="text" name="edit_name" data-bind="value: city.text, attr: { invalid: city.invalid }"/>
                         </td>
                     </tr>
                     <tr>
                         <td>description:</td>
                         <td>
-                            <textarea> </textarea>
+                            <textarea data-bind="value: descr.text, attr: { invalid: descr.invalid }"> </textarea>
                         </td>
                     </tr>
                 </table>
@@ -78,11 +78,12 @@
                     <tr>
                         <td>photo: (gif, png, jpg)</td>
                         <td>
-                            <input name="id"  type="hidden" value="" />
+                            <input data-bind="value: id" name="id"  type="hidden" value="" />
                             <input name="photo" type="file" />
                         </td>
                     </tr>
                 </table>
+                <!--<progress id="photoProgress"></progress>-->
                 <div class="buttons">
                     <button type="button" data-bind="click: update_image">save</button>
                     <button type="reset">reset</button>
@@ -96,18 +97,20 @@
                     <tr>
                         <td>add data: (csv)</td>
                         <td>
-                            <input name="id" type="hidden" value="" />
+                            <input data-bind="value: id" name="id" type="hidden" value="" />
                             <label><input type="checkbox" value="true" checked="checked" />ignore</label>
                             <input name="data" type="file" />
                         </td>
                     </tr>
                 </table>
+                <!--<progress id="dataProgress"></progress>-->
                 <div class="buttons">
-                    <button type="button">submit</button>
+                    <button type="button" data-bind="click: update_data">submit</button>
                     <button type="reset">reset</button>
                 </div>
                 </div>
             </form>
+            <span data-bind="text: curr_operation()"></span>
         </div>
         <!-- /ko -->
     </div>
@@ -117,6 +120,7 @@
 <script type='text/javascript' src='../site/js/vendor/knockout/knockout-3.2.0.js'></script>
 <script type='text/javascript' src='js/app/validator.js'></script>
 <script type='text/javascript' src='js/app/ajax.js'></script>
+<script type='text/javascript' src='js/app/admin.vm.js'></script>
 <script type='text/javascript' src='js/app/animate.js'></script>
 </body>
 </html>
