@@ -21,6 +21,7 @@ ko.bindingHandlers.battery = {
             case 'month':
                 incrementBattery=3;
                 zoom=1;
+                margin='30px';
                 break;
         }
         $('#battery'+incrementBattery).remove();
@@ -35,6 +36,9 @@ ko.bindingHandlers.battery = {
                 viewModel.$root.changeTextData(['', ''])});
         $(element).css('zoom',zoom);
         $(element).css('marginTop',margin);
+        margin=(margin.slice(0, 2)-30)/2+'px';
+        console.log(margin);
+        $(element).css('margin-bottom',margin);
         var data = [
             ['Consumption', production],
             ['Taken from grid', takenFrom]
