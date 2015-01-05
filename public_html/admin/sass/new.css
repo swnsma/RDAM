@@ -54,8 +54,15 @@ form table tr td:first-child {
 form table tr td:last-child {
   width: 100%;
 }
+form table tr td:last-child textarea {
+  line-height: normal;
+  padding: 10px 0;
+}
 form table tr td:last-child > * {
+  line-height: 40px;
   width: 98%;
+  padding: 0 1px;
+  border: 1px solid gray;
   border-radius: 5px;
 }
 form table tr td:last-child > *:hover {
@@ -65,6 +72,7 @@ form table tr td:last-child > *:hover {
 form table tr td:last-child > *:focus {
   outline: none;
   box-shadow: none;
+  border: 1px solid #0c4880;
 }
 
 /*# sourceMappingURL=new.css.map */

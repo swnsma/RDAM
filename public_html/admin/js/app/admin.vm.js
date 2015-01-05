@@ -314,9 +314,28 @@ ko.bindingHandlers.upload_users = {
         element.click();
     }
 };
-
+ko.bindingHandlers.animation={
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext){
+        var name =element.id.substr(0,element.id.length-6);
+        debugger;
+        $(element)
+            .on('click',function(){
+                debugger;
+                if($('#'+name).css('display')==='none'){
+                    $('#'+name)
+                        .slideDown();
+                }
+                else{
+                    $('#'+name)
+                        .slideUp();
+                }
+            })
+    }
+}
 $(document).ready(function () {
     ko.applyBindings(new AppViewModel());
     $('body').css('display', 'block');
+    debugger;
+
 });
 
