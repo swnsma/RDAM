@@ -8,11 +8,9 @@ function AppViewModel() {
     };
 
     var self = this;
-
+    self.current_user=ko.observable(undefined_user);
     self.active_page = ko.observable(0);
-
     self.users = ko.observableArray([]);
-
     self.edit = function(user) {
         self.active_page(3);
     };
@@ -61,6 +59,15 @@ ko.bindingHandlers.upload_users = {
 ko.bindingHandlers.animation={
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext){
         var name =element.id.substr(0,element.id.length-6);
+        $('#edit1').css({
+            'display':'none'
+        });
+        $('#edit2').css({
+            'display':'none'
+        });
+        $('#edit3').css({
+            'display':'none'
+        });
         $(element)
             .on('click',function(){
                 debugger;

@@ -25,14 +25,14 @@
             <li>
                 <div class="info">
                     <div class="img-user">
-                        <img scr="http://rdam.tk/cdn/default/default_avatar.jpg" />
-                        <a href="#">rdam.tk/#1</a>
+                        <img data-bind="attr: { src: photo }" >
+                        <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
                     </div>
-                    <h2>Bob Boons</h2>
-                    <span class="city"> Amsterdam</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
+                    <h2 data-bind="text: user_name" >Bob Boons</h2>
+                    <span data-bind="text: city" class="city"> Amsterdam</span>
+                    <p  data-bind="text: descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
                 </div>
-                <span class="edit">edit</span>
+                <span data-bind="click: function() {debugger;$root.current_user($data);$root.active_page(1);}" class="edit">edit</span>
             </li>
         </ul>
         <div class="upload-users">
@@ -66,7 +66,7 @@
                     </tr>
                 </table>
                     <div class="buttons">
-                    <button type="button" data-bind="click: update_info">save</button>
+                    <button type="button" data-bind="">save</button>
                     <button type="reset">reset</button>
                 </div>
                 </div>
@@ -84,7 +84,7 @@
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button type="button" data-bind="click: update_image">save</button>
+                    <button type="button" data-bind="">save</button>
                     <button type="reset">reset</button>
                 </div>
                 </div>
@@ -117,6 +117,6 @@
 <script type='text/javascript' src='../site/js/vendor/knockout/knockout-3.2.0.js'></script>
 <script type='text/javascript' src='js/app/validator.js'></script>
 <script type='text/javascript' src='js/app/ajax.js'></script>
-<script type='text/javascript' src='js/app/animate.js'></script>
+<script type='text/javascript' src='js/app/user.js'></script>
 </body>
 </html>
