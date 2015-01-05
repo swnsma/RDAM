@@ -1,5 +1,6 @@
-//var url = 'http://rdam.loc:83/';
-var url = 'http://rdam:10000/public_html/';
+var url = 'http://rdam.loc:83/';
+//var url = 'http://rdam:10000/public_html/';
+//var url = 'http://rdam.tk/';
 
 function Ajax() {}
 
@@ -201,7 +202,7 @@ Ajax.prototype.load_skin = function(data, func, progress) {
 Ajax.prototype.list_skins = function(func) {
     func = this._gen_func(func);
     $.ajax({
-        url: url + 'admin/ajax/list_skin.php',
+        url: url + 'admin/ajax/list_skins.php',
         type: 'GET',
         contentType: 'application/json',
         dataType: 'json',
