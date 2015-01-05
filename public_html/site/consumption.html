@@ -35,24 +35,25 @@
         <div id="data">
             <div class="battery-container">
                 <div class="chart-text-box">
-                    <label>Consumption from:</label>
+
                     <div class="wrapper">
                         <div class="from-grid">
                             Grid:<br/>
                             <span data-bind="text:stringGrid"></span>
                         </div>
                         <div class="from-panel">
-                            Solar:<br/>
+                            Solar panel:<br/>
                             <span data-bind="text:stringPanel"></span>
                         </div>
                     </div>
                 </div>
                 <!-- ko foreach: batteries -->
                 <div class="battery-rend">
-                    <div data-bind="text: date2" class="date"></div>
+
                     <div data-bind="text:consumption +' kWh'" class="total-consumption"></div>
-                    <div class="label">Total <br>consumption</div>
+                    <div class="label" data-bind="text:label"></div>
                     <div class="prod" data-bind="battery: { consumption: consumption, takenFrom: takenFrom, type: type}"></div>
+                    <div data-bind="text: date2" class="date"></div>
                 </div>
                 <!-- /ko -->
             </div>
