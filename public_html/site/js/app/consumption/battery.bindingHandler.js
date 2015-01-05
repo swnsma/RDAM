@@ -3,14 +3,22 @@ ko.bindingHandlers.battery = {
         var value=valueAccessor();
         var production=value.consumption;
         var takenFrom=value.takenFrom;
-
-        /*var textBox= $('<div>');
-        textBox.addClass('pieChartTextBox');
-        textBox.appendTo(element);*/
-
-        var chart = $('<div>');
-        chart.appendTo(element);
-        chart.attr('id', production);
+        var incrementBattery=1;
+        var chart = $('<div>')
+            .appendTo(element);
+        var div=$('div');
+        switch (value.type){
+            case 'day':
+                incrementBattery=1;
+                break;
+            case 'week':
+                incrementBattery=2;
+                break;
+            case 'month':
+                incrementBattery=3;
+                break;
+        }
+        chart.attr('id', 'battery'+incrementBattery);
         var data=[['Consumption',production],['Taken from grid',takenFrom]];
         var plot1 = jQuery.jqplot (chart.attr('id'), [data],
             {
@@ -41,23 +49,38 @@ ko.bindingHandlers.battery = {
                 }
             });
     },
-    update:function(element, valueAccessor) {
+    update:function(element, valueAccessor, allBindings,currentContext,  viewModel) {
         var value = valueAccessor();
         var production = value.consumption;
         var takenFrom = value.takenFrom;
+        var incrementBattery=1;
+        var div=$('div');
+        switch (value.type){
+            case 'day':
+                incrementBattery=1;
+                break;
+            case 'week':
+                incrementBattery=2;
+                break;
+            case 'month':
+                incrementBattery=3;
+                break;
+        }
+        $('#battery'+incrementBattery).remove();
 
-        /*var textBox = $('<div>');
-        textBox.addClass('pieChartTextBox');
-        textBox.appendTo(element);*/
+        var chart = $('<div>')
+            .appendTo(element)
 
-        var chart = $('<div>');
-        chart.appendTo(element);
-        chart.attr('id', production);
+            .attr('id', 'battery'+incrementBattery);
+        $(element).parent()
+            .on('mouseover', function(){
+                viewModel.$root.changeTextData([data[1][1], data[0][1]])})
+            .on('mouseleave', function(){
+                viewModel.$root.changeTextData([' ', ' '])});
         var data = [
             ['Consumption', production],
             ['Taken from grid', takenFrom]
         ];
-
         var plot1 = jQuery.jqplot(chart.attr('id'), [data],
             {
                 seriesColors: ["#4BB2C5", "#2d6a76"],
