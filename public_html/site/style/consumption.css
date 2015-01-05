@@ -1,12 +1,37 @@
-.batteryContainer
+.battery-container
 {
     width: 960px;
     margin: auto;
     font: bold 14pt Arial, sans-serif;
+    text-align: center;
 }
-.totalConsumption{
-    font-size: 18pt;
-    line-height: 30pt;
+
+.wrapper{
+    display: table;
+    width: 300px;
+    margin: 20px auto 0 auto;
+}
+label{
+    font-size: 20pt;
+}
+.from-grid{
+    width: 150px;
+    display: table-cell;
+    border: 1px solid #e0e0e0;
+    color: #2d6a76;
+}
+.from-panel{
+    width: 150px;
+    display: table-cell;
+    border: 1px solid #e0e0e0;
+    height: 50px;
+    color: #4BB2C5;
+}
+.wrapper{
+    font-size: 12pt;
+}
+.wrapper span{
+    font-size: 20pt;
 }
 .main-content{
     animation: apa 1s;
@@ -17,7 +42,7 @@
 }
 .battery-rend
 {
-    width: 300px;
+    width: 310px;
     height: 300px;
     display: inline-block;
     position: relative;
@@ -32,13 +57,15 @@
 
 }
 
-.totalConsumption
+.total-consumption
 {
     position: absolute;
     margin-top: 180px;
     z-index: 1000;
      width: 100%;
     text-align: center;
+    font-size: 18pt;
+    line-height: 30pt;
 }
 .label
 {
