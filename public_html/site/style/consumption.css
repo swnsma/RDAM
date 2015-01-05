@@ -8,8 +8,9 @@
 
 .wrapper{
     display: table;
-    width: 300px;
+   width: 100%;
     margin: 20px auto 0 auto;
+    border-bottom: 2px solid #2d6a76;
 }
 label{
     font-size: 20pt;
@@ -33,6 +34,7 @@ label{
 }
 #data{
     animation: apa 1s;
+    height: 450px;
 }
 .prod{
     margin-top: 30px;
@@ -59,10 +61,13 @@ label{
     position: absolute;
     margin-top: 180px;
     z-index: 1000;
-     width: 100%;
+     width: 40%;
+    margin-left: 30%;
     text-align: center;
     font-size: 18pt;
     line-height: 30pt;
+    border-top: 2px solid #2d6a76;
+
 }
 .label
 {
@@ -71,5 +76,12 @@ label{
     z-index: 1000;
     width: 100%;
     text-align: center;
-}
+    font-size: 30px;
 
+}
+.borderBottom
+{
+    width: 50px;
+    margin: auto;
+    border-bottom: 2px solid #2d6a76;
+}
