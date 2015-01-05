@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<form action="upload_skin.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="skin">
+    <input type="submit" value="Upload">
+</form>
+<br />
+<form action="set_auth_db.php" method="post">
+    id<input type="text" name="id"><br />
+    server<input type="text" name="server"><br />
+    name<input type="text" name="name"><br />
+    user<input type="text" name="user"><br />
+    pass<input type="text" name="pass"><br />
+    port<input type="text" name="port"><br />
+    <input type="submit" value="set auth">
+</form>
+<br />
+<form action="test_conn.php" method="post">
+    server<input type="text" name="server" value="localhost"><br />
+    name<input type="text" name="name" value="rdam_values"><br />
+    user<input type="text" name="user" value="root"><br />
+    pass<input type="text" name="pass" value="root"><br />
+    port<input type="text" name="port" value="3306"><br />
+    <input type="submit" value="test">
+</form>
+
+<br />
+<form action="select_type_db.php" method="post">
+    id<input type="text" name="id"><br />
+    type<input type="text" name="type" value="1"><br />
+    <input type="submit" value="change type">
+</form>
+
+<br />
+<form action="del_skin.php" method="post">
+    id<input type="text" name="id"><br />
+    <input type="submit" value="delete template">
+</form>
+
+<br />
+<form action="select_skin.php" method="post">
+    id<input type="text" name="id"><br />
+    <input type="submit" value="select template">
+</form>
+
+</body>
+</html>
