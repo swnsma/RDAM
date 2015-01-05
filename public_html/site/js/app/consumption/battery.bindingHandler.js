@@ -5,15 +5,22 @@ ko.bindingHandlers.battery = {
         var production = value.consumption;
         var takenFrom = value.takenFrom;
         var incrementBattery=1;
+        var zoom;
+        var margin;
         switch (value.type){
             case 'day':
                 incrementBattery=1;
+                zoom=0.85;
+                margin='70px';
                 break;
             case 'week':
                 incrementBattery=2;
+                margin='50px';
+                zoom=0.92;
                 break;
             case 'month':
                 incrementBattery=3;
+                zoom=1;
                 break;
         }
         $('#battery'+incrementBattery).remove();
@@ -26,6 +33,8 @@ ko.bindingHandlers.battery = {
                 viewModel.$root.changeTextData([data[1][1], data[0][1]])})
             .on('mouseleave', function(){
                 viewModel.$root.changeTextData(['', ''])});
+        $(element).css('zoom',zoom);
+        $(element).css('marginTop',margin);
         var data = [
             ['Consumption', production],
             ['Taken from grid', takenFrom]
