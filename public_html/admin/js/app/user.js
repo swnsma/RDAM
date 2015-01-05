@@ -61,7 +61,6 @@ ko.bindingHandlers.upload_users = {
 ko.bindingHandlers.animation={
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext){
         var name =element.id.substr(0,element.id.length-6);
-        debugger;
         $(element)
             .on('click',function(){
                 debugger;
