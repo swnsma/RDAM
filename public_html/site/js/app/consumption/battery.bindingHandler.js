@@ -25,7 +25,7 @@ ko.bindingHandlers.battery = {
             .on('mouseover', function(){
                 viewModel.$root.changeTextData([data[1][1], data[0][1]])})
             .on('mouseleave', function(){
-                viewModel.$root.changeTextData([' ', ' '])});
+                viewModel.$root.changeTextData(['', ''])});
         var data = [
             ['Consumption', production],
             ['Taken from grid', takenFrom]
