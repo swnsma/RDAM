@@ -13,7 +13,7 @@ $color-blue: #0c4880;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
-    background-color: darken($color-white,5%);
+    background-color: darken($color-white,30%);
     position: relative;
     padding-bottom: 30px;
     .info{
@@ -50,18 +50,22 @@ $color-blue: #0c4880;
 //      display: block;
       text-align: center;
       line-height: 30px;
-      background-color: darken($color-white,20%);
+      background-color: darken($color-white,5%);
       cursor: pointer;
-      &:hover{
-        background-color: lighten($color-black,20%);
-        color: $color-white;
-        font-weight: bold;
-        transition: 3s;
-      }
+
     }
     &:hover{
       background-color: darken($color-white,1%);
       transition: 1s;
+      .edit{
+        background-color: darken($color-white,60%);
+        color: $color-white;
+        &:hover{
+          background-color: lighten($color-black,20%);
+          font-weight: bold;
+          transition: 1s;
+        }
+      }
     }
   }
 }
