@@ -2,56 +2,52 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>admin</title>
+    <title>Change design</title>
     <link rel="stylesheet" href="sass/common.css" type="text/css"/>
     <link rel="stylesheet" href="sass/new.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/design.css" type="text/css"/>
 </head>
 <body>
 <div class="content">
     <header>
         <a class="logo" href="index.html">Back office</a>
         <h1>
-            Create new user
+            Change design
         </h1>
     </header>
     <div class="wrapper">
-            <form method="post" enctype="multipart/form-data">
-                <input type="file" name="skin">
-                <input type="submit" value="Upload">
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Author</th>
-                        <th>Version</th>
-                        <th>Comment</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>name1</td>
-                        <td>author1</td>
-                        <td>version1</td>
-                        <td>Comment1</td>
-                        <td>
-                            <a href="#">delete</a>
-                            <a href="#">select</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>name1</td>
-                        <td>author1</td>
-                        <td>version1</td>
-                        <td>Comment1</td>
-                        <td>
-                            <a href="#">delete</a>
-                            <a href="#">select</a>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-
-
-
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="skin">
+            <input type="submit" value="Upload">
+        </form>
+        <table class="template">
+            <tr class="header">
+                <th>Name</th>
+                <th>Author</th>
+                <th>Version</th>
+                <th>Comment</th>
+                <th></th>
+            </tr>
+            <!-- ko foreach: templates -->
+            <tr data-bind="attr: {active: active}">
+                <td class="name" data-bind="text: name"></td>
+                <td class="author" data-bind="text: author"></td>
+                <td class="version" data-bind="text: version"></td>
+                <td class="comment" data-bind="text: comment"></td>
+                <td class="oper">
+                    <a href="#">delete</a>
+                    <!-- ko if: !active -->
+                    | <a href="#">select</a>
+                    <!-- /ko -->
+                </td>
+            </tr>
+            <!-- /ko -->
+        </table>
     </div>
 </div>
+<script src="js/vendor/jquery-2.1.1.js"></script>
+<script src="js/vendor/knockout-3.2.0.js"></script>
+<script src="js/app/ajax.js"></script>
+<script src="js/app/design.js"></script>
 </body>
 </html>
