@@ -27,9 +27,12 @@ header .logo {
   transition: 3s;
 }
 
+.width500px {
+  width: 500px;
+}
+
 form.form {
   border: 1px solid #999999;
-  width: 500px;
   margin: 20px auto;
   background-color: #f2f2f2;
   border-radius: 5px;
