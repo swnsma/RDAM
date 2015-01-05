@@ -1,7 +1,7 @@
 function Validator() {}
 
 Validator.prototype.user_name = function(name) {
-    return /^[\w \.\'\-]{5,25}$/.test(name);
+    return /^[\w \.\'\-]{1,25}$/.test(name);
 };
 
 Validator.prototype.city = function(city) {

@@ -2,6 +2,10 @@ textarea {
   resize: none;
 }
 
+input[invalid='true'], textarea[invalid='true'] {
+  background-color: #ff999e;
+}
+
 body, html {
   height: 100%;
   margin: 0;
@@ -11,10 +15,6 @@ body, html {
 
 body {
   padding: 0 10px;
-}
-
-input[invalid='true'] {
-    background: #ffaeac;
 }
 
 .content {

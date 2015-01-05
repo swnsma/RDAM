@@ -5,18 +5,22 @@
 #db
 define('DB_SERVER', 'localhost');
 define('DB_NAME', 'rdam');
-define('DB_USER', 'root');
-//define('DB_USER', 'mysql');
-define('DB_PASSWORD', 'root');
-//define('DB_PASSWORD', 'mysql');
+//define('DB_USER', 'root');
+define('DB_USER', 'mysql');
+//define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 'mysql');
 
 ##################################################
 
 #db values
 define('DB_SERVER_V', 'localhost');
 define('DB_NAME_V', 'rdam_values');
-define('DB_USER_V', 'root');
-define('DB_PASSWORD_V', 'root');
+
+//define('DB_USER_V', 'root');
+define('DB_USER_V', 'mysql');
+
+//define('DB_PASSWORD_V', 'root');
+define('DB_PASSWORD_V', 'mysql');
 
 ##################################################
 

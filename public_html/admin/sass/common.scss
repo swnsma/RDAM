@@ -5,6 +5,9 @@ $color-white: #fff;
 textarea{
   resize: none;
 }
+input[invalid='true'], textarea[invalid='true'] {
+  background-color: #ff999e;
+}
 body,html{
   height: $height100;
   margin: 0;
