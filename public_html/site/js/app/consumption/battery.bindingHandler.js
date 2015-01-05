@@ -2,7 +2,7 @@ ko.bindingHandlers.battery = {
     update:function(element, valueAccessor, allBindings,currentContext,  viewModel) {
         $('#data').css('display', 'block');
         var value = valueAccessor();
-        var production = value.consumption;
+        var production = value.production;
         var takenFrom = value.takenFrom;
         var incrementBattery=1;
         var zoom;
