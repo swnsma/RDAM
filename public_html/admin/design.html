@@ -16,33 +16,34 @@
         </h1>
     </header>
     <div class="wrapper">
-        <form method="post" enctype="multipart/form-data">
+        <form class="form width500px" method="post" enctype="multipart/form-data">
             <input type="file" name="skin">
             <input type="submit" value="Upload">
         </form>
-        <table class="template">
-            <tr class="header">
-                <th>Name</th>
-                <th>Author</th>
-                <th>Version</th>
-                <th>Comment</th>
-                <th></th>
-            </tr>
-            <!-- ko foreach: templates -->
-            <tr data-bind="attr: {active: active}">
-                <td class="name" data-bind="text: name"></td>
-                <td class="author" data-bind="text: author"></td>
-                <td class="version" data-bind="text: version"></td>
-                <td class="comment" data-bind="text: comment"></td>
-                <td class="oper">
-                    <a href="#">delete</a>
-                    <!-- ko if: !active -->
-                    | <a href="#">select</a>
-                    <!-- /ko -->
-                </td>
-            </tr>
-            <!-- /ko -->
-        </table>
+        <form>
+            <table class="template">
+                <tr class="header">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Version</th>
+                    <th>Comment</th>
+                    <th></th>
+                </tr>
+                <!-- ko foreach: templates -->
+                <tr data-bind="attr: { active: active }">
+                    <td class="checkbox"><input type="checkbox" data-bind="checked: active"/></td>
+                    <td class="name" data-bind="text: name"></td>
+                    <td class="author" data-bind="text: author"></td>
+                    <td class="version" data-bind="text: version"></td>
+                    <td class="comment" data-bind="text: comment"></td>
+                    <td class="oper">
+                        <a href="#"><img class="delete" src="img/delete.png" /></a>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </table>
+        </form>
     </div>
 </div>
 <script src="js/vendor/jquery-2.1.1.js"></script>

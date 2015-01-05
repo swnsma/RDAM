@@ -33,9 +33,12 @@ header{
     }
   }
 }
-form{
-  border: 1px solid darken($color-white,40%);
+.width500px{
   width: 500px;
+};
+form.form{
+  border: 1px solid darken($color-white,40%);
+
   margin: 20px auto;
   background-color: darken($color-white,5%);
   border-radius: 5px;
