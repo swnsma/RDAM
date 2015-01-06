@@ -14,7 +14,7 @@ if (isset($_POST['id'])) {
 
         if (isset($_POST['user_name'])) {
             $user_name = full_trim($_POST['user_name']);
-            if (!preg_match('/^[\p{L} \.\'\-]{1,25}$/', $user_name)) exit_ttwp();
+            if (!preg_match('/^[\p{L}\d \.\'\-]{1,25}$/', $user_name)) exit_ttwp();
         }
 
         if (isset($_POST['city'])) {
