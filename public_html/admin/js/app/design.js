@@ -4,11 +4,11 @@ function Desing() {
 
     self.upload_template = function() {
         ajax.load_skin(new FormData(document.getElementById('uploadTemplate')), {
-            success: function() {
-
+            success: function(data) {
+                self.templates.push(new Template(data));
             },
             error: function() {
-
+                alert('неудалось загрузить шаблон');
             },
             after: function() {
 

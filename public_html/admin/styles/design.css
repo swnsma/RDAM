@@ -20,7 +20,7 @@ table.template {
 }
 
 table.template td {
-    height: 25px;
+    min-height: 25px;
     padding: 0 5px;
     vertical-align: top;
     text-align: center;
