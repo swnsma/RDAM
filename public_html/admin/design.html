@@ -16,9 +16,9 @@
     <div class="wrapper">
         <form class="form width500px" id="uploadTemplate" method="post" enctype="multipart/form-data">
             <input type="file" name="skin">
-            <input data-bind="click: upload_template" type="submit" value="Upload template">
+            <input data-bind="click: upload_template" type="submit" value="Upload template">(rar-archive)
         </form>
-        <form>
+        <form name="fdererr">
             <table class="template">
                 <tr class="header">
                     <th></th>
@@ -26,20 +26,27 @@
                     <th>Author</th>
                     <th>Version</th>
                     <th>Comment</th>
-                    <th></th>
+                    <th colspan="2"></th>
                 </tr>
                 <!-- ko foreach: templates -->
                 <tr data-bind="attr: { active: active }">
                     <td class="checkbox">
-                        <input type="checkbox" data-bind="checked: active, click: function() { $parent.select_design($data); }"/>
+                        <!-- ko if: active -->
+                        <img class="select" src="img/arrow.png" alt="->" />
+                        <!-- /ko -->
                     </td>
                     <td class="name" data-bind="text: name"></td>
                     <td class="author" data-bind="text: author"></td>
                     <td class="version" data-bind="text: version"></td>
                     <td class="comment" data-bind="text: comment"></td>
+                    <td class="file">
+                        <a data-bind="attr: { href: file }" href="#">
+                            <img class="download" src="img/download.png" alt="d-l" />
+                        </a>
+                    </td>
                     <td class="oper">
                         <a href="#" data-bind="click: function() { $parent.delete_template($data); }">
-                            <img class="delete" src="img/delete.png" />
+                            <img class="delete" src="img/delete.png" alt="x" />
                         </a>
                     </td>
                 </tr>

@@ -4,11 +4,11 @@ function Desing() {
 
     self.upload_template = function() {
         ajax.load_skin(new FormData(document.getElementById('uploadTemplate')), {
-            success: function() {
-
+            success: function(data) {
+                self.templates.push(new Template(data));
             },
             error: function() {
-
+                alert('неудалось загрузить шаблон');
             },
             after: function() {
 
@@ -27,11 +27,7 @@ function Desing() {
     };
 
     self.select_design = function(data) {
-        if (!data.active) return false;
-
-        //....
-
-        return true;
+        data.active(true);
     };
 
     ajax.list_skins({
@@ -58,7 +54,8 @@ function Template(data) {
     this.author = data.author;
     this.version = data.version;
     this.comment = data.comment;
-    this.active = data.active == 1 ? true : false;
+    this.active = ko.observable(data.active == 1 ? true : false);
+    this.file = 'http://rdam.tk/storage/skins/' + data.filename;
 }
 
 $(document).ready(function() {
