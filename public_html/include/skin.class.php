@@ -10,7 +10,7 @@ class Skin {
     }
 
     public function get_list_skins() {
-        $request = $this->server_db->query('SELECT `id`, `name`, `author`, `version`, `comment`, `active` FROM `templates`');
+        $request = $this->server_db->query('SELECT `id`, `name`, `author`, `version`, `comment`, `active`, `filename` FROM `templates`');
         if ($request) {
             return $request->fetchAll(PDO::FETCH_ASSOC);
         }

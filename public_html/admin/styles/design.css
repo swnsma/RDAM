@@ -55,6 +55,10 @@ table.template td.comment {
 
 }
 
+table.template td.file {
+    width: 20px;
+}
+
 table.template td.oper {
     width: 20px;
 }
@@ -73,6 +77,17 @@ tr.header > th {
 table.template  tr>td{
     border-bottom: 1px solid #e9e9e9;
 }
- tr:hover{
+
+tr:hover{
     background-color: #eeeeee;
+}
+
+img.select {
+    width: 20px;
+    height: 20px;
+}
+
+img.download {
+    width: 15px;
+    height: 15px;
 }
