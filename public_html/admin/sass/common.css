@@ -77,9 +77,13 @@ h1 a {
 .data-title {
   position: relative;
   display: inline-block;
-  width: 100px;
 }
 .data-title:hover::after {
+  -moz-user-select: all;
+  -webkit-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+  min-width: 100px;
   content: attr(data-title);
   /* ╨Т╤Л╨▓╨╛╨┤╨╕╨╝ ╤В╨╡╨║╤Б╤В */
   position: absolute;
@@ -100,6 +104,10 @@ h1 a {
   border: 1px solid #0c4880;
   /* ╨Я╨░╤А╨░╨╝╨╡╤В╤А╤Л ╤А╨░╨╝╨║╨╕ */
   border-radius: 5px;
+}
+
+table {
+  border-spacing: 0px;
 }
 
 /*# sourceMappingURL=common.css.map */

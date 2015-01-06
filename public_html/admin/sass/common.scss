@@ -75,8 +75,13 @@ h1{
 .data-title{
   position: relative;
   display: inline-block;
-  width: 100px;
+
   &:hover::after {
+    -moz-user-select: all;
+    -webkit-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    min-width: 100px;
     content: attr(data-title); /* Выводим текст */
     position: absolute; /* Абсолютное позиционирование */
     left: 100%; /* Положение подсказки */
@@ -89,4 +94,7 @@ h1{
     border: 1px solid $color-blue; /* Параметры рамки */
     border-radius: 5px;
   }
+}
+table{
+  border-spacing: 0px;
 }
