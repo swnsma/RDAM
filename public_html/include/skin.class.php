@@ -2,6 +2,8 @@
 
 include_once  __DIR__ . '/connection.class.php';
 
+error_reporting(0);
+
 class Skin {
     private $error = null;
 
@@ -21,7 +23,8 @@ class Skin {
         $r = $this->server_db->prepare('SELECT `filename` FROM `templates` WHERE `id` = :id');
         $r->bindParam(':id', $id, PDO::PARAM_INT);
         if ($r->execute() && $r->rowCount() === 1) {
-            return $r->fetchAll(PDO::FETCH_NUM)[0][0];
+            $r = $r->fetchAll(PDO::FETCH_ASSOC);
+            return $r;
         }
         return null;
     }
@@ -77,8 +80,8 @@ class Skin {
 
     private function current_skin() {
         $r = $this->server_db->query('SELECT `id` FROM `templates` WHERE `active` = 1');
-        if ($r && $r->rowCount() === 1) {
-            return $r->fetchAll(PDO::FETCH_NUM)[0][0];
+        if ($r) {
+            return $r->fetchAll();
         }
         return null;
     }
@@ -112,11 +115,18 @@ class Skin {
         return substr(strrchr($filename, '.'), 1);
     }
 
+    /*private function get_extension($filename) {
+        return substr($filename, strrpos($filename, '.') + 1);
+    }*/
+
     public function select_skin($id) {
         $this->server_db->beginTransaction();
         try {
             if (null !== $curr_id = $this->current_skin()) {
+                $curr_id = $curr_id[0]['id'];
                 if ($curr_id === $id) throw new RuntimeException('this template already active');
+
+                //print_r($curr_id);
 
                 if (null !== $filename = $this->get_filename($id)) {
                     $dir = '../../' . SITE_FOLDER;
@@ -124,7 +134,7 @@ class Skin {
                     mkdir($dir);
                     //$filename = 'default.rar';
                     $this->change_active_skin($curr_id, $id);
-                    $this->extract($filename, $dir);
+                    $this->extract($filename[0]['filename'], $dir);
                 } else {
                     throw new RuntimeException('it was not possible to obtain data on the requested template');
                 }
@@ -145,11 +155,15 @@ class Skin {
     }
 
     private function extract($filename, $dir) {
-        $ext = $this->get_extension($filename);
+        //$ext = $this->get_extension($filename);
+        $ext = 'rar';
+        //print $filename;
         $file = '../../' . SKINS_FOLDER . '/' . $filename;
+        //print $ext . 93489439439;
         if ($ext == 'rar' && ($rar_file = rar_open($file))) {
             $list = rar_list($rar_file);
             foreach($list as $file) {
+                //print $file;
                 $file->extract($dir);
             }
             rar_close($rar_file);
