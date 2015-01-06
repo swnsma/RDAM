@@ -58,18 +58,6 @@ ko.bindingHandlers.upload_users = {
 ko.bindingHandlers.animation={
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext){
         var name =element.id.substr(0,element.id.length-6);
-        $('#edit1').css({
-            'display':'none'
-        });
-        $('#edit2').css({
-            'display':'none'
-        });
-        $('#edit3').css({
-            'display':'none'
-        });
-        $('#edit4').css({
-            'display':'none'
-        });
         $(element)
             .on('click',function(){
                 if($('#'+name).css('display')==='none'){

@@ -1,3 +1,22 @@
+.buttons {
+  width: 100%;
+}
+.buttons button {
+  width: 49%;
+  cursor: pointer;
+  border: none;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  background-color: #96c7f5;
+  outline: 1px solid #999999;
+}
+.buttons button:hover {
+  background-color: #0c4880;
+  transition: 1s;
+}
+
 textarea {
   resize: none;
 }
@@ -29,10 +48,16 @@ header {
   height: 50px;
 }
 header .logo {
-  position: absolute;
-  left: 10px;
   color: #fff;
   line-height: 50px;
+}
+header .logo.left {
+  position: absolute;
+  left: 10px;
+}
+header .logo.right {
+  position: absolute;
+  right: 10px;
 }
 
 h1 {

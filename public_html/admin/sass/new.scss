@@ -6,33 +6,7 @@ $width300px: 290px;
 $height300:100px;
 $color-blue: #0c4880;
 
-header{
-  position: relative;
-  .logo{
-    position: absolute;
-    left: 10px;
-    color: $color-white;
-    line-height: 50px;
-  }
-}
-.buttons{
-  width: 100%;
-  button{
-    width: 49%;
-    cursor: pointer;
-    border: none;
-    line-height: 20px;
-    font-weight: bold;
-    font-size: 1.3em;
-    color: $color-white;
-    background-color: lighten($color-blue,50%);
-    outline:1px solid darken($color-white,40%);
-    &:hover{
-      background-color: $color-blue;
-      transition: 3s;
-    }
-  }
-}
+
 .width500px{
   width: 500px;
 };

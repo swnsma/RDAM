@@ -5,25 +5,8 @@ $color-white: #fff;
 $width300px: 290px;
 $width500px: 500px;
 $height300:100px;
-$color-blue: #0c4880;
-.buttons{
-  width: 100%;
-  button{
-    width: 49%;
-    cursor: pointer;
-    border: none;
-    line-height: 20px;
-    font-weight: bold;
-    font-size: 1.3em;
-    color: $color-white;
-    background-color: lighten($color-blue,50%);
-    outline:1px solid darken($color-white,40%);
-    &:hover{
-      background-color: $color-blue;
-      transition: 3s;
-    }
-  }
-}
+
+
 .users{
   margin: 0;
   padding: 0;
