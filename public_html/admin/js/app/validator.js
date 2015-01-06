@@ -10,7 +10,7 @@ Validator.prototype.city = function(city) {
 };
 
 Validator.prototype.descr = function(descr) {
-    return /^[\w \n\(\)\'\"\d\-]{0,1000}$/.test(descr);
+    return /^[\w \n\(\)\'\"\d\-\:\,\.\?\!]{0,1000}$/.test(descr);
 };
 
 var valid = new Validator;
