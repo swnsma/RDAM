@@ -72,7 +72,6 @@ ko.bindingHandlers.animation={
         });
         $(element)
             .on('click',function(){
-                debugger;
                 if($('#'+name).css('display')==='none'){
                     $('#'+name)
                         .slideDown();

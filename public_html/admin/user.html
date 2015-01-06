@@ -42,7 +42,7 @@
                     <span data-bind="text: city" class="city"> Amsterdam</span>
                     <p  data-bind="text: descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
                 </div>
-                <span data-bind="click: function() {debugger;$root.current_user($data);$root.active_page(1);}" class="edit">edit</span>
+                <span data-bind="click: function() {$root.current_user($data);$root.active_page(1);}" class="edit">edit</span>
             </li>
         </ul>
         <div class="upload-users">
