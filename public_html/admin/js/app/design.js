@@ -7,8 +7,8 @@ function Desing() {
             success: function(data) {
                 self.templates.push(new Template(data));
             },
-            error: function() {
-                alert('неудалось загрузить шаблон');
+            error: function(message) {
+                alert('неудалось загрузить шаблон причина: ' + message);
             },
             after: function() {
 
@@ -20,14 +20,51 @@ function Desing() {
     };
 
     self.delete_template = function(data) {
+        if (data.id !== 1 && !data.active()) {
+            ajax.del_skin(data.id, {
+                success: function(data) {
+                    var id = data.id;
+                    self.templates(self.templates().filter(function(val) {
+                        return val.id !== id;
+                    }));
+                },
+                error: function(message) {
+                    alert('неудалось удалить шаблон причина: ' + message);
+                },
+                after: function() {
 
-        //...
+                },
+                before: function() {
 
+                }
+            })
+        }
         return false;
     };
 
     self.select_design = function(data) {
-        data.active(true);
+        if (!data.active()) {
+            ajax.select_skin(data.id, {
+                    success: function(data) {
+                        var id = data.id;
+                        var t = self.templates();
+                        for(var i in t) {
+                            if (t[i].active()) t[i].active(false);
+                            if (t[i].id == id) t[i].active(true);
+                        }
+                    },
+                    error: function(message) {
+                        alert('неудалось обновить дизайн. причина: ' + message);
+                    },
+                    after: function() {
+
+                    },
+                    before: function() {
+
+                    }
+                }
+            )
+        }
     };
 
     ajax.list_skins({
