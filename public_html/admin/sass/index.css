@@ -44,7 +44,7 @@
 }
 .wrapper .block:hover img {
   transform: scale(1.5, 1.5);
-  transition: 3s;
+  transition: 2s;
   opacity: 1;
 }
 .wrapper .block:hover .more-info {

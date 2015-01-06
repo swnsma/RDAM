@@ -12,12 +12,14 @@ $color-blue: #0c4880;
     line-height: 20px;
     font-weight: bold;
     font-size: 1.3em;
-    color: $color-white;
+    color: $color-black;
     background-color: lighten($color-blue,50%);
     outline:1px solid darken($color-white,40%);
+    outline: none;
+    border-radius: 5px;
     &:hover{
+      color: $color-white;
       background-color: $color-blue;
-      transition: 1s;
     }
   }
 }
@@ -67,5 +69,24 @@ h1{
   a{
     color: $color-white;
     text-decoration: none;
+  }
+}
+
+.data-title{
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  &:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 100%; /* Положение подсказки */
+    top:10px;
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid $color-blue; /* Параметры рамки */
+    border-radius: 5px;
   }
 }
