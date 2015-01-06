@@ -10,7 +10,7 @@ if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr']
 
     if (preg_match('/^[\p{L} \.\'\-]{1,25}$/', $user_name)
         && preg_match('/^[\p{L} \-]{5,25}$/', $city)
-        && preg_match('/^[\p{L} \(\)\'\"\d\-]{0,300}$/m', $descr)) {
+        && preg_match('/^[\p{L} \(\)\'\"\d\-]{0,1000}$/m', $descr)) {
 
         $user = new AddUser();
         $log = new Log();
