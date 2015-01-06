@@ -34,6 +34,9 @@
                         <!-- ko if: active -->
                         <img class="select" src="img/arrow.png" alt="->" />
                         <!-- /ko -->
+                        <!-- ko if: !active() -->
+                        <img src="img/noarrow.png" data-bind="click: function() { $parent.select_design($data) }" alt="f"/>
+                        <!-- /ko -->
                     </td>
                     <td class="name" data-bind="text: name"></td>
                     <td class="author" data-bind="text: author"></td>
@@ -45,9 +48,11 @@
                         </a>
                     </td>
                     <td class="oper">
+                        <!-- ko if: id !== 1 || !active -->
                         <a href="#" data-bind="click: function() { $parent.delete_template($data); }">
                             <img class="delete" src="img/delete.png" alt="x" />
                         </a>
+                        <!-- /ko -->
                     </td>
                 </tr>
                 <!-- /ko -->

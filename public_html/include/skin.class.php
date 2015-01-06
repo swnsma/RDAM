@@ -98,14 +98,14 @@ class Skin {
     }
 
     private function change_active_skin($from, $on) { //требует оптимизации, впрочем как и все
-        $r1 = $this->server_db->prepare('UPDATE `template` SET `active` = 1 WHERE `id`= :id');
-        $r2 = $this->server_db->prepare('UPDATE `template` SET `active` = 0 WHERE `id`= :id');
+        $r1 = $this->server_db->prepare('UPDATE `templates` SET `active` = 1 WHERE `id`= :id');
+        $r2 = $this->server_db->prepare('UPDATE `templates` SET `active` = 0 WHERE `id`= :id');
         $r1->bindParam(':id', $on, PDO::PARAM_INT);
-        $r1->bindParam(':id', $from, PDO::PARAM_INT);
+        $r2->bindParam(':id', $from, PDO::PARAM_INT);
         return $r1->execute()
             && $r1->rowCount() > 0
             && $r2->execute()
-            && $r2->execute();
+            && $r2->rowCount() > 0;
     }
 
     private function get_extension($filename) {
@@ -123,6 +123,7 @@ class Skin {
                     $this->delete_dir($dir);
                     mkdir($dir);
                     //$filename = 'default.rar';
+                    $this->change_active_skin($curr_id, $id);
                     $this->extract($filename, $dir);
                 } else {
                     throw new RuntimeException('it was not possible to obtain data on the requested template');
