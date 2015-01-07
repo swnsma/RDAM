@@ -30,7 +30,7 @@ function AppViewModel() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
-                    alert('data updated. Inserted ' + data.insert_rows + ' new records')
+                    console.log(data);
                 },
                 error: function(error) {
                     alert(error);
@@ -52,7 +52,7 @@ function AppViewModel() {
             new FormData(document.getElementById('formPhoto')),
             {
                 success: function(data) {
-                    alert('image updated' + data)
+                    console.log(data);
                 },
                 error: function(error) {
                     alert(error);
