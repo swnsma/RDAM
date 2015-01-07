@@ -28,8 +28,9 @@ class SaveData {
         $request =<<<HERE
             DROP TABLE IF EXISTS `$temp_name`;
 HERE;
+        print 1;
         if (!$this->values_db->query($request)) return false;
-
+        print 2;
         $request =<<<HERE
             CREATE TABLE `$temp_name` (
                 `readingid` VARCHAR(5) NOT NULL,
@@ -40,7 +41,7 @@ HERE;
 HERE;
 
         if (!$this->values_db->query($request)) return false;
-
+        print 3;
         $file = str_replace('\\', '\\\\', $file);
 
         $ignore = '';
@@ -58,6 +59,7 @@ HERE;
 HERE;
         $r = $this->values_db->query($request);
         print_r($this->values_db->errorInfo());
+        print 4;
         if (!$r) return false;
 
         $request =<<<HERE
