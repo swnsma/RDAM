@@ -104,6 +104,7 @@
                 </div>
                 </div>
             </form>
+            <!-- ko if: $parent.bd_type() === 0 -->
             <form id="formData">
                 <h2 data-bind="animation:{}" id="edit3-click">add data(cvs)</h2>
                 <div class="editer" id="edit3">
@@ -124,7 +125,7 @@
             </form>
             <!-- /ko -->
 
-            <!-- ko if: bd_type() === 1 -->
+            <!-- ko if: $parent.bd_type() === 1 -->
             <form class="decoration-line" name="formname" action="">
                 <h2 data-bind="animation:{}" id="edit4-click">
                     custom DB settings
