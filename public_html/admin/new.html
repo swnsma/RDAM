@@ -24,18 +24,22 @@
                     <td class="data-title" data-title="1-25 latin letters and unique name">
 
                         <input  name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
+                        <span class="error" data-bind="text:curr_operation.local.user_name"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>Description:</td>
                     <td class="data-title" data-title="max 1000 latin letters">
                         <textarea  data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
+                        <span class="error" data-bind="text:curr_operation.local.description"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>City:</td>
                     <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
                         <input data-bind="value: city.text, attr: { invalid: city.invalid }" name="city" type="text" />
+                        <span class="error" data-bind="text:curr_operation.local.city"></span>
+
                     </td>
                 </tr>
             </table>
@@ -44,7 +48,7 @@
                 <button  type="reset">reset</button>
             </div>
             <div class="curr_oper">
-                <span data-bind="text: curr_operation()"></span>
+                <span class="error" data-bind="text: curr_operation.global"></span>
             </div>
         </form>
     </div>

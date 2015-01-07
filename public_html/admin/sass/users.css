@@ -110,7 +110,7 @@
   padding-right: 10px;
 }
 .edit-page .editer table tr td:last-child {
-  width: 80%;
+  width: 100%;
 }
 .edit-page .editer table tr td:last-child textarea {
   line-height: normal;

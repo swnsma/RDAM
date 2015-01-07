@@ -13,6 +13,13 @@ function AppViewModel() {
     self.users = ko.observableArray([]);
     self.bd_type=ko.observable(0);
 
+    function genField() {
+        return {
+            text: ko.observable(''),
+            invalid: ko.observable(false)
+        };
+    }
+
     self.curr_oper = {
         info: ko.observable('')
     };
