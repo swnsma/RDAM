@@ -56,8 +56,9 @@ HERE;
                 $ignore
                 (readingid, toDT, production, consumption);
 HERE;
-
-        if (!$this->values_db->query($request)) return false;
+        $r = $this->values_db->query($request);
+        print_r($r->errorInfo());
+        if (!$r) return false;
 
         $request =<<<HERE
             INSERT INTO `user_$id` (
