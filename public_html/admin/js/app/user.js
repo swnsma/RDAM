@@ -25,6 +25,14 @@ function AppViewModel() {
         return null;
     }
 
+    self.custom_db = ko.observable({
+        port: null,
+        server: null,
+        user: null,
+        name: null,
+        pass: null
+    });
+
     self.save_data = function() {
         ajax.load_data(
             new FormData(document.getElementById('formData')),
@@ -84,14 +92,12 @@ function AppViewModel() {
                 self.curr_oper.info('');
             },
             success: function(data) {
-                console.log(data);
-
+                self.current_user(new User(data));
             },
             error: function(error) {
                 self.curr_oper.info(error);
             }
         });
-        self.curr_oper.info('');
         return false;
     }
 
