@@ -47,7 +47,8 @@ class UpdateUser {
     }
 
     public function get_data() {
-        return $this->result->fetchAll(PDO::FETCH_ASSOC)[0];
+        $r = $this->result->fetchAll(PDO::FETCH_ASSOC);
+        return $r[0];
     }
 
     function __destruct() {
