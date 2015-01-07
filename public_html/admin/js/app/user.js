@@ -25,6 +25,50 @@ function AppViewModel() {
         return null;
     }
 
+    self.save_data = function() {
+        ajax.load_data(
+            new FormData(document.getElementById('formData')),
+            {
+                success: function(data) {
+                    alert('data updated. Inserted ' + data.insert_rows + ' new records')
+                },
+                error: function(error) {
+                    alert(error);
+                },
+                before: function() {
+
+                },
+                after: function() {
+
+                }
+            },
+            function(e) {}
+        );
+        return false;
+    };
+
+    self.save_photo = function() {
+        ajax.load_image(
+            new FormData(document.getElementById('formPhoto')),
+            {
+                success: function(data) {
+                    alert('image updated' + data)
+                },
+                error: function(error) {
+                    alert(error);
+                },
+                before: function() {
+
+                },
+                after: function() {
+
+                }
+            },
+            function(e) {}
+        );
+        return false;
+    };
+
     self.save_info = function() {
         var c = self.current_user();
         ajax.update_user_info({

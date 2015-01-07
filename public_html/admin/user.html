@@ -95,13 +95,13 @@
                     <tr>
                         <td class="text-align-center">
                             <span>(gif, png, jpg)</span>
-                            <input name="id"  type="hidden" value="" />
+                            <input name="id"  type="hidden" data-bind="id: id()" />
                             <input class="normal-line-hei" name="photo" type="file" />
                         </td>
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button type="button" data-bind="">upload</button>
+                    <button type="button" data-bind="click: $parent.save_photo">upload</button>
                     <button type="reset">clear</button>
                 </div>
                 </div>
@@ -112,14 +112,14 @@
                 <table >
                     <tr>
                         <td class="text-align-center">
-                            <input name="id" type="hidden" value="" />
+                            <input name="id" type="hidden" data-bind="value: id()" />
                             <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
                             <input class="normal-line-hei" name="data" type="file" />
                         </td>
                     </tr>
                 </table>
                 <div class="buttons">
-                    <button type="button">upload</button>
+                    <button type="button" data-bind="click: $parent.save_data">upload</button>
                     <button type="reset">clear</button>
                 </div>
                 </div>
