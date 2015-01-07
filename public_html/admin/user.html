@@ -18,7 +18,7 @@
             List User
             <!--/ko-->
             <!-- ko if: active_page() === 1 -->
-            <span data-bind="text:current_user().user_name()">Current user name</span>
+            <span data-bind="text:current_user().user_name">Current user name</span>
             <!--/ko-->
         </h1>
         <!-- ko if: active_page() === 1 -->
@@ -38,12 +38,12 @@
             <li>
                 <div class="info">
                     <div class="img-user">
-                        <img data-bind="attr: { src: photo() }" >
-                        <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id()"></span></a>
+                        <img data-bind="attr: { src: photo }" >
+                        <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
                     </div>
-                    <h2 data-bind="text: user_name()" >Bob Boons</h2>
-                    <span data-bind="text: city" class="city()"> Amsterdam</span>
-                    <p  data-bind="text: descr()">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
+                    <h2 data-bind="text: user_name" >Bob Boons</h2>
+                    <span data-bind="text: city" class="city"> Amsterdam</span>
+                    <p  data-bind="text: descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
                 </div>
                 <span data-bind="click: function() {$root.current_user($data);$root.active_page(1);}" class="edit">edit</span>
             </li>
@@ -64,19 +64,19 @@
                         <tr>
                             <td>name:</td>
                             <td>
-                                <input type="text" data-bind="value: user_name()" name="edit_name" />
+                                <input type="text" data-bind="value: user_name" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
                             <td>city:</td>
                             <td>
-                                <input type="text" data-bind="value: city()" name="edit_city" />
+                                <input type="text" data-bind="value: city" name="edit_city" />
                             </td>
                         </tr>
                         <tr>
                             <td>description:</td>
                             <td>
-                                <textarea data-bind="value: descr()"> </textarea>
+                                <textarea data-bind="value: descr"> </textarea>
                             </td>
                        </tr>
                     </table>
@@ -84,7 +84,7 @@
                         <button type="button" data-bind="click: $parent.save_info">save</button>
                         <button type="reset">reset</button>
                     </div>
-                    <span data-bind="text: $parent.curr_oper.info()"></span>
+                    <span data-bind="text: $parent.curr_oper.info"></span>
                 </div>
             <form id="formPhoto">
                 <h2 data-bind="animation:{}" id="edit2-click">edit  photo</h2>
@@ -93,7 +93,7 @@
                     <tr>
                         <td class="text-align-center">
                             <span>(gif, png, jpg)</span>
-                            <input name="id"  data-bind="value: id()" type="hidden" value="" />
+                            <input name="id"  data-bind="value: id" type="hidden" value="" />
                             <input class="normal-line-hei" name="photo" type="file" />
                         </td>
                     </tr>
@@ -111,7 +111,7 @@
                 <table >
                     <tr>
                         <td class="text-align-center">
-                            <input data-bind="value: id()" name="id" type="hidden" value="" />
+                            <input data-bind="value: id" name="id" type="hidden" />
                             <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
                             <input class="normal-line-hei" name="data" type="file" />
                         </td>
@@ -171,6 +171,7 @@
                 </div>
                 <!-- /ko -->
                 </form>
+            <!-- /ko -->
             <!-- /ko -->
         </div>
         <!-- /ko -->
