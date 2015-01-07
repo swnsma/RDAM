@@ -57,7 +57,7 @@
         <div class="edit-page">
 
             <!--ko with:current_user()-->
-
+            <form class="decoration-line" name="formname" action="">
                 <h2 data-bind="animation:{}" id="edit1-click">edit information about name, city, description</h2>
                 <div class="editer" id="edit1">
                     <table >
@@ -86,6 +86,8 @@
                     </div>
                     <span data-bind="text: $parent.curr_oper.info"></span>
                 </div>
+            </form>
+
             <form id="formPhoto" name="formPhoto">
                 <h2 data-bind="animation:{}" id="edit2-click">edit  photo</h2>
                 <div class="editer" id="edit2">
