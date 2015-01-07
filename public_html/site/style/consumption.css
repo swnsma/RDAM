@@ -23,7 +23,7 @@ label{
 .from-panel{
     width: 150px;
     display: table-cell;
-    height: 50px;
+    height: 55px;
     color: #4BB2C5;
 }
 .wrapper{
@@ -38,6 +38,7 @@ label{
 }
 .prod{
     margin-top: 30px;
+
 }
 .battery-rend
 {

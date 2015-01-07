@@ -10,39 +10,39 @@ ko.bindingHandlers.battery = {
         switch (value.type){
             case 'day':
                 incrementBattery=1;
-                zoom=0.85;
-                margin='70px';
+                zoom=0.90;
                 break;
             case 'week':
                 incrementBattery=2;
-                margin='50px';
-                zoom=0.92;
+                zoom=0.98;
                 break;
             case 'month':
                 incrementBattery=3;
-                zoom=1;
-                margin='30px';
+                zoom=1.05;
                 break;
         }
         $('#battery'+incrementBattery).remove();
-
-        var chart = $('<div>')
-            .appendTo(element)
-            .attr('id', 'battery'+incrementBattery);
-        $(element).parent()
-            .on('mouseover', function(){
-                viewModel.$root.changeTextData([data[1][1], data[0][1]])})
-            .on('mouseleave', function(){
-                viewModel.$root.changeTextData(['', ''])});
-        $(element).css('zoom',zoom);
-        $(element).css('marginTop',margin);
-        margin=(margin.slice(0, 2)-30)/2+'px';
-        console.log(margin);
-        $(element).css('margin-bottom',margin);
         var data = [
             ['Consumption', production],
             ['Taken from grid', takenFrom]
         ];
+        var chart = $('<div>')
+            .appendTo(element)
+            .attr('id', 'battery'+incrementBattery);
+        var showFromGrid=takenFrom;
+        var showFromPanel;
+
+        if(value.consumption<value.production){
+            showFromPanel=value.consumption;
+        }else{
+            showFromPanel=value.production;
+        }
+
+        $(element).parent()
+            .on('mouseover', function(){
+                viewModel.$root.changeTextData([showFromGrid, showFromPanel])})
+            .on('mouseleave', function(){
+                viewModel.$root.changeTextData(['', ''])});
         var plot1 = jQuery.jqplot(chart.attr('id'), [data],
             {
                 seriesColors: ["#4BB2C5", "#2d6a76"],
@@ -50,7 +50,7 @@ ko.bindingHandlers.battery = {
                 seriesDefaults: {
                     renderer: jQuery.jqplot.DonutRenderer,
                     rendererOptions: {
-                        diameter: 250,
+                        diameter: 250*zoom,
                         showDataLabels: true,
                         startAngle: -90,
                         shadowOffset: 0,

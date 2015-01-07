@@ -6,10 +6,11 @@ function Battery(consumption, production, date2, type,label) {
     this.type=type;
     this.label=label;
     if(production>consumption){
-        this.takenFrom=0
+        this.takenFrom=0;
+
     }
     else {
-        this.takenFrom = Math.round(consumption - production)
+        this.takenFrom = Math.round(consumption - production);
     }
 };
 
