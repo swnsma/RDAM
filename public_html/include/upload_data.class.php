@@ -57,7 +57,7 @@ HERE;
                 (readingid, toDT, production, consumption);
 HERE;
         $r = $this->values_db->query($request);
-        print_r($r->errorInfo());
+        print_r($this->values_db->errorInfo());
         if (!$r) return false;
 
         $request =<<<HERE
