@@ -14,7 +14,8 @@ class InfoPhoto {
         $result = $this->server_db->prepare('SELECT `photo` FROM `users` WHERE `id` = :id');
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         if ($result->execute() && $result->rowCount() > 0) {
-            return $result->fetchAll(PDO::FETCH_ASSOC)[0]['photo'];
+            $r = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $r[0]['photo'];
         }
         return false;
     }

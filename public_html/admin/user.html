@@ -86,14 +86,14 @@
                     </div>
                     <span data-bind="text: $parent.curr_oper.info"></span>
                 </div>
-            <form id="formPhoto">
+            <form id="formPhoto" name="formPhoto">
                 <h2 data-bind="animation:{}" id="edit2-click">edit  photo</h2>
                 <div class="editer" id="edit2">
                 <table >
                     <tr>
                         <td class="text-align-center">
                             <span>(gif, png, jpg)</span>
-                            <input name="id"  data-bind="value: id" type="hidden" value="" />
+                            <input name="id"  data-bind="value: id" type="hidden" />
                             <input class="normal-line-hei" name="photo" type="file" />
                         </td>
                     </tr>
