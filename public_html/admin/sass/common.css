@@ -1,3 +1,25 @@
+@charset "UTF-8";
+.buttons {
+  width: 100%;
+}
+.buttons button {
+  width: 49%;
+  cursor: pointer;
+  border: none;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #000;
+  background-color: #96c7f5;
+  outline: 1px solid #999999;
+  outline: none;
+  border-radius: 5px;
+}
+.buttons button:hover {
+  color: #fff;
+  background-color: #0c4880;
+}
+
 textarea {
   resize: none;
 }
@@ -29,10 +51,16 @@ header {
   height: 50px;
 }
 header .logo {
-  position: absolute;
-  left: 10px;
   color: #fff;
   line-height: 50px;
+}
+header .logo.left {
+  position: absolute;
+  left: 10px;
+}
+header .logo.right {
+  position: absolute;
+  right: 10px;
 }
 
 h1 {
@@ -44,6 +72,42 @@ h1 {
 h1 a {
   color: #fff;
   text-decoration: none;
+}
+
+.data-title {
+  position: relative;
+  display: inline-block;
+}
+.data-title:hover::after {
+  -moz-user-select: all;
+  -webkit-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+  min-width: 100px;
+  content: attr(data-title);
+  /* ╨Т╤Л╨▓╨╛╨┤╨╕╨╝ ╤В╨╡╨║╤Б╤В */
+  position: absolute;
+  /* ╨Р╨▒╤Б╨╛╨╗╤О╤В╨╜╨╛╨╡ ╨┐╨╛╨╖╨╕╤Ж╨╕╨╛╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ */
+  left: 100%;
+  /* ╨Я╨╛╨╗╨╛╨╢╨╡╨╜╨╕╨╡ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╨╕ */
+  top: 10px;
+  z-index: 1;
+  /* ╨Ю╤В╨╛╨▒╤А╨░╨╢╨░╨╡╨╝ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╤Г ╨┐╨╛╨▓╨╡╤А╤Е ╨┤╤А╤Г╨│╨╕╤Е ╤Н╨╗╨╡╨╝╨╡╨╜╤В╨╛╨▓ */
+  background: rgba(255, 255, 230, 0.9);
+  /* ╨Я╨╛╨╗╤Г╨┐╤А╨╛╨╖╤А╨░╤З╨╜╤Л╨╣ ╤Ж╨▓╨╡╤В ╤Д╨╛╨╜╨░ */
+  font-family: Arial, sans-serif;
+  /* ╨У╨░╤А╨╜╨╕╤В╤Г╤А╨░ ╤И╤А╨╕╤Д╤В╨░ */
+  font-size: 11px;
+  /* ╨а╨░╨╖╨╝╨╡╤А ╤В╨╡╨║╤Б╤В╨░ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╨╕ */
+  padding: 5px 10px;
+  /* ╨Я╨╛╨╗╤П */
+  border: 1px solid #0c4880;
+  /* ╨Я╨░╤А╨░╨╝╨╡╤В╤А╤Л ╤А╨░╨╝╨║╨╕ */
+  border-radius: 5px;
+}
+
+table {
+  border-spacing: 0px;
 }
 
 /*# sourceMappingURL=common.css.map */

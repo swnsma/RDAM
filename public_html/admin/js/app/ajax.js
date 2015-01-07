@@ -1,6 +1,6 @@
-//var url = 'http://rdam.loc:83/';
-//var url = 'http://rdam:10000/public_html/';
-var url = 'http://rdam.tk/';
+var url = 'http://rdam.loc:83/';
+var url = 'http://rdam:10000/public_html/';
+//var url = 'http://rdam.tk/';
 
 function Ajax() {}
 

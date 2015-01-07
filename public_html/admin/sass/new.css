@@ -1,32 +1,3 @@
-header {
-  position: relative;
-}
-header .logo {
-  position: absolute;
-  left: 10px;
-  color: #fff;
-  line-height: 50px;
-}
-
-.buttons {
-  width: 100%;
-}
-.buttons button {
-  width: 49%;
-  cursor: pointer;
-  border: none;
-  line-height: 20px;
-  font-weight: bold;
-  font-size: 1.3em;
-  color: #fff;
-  background-color: #96c7f5;
-  outline: 1px solid #999999;
-}
-.buttons button:hover {
-  background-color: #0c4880;
-  transition: 3s;
-}
-
 .width500px {
   width: 500px;
 }
@@ -51,6 +22,7 @@ form.form table tr td {
   padding: 10px 0;
 }
 form.form table tr td:first-child {
+  width: 30px;
   text-align: right;
   padding-right: 10px;
 }

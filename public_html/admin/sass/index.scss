@@ -7,6 +7,8 @@ $height300:100px;
 .wrapper{
   width: $width100;
   .block{
+    color: $color-black;
+    text-decoration: none;
     position: relative;
     height: $height300;
     width: $width300px;
@@ -26,15 +28,10 @@ $height300:100px;
       line-height: 30px;
       background-color: darken($color-white,5%);
       text-align: center;
+      height: 30px;
       cursor: pointer;
       color: $color-black;
       text-decoration: none;
-      &:hover{
-        background-color: $color-black;
-        color: $color-white;
-        transition: 1s;
-
-      }
     }
     &:first-child{
       margin-left: 0;
@@ -52,8 +49,12 @@ $height300:100px;
     &:hover{
       img{
        transform: scale(1.5,1.5);
-        transition: 3s;
+        transition: 2s;
         opacity: 1;
+      }
+      .more-info{
+        background-color: $color-black;
+//        transition: 1s;
       }
     }
   }

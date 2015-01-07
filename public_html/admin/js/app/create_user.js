@@ -43,6 +43,7 @@ function CreateUser() {
                                         },
                                         error: function(error) {
                                             self.curr_operation(error);
+                                            self.user_name.invalid(true);
                                         }
                                     });
                             } else {

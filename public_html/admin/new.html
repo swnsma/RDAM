@@ -9,29 +9,32 @@
 <body>
 <div class="content">
     <header>
-        <a class="logo" href="index.html">Back office</a>
+        <a class="logo left" href="index.html">Back office</a>
+        <a class="logo right" href="user.html">List users</a>
         <h1>
             Create new user
         </h1>
+
     </header>
     <div class="wrapper">
         <form name="form" action="" class="new-user form  width500px">
             <table>
                 <tr>
                     <td>Name:</td>
-                    <td>
-                        <input name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
+                    <td class="data-title" data-title="1-25 latin letters and unique name">
+
+                        <input  name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
                     </td>
                 </tr>
                 <tr>
                     <td>Description:</td>
-                    <td>
-                        <textarea placeholder="max 300 letters" data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
+                    <td class="data-title" data-title="max 1000 latin letters">
+                        <textarea  data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>City:</td>
-                    <td>
+                    <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
                         <input data-bind="value: city.text, attr: { invalid: city.invalid }" name="city" type="text" />
                     </td>
                 </tr>

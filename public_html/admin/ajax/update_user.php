@@ -14,17 +14,23 @@ if (isset($_POST['id'])) {
 
         if (isset($_POST['user_name'])) {
             $user_name = full_trim($_POST['user_name']);
-            if (!preg_match('/^[\p{L} \.\'\-]{1,25}$/', $user_name)) exit_ttwp();
+            $l = strlen($user_name);
+            if ($l < 1 || $l > 25) exit_ttwp();
+            //if (!preg_match('/^[\p{L}\d \.\'\-\:\,\.\?\!]{1,25}$/', $user_name)) exit_ttwp();
         }
 
         if (isset($_POST['city'])) {
             $city = full_trim($_POST['city']);
-            if (!preg_match('/^[\p{L} \-]{5,25}$/', $city)) exit_ttwp();
+            $l = strlen($city);
+            if ($l < 5 || $l > 25) exit_ttwp();
+            //if (!preg_match('/^[\p{L} \-]{5,25}$/', $city)) exit_ttwp();
         }
 
         if (isset($_POST['descr'])) {
             $descr = full_trim($_POST['descr']);
-            if (!preg_match('/^[\p{L} \(\)\'\"\d\-]{0,300}$/m', $descr)) exit_ttwp();
+            $l = strlen($descr);
+            if ($l > 1000) exit_ttwp();
+            //if (!preg_match('/^[\p{L} \(\)\'\"\d\-]{0,300}$/m', $descr)) exit_ttwp();
         }
 
         $user = new UpdateUser();

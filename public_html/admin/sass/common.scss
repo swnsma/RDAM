@@ -2,6 +2,27 @@ $width100: 100%;
 $height100: 100%;
 $color-black: #000;
 $color-white: #fff;
+$color-blue: #0c4880;
+.buttons{
+  width: 100%;
+  button{
+    width: 49%;
+    cursor: pointer;
+    border: none;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: $color-black;
+    background-color: lighten($color-blue,50%);
+    outline:1px solid darken($color-white,40%);
+    outline: none;
+    border-radius: 5px;
+    &:hover{
+      color: $color-white;
+      background-color: $color-blue;
+    }
+  }
+}
 textarea{
   resize: none;
 }
@@ -27,13 +48,19 @@ header{
   position: relative;
   height: 50px;
   .logo{
-    position: absolute;
-    left: 10px;
     color: $color-white;
     line-height: 50px;
+    &.left{
+      position: absolute;
+      left: 10px;
+    }
+    &.right{
+      position: absolute;
+      right: 10px;
+    }
   }
-
 }
+
 h1{
   text-align: center;
   margin: 0;
@@ -43,4 +70,31 @@ h1{
     color: $color-white;
     text-decoration: none;
   }
+}
+
+.data-title{
+  position: relative;
+  display: inline-block;
+
+  &:hover::after {
+    -moz-user-select: all;
+    -webkit-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    min-width: 100px;
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 100%; /* Положение подсказки */
+    top:10px;
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid $color-blue; /* Параметры рамки */
+    border-radius: 5px;
+  }
+}
+table{
+  border-spacing: 0px;
 }

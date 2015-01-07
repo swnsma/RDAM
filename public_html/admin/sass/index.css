@@ -2,6 +2,8 @@
   width: 100%;
 }
 .wrapper .block {
+  color: #000;
+  text-decoration: none;
   position: relative;
   height: 100px;
   width: 290px;
@@ -22,14 +24,10 @@
   line-height: 30px;
   background-color: #f2f2f2;
   text-align: center;
+  height: 30px;
   cursor: pointer;
   color: #000;
   text-decoration: none;
-}
-.wrapper .block .more-info:hover {
-  background-color: #000;
-  color: #fff;
-  transition: 1s;
 }
 .wrapper .block:first-child {
   margin-left: 0;
@@ -46,8 +44,11 @@
 }
 .wrapper .block:hover img {
   transform: scale(1.5, 1.5);
-  transition: 3s;
+  transition: 2s;
   opacity: 1;
+}
+.wrapper .block:hover .more-info {
+  background-color: #000;
 }
 .wrapper h2 {
   text-align: center;

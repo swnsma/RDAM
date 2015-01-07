@@ -2,6 +2,8 @@
 
 include_once  __DIR__ . '/connection.class.php';
 
+error_reporting(0);
+
 class Skin {
     private $error = null;
 
@@ -10,7 +12,7 @@ class Skin {
     }
 
     public function get_list_skins() {
-        $request = $this->server_db->query('SELECT `id`, `name`, `author`, `version`, `comment`, `active` FROM `templates`');
+        $request = $this->server_db->query('SELECT `id`, `name`, `author`, `version`, `comment`, `active`, `filename` FROM `templates`');
         if ($request) {
             return $request->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -21,7 +23,8 @@ class Skin {
         $r = $this->server_db->prepare('SELECT `filename` FROM `templates` WHERE `id` = :id');
         $r->bindParam(':id', $id, PDO::PARAM_INT);
         if ($r->execute() && $r->rowCount() === 1) {
-            return $r->fetchAll(PDO::FETCH_NUM)[0][0];
+            $r = $r->fetchAll(PDO::FETCH_ASSOC);
+            return $r;
         }
         return null;
     }
@@ -77,8 +80,8 @@ class Skin {
 
     private function current_skin() {
         $r = $this->server_db->query('SELECT `id` FROM `templates` WHERE `active` = 1');
-        if ($r && $r->rowCount() === 1) {
-            return $r->fetchAll(PDO::FETCH_NUM)[0][0];
+        if ($r) {
+            return $r->fetchAll();
         }
         return null;
     }
@@ -98,32 +101,40 @@ class Skin {
     }
 
     private function change_active_skin($from, $on) { //требует оптимизации, впрочем как и все
-        $r1 = $this->server_db->prepare('UPDATE `template` SET `active` = 1 WHERE `id`= :id');
-        $r2 = $this->server_db->prepare('UPDATE `template` SET `active` = 0 WHERE `id`= :id');
+        $r1 = $this->server_db->prepare('UPDATE `templates` SET `active` = 1 WHERE `id`= :id');
+        $r2 = $this->server_db->prepare('UPDATE `templates` SET `active` = 0 WHERE `id`= :id');
         $r1->bindParam(':id', $on, PDO::PARAM_INT);
-        $r1->bindParam(':id', $from, PDO::PARAM_INT);
+        $r2->bindParam(':id', $from, PDO::PARAM_INT);
         return $r1->execute()
             && $r1->rowCount() > 0
             && $r2->execute()
-            && $r2->execute();
+            && $r2->rowCount() > 0;
     }
 
     private function get_extension($filename) {
         return substr(strrchr($filename, '.'), 1);
     }
 
+    /*private function get_extension($filename) {
+        return substr($filename, strrpos($filename, '.') + 1);
+    }*/
+
     public function select_skin($id) {
         $this->server_db->beginTransaction();
         try {
             if (null !== $curr_id = $this->current_skin()) {
+                $curr_id = $curr_id[0]['id'];
                 if ($curr_id === $id) throw new RuntimeException('this template already active');
+
+                //print_r($curr_id);
 
                 if (null !== $filename = $this->get_filename($id)) {
                     $dir = '../../' . SITE_FOLDER;
                     $this->delete_dir($dir);
                     mkdir($dir);
                     //$filename = 'default.rar';
-                    $this->extract($filename, $dir);
+                    $this->change_active_skin($curr_id, $id);
+                    $this->extract($filename[0]['filename'], $dir);
                 } else {
                     throw new RuntimeException('it was not possible to obtain data on the requested template');
                 }
@@ -144,11 +155,15 @@ class Skin {
     }
 
     private function extract($filename, $dir) {
-        $ext = $this->get_extension($filename);
+        //$ext = $this->get_extension($filename);
+        $ext = 'rar';
+        //print $filename;
         $file = '../../' . SKINS_FOLDER . '/' . $filename;
+        //print $ext . 93489439439;
         if ($ext == 'rar' && ($rar_file = rar_open($file))) {
             $list = rar_list($rar_file);
             foreach($list as $file) {
+                //print $file;
                 $file->extract($dir);
             }
             rar_close($rar_file);
