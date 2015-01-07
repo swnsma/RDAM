@@ -45,7 +45,7 @@ function CreateUser() {
                                             self.curr_operation(error);
                                             self.user_name.invalid(true);
                                         }
-                                    });
+                                });
                             } else {
                                 self.curr_operation('this city isn\'t supported');
                             }

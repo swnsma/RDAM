@@ -1,10 +1,10 @@
 function AppViewModel() {
     var undefined_user = {
-        id: null,
-        user_name: null,
-        city: null,
-        descr: null,
-        photo: null
+        id: ko.observable(),
+        user_name: ko.observable(),
+        city: ko.observable(),
+        descr: ko.observable(),
+        photo: ko.observable()
     };
 
     var self = this;
@@ -13,18 +13,63 @@ function AppViewModel() {
     self.users = ko.observableArray([]);
     self.bd_type=ko.observable(0);
 
+    self.curr_oper = {
+        info: ko.observable('')
+    };
+
+    function find(id) {
+        var c = self.users();
+        for(var i in c) {
+            if (c[i].id() === id) return c[i];
+        }
+        return null;
+    }
+
+    self.save_info = function() {
+        var c = self.current_user();
+        ajax.update_user_info({
+            id: c.id(),
+            user_name: c.user_name(),
+            city: c.city(),
+            descr: self.current_user().descr()
+        }, {
+            before: function() {
+                self.curr_oper.info('the process of updating user');
+            },
+            after: function() {
+                self.curr_oper.info('');
+            },
+            success: function(data) {
+                console.log(data);
+                var cc = find(data.id);
+                if (cc !== null) {
+                    cc.city(data.city);
+                    cc.user_name(data.user);
+                    cc.descr(data.descr);
+                    self.current_user(cc);
+                    alert(132);
+                }
+            },
+            error: function(error) {
+                self.curr_oper.info(error);
+            }
+        });
+        self.curr_oper.info('');
+        return false;
+    }
+
 }
 
 function User(user){
-    this.id = user.id;
-    this.user_name = user.user;
-    this.city = user.city;
+    this.id = ko.observable(user.id);
+    this.user_name = ko.observable(user.user);
+    this.city = ko.observable(user.city);
     if (user.photo) {
-        this.photo = '../cdn/users/' + user.photo;
+        this.photo = ko.observable('../cdn/users/' + user.photo);
     } else {
-        this.photo = '../cdn/general/default_avatar.jpg';
+        this.photo = ko.observable('../cdn/general/default_avatar.jpg');
     }
-    this.descr = user.descr;
+    this.descr = ko.observable(user.descr);
 }
 
 ko.bindingHandlers.upload_users = {
