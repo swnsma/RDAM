@@ -8,7 +8,7 @@ function AppViewModel() {
     };
 
     var self = this;
-    self.current_user=ko.observable(undefined_user);
+    self.current_user = ko.observable(undefined_user);
     self.active_page = ko.observable(0);
     self.users = ko.observableArray([]);
     self.bd_type=ko.observable(0);

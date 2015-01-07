@@ -56,6 +56,7 @@
         <!-- ko if: active_page() === 1 -->
         <div class="edit-page">
             <!-- ko if: bd_type() === 0 -->
+            <!-- ko with: current_user() -->
             <form class="decoration-line" name="formname" action="">
                 <h2 data-bind="animation:{}" id="edit1-click">edit information about name, city, description</h2>
                 <div class="editer" id="edit1">
@@ -63,19 +64,19 @@
                     <tr>
                         <td>name:</td>
                         <td>
-                            <input type="text" name="edit_name" />
+                            <input type="text" data-bind="value: user_name" name="edit_name" />
                         </td>
                     </tr>
                     <tr>
                         <td>city:</td>
                         <td>
-                            <input type="text" name="edit_name" />
+                            <input type="text" data-bind="value: city" name="edit_city" />
                         </td>
                     </tr>
                     <tr>
                         <td>description:</td>
                         <td>
-                            <textarea> </textarea>
+                            <textarea data-bind="value: descr"> </textarea>
                         </td>
                     </tr>
                 </table>
@@ -175,6 +176,7 @@
                     </div>
                 </div>
             </form>
+            <!-- /ko -->
             <!-- /ko -->
         </div>
         <!-- /ko -->
