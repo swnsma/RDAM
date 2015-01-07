@@ -79,8 +79,10 @@ ko.bindingHandlers.upload_users = {
             var l = valueAccessor()().length;
             var id = 0;
             if (l != 0) {
-                id = valueAccessor()()[l-1].id;
+                id = valueAccessor()()[l-1].id();
+                debugger;
             }
+            debugger;
             ajax.get_users(id+1, {
                 success: function(data) {
                     if (data.length == 0) {
