@@ -26,6 +26,7 @@ function AppViewModel() {
     }
 
     self.save_data = function() {
+
         ajax.load_data(
             new FormData(document.getElementById('formData')),
             {
@@ -48,7 +49,12 @@ function AppViewModel() {
     };
 
     self.save_photo = function() {
+        debugger;
+        var a =new FormData(document.getElementById('formPhoto'));
+        var b = document.getElementsByName('id');
+        debugger;
         ajax.load_image(
+
             new FormData(document.getElementById('formPhoto')),
             {
                 success: function(data) {
