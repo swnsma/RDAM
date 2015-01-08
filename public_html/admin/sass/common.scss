@@ -2,7 +2,7 @@ $width100: 100%;
 $height100: 100%;
 $color-black: #000;
 $color-white: #fff;
-$color-blue: #0c4880;
+$color-orange: #fd9301;
 .buttons{
   width: 100%;
   button{
@@ -13,13 +13,12 @@ $color-blue: #0c4880;
     font-weight: bold;
     font-size: 1.3em;
     color: $color-black;
-    background-color: lighten($color-blue,50%);
-    outline:1px solid darken($color-white,40%);
+    background-color: lighten($color-orange,20%);
+    outline:1px solid darken($color-orange,40%);
     outline: none;
     border-radius: 5px;
     &:hover{
-      color: $color-white;
-      background-color: $color-blue;
+      background-color: $color-orange;
     }
   }
 }
@@ -54,11 +53,16 @@ header{
     top: 0;
     margin: 0;
     padding: 0;
+
     .menu-ico {
       vertical-align: middle;
       width: 30px;
       opacity: 0.5;
       margin: 0 10px;
+      &[active='true']{
+        opacity: 1;
+//        transform: scale(1.5,1.5);
+      }
       &:hover {
         opacity: 1;
         transform: scale(1.5,1.5);
@@ -98,7 +102,7 @@ h1{
     font-family: Arial, sans-serif; /* Гарнитура шрифта */
     font-size: 11px; /* Размер текста подсказки */
     padding: 5px 10px; /* Поля */
-    border: 1px solid $color-blue; /* Параметры рамки */
+    border: 1px solid $color-orange; /* Параметры рамки */
     border-radius: 5px;
   }
 }

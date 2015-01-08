@@ -160,7 +160,7 @@
 .edit-page .decoration-line tr td:last-child > textarea:focus, .edit-page .decoration-line tr td:last-child input:focus {
   outline: none;
   box-shadow: none;
-  border: 1px solid #0c4880;
+  border: 1px solid #fd9301;
 }
 
 .upload-users {

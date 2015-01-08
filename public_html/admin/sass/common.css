@@ -10,14 +10,13 @@
   font-weight: bold;
   font-size: 1.3em;
   color: #000;
-  background-color: #96c7f5;
-  outline: 1px solid #999999;
+  background-color: #febe66;
+  outline: 1px solid #321d00;
   outline: none;
   border-radius: 5px;
 }
 .buttons button:hover {
-  color: #fff;
-  background-color: #0c4880;
+  background-color: #fd9301;
 }
 
 textarea {
@@ -64,6 +63,9 @@ header menu .menu-ico {
   opacity: 0.5;
   margin: 0 10px;
 }
+header menu .menu-ico[active='true'] {
+  opacity: 1;
+}
 header menu .menu-ico:hover {
   opacity: 1;
   transform: scale(1.5, 1.5);
@@ -108,7 +110,7 @@ h1 a {
   /* ╨а╨░╨╖╨╝╨╡╤А ╤В╨╡╨║╤Б╤В╨░ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╨╕ */
   padding: 5px 10px;
   /* ╨Я╨╛╨╗╤П */
-  border: 1px solid #0c4880;
+  border: 1px solid #fd9301;
   /* ╨Я╨░╤А╨░╨╝╨╡╤В╤А╤Л ╤А╨░╨╝╨║╨╕ */
   border-radius: 5px;
 }

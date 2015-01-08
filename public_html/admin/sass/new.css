@@ -52,7 +52,7 @@ form.form table tr td:last-child > input:hover, form.form table tr td:last-child
 form.form table tr td:last-child > input:focus, form.form table tr td:last-child textarea:focus {
   outline: none;
   box-shadow: none;
-  border: 1px solid #0c4880;
+  border: 1px solid #fd9301;
 }
 
 /*# sourceMappingURL=new.css.map */

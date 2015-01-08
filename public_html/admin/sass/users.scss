@@ -5,7 +5,7 @@ $color-white: #fff;
 $width300px: 290px;
 $width500px: 500px;
 $height300:100px;
-
+$color-orange: #fd9301;
 
 .users{
   margin: 0;
@@ -176,7 +176,7 @@ $height300:100px;
             &:focus {
               outline: none;
               box-shadow: none;
-              border: 1px solid #0c4880;
+              border: 1px solid $color-orange;
             }
           }
         }
