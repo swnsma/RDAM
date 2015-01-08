@@ -49,13 +49,52 @@ function EditModel() {
         curr_oper.info.local.city('');
     }
 
-    self.custom_db = ko.observable({
-        port: null,
-        server: null,
-        user: null,
-        name: null,
-        pass: null
-    });
+    self.custom_db = ko.observable(new Db({
+        id: null,
+        db_port: null,
+        db_server: null,
+        db_user: null,
+        db_name: null,
+        db_pass: null
+    }));
+
+    self.set_auth = function() {
+        ajax.set_auth_db(self.custom_db(), {
+            success: function(data) {
+                alert('updated');
+            },
+            error: function(message) {
+                alert(message);
+            },
+            after: function() {
+
+            },
+            before: function() {
+
+            }
+        });
+    };
+
+    self.test_connection = function() {
+        ajax.test_conn(self.custom_db(), {
+            success: function(data) {
+                if (data.status == 'success') {
+                    alert('success');
+                } else {
+                    alert('failed');
+                }
+            },
+            error: function(message) {
+                alert(message);
+            },
+            after: function() {
+
+            },
+            before: function() {
+
+            }
+        });
+    };
 
     self.save_data = function() {
         ajax.load_data(
@@ -168,7 +207,22 @@ function EditModel() {
                 before: function() {
 
                 }
-            })
+            });
+            ajax.get_auth_db(id, {
+                success: function(data) {
+                    console.log(data[0]);
+                    self.custom_db(new Db(data[0]));
+                },
+                error: function(message) {
+
+                },
+                after: function() {
+
+                },
+                before: function() {
+
+                }
+            });
         }
     }
 
@@ -185,6 +239,15 @@ function User(user){
         this.photo = '../cdn/general/default_avatar.jpg';
     }
     this.descr = user.descr;
+}
+
+function Db(data) {
+    this.id = data.id;
+    this.port = data.db_port;
+    this.server = data.db_server;
+    this.user = data.db_user;
+    this.name = data.db_name;
+    this.pass = data.db_password;
 }
 
 ko.bindingHandlers.animation={

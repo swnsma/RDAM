@@ -2,6 +2,8 @@
 
 include_once __DIR__ . '/../../conf/conf.php';
 
+error_reporting(0);
+
 class Connection {
     function __construct() {}
 

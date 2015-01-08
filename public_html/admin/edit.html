@@ -99,54 +99,56 @@
                 </div>
             </form>
             <!-- /ko -->
+            <!-- /ko -->
 
-            <!-- ko if: $parent.bd_type() === 1 -->
+            <!-- ko if: bd_type() === 1 -->
             <form class="decoration-line" name="formname" action="">
                 <h2 data-bind="animation:{}" id="edit4-click">
                     custom DB settings
                 </h2>
                 <div id="edit4">
+                    <!-- ko with: custom_db() -->
                     <table>
                         <tr>
                             <td>server:</td>
                             <td>
-                                <input type="text" name="edit_name" />
+                                <input data-bind="value: server" type="text" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
                             <td>name:</td>
                             <td>
-                                <input type="text" name="edit_name" />
+                                <input data-bind="value: name" type="text" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
                             <td>user:</td>
                             <td>
-                                <input type="text" name="edit_name" />
+                                <input data-bind="value: user" type="text" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
                             <td>pass:</td>
                             <td>
-                                <input type="text" name="edit_name" />
+                                <input data-bind="value: pass" type="text" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
                             <td>port:</td>
                             <td>
-                                <input type="text" name="edit_name" />
+                                <input data-bind="value: port" type="text" name="edit_name" />
                             </td>
                         </tr>
 
                     </table>
+                    <!-- /ko -->
                     <div class="buttons">
-                        <button type="button" data-bind="">set auth</button>
-                        <button type="reset">test connection</button>
+                        <button type="button" data-bind="click: set_auth">set auth</button>
+                        <button type="button" data-bind="click: test_connection">test connection</button>
                     </div>
                 </div>
                 <!-- /ko -->
             </form>
-            <!-- /ko -->
             <!-- /ko -->
         </div>
         </div>

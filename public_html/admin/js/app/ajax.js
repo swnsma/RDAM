@@ -244,7 +244,7 @@ Ajax.prototype.set_auth_db = function(data, func) {
 Ajax.prototype.get_auth_db = function(id, func) {
     func = this._gen_func(func);
     $.ajax({
-        url: url + 'admin/ajax/set_auth_db.php',
+        url: url + 'admin/ajax/get_auth_db.php',
         type: 'GET',
         dataType: 'json',
         data: {
