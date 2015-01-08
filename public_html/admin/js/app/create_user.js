@@ -61,12 +61,15 @@ function CreateUser() {
                     });
 
                 } else {
+                    self.curr_operation.local.city('this is not vas');
                     self.city.invalid(true);
                 }
             } else {
+                self.curr_operation.local.description('this is not vas');
                 self.descr.invalid(true);
             }
         } else {
+            self.curr_operation.local.user_name('this is not vas');
             self.user_name.invalid(true);
         }
         return false;

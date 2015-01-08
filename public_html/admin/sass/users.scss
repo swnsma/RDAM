@@ -125,7 +125,7 @@ $height300:100px;
               line-height: normal;
               padding: 10px 0;
             }
-            > * {
+            > textarea,input {
               &.normal-line-hei{
                 line-height: normal;
                 width: auto;
@@ -151,7 +151,7 @@ $height300:100px;
           width: 10%;
         }
         &:last-child {
-          > * {
+          > textarea,input {
             line-height: 40px;
             width: 98%;
             padding: 0 1px;

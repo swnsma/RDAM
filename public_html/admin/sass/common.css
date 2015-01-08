@@ -111,6 +111,7 @@ table {
 }
 
 span.error {
+  margin-top: 5px;
   display: block;
   width: 100%;
   color: red;

@@ -116,13 +116,13 @@
   line-height: normal;
   padding: 10px 0;
 }
-.edit-page .editer table tr td:last-child > * {
+.edit-page .editer table tr td:last-child > textarea, .edit-page .editer table tr td:last-child input {
   line-height: 40px;
   width: 98%;
   padding: 0 1px;
   border-radius: 5px;
 }
-.edit-page .editer table tr td:last-child > *.normal-line-hei {
+.edit-page .editer table tr td:last-child > textarea.normal-line-hei, .edit-page .editer table tr td:last-child input.normal-line-hei {
   line-height: normal;
   width: auto;
   display: block;
@@ -135,18 +135,18 @@
 .edit-page .decoration-line tr td:first-child {
   width: 10%;
 }
-.edit-page .decoration-line tr td:last-child > * {
+.edit-page .decoration-line tr td:last-child > textarea, .edit-page .decoration-line tr td:last-child input {
   line-height: 40px;
   width: 98%;
   padding: 0 1px;
   border: 1px solid gray;
   border-radius: 5px;
 }
-.edit-page .decoration-line tr td:last-child > *:hover {
+.edit-page .decoration-line tr td:last-child > textarea:hover, .edit-page .decoration-line tr td:last-child input:hover {
   background-color: #e6e6e6;
   transition: 3s;
 }
-.edit-page .decoration-line tr td:last-child > *:focus {
+.edit-page .decoration-line tr td:last-child > textarea:focus, .edit-page .decoration-line tr td:last-child input:focus {
   outline: none;
   box-shadow: none;
   border: 1px solid #0c4880;
