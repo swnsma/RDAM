@@ -45,7 +45,7 @@
                         <tr>
                             <td>description:</td>
                             <td class="data-title" data-title="max 1000 letters">
-                                <textarea data-bind="value: descr,attr: { invalid: $root.valid.description }"> </textarea>
+                                <textarea id="textarea" data-bind="value: descr,attr: { invalid: $root.valid.description }"> </textarea>
                                 <span class="error" data-bind="text:$root.curr_oper.info.local.description"></span>
                             </td>
                         </tr>
@@ -114,7 +114,7 @@
                         <tr>
                             <td>server:</td>
                             <td>
-                                <input data-bind="value: custom_db()server" type="text" name="edit_name" />
+                                <input data-bind="value: server" type="text" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
