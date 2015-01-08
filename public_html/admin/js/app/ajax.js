@@ -1,4 +1,4 @@
-var url = 'http://rdam.loc:83/';
+//var url = 'http://rdam.loc:83/';
 var url = 'http://rdam:10000/public_html/';
 //var url = 'http://rdam.tk/';
 
@@ -295,6 +295,24 @@ Ajax.prototype.select_skin = function(id, func) {
         dataType: 'json',
         data: {
             id: id
+        },
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
+
+Ajax.prototype.get_user_info = function(id, func) {
+    func = this._gen_func(func);
+    $.ajax({
+        url: url + 'ajax/user_info.php',
+        type: 'GET',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: {
+            id: id,
+            fields: 'city,photo,descr'
         },
         beforeSend: func.before,
         complete: func.after,
