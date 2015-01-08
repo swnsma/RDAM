@@ -136,11 +136,17 @@
   width: 10%;
 }
 .edit-page .decoration-line tr td:last-child > textarea, .edit-page .decoration-line tr td:last-child input {
-  line-height: 40px;
   width: 98%;
-  padding: 0 1px;
+  width: 98%;
   border: 1px solid gray;
   border-radius: 5px;
+}
+.edit-page .decoration-line tr td:last-child > textarea:not(textarea), .edit-page .decoration-line tr td:last-child input:not(textarea) {
+  line-height: 40px;
+}
+.edit-page .decoration-line tr td:last-child > textarea:not(input), .edit-page .decoration-line tr td:last-child input:not(input) {
+  padding: 5px 1px;
+  height: 50px;
 }
 .edit-page .decoration-line tr td:last-child > textarea:hover, .edit-page .decoration-line tr td:last-child input:hover {
   background-color: #e6e6e6;

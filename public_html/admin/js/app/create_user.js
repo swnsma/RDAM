@@ -9,7 +9,18 @@ function CreateUser() {
     this.user_name = genField();
     this.city = genField();
     this.descr = genField();
+    function clear(some_t){
+        some_t.text('');
+        some_t.invalid(false);
+    }
+    this.clear = function(){
+        clear(self.user_name);
+        clear(self.city);
+        clear(self.descr);
+        clear_operation(self.curr_operation);
+        return false;
 
+    }
     var self = this;
     this.create = function() {
         var user_name = self.user_name.text();

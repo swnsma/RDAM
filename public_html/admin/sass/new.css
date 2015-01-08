@@ -34,11 +34,16 @@ form.form table tr td:last-child textarea {
   padding: 10px 0;
 }
 form.form table tr td:last-child > input, form.form table tr td:last-child textarea {
-  line-height: 40px;
   width: 98%;
-  padding: 0 1px;
   border: 1px solid gray;
   border-radius: 5px;
+}
+form.form table tr td:last-child > input:not(textarea), form.form table tr td:last-child textarea:not(textarea) {
+  line-height: 40px;
+}
+form.form table tr td:last-child > input:not(input), form.form table tr td:last-child textarea:not(input) {
+  padding: 5px 1px;
+  height: 50px;
 }
 form.form table tr td:last-child > input:hover, form.form table tr td:last-child textarea:hover {
   background-color: #e6e6e6;
