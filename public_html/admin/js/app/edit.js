@@ -32,15 +32,6 @@ function EditModel() {
         })
     };
 
-    function getUserDefined() {
-        var id = window.location.hash.substring(1);
-        if (id == parseInt(id)) {
-            return id;
-        } else {
-            return null;
-        }
-    }
-
     function genField() {
         return {
             text: ko.observable(''),
@@ -90,6 +81,7 @@ function EditModel() {
         ajax.set_auth_db(self.custom_db(), {
             success: function(data) {
                 alert('updated');
+                changePage('users', self.user().id);
             },
             error: function(message) {
                 alert(message);
@@ -129,7 +121,7 @@ function EditModel() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
-                    console.log(data);
+                    changePage('users', self.user().id);
                 },
                 error: function(error) {
                     alert(error);
@@ -151,7 +143,7 @@ function EditModel() {
             new FormData(document.getElementById('formPhoto')),
             {
                 success: function(data) {
-                    console.log(data);
+                    changePage('users', self.user().id);
                 },
                 error: function(error) {
                     alert(error);
@@ -207,6 +199,7 @@ function EditModel() {
             success: function(data) {
                 self.user(new User(data));
                 self.curr_oper.info.global('You are update this information!');
+                changePage('users', self.user().id);
             },
             error: function(error) {
                 self.curr_oper.info(error);
@@ -255,18 +248,6 @@ function EditModel() {
     }
 
     get_data(getUserDefined);
-}
-
-function User(user){
-    this.id = user.id;
-    this.user_name = user.user;
-    this.city = user.city;
-    if (user.photo) {
-        this.photo = '../cdn/users/' + user.photo;
-    } else {
-        this.photo = '../cdn/general/default_avatar.jpg';
-    }
-    this.descr = user.descr;
 }
 
 function Db(data) {

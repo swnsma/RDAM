@@ -18,15 +18,15 @@
     </header>
     <div class="wrapper">
         <ul data-bind="foreach: users" class="users">
-            <li>
+            <li data-bind="attr: {id: 'scroll' + id } ">
                 <div class="info">
                     <div class="img-user">
                         <img data-bind="attr: { src: photo }" />
                         <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
                     </div>
-                    <h2 data-bind="text: user_name" >Bob Boons</h2>
-                    <span data-bind="text: city" class="city"> Amsterdam</span>
-                    <p  data-bind="text: descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat in ex commodo, eget ornare nibh mollis. Maecenas faucibus ante enim, sed fringilla purus consequat accumsan. Pellentesque ut ligula odio. Donec ac faucibus massa. Etiam eget magna semper, varius turpis ac, fermentum metus.</p>
+                    <h2 data-bind="text: user_name" ></h2>
+                    <span data-bind="text: city" class="city"></span>
+                    <p  data-bind="text: descr"></p>
                 </div>
                 <a data-bind="attr: { href: 'edit.html#' + id }" class="edit">edit</a>
             </li>
@@ -38,6 +38,7 @@
 </div>
 <script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
 <script type='text/javascript' src='js/vendor/knockout-3.2.0.js'></script>
+<script type='text/javascript' src='js/app/common.js'></script>
 <script type='text/javascript' src='js/app/validator.js'></script>
 <script type='text/javascript' src='js/app/ajax.js'></script>
 <script type='text/javascript' src='js/app/users.js'></script>
