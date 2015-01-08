@@ -30,7 +30,7 @@
                     <table >
                         <tr>
                             <td>name:</td>
-                            <td class="data-title" data-title="1-25 letters and unique name">
+                            <td class="data-title" data-title="1-25 characters and unique name">
                                 <input type="text" data-bind="value: user_name,attr: { invalid: $root.valid.user_name }" name="edit_name" />
                                 <span class="error" data-bind="text:$root.curr_oper.info.local.user_name"></span>
                             </td>
@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             <td>description:</td>
-                            <td class="data-title" data-title="max 1000 letters">
+                            <td class="data-title" data-title="max 1000 characters">
                                 <textarea id="textarea" data-bind="value: descr,attr: { invalid: $root.valid.description }"> </textarea>
                                 <span class="error" data-bind="text:$root.curr_oper.info.local.description"></span>
                             </td>
@@ -52,7 +52,7 @@
                     </table>
                     <div class="buttons">
                         <button type="button" data-bind="click: $parent.save_info">save</button>
-                        <button type="reset">reset</button>
+                        <button type="reset">clear</button>
                     </div>
 
                 </div>
