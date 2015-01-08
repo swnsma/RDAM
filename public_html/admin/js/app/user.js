@@ -107,9 +107,9 @@ function AppViewModel() {
         self.valid.description(false);
         self.valid.user_name(false);
         var c = self.current_user();
-        if(!valid.user_name(c.descr)){
+        if(!valid.descr(c.descr)){
             self.curr_oper.info.global('Error');
-            self.curr_oper.info.local.description('this is not vas');
+            self.curr_oper.info.local.description('this is not val');
             self.valid.description(true);
             return false;
         }
