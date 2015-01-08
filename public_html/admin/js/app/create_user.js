@@ -26,11 +26,9 @@ function CreateUser() {
                     ajax.check_exists_city(city, {
                         before: function() {
                             self.curr_operation.global('check the relevance of the city');
-
                         },
                         success: function(status) {
                             if (status) {
-                                
                                 ajax.create_user({
                                         user_name: user_name,
                                         city: city,
@@ -40,8 +38,9 @@ function CreateUser() {
                                             self.curr_operation.global('the process of creating user');
                                         },
                                         success: function(data) {
-                                            alert(data);
-                                            self.curr_operation.global('You Create new User!')
+                                            self.curr_operation.global('You Create new User!');
+                                            var w = window.location;
+                                            w.replace(w.protocol + '//' + w.hostname + ':' + w.port + '/admin/edit.html#' + data.id);
                                         },
                                         error: function(error) {
                                             self.curr_operation.local.user_name('this name is not free');
