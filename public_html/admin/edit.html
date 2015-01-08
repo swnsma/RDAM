@@ -52,7 +52,7 @@
                     </table>
                     <div class="buttons">
                         <button type="button" data-bind="click: $parent.save_info">save</button>
-                        <button  type="reset">clear</button>
+                        <button type="reset">reset</button>
                     </div>
 
                 </div>
@@ -78,6 +78,8 @@
                 </div>
             </form>
 
+
+
             <form id="formData">
                 <h2 data-bind="animation:{}" id="edit3-click">add data(cvs)</h2>
                 <div class="editer" id="edit3">
@@ -97,19 +99,22 @@
                 </div>
             </form>
             <!-- /ko -->
+
+            <div id="edit4">
             <hr/>
+
 
             <form class="decoration-line" name="formname" action="">
                 <h3 class="db-setting">
                     custom DB settings
                 </h3>
-                <div id="edit4">
+                <div>
                     <!-- ko with: custom_db() -->
                     <table>
                         <tr>
                             <td>server:</td>
                             <td>
-                                <input data-bind="value: server" type="text" name="edit_name" />
+                                <input data-bind="value: custom_db()server" type="text" name="edit_name" />
                             </td>
                         </tr>
                         <tr>
@@ -148,8 +153,8 @@
                         <label><input data-bind="click: function() { change_db_type(0); }" type="radio" name="r" />RTE db</label>
                     </form>
                 </div>
-                <!-- /ko -->
             </form>
+            </div>
 
         </div>
         </div>
