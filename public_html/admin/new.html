@@ -9,8 +9,11 @@
 <body>
 <div class="content">
     <header>
-        <a class="logo left" href="index.html">Back office</a>
-        <a class="logo right" href="user.html">List users</a>
+        <menu>
+            <a  href="index.html"><img class="menu-ico" src="img/ios7-home-white.png"></a>
+            <a  href="users.html"><img class="menu-ico" src="img/person-stalker-white.png"></a>
+            <a  href="design.html"><img class="menu-ico" src="img/ios7-photos-white.png"></a>
+        </menu>
         <h1>
             Create new user
         </h1>
@@ -45,7 +48,7 @@
             </table>
             <div class="buttons">
                 <button data-bind="click: create" type="submit">Create</button>
-                <button  type="reset">reset</button>
+                <button data-bind="click: clear"  type="reset">Clear</button>
             </div>
             <div class="curr_oper">
                 <span class="error" data-bind="text: curr_operation.global"></span>

@@ -46,17 +46,24 @@ header{
   background: $color-black;
   color: $color-white;
   position: relative;
-  height: 50px;
-  .logo{
-    color: $color-white;
+  min-height: 50px;
+  menu{
+    position: absolute;
     line-height: 50px;
-    &.left{
-      position: absolute;
-      left: 10px;
-    }
-    &.right{
-      position: absolute;
-      right: 10px;
+    left: 10px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    .menu-ico {
+      vertical-align: middle;
+      width: 30px;
+      opacity: 0.5;
+      margin: 0 10px;
+      &:hover {
+        opacity: 1;
+        transform: scale(1.5,1.5);
+        transition: 0.5s;
+      }
     }
   }
 }

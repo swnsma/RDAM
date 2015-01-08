@@ -48,19 +48,26 @@ header {
   background: #000;
   color: #fff;
   position: relative;
-  height: 50px;
+  min-height: 50px;
 }
-header .logo {
-  color: #fff;
+header menu {
+  position: absolute;
   line-height: 50px;
-}
-header .logo.left {
-  position: absolute;
   left: 10px;
+  top: 0;
+  margin: 0;
+  padding: 0;
 }
-header .logo.right {
-  position: absolute;
-  right: 10px;
+header menu .menu-ico {
+  vertical-align: middle;
+  width: 30px;
+  opacity: 0.5;
+  margin: 0 10px;
+}
+header menu .menu-ico:hover {
+  opacity: 1;
+  transform: scale(1.5, 1.5);
+  transition: 0.5s;
 }
 
 h1 {

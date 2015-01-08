@@ -40,9 +40,14 @@ form.form{
             padding: 10px 0;
           }
           >input, textarea{
-            line-height: 40px;
+            &:not(textarea) {
+              line-height: 40px;
+            }
             width: 98%;
-            padding: 0 1px;
+            &:not(input) {
+              padding: 5px 1px;
+              height: 50px;
+            }
             border: 1px solid darken($color-white,50%);
             border-radius: 5px;
             &:hover{
