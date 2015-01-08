@@ -107,7 +107,7 @@ function EditModel() {
         self.valid.description(false);
         self.valid.user_name(false);
         var c = self.user();
-        if(!valid.user_name(c.descr)){
+        if(!valid.descr(c.descr)){
             self.curr_oper.info.global('Error');
             self.curr_oper.info.local.description('this is not vas');
             self.valid.description(true);
