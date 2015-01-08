@@ -71,15 +71,15 @@ function CreateUser() {
                     });
 
                 } else {
-                    self.curr_operation.local.city('this is not vas');
+                    self.curr_operation.local.city('this is not val');
                     self.city.invalid(true);
                 }
             } else {
-                self.curr_operation.local.description('this is not vas');
+                self.curr_operation.local.description('this is not val');
                 self.descr.invalid(true);
             }
         } else {
-            self.curr_operation.local.user_name('this is not vas');
+            self.curr_operation.local.user_name('this is not val');
             self.user_name.invalid(true);
         }
         return false;

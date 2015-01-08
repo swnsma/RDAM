@@ -63,6 +63,13 @@ function EditModel() {
             }
         }
     };
+
+//    self.clear_form = function(){
+//        self.user.user_name(null);
+//        self.user.city(null);
+//        self.user.descr(null);
+//        return false;
+//    }
     function clear_curr_oper(curr_oper){
         curr_oper.info.global('');
         curr_oper.info.local.user_name('');
@@ -169,19 +176,19 @@ function EditModel() {
         var c = self.user();
         if(!valid.descr(c.descr)){
             self.curr_oper.info.global('Error');
-            self.curr_oper.info.local.description('this is not vas');
+            self.curr_oper.info.local.description('this is not val');
             self.valid.description(true);
             return false;
         }
         if(!valid.user_name(c.user_name)){
             self.curr_oper.info.global('Error');
-            self.curr_oper.info.local.user_name('this is not vas');
+            self.curr_oper.info.local.user_name('this is not val');
             self.valid.user_name(true);
             return false;
         }
         if(!valid.city(c.city)){
             self.curr_oper.info.global('Error');
-            self.curr_oper.info.local.city('this is not vas');
+            self.curr_oper.info.local.city('this is not val');
             self.valid.city(true);
             return false;
         }
@@ -199,7 +206,7 @@ function EditModel() {
             },
             success: function(data) {
                 self.user(new User(data));
-                self.curr_oper.info.global('You are updates this information!');
+                self.curr_oper.info.global('You are update this information!');
             },
             error: function(error) {
                 self.curr_oper.info(error);

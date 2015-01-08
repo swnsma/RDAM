@@ -16,16 +16,9 @@
             <a  href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
         </menu>
         <h1>
-            <span data-bind="text: user.user_name">Current user name</span>
+            <span data-bind="text: user().user_name">Current user name</span>
         </h1>
-        <form class="type-db">
-            <label data-bind="click: function() { bd_type(0); return true; }">
-                <input checked type="radio" name="radio" value="0">Our DB
-            </label>
-            <label data-bind="click: function() { bd_type(1); return true; }">
-                <input type="radio" name="radio" value="0">Custom DB
-            </label>
-        </form>
+
     </header>
     <div class="wrapper">
         <div class="edit-page">
@@ -59,7 +52,7 @@
                     </table>
                     <div class="buttons">
                         <button type="button" data-bind="click: $parent.save_info">save</button>
-                        <button type="reset">reset</button>
+                        <button  type="reset">clear</button>
                     </div>
 
                 </div>
@@ -84,7 +77,7 @@
                     </div>
                 </div>
             </form>
-            <!-- ko if: $parent.bd_type() === 0 -->
+
             <form id="formData">
                 <h2 data-bind="animation:{}" id="edit3-click">add data(cvs)</h2>
                 <div class="editer" id="edit3">
@@ -104,13 +97,12 @@
                 </div>
             </form>
             <!-- /ko -->
-            <!-- /ko -->
+            <hr/>
 
-            <!-- ko if: bd_type() === 1 -->
             <form class="decoration-line" name="formname" action="">
-                <h2 data-bind="animation:{}" id="edit4-click">
+                <h3 class="db-setting">
                     custom DB settings
-                </h2>
+                </h3>
                 <div id="edit4">
                     <!-- ko with: custom_db() -->
                     <table>
@@ -158,7 +150,7 @@
                 </div>
                 <!-- /ko -->
             </form>
-            <!-- /ko -->
+
         </div>
         </div>
     </div>
