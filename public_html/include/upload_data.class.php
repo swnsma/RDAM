@@ -28,6 +28,7 @@ class SaveData {
         $request =<<<HERE
             DROP TABLE IF EXISTS `$temp_name`;
 HERE;
+
         if (!$this->values_db->query($request)) return false;
 
         $request =<<<HERE
@@ -40,7 +41,6 @@ HERE;
 HERE;
 
         if (!$this->values_db->query($request)) return false;
-
         $file = str_replace('\\', '\\\\', $file);
 
         $ignore = '';

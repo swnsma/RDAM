@@ -15,7 +15,7 @@ function CreateUser() {
         var user_name = self.user_name.text();
         var city = self.city.text();
         var descr = self.descr.text();
-
+        clear_operation(self.curr_operation);
         if (valid.user_name(user_name)) {
             self.user_name.invalid(false);
             if (valid.descr(descr)) {
@@ -25,7 +25,8 @@ function CreateUser() {
 
                     ajax.check_exists_city(city, {
                         before: function() {
-                            self.curr_operation('check the relevance of the city');
+                            self.curr_operation.global('check the relevance of the city');
+
                         },
                         success: function(status) {
                             if (status) {
@@ -36,38 +37,57 @@ function CreateUser() {
                                         descr: descr
                                     }, {
                                         before: function() {
-                                            self.curr_operation('the process of creating user');
+                                            self.curr_operation.global('the process of creating user');
                                         },
                                         success: function(data) {
-
+                                            alert(data);
+                                            self.curr_operation.global('You Create new User!')
                                         },
                                         error: function(error) {
-                                            self.curr_operation(error);
+                                            self.curr_operation.local.user_name('this name is not free');
                                             self.user_name.invalid(true);
+                                            self.curr_operation.global('Error');
                                         }
-                                    });
+                                });
                             } else {
-                                self.curr_operation('this city isn\'t supported');
+                                self.curr_operation.local.city('this city isn\'t supported');
+                                self.curr_operation.global('Error');
                             }
                         },
                         error: function(error) {
-                            self.curr_operation('can\'t get the data. try again later');
+                            self.curr_operation.global('can\'t get the data. try again later');
+                            self.curr_operation.global('Error');
                         }
                     });
 
                 } else {
+                    self.curr_operation.local.city('this is not vas');
                     self.city.invalid(true);
                 }
             } else {
+                self.curr_operation.local.description('this is not vas');
                 self.descr.invalid(true);
             }
         } else {
+            self.curr_operation.local.user_name('this is not vas');
             self.user_name.invalid(true);
         }
         return false;
     };
-
-    this.curr_operation = ko.observable('');
+    this.curr_operation = {
+        global:ko.observable(''),
+        local: {
+            user_name: ko.observable(''),
+            city: ko.observable(''),
+            description: ko.observable('')
+        }
+    };
+    function clear_operation(some_op){
+        some_op.global('');
+        some_op.local.user_name('');
+        some_op.local.city('');
+        some_op.local.description('');
+    }
 }
 
 $(document).ready(function() {
