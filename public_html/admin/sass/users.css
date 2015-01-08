@@ -105,8 +105,11 @@
   width: 100%;
 }
 .edit-page .editer table tr td {
-  vertical-align: top;
   padding: 10px 0;
+}
+.edit-page .editer table tr td #textarea {
+  line-height: normal;
+  height: 40px;
 }
 .edit-page .editer table tr td:first-child {
   padding-right: 10px;

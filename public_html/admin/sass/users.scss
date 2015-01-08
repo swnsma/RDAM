@@ -116,7 +116,10 @@ $height300:100px;
 
       tr {
         td {
-          vertical-align: top;
+          #textarea{
+            line-height: normal;
+            height: 40px;
+          }
           padding: 10px 0;
           &:first-child {
             padding-right: 10px;
@@ -128,7 +131,6 @@ $height300:100px;
               padding: 10px 0;
             }
             > textarea,input {
-
               &.normal-line-hei{
                 line-height: normal;
                 width: auto;
