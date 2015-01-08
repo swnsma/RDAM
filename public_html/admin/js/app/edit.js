@@ -151,13 +151,12 @@ function EditModel() {
 
 
 
-    (function(id) {
+    function get_data(id) {
         if (id == null) {
             alert('undefined user');
         } else {
             ajax.get_user_info(id, {
                 success: function(data) {
-                    console.log(data[0]);
                     self.user(new User(data[0]));
                 },
                 error: function(message) {
@@ -171,9 +170,9 @@ function EditModel() {
                 }
             })
         }
-    })(getUserDefined());
+    }
 
-    console.log(1234);
+    get_data(getUserDefined);
 }
 
 function User(user){
