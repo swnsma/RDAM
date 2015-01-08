@@ -11,6 +11,27 @@ function EditModel() {
 
     self.bd_type=ko.observable(0);
 
+    self.change_db_type = function(type) {
+        ajax.select_type_db({
+            id: self.user().id,
+            type: type
+        }, {
+            success: function(data) {
+                console.log(data);
+                alert('type changed')
+            },
+            error: function(message) {
+                alert(message);
+            },
+            after: function() {
+
+            },
+            before: function() {
+
+            }
+        })
+    };
+
     function getUserDefined() {
         var id = window.location.hash.substring(1);
         if (id == parseInt(id)) {

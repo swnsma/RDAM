@@ -151,6 +151,10 @@
                         <button type="button" data-bind="click: set_auth">set auth</button>
                         <button type="button" data-bind="click: test_connection">test connection</button>
                     </div>
+                    <form>
+                        <label><input data-bind="click: function() { change_db_type(1); }" type="radio" name="r" />our db</label>
+                        <label><input data-bind="click: function() { change_db_type(0); }" type="radio" name="r" />RTE db</label>
+                    </form>
                 </div>
                 <!-- /ko -->
             </form>
