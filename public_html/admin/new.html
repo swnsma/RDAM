@@ -24,7 +24,7 @@
             <table>
                 <tr>
                     <td>Name:</td>
-                    <td class="data-title" data-title="1-25 letters and unique name">
+                    <td class="data-title" data-title="1-25 characters and unique name">
 
                         <input  name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
                         <span class="error" data-bind="text:curr_operation.local.user_name"></span>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>Description:</td>
-                    <td class="data-title" data-title="max 1000 letters">
+                    <td class="data-title" data-title="max 1000 characters">
                         <textarea  data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
                         <span class="error" data-bind="text:curr_operation.local.description"></span>
                     </td>
