@@ -1,0 +1,11 @@
+Options All -Indexes
+Options +FollowSymLinks
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?rdam:10000$
+RewriteCond %{REQUEST_URI} !^/public_html/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /site/$1
+RewriteCond %{HTTP_HOST} ^(www.)?rdam:10000$
+RewriteRule ^(/)?$ public_html/site/homepage.html [L]
