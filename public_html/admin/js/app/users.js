@@ -1,15 +1,3 @@
-function User(user){
-    this.id = user.id;
-    this.user_name = user.user;
-    this.city = user.city;
-    if (user.photo) {
-        this.photo = '../cdn/users/' + user.photo;
-    } else {
-        this.photo = '../cdn/general/default_avatar.jpg';
-    }
-    this.descr = user.descr;
-}
-
 function UsersModel() {
     self.users = ko.observableArray([]);
 }
@@ -31,6 +19,12 @@ ko.bindingHandlers.upload_users = {
                     } else {
                         for(var i in data) {
                             valueAccessor().push(new User(data[i]));
+                        }
+                        var id = getUserDefined();
+                        if (id !== null) {
+                            $(document.body).animate({
+                                'scrollTop':   $('#scroll' + id).offset().top
+                            }, 2000);
                         }
                     }
                 },

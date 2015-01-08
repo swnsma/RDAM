@@ -50,8 +50,7 @@ function CreateUser() {
                                         },
                                         success: function(data) {
                                             self.curr_operation.global('You Create new User!');
-                                            var w = window.location;
-                                            w.replace(w.protocol + '//' + w.hostname + ':' + w.port + '/admin/edit.html#' + data.id);
+                                            changePage('edit', data.id);
                                         },
                                         error: function(error) {
                                             self.curr_operation.local.user_name('this name is not free');
