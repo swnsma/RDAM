@@ -23,7 +23,8 @@ ko.bindingHandlers.upload_users = {
             if (l != 0) {
                 id = valueAccessor()()[l-1].id;
             }
-            ajax.get_users(id+1, {
+
+            ajax.get_users(+id+1, {
                 success: function(data) {
                     if (data.length == 0) {
                         element.remove();
