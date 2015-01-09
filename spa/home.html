@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RTE</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/chart.css">
+    <link rel="stylesheet" href="styles/weather.css">
+    <link rel="stylesheet" href="styles/compare.css">
+    <link rel="stylesheet" href="styles/jquery.jqplot.css">
+
+</head>
+<body>
+        <!--MENU-->
+    <div class="container-menu content">
+        <div class="pure-g cont ">
+            <div class="pure-u-1-1 table">
+            <div class="row">
+                <div class="link cell" tab="home">
+                    <i class="fa fa-home fa-2x"></i>Home
+                </div>
+                <div class="link cell" tab="score">
+                    <i class="fa fa-pie-chart fa-2x"></i>Score
+                </div>
+                <div class="link cell" tab="weather-list">
+                    <i class="fa fa-cloud fa-2x"></i><span>Weather</span>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <!--TAB HOME-->
+    <div id="home" class="tab active-tab">
+        <div class="content">
+            <div class="pure-g">
+                <div class="pure-u-1-1 grid-header-parent">
+                    <h2 data-bind="text:userName" class="grid-header">About this user</h2>
+                </div>
+                <div class="pure-u-3-4 about-user ">
+
+                    <p data-bind="text: desc"> </p>
+                </div>
+                <div class="pure-u-1-4 avatar">
+                    <img class="avatar-img" src="http://www.carbonculture.net/uploads/cache/4a/8f/4a8f2ae6e493204a1764fa00c8287a22.png"/>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1-1 grid-header-parent">
+                    <h2 class="grid-header">Production and Consumption</h2>
+                </div>
+                        <div class="pure-u-1-4 ">
+                            <div class="table-metrics">
+                            <div class="row-metrics">
+                                <div class="column-metrics">
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                         <div class=" pure-u-1-1 value">
+                                            <span id="vac" data-bind="text:sumVac"></span>
+                                             <p>vacuum cleaning</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                            <span>
+                                            You can spend this energy by doing vacuum cleaning during
+                                            </span>
+                                            <span id="vacV" data-bind="text:sumVac"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="co2" data-bind="text: sumC"></span>
+                                            <p>avoided CO<sub>2</sub></p>
+                                        </div>
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                            <span>Normal production of this amount of energy will cause emission of</span>
+                                            <span id="co2v" data-bind="text: sumC"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="car" data-bind="text: sumCar"></span>
+                                            <p>driving</p>
+                                        </div>
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                             <span>
+                                            Driving
+                                            </span>
+                                                        <span id="carV" data-bind="text:sumCar"></span>
+                                            <span>
+                                            in an average passenger vehicle will cause the same CO<sub>2</sub> emission
+                                            </span>
+                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="trees" data-bind="text: sumTrees"></span>
+                                        </div>
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                            <span>
+                                            This amount of CO<sub>2</sub> can be sequestered by
+                                            </span>
+                                            <span id="treesV" data-bind="text: sumTrees"></span>
+                                            <span> during 10 year period</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                             </div>
+                        </div>
+                         </div>
+
+
+                        <div class="pure-u-3-4 chart" >
+                            <div  class="graph-container">
+                                <div id="chart_home" data-bind="showGraph:{}" class="chart"> </div>
+                                <div class="button-table" >
+                                     <div class="button-row" data-bind="foreach: buttons">
+                                        <div data-bind="click:$root.changeData, text:$data" class="period"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+
+            <div class="pure-g">
+                <div class="pure-u-1-4">Description diagram</div>
+                <div class="pure-u-3-4">
+                    <img class="pie-chart" src="http://www.farshadoo.com/p/diagram-ring/images/diagram-sample5.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--TAB SCORE-->
+    <div id="score" class="tab">
+        <div class="content">
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+
+        <div id="data">
+            <div class="compare">
+                <h2>
+                    <span>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        Compare
+                    </span>
+                    <button class="button float-right" data-bind="click:change,visible:$root.thisGraph()!=2">Line/Bar</button>
+                    <button class="button float-right" data-bind="click:changeAppearance">Cons/Prod</button>
+                </h2>
+                <div class="table margin5px width99p">
+                    <div class="compare-float-right">
+                        <form action="">
+                            <p data-bind="message: 4-return_active_user().length">you have reached maximum quantity of users</p>
+                            <div id="list" data-bind="add_data:{active_user: return_active_user()}" class="list">
+                                <div class="selected_users">
+                                    <span data-bind="text:current_user().name" class="this user">this</span>
+                                    <ul data-bind="foreach: return_active_user_lower_current(),active_us: return_active_user()">
+                                        <li class="user" data-bind=" style:{backgroundColor: color }, click: $root.set_active">
+                                            <label >
+                                                <input class="check-box" data-bind="id:name,value:name, checked: $root.return_checked()" type="checkbox"/>
+                                                <span data-bind="text:name()"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input data-bind="value: search_text,valueUpdate:'afterkeydown'" type="text" placeholder="search"/>
+                                <ul data-bind=" foreach: return_no_active_search()">
+                                    <li class="user" data-bind="click: $root.set_active">
+                                        <label>
+                                            <input data-bind="id:name,value:name, checked:$root.return_checked()  " type="checkbox"/>
+                                            <span data-bind="text:name"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="compare-float-center">
+                        <div class="time" data-bind="text: diapason">111</div>
+                        <div class="compare-graph">
+                            <div id="chart_score"> </div>
+                            <div class="table width99p" data-bind="foreach: buttons">
+                                <div data-bind="click:$root.changeData,text:$data" class="period"></div>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <h3>Statistics for <span data-bind="text: selectedDate"></span></h3>
+                            <div class="table">
+                                <div class="head-row">
+                                    <div class="cell name">
+                                        User
+                                    </div>
+                                    <div class="cell consumption" data-bind="click:sortAddInfoConsumption">
+                                        Consumption
+                                        <img src="img/icons/sort-down.png" data-bind="style: {visibility: sortedByConsumption() ? 'visible' : 'hidden'}">
+                                    </div>
+                                    <div class="cell production"  data-bind="click:sortAddInfoProduction">
+                                        Production
+                                        <img src="img/icons/sort-up.png" data-bind="style: {visibility: sortedByProduction() ? 'visible' : 'hidden'}">
+                                    </div>
+                                    <div class="cell achievement">
+                                        Achievement
+                                    </div>
+                                </div>
+                                <!-- ko foreach: addInfo -->
+                                <div class="row">
+                                    <div class="cell name" data-bind="text: name">
+                                        User
+                                    </div>
+                                    <div class="cell consumption" data-bind="text: consumption">
+                                        Consumption
+                                    </div>
+                                    <div class="cell production" data-bind="text: production">
+                                        Production
+                                    </div>
+                                    <div class="cell achievement" data-bind="text: achievement">
+                                        Achievement
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+       </div>
+      </div>
+     </div>
+    </div>
+        <!--TAB WEATHER-->
+    <div id="weather-list" class="tab">
+        <div class="content">
+            <div class="pure-g">
+            <div class="pure-u-1-1" >
+                <div class="weather-city">Weather in <span data-bind="text: city"></span></div>
+                <div class="both-fix"></div>
+                <ul class="weather-list" data-bind="foreach: weather_days">
+                    <li data-bind="click: function() { $parent.renderMoreInfo($index()); }, attr: { selected: active }">
+                        <div class="wdate">
+                            <!-- ko with: date -->
+                            <span class="wname" data-bind="text: day_name"></span>
+                            <span class="wday" data-bind="text: day, css: { is_day_off: is_day_off }"></span>
+                            <span class="wname" data-bind="text: month_name"></span>
+                            <!-- /ko -->
+                        </div>
+                        <div class="wimg">
+                            <img src="" data-bind="attr: { src: weatherIconUrl }" alt="" />
+                        </div>
+                        <span class="wdesc" data-bind="text: weatherDesc"></span>
+                        <div class="wtemp">
+                            <span data-bind="text: maxnimtemp.mintempC"></span> -
+                            <span data-bind="text: maxnimtemp.maxtempC"></span> &deg;C
+                        </div>
+                    </li>
+                </ul>
+                <div class="wmore-info">
+                    <!-- ko with: weather_days_mi -->
+                    <div class="wm">
+                        <div class="temp-grad">
+                            <div class="btemp-img"><img src="img/temp.png" alt="" /></div>
+                        </div>
+                        <div class="temp-value">
+                            <span class="curr-temp-value" data-bind="text: tempC"></span> &deg;C
+                        </div>
+                        <div class="sun">
+                            <div class="sun-hours">
+                                The sun will shine <span data-bind="text: sun().hours"></span>
+                            </div>
+                            <div class="sun-hours-detail">
+                                <div class="sun-field">Moonrise <span data-bind="text: sun().moonrise"></span></div>
+                                <div class="sun-field">Moonset <span data-bind="text: sun().moonset"></span></div>
+                                <div class="sun-field">Sunrise <span data-bind="text: sun().sunrise"></span></div>
+                                <div class="sun-field">Sunset <span data-bind="text: sun().sunset"></span></div>
+                            </div>
+                        </div>
+                        <div class="table-hourly-right">
+                            <table class="hourly">
+                                <tr>
+                                    <th></th>
+                                    <th colspan="2">Night</th>
+                                    <th colspan="2">Morning</th>
+                                    <th colspan="2">Day</th>
+                                    <th colspan="2">Evening</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>2:00</th>
+                                    <th>5:00</th>
+                                    <th>8:00</th>
+                                    <th>11:00</th>
+                                    <th>14:00</th>
+                                    <th>17:00</th>
+                                    <th>20:00</th>
+                                    <th>23:00</th>
+                                </tr>
+                                <tr>
+                                    <td>temperature (&deg;C)</td>
+                                    <!-- ko foreach: hourly -->
+                                    <td data-bind="text: tempC"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td>humidity</td>
+                                    <!-- ko foreach: hourly -->
+                                    <td data-bind="text: humidity"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td>precip (mm)</td>
+                                    <!-- ko foreach: hourly -->
+                                    <td data-bind="text: precipMM"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td>pressure</td>
+                                    <!-- ko foreach: hourly -->
+                                    <td data-bind="text: pressure"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td>wind degree</td>
+                                    <!-- ko foreach: hourly -->
+                                    <td data-bind="text: winddirDegree"></td>
+                                    <!-- /ko -->
+                                </tr>
+                                <tr>
+                                    <td>wind speed (miles)</td>
+                                    <!-- ko foreach: hourly -->
+                                    <td data-bind="text: windspeedMiles"></td>
+                                    <!-- /ko -->
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="js/vendor/knockout-3.2.0.js"></script>
+
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
+
+<script src="js/app/common/get_values.js"></script>
+<script src="js/app/common/common.js"></script>
+<script src="js/app/common/data_containers.js"></script>
+<script src="js/app/common/changeGraph.js"></script>
+<script src="js/app/common/Users_class.js"></script>
+
+<script src="js/app/bindings.js"></script>
+<script src="js/app/main.js"></script>
+<script src="js/app/weather.js"></script>
+
+<script type='text/javascript' src='js/app/score/getUsers.js'></script>
+<script type='text/javascript' src='js/app/score/view_model.js'></script>
+<script type='text/javascript' src='js/app/score/ColorMas.js'></script>
+
+</body>
+</html>
