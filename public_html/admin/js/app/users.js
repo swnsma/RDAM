@@ -46,8 +46,9 @@ ko.bindingHandlers.description = {
             var el = $('<p>');
             el.text(small_text);
             el.appendTo(element);
-            var op = $('<a>').text('...').click(function() {
+            var op = $('<a>').attr('href', '#').text('more').click(function() {
                 element.text(text);
+                return false;
             });
             op.appendTo(element);
         }
