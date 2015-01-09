@@ -6,6 +6,10 @@
     display: table-row;
 }
 
+input, textarea {
+    outline: none;
+}
+
 .table-cell {
     display: table-cell;
 }
@@ -22,7 +26,7 @@ ul.list-left-menu {
     padding: 0;
     list-style-type: none;
     position: relative;
-    top: 1px;
+    top: -12px;
 }
 
 ul.list-left-menu > li {
@@ -41,11 +45,28 @@ ul.list-left-menu > li {
     left: 1px;
 }
 
+ul.list-left-menu > li.active {
+    background-color: #ee8522;
+    background-repeat: repeat-y;
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#ee8522));
+    background: -webkit-linear-gradient(left, #ee8522, #FFF);
+    background: -moz-linear-gradient(left, #ee8522, #FFF);
+    background: -ms-linear-gradient(left, #ee8522, #FFF);
+    background: -o-linear-gradient(left, #ee8522, #FFF);
+}
+
 .edit-data {
     z-index: 90;
     background-color: #FFF;
     border: 1px solid black;
     width: 500px;
-    height: 500px;
     border-radius: 4px;
+    padding: 10px;
+}
+
+textarea.fi, input.fi {
+    padding: 5px;
+    width: 370px;
+    border-radius: 4px;
+    border: 1px solid #26afff;
 }
