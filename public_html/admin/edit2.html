@@ -35,7 +35,7 @@
                     </td>
                     <td class="edit-data">
                         <div class="ped">
-                            <span class="good" data-bind="text: $root.curr_oper.info.global"></span>
+
                             <!-- ko if: active_page() == 0 -->
                             <!-- ko with: user() -->
                             <table >
@@ -65,6 +65,7 @@
                                 <button type="button" data-bind="click: $parent.save_info">save</button>
                                 <button type="reset">clear</button>
                             </div>
+                            <span class="good" data-bind="text: $root.curr_oper.info.global"></span>
                             <!-- /ko -->
                             <!-- /ko -->
                             <!-- ko if: active_page() == 1 -->
@@ -80,7 +81,9 @@
                                 <button type="button" data-bind="click: $parent.save_photo">upload</button>
                                 <button type="reset">clear</button>
                             </div>
+
                             <!-- /ko -->
+                            <span class="good" data-bind="text: $root.curr_oper.photo.global"></span>
                             <!-- /ko -->
                             <!-- ko if: active_page() == 2 -->
                             <form>

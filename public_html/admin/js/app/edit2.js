@@ -54,6 +54,9 @@ function EditModel() {
                 description:ko.observable(''),
                 city:ko.observable('')
             }
+        },
+        photo:{
+            global:ko.observable('')
         }
     };
 
@@ -145,6 +148,8 @@ function EditModel() {
             new FormData(document.getElementById('formPhoto')),
             {
                 success: function(data) {
+
+                    self.curr_oper.photo.global('You are uploaded photo!');
                     changePage('users', self.user().id);
                 },
                 error: function(error) {
