@@ -1,0 +1,133 @@
+$width100: 100%;
+$height100: 100%;
+$color-black: #000;
+$color-white: #fff;
+$width300px: 290px;
+$width500px: 500px;
+$height300:100px;
+$color-orange: #fd9301;
+.edit-page{
+  border: 1px solid darken($color-white,40%);
+  width: 500px;
+  margin: 20px auto;
+  background-color: darken($color-white,5%);
+  border-radius: 5px;
+  padding: 10px;
+  table{
+    width: 100%;
+  }
+  h2{
+    margin: 0;
+    width: 100%;
+    line-height: 50px;
+    background-color: darken($color-white,20%);
+
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid darken($color-white,30%);
+    cursor: pointer;
+    &:hover{
+      background-color: darken($color-white,10%);
+    }
+    //    color: ;
+  }
+  &:hover{
+    background-color: $color-white;
+    transition: 3s;
+    border: 1px solid darken($color-white,20%);
+  }
+  .editer {
+    padding: 10px 0;
+    table {
+      width: 100%;
+
+      tr {
+        td {
+          #textarea{
+            line-height: normal;
+            height: 40px;
+          }
+          padding: 10px 0;
+          &:first-child {
+            padding-right: 10px;
+          }
+          &:last-child {
+            width: 100%;
+            textarea {
+              line-height: normal;
+              padding: 10px 0;
+            }
+            > textarea,input {
+              &.normal-line-hei{
+                line-height: normal;
+                width: auto;
+                display: block;
+                margin: 0 auto;
+              }
+              line-height: 40px;
+              width: 98%;
+              padding: 0 1px;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .decoration-line{
+    tr{
+      td{
+        padding: 10px 0;
+        border-bottom: 1px solid darken($color-white, 30%);
+        &:first-child{
+          width: 10%;
+        }
+        &:last-child {
+          > textarea,input {
+
+            &:not(textarea) {
+              line-height: 40px;
+            }
+            width: 98%;
+            &:not(input) {
+              padding: 5px 1px;
+              height: 50px;
+            }
+            width: 98%;
+            border: 1px solid darken($color-white, 50%);
+            border-radius: 5px;
+            &:hover {
+              background-color: darken($color-white, 10%);
+              //              transition: 3s;
+            }
+            &:focus {
+              outline: none;
+              box-shadow: none;
+              border: 1px solid $color-orange;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.upload-users{
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  background-color: $color-black;
+  a {
+    color: $color-white;
+    display: block;
+    width: 100%;
+  }
+}
+
+.text-align-center,.text-align-center *{
+  text-align: center;
+}
+.db-setting{
+  text-align: center;
+}

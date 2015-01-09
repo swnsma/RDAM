@@ -15,7 +15,7 @@ if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr']
         && preg_match('/^[\p{L} \-]{5,25}$/', $city)
         && preg_match('/^[\p{L} \(\)\'\"\d\-\:\,\.\?\!]{0,1000}$/m', $descr)) {*/
     if (($lu >= 1 && $lu <= 25)
-        && ($lc >= 5 && $lc <= 25)
+        && ($lc >= 2 && $lc <= 25)
         && $ld <= 1000) {
 
         $user = new AddUser();

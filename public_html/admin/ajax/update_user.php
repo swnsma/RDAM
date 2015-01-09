@@ -22,7 +22,7 @@ if (isset($_POST['id'])) {
         if (isset($_POST['city'])) {
             $city = full_trim($_POST['city']);
             $l = strlen($city);
-            if ($l < 5 || $l > 25) exit_ttwp();
+            if ($l < 1 || $l > 25) exit_ttwp();
             //if (!preg_match('/^[\p{L} \-]{5,25}$/', $city)) exit_ttwp();
         }
 
