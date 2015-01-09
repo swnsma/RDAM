@@ -37,6 +37,23 @@ ko.bindingHandlers.upload_users = {
     }
 };
 
+ko.bindingHandlers.description = {
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        var text = valueAccessor();
+        element = $(element);
+        if (text.length > 300) {
+            var small_text = text.substr(0, 300);
+            var el = $('<p>');
+            el.text(small_text);
+            el.appendTo(element);
+            var op = $('<a>').text('...').click(function() {
+                element.text(text);
+            });
+            op.appendTo(element);
+        }
+    }
+};
+
 
 $(document).ready(function () {
     ko.applyBindings(new UsersModel());
