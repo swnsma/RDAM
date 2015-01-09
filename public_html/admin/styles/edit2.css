@@ -106,3 +106,17 @@ h3 {
     text-align: center;
     margin-bottom: 10px;
 }
+
+a.lu {
+    color: #000;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+a.lu:hover {
+    text-decoration: underline;
+}
+
+div.lu {
+    text-align: center;
+}

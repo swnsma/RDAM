@@ -29,6 +29,9 @@
                             <li data-bind="click: function() { active_page(1); }, css: { active: active_page() == 1 }">edit photo</li>
                             <li data-bind="click: function() { active_page(2); }, css: { active: active_page() == 2 }">database</li>
                         </ul>
+                        <div class="lu">
+                            <a class="lu" data-bind="attr: { href: 'users.html#' + user().id }">go to user list</a>
+                        </div>
                     </td>
                     <td class="edit-data">
                         <div class="ped">
