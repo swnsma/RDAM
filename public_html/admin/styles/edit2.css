@@ -16,7 +16,7 @@ ul.list-left-menu {
 }
 
 ul.list-left-menu > li {
-    z-index: 100;
+    z-index: 90;
     background-color: #FFF;
     border: 1px solid black;
     border-right: none;
@@ -25,16 +25,16 @@ ul.list-left-menu > li {
     line-height: 25px;
     padding: 0 5px;
     text-align: right;
-    width: 100px;
+    width: 120px;
     border-radius: 4px 0 0 4px;
     position: relative;
-    left: 1px;
     cursor: pointer;
+    left: 9px;
 }
 
 ul.list-left-menu > li.active {
-    width: 110px;
-    left: -9px;
+    width: 120px;
+    left: 1px;
     background-color: #26afff;
     background-repeat: repeat-y;
     background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#26afff));
@@ -47,7 +47,7 @@ ul.list-left-menu > li.active {
 .edit-data {
     position: relative;
     left: -10px;
-    z-index: 90;
+    z-index: 100;
     background-color: #FFF;
     border: 1px solid black;
     max-width: 495px;
