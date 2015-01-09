@@ -173,7 +173,7 @@ Ajax.prototype.search = function(user_name, func) {
         dataType: 'json',
         data: {
             user_name: user_name,
-            fields: 'city,photo,descr'
+            fields: 'city,photo,descr,type_db'
         },
         beforeSend: func.before,
         complete: func.after,
@@ -312,7 +312,7 @@ Ajax.prototype.get_user_info = function(id, func) {
         dataType: 'json',
         data: {
             id: id,
-            fields: 'city,photo,descr'
+            fields: 'city,photo,descr,type_db'
         },
         beforeSend: func.before,
         complete: func.after,

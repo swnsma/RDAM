@@ -15,7 +15,7 @@ abstract class Users {
     }
 
     protected function check_field($fields) { //change
-        $fields_db = array('city', 'descr', 'photo');
+        $fields_db = array('city', 'descr', 'photo', 'type_db');
         foreach ($fields as $field) {
             if (!in_array($field, $fields_db))
                 return false;
