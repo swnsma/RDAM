@@ -32,7 +32,7 @@
                     </td>
                     <td class="edit-data">
                         <div class="ped">
-                            <span class="error" data-bind="text: $root.curr_oper.info.global"></span>
+                            <span class="good" data-bind="text: $root.curr_oper.info.global"></span>
                             <!-- ko if: active_page() == 0 -->
                             <!-- ko with: user() -->
                             <table >
@@ -66,11 +66,13 @@
                             <!-- /ko -->
                             <!-- ko if: active_page() == 1 -->
                             <!-- ko with: user() -->
-                            <span>(gif, png, jpg)</span>
-                            <form id="formPhoto">
-                                <input name="id"  data-bind="value: id" type="hidden" />
-                                <input class="normal-line-hei" name="photo" type="file" />
-                            </form>
+                            <div class="edit-photo">
+                                <span>(gif, png, jpg)</span>
+                                <form id="formPhoto">
+                                    <input name="id"  data-bind="value: id" type="hidden" />
+                                    <input name="photo" type="file" />
+                                </form>
+                            </div>
                             <div class="buttons">
                                 <button type="button" data-bind="click: $parent.save_photo">upload</button>
                                 <button type="reset">clear</button>

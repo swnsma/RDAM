@@ -169,17 +169,17 @@ function EditModel() {
         self.valid.user_name(false);
         var c = self.user();
         if(!valid.descr(c.descr)){
-            self.curr_oper.info.local.description('this is not val');
+            self.curr_oper.info.local.description('this description has more than 1000 letters');
             self.valid.description(true);
             return false;
         }
         if(!valid.user_name(c.user_name)){
-            self.curr_oper.info.local.user_name('this is not val');
+            self.curr_oper.info.local.user_name('this name has less than 1 letters or more than 25 letters');
             self.valid.user_name(true);
             return false;
         }
         if(!valid.city(c.city)){
-            self.curr_oper.info.local.city('this is not val');
+            self.curr_oper.info.local.city('field is not filled');
             self.valid.city(true);
             return false;
         }
