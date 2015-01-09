@@ -10,13 +10,14 @@
   font-weight: bold;
   font-size: 1.3em;
   color: #000;
-  background-color: #febe66;
-  outline: 1px solid #321d00;
+  background-color: #67aef1;
+  outline: 1px solid black;
   outline: none;
   border-radius: 5px;
 }
 .buttons button:hover {
-  background-color: #fd9301;
+  background-color: #0c4880;
+  color: #fff;
 }
 
 textarea {
@@ -110,7 +111,7 @@ h1 a {
   /* ╨а╨░╨╖╨╝╨╡╤А ╤В╨╡╨║╤Б╤В╨░ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╨╕ */
   padding: 5px 10px;
   /* ╨Я╨╛╨╗╤П */
-  border: 1px solid #fd9301;
+  border: 1px solid #0c4880;
   /* ╨Я╨░╤А╨░╨╝╨╡╤В╤А╤Л ╤А╨░╨╝╨║╨╕ */
   border-radius: 5px;
 }

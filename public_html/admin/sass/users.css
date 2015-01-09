@@ -29,8 +29,14 @@
   display: inline-block;
   text-align: center;
   width: 100px;
-  background-color: #fea933;
+  background-color: #67aef1;
   color: #000;
+  border-radius: 5px;
+}
+.users li .edit:hover {
+  background-color: #0c4880;
+  color: #fff;
+  font-weight: bold;
 }
 .users li h2 {
   text-align: center;

@@ -2,7 +2,7 @@ $width100: 100%;
 $height100: 100%;
 $color-black: #000;
 $color-white: #fff;
-$color-orange: #fd9301;
+$color-orange: #0c4880;
 .buttons{
   width: 100%;
   button{
@@ -13,12 +13,13 @@ $color-orange: #fd9301;
     font-weight: bold;
     font-size: 1.3em;
     color: $color-black;
-    background-color: lighten($color-orange,20%);
+    background-color: lighten($color-orange,40%);
     outline:1px solid darken($color-orange,40%);
     outline: none;
     border-radius: 5px;
     &:hover{
       background-color: $color-orange;
+      color: $color-white;
     }
   }
 }
