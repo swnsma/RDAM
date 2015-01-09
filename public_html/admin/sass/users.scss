@@ -40,12 +40,12 @@ $margin-h2: 100px;
       display: inline-block;
       text-align: center;
       width: $margin-h2;
-      background-color: lighten($color-orange,40%);
+      background-color: lighten($color-black,80%);
       color: $color-black;
       border-radius: 5px;
       &:hover{
-        background-color:$color-orange;
-        color: $color-white;
+        background-color:lighten($color-black,70%);
+//        color: $color-white;
         font-weight: bold;
       }
     }

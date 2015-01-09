@@ -75,12 +75,12 @@ function CreateUser() {
                     self.curr_operation.global('');
                 }
             } else {
-                self.curr_operation.local.description('this description has more 1000 letters');
+                self.curr_operation.local.description('this description has more than 1000 letters');
                 self.descr.invalid(true);
                 self.curr_operation.global('');
             }
         } else {
-            self.curr_operation.local.user_name('this name has less 1 letters or more 25 letters');
+            self.curr_operation.local.user_name('this name has less than 1 letters or more than 25 letters');
             self.user_name.invalid(true);
             self.curr_operation.global('');
         }
