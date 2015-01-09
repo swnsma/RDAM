@@ -22,7 +22,7 @@ class AuthDB {
     }
 
     public static function valid_pass($pass) {
-        return preg_match('/^[a-z\d_\-]{4,30}$/', $pass);
+        return preg_match('/^[a-zA-Z\$\@\#\%\d_\-]{4,30}$/', $pass);
     }
 
     public static function valid_port($port) {
