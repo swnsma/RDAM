@@ -84,8 +84,8 @@
                             <!-- /ko -->
                             <!-- ko if: active_page() == 2 -->
                             <form>
-                                <label><input data-bind="click: function() { $parent.change_db_type(1); }" type="radio" name="r" />Default database</label>
-                                <label><input data-bind="click: function() { $parent.change_db_type(0); }" type="radio" name="r" />External database</label>
+                                <label><input data-bind="click: function() { $root.change_db_type(1); }" type="radio" name="r" />Default database</label>
+                                <label><input data-bind="click: function() { $root.change_db_type(0); }" type="radio" name="r" />External database</label>
                             </form>
                             <hr />
                             <h3 class="db-setting">
