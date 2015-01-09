@@ -55,17 +55,14 @@ function CreateUser() {
                                         error: function(error) {
                                             self.curr_operation.local.user_name('this name is not free');
                                             self.user_name.invalid(true);
-                                            self.curr_operation.global('Error');
                                         }
                                 });
                             } else {
                                 self.curr_operation.local.city('this city isn\'t supported');
-                                self.curr_operation.global('Error');
                             }
                         },
                         error: function(error) {
                             self.curr_operation.global('can\'t get the data. try again later');
-                            self.curr_operation.global('Error');
                         }
                     });
 

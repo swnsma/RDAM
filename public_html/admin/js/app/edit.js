@@ -167,19 +167,16 @@ function EditModel() {
         self.valid.user_name(false);
         var c = self.user();
         if(!valid.descr(c.descr)){
-            self.curr_oper.info.global('Error');
             self.curr_oper.info.local.description('this is not val');
             self.valid.description(true);
             return false;
         }
         if(!valid.user_name(c.user_name)){
-            self.curr_oper.info.global('Error');
             self.curr_oper.info.local.user_name('this is not val');
             self.valid.user_name(true);
             return false;
         }
         if(!valid.city(c.city)){
-            self.curr_oper.info.global('Error');
             self.curr_oper.info.local.city('this is not val');
             self.valid.city(true);
             return false;
