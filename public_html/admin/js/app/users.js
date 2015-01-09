@@ -42,8 +42,8 @@ ko.bindingHandlers.description = {
         var text = valueAccessor();
         element = $(element);
         if (text.length > 300) {
-            var small_text = text.substr(0, 300);
-            var el = $('<p>');
+            var small_text = text.substr(0, 300) + '... ';
+            var el = $('<span>');
             el.text(small_text);
             el.appendTo(element);
             var op = $('<a>').attr('href', '#').text('more').click(function() {
