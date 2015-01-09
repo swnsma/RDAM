@@ -1,5 +1,8 @@
 function UsersModel() {
+    var self=this;
+
     self.users = ko.observableArray([]);
+    self.length=ko.observable(0);
 }
 
 ko.bindingHandlers.upload_users = {
@@ -27,6 +30,7 @@ ko.bindingHandlers.upload_users = {
                             }, 2000);
                         }
                     }
+                    viewModel.length(valueAccessor()().length);
                 },
                 error: function(message) {
                     alert(message);
@@ -34,6 +38,7 @@ ko.bindingHandlers.upload_users = {
             });
         });
         element.click();
+
     }
 };
 
