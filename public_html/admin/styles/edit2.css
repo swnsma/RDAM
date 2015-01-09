@@ -57,7 +57,7 @@ ul.list-left-menu > li.active {
 
 textarea.fi, input.fi {
     padding: 5px;
-    width: 370px;
+    width: 375px;
     border-radius: 4px;
     border: 1px solid #26afff;
 }
@@ -87,4 +87,8 @@ table.gdr {
 
 table.gdr td {
     vertical-align: middle;
+}
+
+h3 {
+    text-align: center;
 }
