@@ -47,7 +47,6 @@ form.form table tr td:last-child > input:not(input), form.form table tr td:last-
 }
 form.form table tr td:last-child > input:hover, form.form table tr td:last-child textarea:hover {
   background-color: #e6e6e6;
-  transition: 3s;
 }
 form.form table tr td:last-child > input:focus, form.form table tr td:last-child textarea:focus {
   outline: none;

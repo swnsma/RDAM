@@ -65,11 +65,11 @@ header menu .menu-ico {
 }
 header menu .menu-ico[active='true'] {
   opacity: 1;
+  transform: scale(1, 1);
 }
 header menu .menu-ico:hover {
   opacity: 1;
   transform: scale(1.5, 1.5);
-  transition: 0.5s;
 }
 
 h1 {

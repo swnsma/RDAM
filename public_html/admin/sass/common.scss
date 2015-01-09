@@ -61,12 +61,12 @@ header{
       margin: 0 10px;
       &[active='true']{
         opacity: 1;
-//        transform: scale(1.5,1.5);
+        transform: scale(1,1);
       }
-      &:hover {
+      &:hover{
         opacity: 1;
         transform: scale(1.5,1.5);
-        transition: 0.5s;
+//        transition: 0.5s;
       }
     }
   }

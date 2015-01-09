@@ -171,7 +171,7 @@ $color-orange: #fd9301;
             border-radius: 5px;
             &:hover {
               background-color: darken($color-white, 10%);
-              transition: 3s;
+//              transition: 3s;
             }
             &:focus {
               outline: none;

@@ -52,9 +52,10 @@ form.form{
             border-radius: 5px;
             &:hover{
               background-color: darken($color-white,10%);
-              transition: 3s;
+//              transition: 3s;
             }
             &:focus{
+//              background-color: darken($color-white,10%);
               outline: none;
               box-shadow: none;
               border: 1px solid #fd9301;

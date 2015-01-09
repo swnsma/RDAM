@@ -155,7 +155,6 @@
 }
 .edit-page .decoration-line tr td:last-child > textarea:hover, .edit-page .decoration-line tr td:last-child input:hover {
   background-color: #e6e6e6;
-  transition: 3s;
 }
 .edit-page .decoration-line tr td:last-child > textarea:focus, .edit-page .decoration-line tr td:last-child input:focus {
   outline: none;
