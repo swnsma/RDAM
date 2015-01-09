@@ -19,7 +19,6 @@ function EditModel() {
             type: type
         }, {
             success: function(data) {
-                console.log(data);
                 alert('type changed')
             },
             error: function(message) {
@@ -112,16 +111,17 @@ function EditModel() {
             error: function(message) {
                 alert(message);
             },
-            after: function() {
-
-            },
             before: function() {
-
+                pp.css('display', 'block');
+            },
+            after: function() {
+                pp.css('display', 'none');
             }
         });
     };
 
     self.save_data = function() {
+        var pp = $('#dataProgress');
         ajax.load_data(
             new FormData(document.getElementById('formData')),
             {
@@ -132,18 +132,26 @@ function EditModel() {
                     alert(error);
                 },
                 before: function() {
-
+                    pp.css('display', 'block');
                 },
                 after: function() {
-
+                    pp.css('display', 'none');
                 }
             },
-            function(e) {}
+            function(e) {
+                if(e.lengthComputable){
+                    pp.attr({
+                        value: e.loaded,
+                        max: e.total
+                    });
+                }
+            }
         );
         return false;
     };
 
     self.save_photo = function() {
+        var pp = $('#photoProgress');
         ajax.load_image(
             new FormData(document.getElementById('formPhoto')),
             {
@@ -156,13 +164,20 @@ function EditModel() {
                     alert(error);
                 },
                 before: function() {
-
+                    pp.css('display', 'block');
                 },
                 after: function() {
-
+                    pp.css('display', 'none');
                 }
             },
-            function(e) {}
+            function(e) {
+                if(e.lengthComputable){
+                    pp.attr({
+                        value: e.loaded,
+                        max: e.total
+                    });
+                }
+            }
         );
         return false;
     };

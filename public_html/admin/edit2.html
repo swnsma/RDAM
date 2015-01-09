@@ -76,6 +76,7 @@
                                     <input name="id"  data-bind="value: id" type="hidden" />
                                     <input name="photo" type="file" />
                                 </form>
+                                <progress id="photoProgress" style="display: none;"></progress>
                             </div>
                             <div class="buttons">
                                 <button type="button" data-bind="click: $parent.save_photo">upload</button>
@@ -103,6 +104,7 @@
                                             <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
                                             <input class="normal-line-hei" name="data" type="file" />
                                         </form>
+                                        <progress id="dataProgress" style="display: none;"></progress>
                                     </td>
                                 </tr>
                             </table>
