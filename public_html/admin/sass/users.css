@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  margin-bottom: 30px;
 }
 .users li {
   overflow: hidden;
@@ -11,13 +12,12 @@
 }
 .users li .img {
   float: left;
-  max-width: 200px;
   text-align: center;
   margin: 0 10px 0px 0;
 }
 .users li .img img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 85px;
+  max-height: 85px;
   display: block;
   margin: 0 auto;
 }
