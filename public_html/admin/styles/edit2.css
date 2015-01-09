@@ -120,3 +120,6 @@ a.lu:hover {
 div.lu {
     text-align: center;
 }
+#bd{
+    display: none;
+}
