@@ -43,19 +43,24 @@ ul.list-left-menu > li {
     border-radius: 4px 0 0 4px;
     position: relative;
     left: 1px;
+    cursor: pointer;
 }
 
 ul.list-left-menu > li.active {
-    background-color: #ee8522;
+    width: 110px;
+    left: -9px;
+    background-color: #26afff;
     background-repeat: repeat-y;
-    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#ee8522));
-    background: -webkit-linear-gradient(left, #ee8522, #FFF);
-    background: -moz-linear-gradient(left, #ee8522, #FFF);
-    background: -ms-linear-gradient(left, #ee8522, #FFF);
-    background: -o-linear-gradient(left, #ee8522, #FFF);
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#26afff));
+    background: -webkit-linear-gradient(left, #26afff, #FFF);
+    background: -moz-linear-gradient(left, #26afff, #FFF);
+    background: -ms-linear-gradient(left, #26afff, #FFF);
+    background: -o-linear-gradient(left, #26afff, #FFF);
 }
 
 .edit-data {
+    position: relative;
+    left: -10px;
     z-index: 90;
     background-color: #FFF;
     border: 1px solid black;
@@ -69,4 +74,8 @@ textarea.fi, input.fi {
     width: 370px;
     border-radius: 4px;
     border: 1px solid #26afff;
+}
+
+textarea.fi {
+    min-height: 50px;
 }
