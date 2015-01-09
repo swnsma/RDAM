@@ -79,10 +79,17 @@
             </form>
 
 
-
+            <h2 data-bind="animation:{}" id="edit3-click">DB settings</h2>
             <form id="formData">
-                <h2 data-bind="animation:{}" id="edit3-click">add data(cvs)</h2>
                 <div class="editer" id="edit3">
+                    <form>
+                        <label><input data-bind="click: function() { $parent.change_db_type(1); }" type="radio" name="r" />Default database</label>
+                        <label><input data-bind="click: function() { $parent.change_db_type(0); }" type="radio" name="r" />RTE database</label>
+                    </form>
+                    <hr />
+                    <h3 class="db-setting">
+                        upload data from csv-file to the default database
+                    </h3>
                     <table >
                         <tr>
                             <td class="text-align-center">
@@ -98,18 +105,15 @@
                     </div>
                 </div>
             </form>
-            <!-- /ko -->
 
             <div id="edit4">
-            <hr/>
-
-
+                <hr />
             <form class="decoration-line" name="formname" action="">
                 <h3 class="db-setting">
-                    custom DB settings
+                    connect remote database
                 </h3>
                 <div>
-                    <!-- ko with: custom_db() -->
+                    <!-- ko with: $parent.custom_db() -->
                     <table>
                         <tr>
                             <td>server:</td>
@@ -147,17 +151,13 @@
                     </table>
                     <!-- /ko -->
                     <div class="buttons">
-                        <button type="button" data-bind="click: set_auth">set auth</button>
-                        <button type="button" data-bind="click: test_connection">test connection</button>
+                        <button type="button" data-bind="click: $parent.set_auth">save</button>
+                        <button type="button" data-bind="click: $parent.test_connection">test connection</button>
                     </div>
-                    <form>
-                        <label><input data-bind="click: function() { change_db_type(1); }" type="radio" name="r" />our db</label>
-                        <label><input data-bind="click: function() { change_db_type(0); }" type="radio" name="r" />RTE db</label>
-                    </form>
                 </div>
             </form>
             </div>
-
+            <!-- /ko -->
         </div>
         </div>
     </div>
