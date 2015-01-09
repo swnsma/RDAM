@@ -1,17 +1,5 @@
-.table {
-    display: table;
-}
-
-.table-row {
-    display: table-row;
-}
-
 input, textarea {
     outline: none;
-}
-
-.table-cell {
-    display: table-cell;
 }
 
 div.edit {
@@ -25,8 +13,6 @@ ul.list-left-menu {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    position: relative;
-    top: -12px;
 }
 
 ul.list-left-menu > li {
@@ -64,9 +50,9 @@ ul.list-left-menu > li.active {
     z-index: 90;
     background-color: #FFF;
     border: 1px solid black;
-    width: 500px;
+    max-width: 495px;
+    min-width: 495px;
     border-radius: 4px;
-    padding: 10px;
 }
 
 textarea.fi, input.fi {
@@ -77,5 +63,28 @@ textarea.fi, input.fi {
 }
 
 textarea.fi {
-    min-height: 50px;
+    min-height: 100px;
+}
+
+table.et td {
+    vertical-align: top;
+    padding: 0;
+}
+
+table.et {
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.ped {
+    padding: 15px;
+}
+
+table.gdr {
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+
+table.gdr td {
+    vertical-align: middle;
 }
