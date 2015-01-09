@@ -88,12 +88,12 @@
                             <!-- /ko -->
                             <!-- ko if: active_page() == 2 -->
 
-                            <form>
-                                <label><input data-bind="click: function() { $root.change_db_type(1); $('#csv').slideDown(); $('#bd').slideUp(); return true}, attr: { checked: user().type_db }" type="radio" name="r" />Default database</label>
-                                <label><input data-bind="click: function() { $root.change_db_type(0);$('#csv').slideUp(); $('#bd').slideDown(); return true}, attr: { checked: !user().type_db }" type="radio" name="r" />External database</label>
+                            <form data-bind="typedb: user().type_db">
+                                <!--<label><input data-bind="click: function() { $root.change_db_type(1); $('#csv').slideDown(); $('#bd').slideUp(); return true}, attr: { checked: user().type_db }" type="radio" name="r" />Default database</label>
+                                <label><input data-bind="click: function() { $root.change_db_type(0);$('#csv').slideUp(); $('#bd').slideDown(); return true}, attr: { checked: !user().type_db }" type="radio" name="r" />External database</label>-->
                             </form>
                             <hr />
-                            <div id="csv">
+                            <div id="act_true">
                                 <h3 class="db-setting">
                                     upload data from csv-file to the default database
                                 </h3>
@@ -117,7 +117,7 @@
                                 <!-- /ko -->
                             </div>
 
-                            <div id="bd">
+                            <div id="act_false">
                                 <h3 class="db-setting">
                                     external DB
                                 </h3>

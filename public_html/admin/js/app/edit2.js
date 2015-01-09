@@ -280,9 +280,7 @@ function Db(data) {
 
 ko.bindingHandlers.animation={
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext){
-        debugger;
         var name =valueAccessor();
-
         $(element)
             .on('click',function(){
                 if($('#'+name).css('display')==='none'){
@@ -294,6 +292,31 @@ ko.bindingHandlers.animation={
                         .slideUp();
                 }
             })
+    }
+};
+
+ko.bindingHandlers.typedb = {
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext){
+        element = $(element);
+        var type = valueAccessor();
+
+        function create_input(name, type, select) {
+            var label = $('<label>').text(name);
+            var input = $('<input type="radio">').attr({
+                name: 'tdb',
+                checked: select
+            });
+            label.append(input);
+            element.append(label);
+            input.click(function() {
+                viewModel.change_db_type(type);
+                $('#act_' + select).slideDown(); $('#act_' + !select).slideUp();
+            });
+        }
+
+        create_input('Default database', 0, type);
+        create_input('External database', 1, !type);
+        $('#act_' + type).slideDown(); $('#act_' + !type).slideUp();
     }
 };
 
