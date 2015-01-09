@@ -19,7 +19,7 @@ function EditModel() {
             type: type
         }, {
             success: function(data) {
-                alert('type changed')
+                //alert('type changed')
             },
             error: function(message) {
                 alert(message);
