@@ -87,73 +87,79 @@
                             <span class="good" data-bind="text: $root.curr_oper.photo.global"></span>
                             <!-- /ko -->
                             <!-- ko if: active_page() == 2 -->
+
                             <form>
-                                <label><input data-bind="click: function() { $root.change_db_type(1); return true}" type="radio" name="r" />Default database</label>
-                                <label><input data-bind="click: function() { $root.change_db_type(0); return true}" type="radio" name="r" />External database</label>
+                                <label><input data-bind="click: function() { $root.change_db_type(1); $('#csv').slideDown(); $('#bd').slideUp(); return true}" type="radio" name="r" />Default database</label>
+                                <label><input data-bind="click: function() { $root.change_db_type(0);$('#csv').slideUp(); $('#bd').slideDown(); return true}" type="radio" name="r" />External database</label>
                             </form>
                             <hr />
-                            <h3 class="db-setting">
-                                upload data from csv-file to the default database
-                            </h3>
-                            <!-- ko with: user() -->
-                            <table>
-                                <tr>
-                                    <td class="text-align-center">
-                                        <form id="formData">
-                                            <input data-bind="value: id" name="id" type="hidden" />
-                                            <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
-                                            <input class="normal-line-hei" name="data" type="file" />
-                                        </form>
-                                        <progress id="dataProgress" style="display: none;"></progress>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="buttons">
-                                <button type="button" data-bind="click: $parent.save_data">upload</button>
-                                <button type="reset">clear</button>
-                            </div>
-                            <!-- /ko -->
-
-                            <h3 class="db-setting">
-                                external DB
-                            </h3>
-                            <div>
-                                <!-- ko with: custom_db() -->
-                                <table class="gdr">
+                            <div id="csv">
+                                <h3 class="db-setting">
+                                    upload data from csv-file to the default database
+                                </h3>
+                                <!-- ko with: user() -->
+                                <table>
                                     <tr>
-                                        <td>server:</td>
-                                        <td>
-                                            <input class="fi" style="width: 313px" data-bind="value: server" type="text" />
-                                            <span style="padding-left: 1px; font-weight: bold">:</span>
-                                            <input class="fi" style="width: 30px"data-bind="value: port" type="text" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>name:</td>
-                                        <td>
-                                            <input class="fi" data-bind="value: name" type="text" name="edit_name" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>user:</td>
-                                        <td>
-                                            <input class="fi" data-bind="value: user" type="text" name="edit_name" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>password:</td>
-                                        <td>
-                                            <input class="fi" data-bind="value: pass" type="text" name="edit_name" />
+                                        <td class="text-align-center">
+                                            <form id="formData">
+                                                <input data-bind="value: id" name="id" type="hidden" />
+                                                <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
+                                                <input class="normal-line-hei" name="data" type="file" />
+                                            </form>
+                                            <progress id="dataProgress" style="display: none;"></progress>
                                         </td>
                                     </tr>
                                 </table>
-                                <!-- /ko -->
                                 <div class="buttons">
-                                    <button type="button" data-bind="click: set_auth">save</button>
-                                    <button type="button" data-bind="click: test_connection">test connection</button>
+                                    <button type="button" data-bind="click: $parent.save_data">upload</button>
+                                    <button type="reset">clear</button>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+
+                            <div id="bd">
+                                <h3 class="db-setting">
+                                    external DB
+                                </h3>
+                                <div>
+                                    <!-- ko with: custom_db() -->
+                                    <table class="gdr">
+                                        <tr>
+                                            <td>server:</td>
+                                            <td>
+                                                <input class="fi" style="width: 313px" data-bind="value: server" type="text" />
+                                                <span style="padding-left: 1px; font-weight: bold">:</span>
+                                                <input class="fi" style="width: 30px"data-bind="value: port" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>name:</td>
+                                            <td>
+                                                <input class="fi" data-bind="value: name" type="text" name="edit_name" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>user:</td>
+                                            <td>
+                                                <input class="fi" data-bind="value: user" type="text" name="edit_name" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>password:</td>
+                                            <td>
+                                                <input class="fi" data-bind="value: pass" type="text" name="edit_name" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- /ko -->
+                                    <div class="buttons">
+                                        <button type="button" data-bind="click: set_auth">save</button>
+                                        <button type="button" data-bind="click: test_connection">test connection</button>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /ko -->
+
                         </div>
                     </td>
                 </tr>
