@@ -16,7 +16,7 @@
             <a  href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
         </menu>
         <h1>
-            <span data-bind="text: user().user_name">Current user name</span>
+            <span data-bind="text:function(){return user().user_name+' - Edit' }()">Current user name</span>
         </h1>
 
     </header>
