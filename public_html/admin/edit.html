@@ -18,10 +18,10 @@
         <h1>
             <span data-bind="text:function(){return user().user_name+' - Edit' }()">Current user name</span>
         </h1>
-
     </header>
     <div class="wrapper">
-        <div class="edit-page">
+        <a href="#" style="position: relative; left: 170px; top: 15px; color: black;" data-bind="attr: { href: 'users.html#' + user().id }">back</a>
+        <div class="edit-page" style="position: relative; top: -25px">
             <!-- ko with: user() -->
             <form class="decoration-line" name="formname" action="">
                 <h2 data-bind="animation:{}" id="edit1-click">edit information about name, city, description</h2>
