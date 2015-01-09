@@ -9,7 +9,6 @@ function User(user){
     }
     this.descr = user.descr;
     this.type_db = user.type_db == 0 ? false : true;
-    alert(this.type_db);
 }
 
 function getUserDefined() {
