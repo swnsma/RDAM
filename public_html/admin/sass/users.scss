@@ -5,7 +5,7 @@ $color-white: #fff;
 $width300px: 290px;
 $width500px: 500px;
 $height300:100px;
-$color-orange: #fd9301;
+$color-orange: #0c4880;
 
 
 $margin-h2: 100px;
@@ -39,8 +39,14 @@ $margin-h2: 100px;
       display: inline-block;
       text-align: center;
       width: $margin-h2;
-      background-color: lighten($color-orange,10%);
+      background-color: lighten($color-orange,40%);
       color: $color-black;
+      border-radius: 5px;
+      &:hover{
+        background-color:$color-orange;
+        color: $color-white;
+        font-weight: bold;
+      }
     }
     h2{
       text-align: center;
