@@ -67,8 +67,10 @@
                             <!-- ko if: active_page() == 1 -->
                             <!-- ko with: user() -->
                             <span>(gif, png, jpg)</span>
-                            <input name="id"  data-bind="value: id" type="hidden" />
-                            <input class="normal-line-hei" name="photo" type="file" />
+                            <form id="formPhoto">
+                                <input name="id"  data-bind="value: id" type="hidden" />
+                                <input class="normal-line-hei" name="photo" type="file" />
+                            </form>
                             <div class="buttons">
                                 <button type="button" data-bind="click: $parent.save_photo">upload</button>
                                 <button type="reset">clear</button>
@@ -88,9 +90,11 @@
                             <table>
                                 <tr>
                                     <td class="text-align-center">
-                                        <input data-bind="value: id" name="id" type="hidden" />
-                                        <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
-                                        <input class="normal-line-hei" name="data" type="file" />
+                                        <form id="formData">
+                                            <input data-bind="value: id" name="id" type="hidden" />
+                                            <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
+                                            <input class="normal-line-hei" name="data" type="file" />
+                                        </form>
                                     </td>
                                 </tr>
                             </table>
