@@ -84,7 +84,7 @@
                 <div class="editer" id="edit3">
                     <form>
                         <label><input data-bind="click: function() { $parent.change_db_type(1); }" type="radio" name="r" />Default database</label>
-                        <label><input data-bind="click: function() { $parent.change_db_type(0); }" type="radio" name="r" />RTE database</label>
+                        <label><input data-bind="click: function() { $parent.change_db_type(0); }" type="radio" name="r" />External database</label>
                     </form>
                     <hr />
                     <h3 class="db-setting">
@@ -110,7 +110,7 @@
                 <hr />
             <form class="decoration-line" name="formname" action="">
                 <h3 class="db-setting">
-                    connect remote database
+                    external DB
                 </h3>
                 <div>
                     <!-- ko with: $parent.custom_db() -->
