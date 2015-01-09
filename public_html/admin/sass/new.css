@@ -35,7 +35,7 @@ form.form table tr td:last-child textarea {
 }
 form.form table tr td:last-child > input, form.form table tr td:last-child textarea {
   width: 98%;
-  border: 1px solid gray;
+  border: 1px solid #26afff;
   border-radius: 5px;
 }
 form.form table tr td:last-child > input:not(textarea), form.form table tr td:last-child textarea:not(textarea) {
@@ -51,7 +51,7 @@ form.form table tr td:last-child > input:hover, form.form table tr td:last-child
 form.form table tr td:last-child > input:focus, form.form table tr td:last-child textarea:focus {
   outline: none;
   box-shadow: none;
-  border: 1px solid #704bfd;
+  border: 1px solid #0c4880;
 }
 
 /*# sourceMappingURL=new.css.map */

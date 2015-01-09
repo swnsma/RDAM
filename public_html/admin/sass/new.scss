@@ -4,7 +4,7 @@ $color-black: #000;
 $color-white: #fff;
 $width300px: 290px;
 $height300:100px;
-$color-blue: #704bfd;
+$color-blue: #0c4880;
 
 
 .width500px{
@@ -48,7 +48,7 @@ form.form{
               padding: 5px 1px;
               height: 50px;
             }
-            border: 1px solid darken($color-white,50%);
+            border:1px solid #26afff;
             border-radius: 5px;
             &:hover{
               background-color: darken($color-white,10%);

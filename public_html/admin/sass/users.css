@@ -29,13 +29,12 @@
   display: inline-block;
   text-align: center;
   width: 100px;
-  background-color: #67aef1;
+  background-color: #cccccc;
   color: #000;
   border-radius: 5px;
 }
 .users li .edit:hover {
-  background-color: #0c4880;
-  color: #fff;
+  background-color: #b3b3b3;
   font-weight: bold;
 }
 .users li h2 {
