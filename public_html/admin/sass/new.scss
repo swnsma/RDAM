@@ -26,11 +26,10 @@ form.form{
     width: 100%;
     tr{
       td{
-        border-bottom: 1px solid darken($color-white,30%);
-        padding: 10px 0;
+//        border-bottom: 1px solid darken($color-white,30%);
         &:first-child{
           width: 30px;
-          text-align: right;
+          text-align: left;
           padding-right: 10px;
         }
         &:last-child{
@@ -45,7 +44,7 @@ form.form{
             }
             width: 98%;
             &:not(input) {
-              padding: 5px 1px;
+              padding: 5px 0px;
               height: 50px;
             }
             border:1px solid #26afff;

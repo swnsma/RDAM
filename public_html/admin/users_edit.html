@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Admin | List Users</title>
+    <link rel="stylesheet" href="sass/common.css" type="text/css"/>
+    <link rel="stylesheet" href="sass/users.css" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <header>
+        <menu>
+            <a title="Home"   href="index.html"><img class="menu-ico" alt="home" src="img/ios7-home-white.png"></a>
+            <a title="New" href="new.html"><img class="menu-ico" alt="create" src="img/person-add-white.png"></a>
+            <a title="Users" href="users.html"><img  active="true" class="menu-ico" alt="List user" src="img/person-stalker-orange.png"></a>
+            <a title="Design" href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
+        </menu>
+        <h1>List Users
+            (x<!--ko text: length-->
+            <!--/ko-->)
+        </h1>
+    </header>
+    <div class="wrapper">
+        <ul data-bind="foreach: users" class="users">
+            <li data-bind="attr: {id: 'scroll' + id } ">
+                <div class="img">
+                    <img data-bind="attr: { src: photo }" />
+                    <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
+                </div>
+                <h2  >
+                    <!--ko text: user_name-->  <!--/ko-->
+                    from
+                    <!--ko text: city-->  <!--/ko-->
+                </h2>
+                <span data-bind="click:function(){bool_edit(true);}" class="edit">edit</span>
+                <p data-bind="description: descr"></p>
+            </li>
+        </ul>
+        <div style="display: none;" class="upload-users">
+            <a href="#" data-bind="upload_users: users">Next users</a>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='js/vendor/knockout-3.2.0.js'></script>
+<script type='text/javascript' src='js/app/common.js'></script>
+<script type='text/javascript' src='js/app/validator.js'></script>
+<script type='text/javascript' src='js/app/ajax.js'></script>
+<script type='text/javascript' src='js/app/users_edit.js'></script>
+</body>
+</html>

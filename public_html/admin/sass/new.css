@@ -17,13 +17,9 @@ form.form:hover {
 form.form table {
   width: 100%;
 }
-form.form table tr td {
-  border-bottom: 1px solid #b3b3b3;
-  padding: 10px 0;
-}
 form.form table tr td:first-child {
   width: 30px;
-  text-align: right;
+  text-align: left;
   padding-right: 10px;
 }
 form.form table tr td:last-child {
@@ -42,7 +38,7 @@ form.form table tr td:last-child > input:not(textarea), form.form table tr td:la
   line-height: 40px;
 }
 form.form table tr td:last-child > input:not(input), form.form table tr td:last-child textarea:not(input) {
-  padding: 5px 1px;
+  padding: 5px 0px;
   height: 50px;
 }
 form.form table tr td:last-child > input:hover, form.form table tr td:last-child textarea:hover {
