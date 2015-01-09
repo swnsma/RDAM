@@ -51,6 +51,8 @@ ko.bindingHandlers.description = {
                 return false;
             });
             op.appendTo(element);
+        } else {
+            element.text(text);
         }
     }
 };
