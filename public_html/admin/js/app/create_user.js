@@ -67,15 +67,15 @@ function CreateUser() {
                     });
 
                 } else {
-                    self.curr_operation.local.city('this is not val');
+                    self.curr_operation.local.city('field is not filled!');
                     self.city.invalid(true);
                 }
             } else {
-                self.curr_operation.local.description('this is not val');
+                self.curr_operation.local.description('this description has more 1000 letters');
                 self.descr.invalid(true);
             }
         } else {
-            self.curr_operation.local.user_name('this is not val');
+            self.curr_operation.local.user_name('this name has less 1 letters or more 25 letters');
             self.user_name.invalid(true);
         }
         return false;
