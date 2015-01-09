@@ -4,69 +4,48 @@
   list-style: none;
 }
 .users li {
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #b3b3b3;
-  position: relative;
-  padding-bottom: 30px;
-}
-.users li .info {
-  padding-bottom: 10px;
   overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid #999999;
 }
-.users li .info .img-user {
-  width: 100px;
-  float: right;
+.users li .img {
+  float: left;
+  max-width: 200px;
   text-align: center;
+  margin: 0 10px 0px 0;
 }
-.users li .info .img-user img {
-  max-width: 100px;
-  margin: 0 auto;
-  max-height: 100px;
-}
-.users li .info h2 {
-  text-align: center;
-  margin: 0;
-}
-.users li .info .city {
+.users li .img img {
+  max-width: 200px;
+  max-height: 200px;
   display: block;
-  font-size: 0.8em;
-  text-align: center;
-  font-style: italic;
+  margin: 0 auto;
 }
 .users li .edit {
   position: absolute;
-  left: 0;
   right: 0;
-  bottom: 0;
-  font-size: 1.2em;
-  text-align: center;
-  line-height: 30px;
-  color: #000;
+  top: 15px;
   text-decoration: none;
-  background-color: #f2f2f2;
-  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  width: 100px;
+  background-color: #fea933;
+  color: #000;
 }
-.users li:hover {
-  background-color: #fcfcfc;
-  transition: 1s;
+.users li h2 {
+  text-align: center;
+  margin: 0 100px 0 0;
 }
-.users li:hover .edit {
-  background-color: #666666;
-  color: #fff;
+.users li h2 .from {
+  font-weight: normal;
 }
-.users li:hover .edit:hover {
-  background-color: #333333;
-  font-weight: bold;
-  transition: 1s;
+.users li h2 .city {
+  font-weight: normal;
+  font-style: italic;
 }
-
-.type-db {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -10px;
+.users li p {
+  padding: 5px;
+  margin: 0;
 }
 
 /*# sourceMappingURL=users.css.map */

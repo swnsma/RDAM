@@ -7,75 +7,141 @@ $width500px: 500px;
 $height300:100px;
 $color-orange: #fd9301;
 
+
+$margin-h2: 100px;
+
 .users{
   margin: 0;
   padding: 0;
   list-style: none;
-  li{
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: darken($color-white,30%);
+  li {
+    overflow: hidden;
     position: relative;
-    padding-bottom: 30px;
-    .info{
-      padding-bottom: 10px;
-      overflow: hidden;
-      .img-user{
-        width: 100px;
-        float: right;
-        text-align: center;
-        img{
-
-          max-width: 100px;
-          margin: 0 auto;
-          max-height: 100px;
-        }
-      }
-      h2{
-        text-align: center;
-        margin: 0;
-      }
-      .city{
+    padding: 10px 0;
+    border-bottom: 1px solid darken($color-white,40%);
+    .img {
+      float: left;
+      max-width: 200px;
+      text-align: center;
+      margin: 0 10px 0px 0;
+      img {
+        max-width: 200px;
+        max-height: 200px;
         display: block;
-        font-size: 0.8em;
-        text-align: center;
-        font-style: italic;
+        margin: 0 auto;
       }
     }
     .edit{
       position: absolute;
-      left: 0;
       right: 0;
-      bottom: 0;
-      font-size: 1.2em;
-//      display: block;
-      text-align: center;
-      line-height: 30px;
-      color: $color-black;
+      top: 15px;
       text-decoration: none;
-      background-color: darken($color-white,5%);
-      cursor: pointer;
-
+      display: inline-block;
+      text-align: center;
+      width: $margin-h2;
+      background-color: lighten($color-orange,10%);
+      color: $color-black;
     }
-    &:hover{
-      background-color: darken($color-white,1%);
-      transition: 1s;
-      .edit{
-        background-color: darken($color-white,60%);
-        color: $color-white;
-        &:hover{
-          background-color: lighten($color-black,20%);
-          font-weight: bold;
-          transition: 1s;
-        }
+    h2{
+      text-align: center;
+      margin: 0 $margin-h2 0 0;
+      .from{
+        font-weight: normal;
       }
+      .city{
+        font-weight: normal;
+        font-style: italic;
+      }
+    }
+    p{
+      padding: 5px;
+      margin: 0;
     }
   }
 }
-.type-db{
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -10px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//.users{
+//  margin: 0;
+//  padding: 0;
+//  list-style: none;
+//  li{
+//    border-radius: 5px;
+//    padding: 10px;
+//    margin: 10px 0;
+//    background-color: darken($color-white,30%);
+//    position: relative;
+//    padding-bottom: 30px;
+//    .info{
+//      padding-bottom: 10px;
+//      overflow: hidden;
+//      .img-user{
+//        width: 100px;
+//        float: right;
+//        text-align: center;
+//        img{
+//
+//          max-width: 100px;
+//          margin: 0 auto;
+//          max-height: 100px;
+//        }
+//      }
+//      h2{
+//        text-align: center;
+//        margin: 0;
+//      }
+//      .city{
+//        display: block;
+//        font-size: 0.8em;
+//        text-align: center;
+//        font-style: italic;
+//      }
+//    }
+//    .edit{
+//      position: absolute;
+//      left: 0;
+//      right: 0;
+//      bottom: 0;
+//      font-size: 1.2em;
+////      display: block;
+//      text-align: center;
+//      line-height: 30px;
+//      color: $color-black;
+//      text-decoration: none;
+//      background-color: darken($color-white,5%);
+//      cursor: pointer;
+//
+//    }
+//    &:hover{
+//      background-color: darken($color-white,1%);
+//      transition: 1s;
+//      .edit{
+//        background-color: darken($color-white,60%);
+//        color: $color-white;
+//        &:hover{
+//          background-color: lighten($color-black,20%);
+//          font-weight: bold;
+//          transition: 1s;
+//        }
+//      }
+//    }
+//  }
+//}
