@@ -13,6 +13,8 @@
 div.edit {
     position: relative;
     top: 10px;
+    width: 600px;
+    margin: 0 auto;
 }
 
 ul.list-left-menu {
