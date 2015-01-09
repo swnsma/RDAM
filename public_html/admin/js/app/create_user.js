@@ -55,28 +55,34 @@ function CreateUser() {
                                         error: function(error) {
                                             self.curr_operation.local.user_name('this name is not free');
                                             self.user_name.invalid(true);
+                                            self.curr_operation.global('');
                                         }
                                 });
                             } else {
                                 self.curr_operation.local.city('this city isn\'t supported');
+                                self.curr_operation.global('');
                             }
                         },
                         error: function(error) {
-                            self.curr_operation.global('can\'t get the data. try again later');
+                            self.curr_operation.local.city('can\'t get the data. try again later');
+
                         }
                     });
 
                 } else {
                     self.curr_operation.local.city('field is not filled!');
                     self.city.invalid(true);
+                    self.curr_operation.global('');
                 }
             } else {
                 self.curr_operation.local.description('this description has more 1000 letters');
                 self.descr.invalid(true);
+                self.curr_operation.global('');
             }
         } else {
             self.curr_operation.local.user_name('this name has less 1 letters or more 25 letters');
             self.user_name.invalid(true);
+            self.curr_operation.global('');
         }
         return false;
     };
