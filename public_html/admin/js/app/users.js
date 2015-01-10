@@ -65,4 +65,5 @@ ko.bindingHandlers.description = {
 
 $(document).ready(function () {
     ko.applyBindings(new UsersModel());
+    $('body').css('display', 'block');
 });
