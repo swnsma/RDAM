@@ -260,7 +260,7 @@ function UsersModel() {
 
     self.to_edit=function(root){
         self.bool_edit(true);
-        changePage('users1','edit'+root.id);
+        changePage('users','edit'+root.id);
     }
 
     get_data(getHash);

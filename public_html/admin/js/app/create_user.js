@@ -41,22 +41,22 @@ function CreateUser() {
                         success: function(status) {
                             if (status) {
                                 ajax.create_user({
-                                        user_name: user_name,
-                                        city: city,
-                                        descr: descr
-                                    }, {
-                                        before: function() {
-                                            self.curr_operation.global('the process of creating user');
-                                        },
-                                        success: function(data) {
-                                            self.curr_operation.global('You Create new User!');
-                                            changePage('edit', data.id);
-                                        },
-                                        error: function(error) {
-                                            self.curr_operation.local.user_name('this name is not free');
-                                            self.user_name.invalid(true);
-                                            self.curr_operation.global('');
-                                        }
+                                    user_name: user_name,
+                                    city: city,
+                                    descr: descr
+                                }, {
+                                    before: function() {
+                                        self.curr_operation.global('the process of creating user');
+                                    },
+                                    success: function(data) {
+                                        self.curr_operation.global('You Create new User!');
+                                        changePage('users', 'edit'+data.id);
+                                    },
+                                    error: function(error) {
+                                        self.curr_operation.local.user_name('this name is not free');
+                                        self.user_name.invalid(true);
+                                        self.curr_operation.global('');
+                                    }
                                 });
                             } else {
                                 self.curr_operation.local.city('this city isn\'t supported');
