@@ -121,7 +121,7 @@ a.u-url:hover {
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
     background-color:#408c99;
 }
-.edit:active {
+.edit-button:active {
     position:relative;
     top:1px;
 }
