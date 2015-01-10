@@ -12,7 +12,6 @@ function User(user){
 }
 
 function getUserDefined() {
-    debugger;
     var id = window.location.hash.substring(1);
     if (id == parseInt(id)) {
         return id;

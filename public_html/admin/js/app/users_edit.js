@@ -1,5 +1,4 @@
 function getHash() {
-    debugger;
     var id = window.location.hash.substring(1);
     return id;
 }
@@ -81,7 +80,6 @@ function UsersModel() {
         ajax.set_auth_db(self.custom_db(), {
             success: function(data) {
                 alert('updated');
-                changePage('users1', self.user().id);
             },
             error: function(message) {
                 alert(message);
@@ -120,7 +118,6 @@ function UsersModel() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
-                    changePage('users1', self.user().id);
                 },
                 error: function(error) {
                     alert(error);
@@ -151,13 +148,13 @@ function UsersModel() {
                 success: function(data) {
 
                     self.curr_oper.photo.global('You are uploaded photo!');
-                    changePage('users1', self.user().id);
                 },
                 error: function(error) {
                     alert(error);
                 },
                 before: function() {
                     pp.css('display', 'block');
+                    self.curr_oper.photo.global('');
                 },
                 after: function() {
                     pp.css('display', 'none');
@@ -210,7 +207,6 @@ function UsersModel() {
             success: function(data) {
                 self.user(new User(data));
                 self.curr_oper.info.global('You are update this information!');
-                changePage('users1', self.user().id);
             },
             error: function(error) {
                 self.curr_oper.info(error);
@@ -220,12 +216,10 @@ function UsersModel() {
         return false;
     };
     function get_data(id) {
-        debugger;
         if (id() == null) {
             alert('undefined user');
         } else {
             var id=id();
-            debugger;
             if(id.slice(0,4)==='edit'){
                 var id=id.slice(4);
                 self.bool_edit(true);
@@ -266,7 +260,6 @@ function UsersModel() {
 
     self.to_edit=function(root){
         self.bool_edit(true);
-        debugger;
         changePage('users1','edit'+root.id);
     }
 
@@ -333,9 +326,9 @@ ko.bindingHandlers.upload_users = {
             if (l != 0) {
                 id = valueAccessor()()[l-1].id;
             }
-            debugger;
             ajax.get_users(+id+1, {
                 success: function(data) {
+                    viewModel.length(data.length);
                     if (data.length == 0) {
                         element.remove();
                     } else {
@@ -344,7 +337,6 @@ ko.bindingHandlers.upload_users = {
                         }
 
                         var id = getHash();
-                        debugger;
                         if(id.slice(0,4)==='edit'){
                             var id=id.slice(4);
                         }
@@ -354,7 +346,7 @@ ko.bindingHandlers.upload_users = {
                             }, 0);
                         }
                     }
-                    viewModel.length(valueAccessor()().length);
+
                 },
                 error: function(message) {
                     alert(message);
