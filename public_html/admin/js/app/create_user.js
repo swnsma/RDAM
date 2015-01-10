@@ -53,7 +53,7 @@ function CreateUser() {
                                         changePage('users', 'edit'+data.id);
                                     },
                                     error: function(error) {
-                                        self.curr_operation.local.user_name('this name is not free');
+                                        self.curr_operation.local.user_name('this name is not free. But if you believe that this name is free, then reload the page');
                                         self.user_name.invalid(true);
                                         self.curr_operation.global('');
                                     }
