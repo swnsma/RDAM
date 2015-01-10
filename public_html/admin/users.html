@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Admin | List Users</title>
     <link rel="stylesheet" href="sass/common.css" type="text/css"/>
-    <link rel="stylesheet" href="sass/users.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="sass/users.css" type="text/css"/>-->
+    <link rel="stylesheet" href="styles/users.css" type="text/css"/>
     <link rel="stylesheet" href="styles/edit_spa.css" type="text/css"/>
 </head>
 <body style="display: none">
@@ -16,33 +17,39 @@
             <a title="Users" href="users.html"><img  active="true" class="menu-ico" alt="List user" src="img/person-stalker-orange.png"></a>
             <a title="Design" href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
         </menu>
-        <h1>List Users
-            (x<!--ko text: length-->
-            <!--/ko-->)
-        </h1>
+        <h1>List Users (<span data-bind="text: length"></span>)</h1>
     </header>
     <div class="wrapper">
-        <ul data-bind="foreach: users" class="users">
+        <ul data-bind="foreach: users" class="users-list">
             <li data-bind="attr: {id: 'scroll' + id } ">
-                <div class="img">
-                    <img data-bind="attr: { src: photo }" />
-                    <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
+                <div class="table">
+                    <div class="table-row">
+                        <div class="bphoto">
+                            <img class="photo" data-bind="attr: { src: photo }" />
+                        </div>
+                        <div class="bdesrc">
+                            <h2 data-bind="text: user_name"></h2>
+                            <div class="short-descr">
+                                <span class="from">form <span class="city" data-bind="text: city"></span></span> |
+                                <span class="url">url:
+                                    <a class="u-url" data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
+                                </span>
+                            </div>
+                            <div class="descr-text" data-bind="description: descr"></div>
+                        </div>
+                        <div class="bedit">
+                            <a href="#" class="edit" data-bind="click:$root.to_edit">edit</a>
+                        </div>
+                    </div>
                 </div>
-                <h2  >
-                    <!--ko text: user_name-->  <!--/ko-->
-                    from
-                    <!--ko text: city-->  <!--/ko-->
-                </h2>
-                <span data-bind="click:$root.to_edit" class="edit">edit</span>
-                <p data-bind="description: descr"></p>
             </li>
         </ul>
         <div style="display: none;" class="upload-users">
             <a href="#" data-bind="upload_users: users">Next users</a>
         </div>
-
-        <!--ko if:bool_edit-->
-        <div class="pos_fix">
+    </div>
+    <!--ko if:bool_edit-->
+    <div class="pos_fix">
 
         <div  class="edit">
             <div class="lu">
@@ -192,10 +199,8 @@
                 </tr>
             </table>
         </div>
-        </div>
-        <!--/ko-->
     </div>
-
+    <!--/ko-->
 </div>
 <script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
 <script type='text/javascript' src='js/vendor/knockout-3.2.0.js'></script>
