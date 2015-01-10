@@ -345,7 +345,7 @@ ko.bindingHandlers.upload_users = {
                         if (id !== null) {
                             $(document.body).animate({
                                 'scrollTop':   $('#scroll' + id).offset().top
-                            }, 2000);
+                            }, 0);
                         }
                     }
                     viewModel.length(valueAccessor()().length);
