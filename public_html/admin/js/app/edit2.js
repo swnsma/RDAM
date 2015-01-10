@@ -14,6 +14,10 @@ function EditModel() {
     self.bd_type=ko.observable(0);
 
     self.change_db_type = function(type) {
+        console.log({
+            id: self.user().id,
+            type: type
+        });
         ajax.select_type_db({
             id: self.user().id,
             type: type
@@ -22,7 +26,7 @@ function EditModel() {
                 //alert('type changed')
             },
             error: function(message) {
-                alert(message);
+                //alert(message);
             },
             after: function() {
 
@@ -250,7 +254,6 @@ function EditModel() {
             });
             ajax.get_auth_db(id, {
                 success: function(data) {
-                    console.log(data[0]);
                     self.custom_db(new Db(data[0]));
                 },
                 error: function(message) {
@@ -310,13 +313,13 @@ ko.bindingHandlers.typedb = {
             element.append(label);
             input.click(function() {
                 viewModel.change_db_type(type);
-                $('#act_' + select).slideDown(); $('#act_' + !select).slideUp();
+                $('#act_' + !select).slideDown(); $('#act_' + select).slideUp();
             });
         }
 
-        create_input('Default database', 0, type);
-        create_input('External database', 1, !type);
-        $('#act_' + type).slideDown(); $('#act_' + !type).slideUp();
+        create_input('External database', '0', !type);
+        create_input('Default database', '1', type);
+        $('#act_' + !type).slideDown(); $('#act_' + type).slideUp();
     }
 };
 
