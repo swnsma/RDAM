@@ -32,6 +32,7 @@
   background-color: #cccccc;
   color: #000;
   border-radius: 5px;
+  cursor: pointer;
 }
 .users li .edit:hover {
   background-color: #b3b3b3;

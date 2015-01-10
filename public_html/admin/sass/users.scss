@@ -43,6 +43,7 @@ $margin-h2: 100px;
       background-color: lighten($color-black,80%);
       color: $color-black;
       border-radius: 5px;
+      cursor: pointer;
       &:hover{
         background-color:lighten($color-black,70%);
 //        color: $color-white;
