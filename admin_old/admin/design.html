@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Change design</title>
+    <link rel="stylesheet" href="sass/common.css" type="text/css"/>
+    <link rel="stylesheet" href="sass/new.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/design.css" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <header>
+        <menu>
+            <a title="Home"   href="index.html"><img class="menu-ico" alt="home" src="img/ios7-home-white.png"></a>
+            <a title="New" href="new.html"><img class="menu-ico" alt="create" src="img/person-add-white.png"></a>
+            <a title="Users" href="users.html"><img   class="menu-ico" alt="List user" src="img/person-stalker-white.png"></a>
+            <a title="Design" href="design.html"><img active="true" class="menu-ico" alt="design" src="img/ios7-photos-orange.png"></a>
+        </menu>
+        <h1>Change design</h1>
+    </header>
+    <div class="wrapper">
+        <form class="form width500px" id="uploadTemplate" method="post" enctype="multipart/form-data">
+            <input type="file" name="skin">
+            <input data-bind="click: upload_template" type="submit" value="Upload template">(rar-archive)
+        </form>
+        <form name="fdererr">
+            <table class="template">
+                <tr class="header">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Version</th>
+                    <th>Comment</th>
+                    <th colspan="2"></th>
+                </tr>
+                <!-- ko foreach: templates -->
+                <tr data-bind="attr: { active: active }">
+                    <td class="checkbox">
+                        <!-- ko if: active -->
+                        <img class="select" src="img/arrow.png" alt="->" />
+                        <!-- /ko -->
+                        <!-- ko if: !active() -->
+                        <img class="noarrow" src="img/noarrow.png" data-bind="click: function() { $parent.select_design($data) }" alt="f"/>
+                        <!-- /ko -->
+                    </td>
+                    <td class="name" data-bind="text: name"></td>
+                    <td class="author" data-bind="text: author"></td>
+                    <td class="version" data-bind="text: version"></td>
+                    <td class="comment" data-bind="text: comment"></td>
+                    <td class="file">
+                        <a data-bind="attr: { href: file }" href="#">
+                            <img class="download" src="img/download.png" alt="d-l" />
+                        </a>
+                    </td>
+                    <td class="oper">
+                        <!-- ko if: id !== 1 || !active -->
+                        <a href="#" data-bind="click: function() { $parent.delete_template($data); }">
+                            <img class="delete" src="img/delete.png" alt="x" />
+                        </a>
+                        <!-- /ko -->
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </table>
+        </form>
+    </div>
+</div>
+<script src="js/vendor/jquery-2.1.1.js"></script>
+<script src="js/vendor/knockout-3.2.0.js"></script>
+<script src="js/app/ajax.js"></script>
+<script src="js/app/design.js"></script>
+</body>
+</html>

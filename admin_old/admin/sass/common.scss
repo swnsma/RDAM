@@ -1,0 +1,127 @@
+$width100: 100%;
+$height100: 100%;
+$color-black: #000;
+$color-white: #fff;
+$color-orange: #0c4880;
+.buttons{
+  margin: 5px 0;
+  width: 100%;
+  button{
+    width: 49%;
+    cursor: pointer;
+    border: none;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: $color-black;
+    background-color: lighten($color-orange,40%);
+    outline:1px solid darken($color-orange,40%);
+    outline: none;
+    border-radius: 5px;
+    &:hover{
+      background-color: $color-orange;
+      color: $color-white;
+    }
+  }
+}
+textarea{
+  resize: none;
+}
+input[invalid='true'], textarea[invalid='true'] {
+  background-color: #ff999e;
+}
+body,html{
+  height: $height100;
+  margin: 0;
+  padding: 0;
+  background-color: darken($color-white,10%);
+}
+body{
+  padding: 0 10px;
+}
+.content{
+  width: 960px;
+  margin: 0 auto;
+}
+header{
+  background: $color-black;
+  color: $color-white;
+  position: relative;
+  min-height: 50px;
+  menu{
+    position: absolute;
+    line-height: 50px;
+    left: 10px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+
+    .menu-ico {
+      vertical-align: middle;
+      width: 30px;
+      opacity: 0.5;
+      margin: 0 10px;
+      &[active='true']{
+        opacity: 1;
+        transform: scale(1,1);
+      }
+      &:hover{
+        opacity: 1;
+        transform: scale(1.5,1.5);
+//        transition: 0.5s;
+      }
+    }
+  }
+}
+
+h1{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 50px;
+  a{
+    color: $color-white;
+    text-decoration: none;
+  }
+}
+
+.data-title{
+  position: relative;
+  display: inline-block;
+
+  &:hover::after {
+    -moz-user-select: all;
+    -webkit-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    min-width: 100px;
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 100%; /* Положение подсказки */
+    top:0px;
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid $color-orange; /* Параметры рамки */
+    border-radius: 5px;
+  }
+}
+table{
+  border-spacing: 0px;
+}
+span.error{
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  color: #e74c3c;
+  text-align: center;
+}
+.good{
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  color:#2ecc71;
+  text-align: center;
+}

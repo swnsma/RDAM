@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Admin | List Users</title>
+    <link rel="stylesheet" href="sass/common.css" type="text/css"/>
+    <link rel="stylesheet" href="sass/users.css" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <header>
+        <menu>
+            <a title="Home"   href="index.html"><img class="menu-ico" alt="home" src="img/ios7-home-white.png"></a>
+            <a title="New" href="new.html"><img class="menu-ico" alt="create" src="img/person-add-white.png"></a>
+            <a title="Users" href="users.html"><img  active="true" class="menu-ico" alt="List user" src="img/person-stalker-orange.png"></a>
+            <a title="Design" href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
+        </menu>
+        <h1>List Users
+            (x<!--ko text: length-->
+            <!--/ko-->)
+        </h1>
+    </header>
+    <div class="wrapper">
+        <ul data-bind="foreach: users" class="users">
+            <li data-bind="attr: {id: 'scroll' + id } ">
+                <div class="img">
+                    <img data-bind="attr: { src: photo }" />
+                    <a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>
+                </div>
+                <h2  >
+                    <!--ko text: user_name-->
+                    <!--/ko-->
+
+                    <!--<span class="from">from</span>-->
+                    from
+                    <!--ko text: city-->
+                    <!--/ko-->
+
+                    <!--<span class="city" data-bind="text: city"></span>-->
+                </h2>
+                <a data-bind="attr: { href: 'edit.html#' + id }" class="edit">edit</a>
+
+                <p data-bind="description: descr"></p>
+            </li>
+        </ul>
+        <div style="display: none;" class="upload-users">
+            <a href="#" data-bind="upload_users: users">Next users</a>
+        </div>
+    </div>
+    <!--<div class="wrapper">-->
+        <!--<ul data-bind="foreach: users" class="users">-->
+            <!--<li data-bind="attr: {id: 'scroll' + id } ">-->
+                <!--<div class="info">-->
+                    <!--<div class="img-user">-->
+                        <!--<img data-bind="attr: { src: photo }" />-->
+                        <!--<a data-bind="attr: { href: 'http://rdam.tk/#' + id }" href="#">rdam.tk/#<span data-bind="text: id"></span></a>-->
+                    <!--</div>-->
+                    <!--<h2 data-bind="text: user_name" ></h2>-->
+                    <!--<span data-bind="text: city" class="city"></span>-->
+                    <!--<p  data-bind="text: descr"></p>-->
+                <!--</div>-->
+                <!--<a data-bind="attr: { href: 'edit.html#' + id }" class="edit">edit</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+     <!--   <div style="display: none;" class="upload-users">
+            <a href="#" data-bind="upload_users: users">Next users</a>
+        </div>-->
+    <!--</div>-->
+</div>
+<script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='js/vendor/knockout-3.2.0.js'></script>
+<script type='text/javascript' src='js/app/common.js'></script>
+<script type='text/javascript' src='js/app/validator.js'></script>
+<script type='text/javascript' src='js/app/ajax.js'></script>
+<script type='text/javascript' src='js/app/users.js'></script>
+</body>
+</html>

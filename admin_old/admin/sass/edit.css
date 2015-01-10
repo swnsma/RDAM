@@ -1,0 +1,115 @@
+.edit-page {
+  border: 1px solid #999999;
+  width: 500px;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+}
+.edit-page table {
+  width: 100%;
+}
+.edit-page h2 {
+  margin: 0;
+  width: 100%;
+  line-height: 50px;
+  background-color: #cccccc;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #b3b3b3;
+  cursor: pointer;
+}
+.edit-page h2:hover {
+  background-color: #e6e6e6;
+}
+.edit-page:hover {
+  background-color: #fff;
+  transition: 3s;
+  border: 1px solid #cccccc;
+}
+.edit-page .editer {
+  padding: 10px 0;
+}
+.edit-page .editer table {
+  width: 100%;
+}
+.edit-page .editer table tr td {
+  padding: 10px 0;
+}
+.edit-page .editer table tr td #textarea {
+  line-height: normal;
+  height: 40px;
+}
+.edit-page .editer table tr td:first-child {
+  padding-right: 10px;
+}
+.edit-page .editer table tr td:last-child {
+  width: 100%;
+}
+.edit-page .editer table tr td:last-child textarea {
+  line-height: normal;
+  padding: 10px 0;
+}
+.edit-page .editer table tr td:last-child > textarea, .edit-page .editer table tr td:last-child input {
+  line-height: 40px;
+  width: 98%;
+  padding: 0 1px;
+  border-radius: 5px;
+}
+.edit-page .editer table tr td:last-child > textarea.normal-line-hei, .edit-page .editer table tr td:last-child input.normal-line-hei {
+  line-height: normal;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.edit-page .decoration-line tr td {
+  padding: 10px 0;
+  border-bottom: 1px solid #b3b3b3;
+}
+.edit-page .decoration-line tr td:first-child {
+  width: 10%;
+}
+.edit-page .decoration-line tr td:last-child > textarea, .edit-page .decoration-line tr td:last-child input {
+  width: 98%;
+  width: 98%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.edit-page .decoration-line tr td:last-child > textarea:not(textarea), .edit-page .decoration-line tr td:last-child input:not(textarea) {
+  line-height: 40px;
+}
+.edit-page .decoration-line tr td:last-child > textarea:not(input), .edit-page .decoration-line tr td:last-child input:not(input) {
+  padding: 5px 1px;
+  height: 50px;
+}
+.edit-page .decoration-line tr td:last-child > textarea:hover, .edit-page .decoration-line tr td:last-child input:hover {
+  background-color: #e6e6e6;
+}
+.edit-page .decoration-line tr td:last-child > textarea:focus, .edit-page .decoration-line tr td:last-child input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #0c4880;
+}
+
+.upload-users {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  background-color: #000;
+}
+.upload-users a {
+  color: #fff;
+  display: block;
+  width: 100%;
+}
+
+.text-align-center, .text-align-center * {
+  text-align: center;
+}
+
+.db-setting {
+  text-align: center;
+}
+
+/*# sourceMappingURL=edit.css.map */

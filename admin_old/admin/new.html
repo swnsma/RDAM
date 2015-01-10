@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>admin | Create new user</title>
+    <link rel="stylesheet" href="sass/common.css" type="text/css"/>
+    <link rel="stylesheet" href="sass/new.css" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <header>
+        <menu>
+            <a title="Home"   href="index.html"><img class="menu-ico" alt="home" src="img/ios7-home-white.png"></a>
+            <a title="New" href="new.html"><img active="true" class="menu-ico" alt="create" src="img/person-add-orange.png"></a>
+            <a title="Users" href="users.html"><img class="menu-ico" alt="List user" src="img/person-stalker-white.png"></a>
+            <a title="Design" href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
+        </menu>
+        <h1>Create new user</h1>
+    </header>
+    <div class="wrapper">
+        <form name="form" action="" class="new-user form  width500px">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td class="data-title" data-title="1-25 characters and unique name">
+
+                        <input  name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
+                        <span class="error" data-bind="text:curr_operation.local.user_name"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td class="data-title" data-title="max 1000 characters">
+                        <textarea  data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
+                        <span class="error" data-bind="text:curr_operation.local.description"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
+                        <input data-bind="value: city.text, attr: { invalid: city.invalid }" name="city" type="text" />
+                        <span class="error" data-bind="text:curr_operation.local.city"></span>
+
+                    </td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <button data-bind="click: create" type="submit">Create</button>
+                <button data-bind="click: clear"  type="reset">Clear</button>
+            </div>
+            <div class="curr_oper">
+                <span class="good" data-bind="text: curr_operation.global"></span>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/vendor/jquery-2.1.1.js"></script>
+<script src="js/vendor/knockout-3.2.0.js"></script>
+<script src="js/app/common.js"></script>
+<script src="js/app/validator.js"></script>
+<script src="js/app/ajax.js"></script>
+<script src="js/app/create_user.js"></script>
+</body>
+</html>

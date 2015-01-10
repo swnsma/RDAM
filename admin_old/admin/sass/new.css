@@ -1,0 +1,53 @@
+.width500px {
+  width: 500px;
+}
+
+form.form {
+  border: 1px solid #999999;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+}
+form.form:hover {
+  background-color: #fff;
+  transition: 3s;
+  border: 1px solid #cccccc;
+}
+form.form table {
+  width: 100%;
+}
+form.form table tr td:first-child {
+  width: 30px;
+  text-align: left;
+  padding-right: 10px;
+}
+form.form table tr td:last-child {
+  width: 100%;
+}
+form.form table tr td:last-child textarea {
+  line-height: normal;
+  padding: 10px 0;
+}
+form.form table tr td:last-child > input, form.form table tr td:last-child textarea {
+  width: 98%;
+  border: 1px solid #26afff;
+  border-radius: 5px;
+}
+form.form table tr td:last-child > input:not(textarea), form.form table tr td:last-child textarea:not(textarea) {
+  line-height: 40px;
+}
+form.form table tr td:last-child > input:not(input), form.form table tr td:last-child textarea:not(input) {
+  padding: 5px 0px;
+  height: 50px;
+}
+form.form table tr td:last-child > input:hover, form.form table tr td:last-child textarea:hover {
+  background-color: #e6e6e6;
+}
+form.form table tr td:last-child > input:focus, form.form table tr td:last-child textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #0c4880;
+}
+
+/*# sourceMappingURL=new.css.map */

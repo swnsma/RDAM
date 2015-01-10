@@ -1,0 +1,155 @@
+$width100: 100%;
+$height100: 100%;
+$color-black: #000;
+$color-white: #fff;
+$width300px: 290px;
+$width500px: 500px;
+$height300:100px;
+$color-orange: #0c4880;
+
+
+$margin-h2: 100px;
+
+.users{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 30px;
+  li {
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid darken($color-white,40%);
+    .img {
+      float: left;
+//      max-width: 85px;
+      text-align: center;
+      margin: 0 10px 0px 0;
+      img {
+        max-width: 85px;
+        max-height: 85px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .edit{
+      position: absolute;
+      right: 0;
+      top: 15px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      width: $margin-h2;
+      background-color: lighten($color-black,80%);
+      color: $color-black;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover{
+        background-color:lighten($color-black,70%);
+//        color: $color-white;
+        font-weight: bold;
+      }
+    }
+    h2{
+      text-align: center;
+      margin: 0 $margin-h2 0 0;
+      .from{
+        font-weight: normal;
+      }
+      .city{
+        font-weight: normal;
+        font-style: italic;
+      }
+    }
+    p{
+      padding: 5px;
+      margin: 0;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//.users{
+//  margin: 0;
+//  padding: 0;
+//  list-style: none;
+//  li{
+//    border-radius: 5px;
+//    padding: 10px;
+//    margin: 10px 0;
+//    background-color: darken($color-white,30%);
+//    position: relative;
+//    padding-bottom: 30px;
+//    .info{
+//      padding-bottom: 10px;
+//      overflow: hidden;
+//      .img-user{
+//        width: 100px;
+//        float: right;
+//        text-align: center;
+//        img{
+//
+//          max-width: 100px;
+//          margin: 0 auto;
+//          max-height: 100px;
+//        }
+//      }
+//      h2{
+//        text-align: center;
+//        margin: 0;
+//      }
+//      .city{
+//        display: block;
+//        font-size: 0.8em;
+//        text-align: center;
+//        font-style: italic;
+//      }
+//    }
+//    .edit{
+//      position: absolute;
+//      left: 0;
+//      right: 0;
+//      bottom: 0;
+//      font-size: 1.2em;
+////      display: block;
+//      text-align: center;
+//      line-height: 30px;
+//      color: $color-black;
+//      text-decoration: none;
+//      background-color: darken($color-white,5%);
+//      cursor: pointer;
+//
+//    }
+//    &:hover{
+//      background-color: darken($color-white,1%);
+//      transition: 1s;
+//      .edit{
+//        background-color: darken($color-white,60%);
+//        color: $color-white;
+//        &:hover{
+//          background-color: lighten($color-black,20%);
+//          font-weight: bold;
+//          transition: 1s;
+//        }
+//      }
+//    }
+//  }
+//}
