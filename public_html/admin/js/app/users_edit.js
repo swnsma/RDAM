@@ -1,6 +1,5 @@
 function getHash() {
-    var id = window.location.hash.substring(1);
-    return id;
+    return window.location.hash.substring(1);
 }
 function UsersModel() {
     var self=this;
@@ -261,7 +260,7 @@ function UsersModel() {
     self.to_edit=function(root){
         self.bool_edit(true);
         changePage('users','edit'+root.id);
-    }
+    };
 
     get_data(getHash);
 
@@ -336,11 +335,13 @@ ko.bindingHandlers.upload_users = {
                     if (data.length == 0) {
                         element.remove();
                     } else {
-                        for(var i in data) {
+                        /*for(var i in data) {
+                            valueAccessor().push(new User(data[i]));
+                        }*/
+                        for(var i = data.length-1; i != 0; --i) {
                             valueAccessor().push(new User(data[i]));
                         }
-
-                        var id = getHash();
+                        id = getHash();
                         if(id.slice(0,4)==='edit'){
                             var id=id.slice(4);
                         }
