@@ -1,3 +1,8 @@
+function getHash() {
+    debugger;
+    var id = window.location.hash.substring(1);
+    return id;
+}
 function UsersModel() {
     var self=this;
 
@@ -258,11 +263,7 @@ function UsersModel() {
         }
     }
 
-    function getHash() {
-        debugger;
-        var id = window.location.hash.substring(1);
-        return id;
-    }
+
     self.to_edit=function(root){
         self.bool_edit(true);
         debugger;
@@ -332,7 +333,7 @@ ko.bindingHandlers.upload_users = {
             if (l != 0) {
                 id = valueAccessor()()[l-1].id;
             }
-
+            debugger;
             ajax.get_users(+id+1, {
                 success: function(data) {
                     if (data.length == 0) {
@@ -341,7 +342,12 @@ ko.bindingHandlers.upload_users = {
                         for(var i in data) {
                             valueAccessor().push(new User(data[i]));
                         }
-                        var id = getUserDefined();
+
+                        var id = getHash();
+                        debugger;
+                        if(id.slice(0,4)==='edit'){
+                            var id=id.slice(4);
+                        }
                         if (id !== null) {
                             $(document.body).animate({
                                 'scrollTop':   $('#scroll' + id).offset().top
