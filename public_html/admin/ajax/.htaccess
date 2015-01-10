@@ -1,9 +1,0 @@
-#Header add Access-Control-Allow-Origin "*"
-
-Options All -Indexes
-
-<FilesMatch "\.php$">
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
-    Header set Content-Type "application/json; charset=utf-8"
-</FilesMatch>
