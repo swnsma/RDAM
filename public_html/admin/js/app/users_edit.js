@@ -312,9 +312,13 @@ ko.bindingHandlers.typedb = {
             });
         }
 
-        create_input('Default database', 0, type);
+        /*create_input('Default database', 0, type);
         create_input('External database', 1, !type);
-        $('#act_' + type).slideDown(); $('#act_' + !type).slideUp();
+        $('#act_' + type).slideDown(); $('#act_' + !type).slideUp();*/
+
+        create_input('Default database', 0, !type);
+        create_input('External database', 1, type);
+        $('#act_' + !type).slideDown(); $('#act_' + type).slideUp();
     }
 };
 ko.bindingHandlers.upload_users = {
