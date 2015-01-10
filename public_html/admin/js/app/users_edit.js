@@ -210,7 +210,7 @@ function UsersModel() {
             },
             error: function(error) {
                 self.curr_oper.info(error);
-                self.curr_oper.info.local.user_name('This name is not free!');
+                self.curr_oper.info.local.user_name('this name is not free. But if you believe that this name is free, then reload the page');
             }
         });
         return false;
