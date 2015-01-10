@@ -97,24 +97,15 @@ h1 a {
   user-select: all;
   min-width: 100px;
   content: attr(data-title);
-  /* ╨Т╤Л╨▓╨╛╨┤╨╕╨╝ ╤В╨╡╨║╤Б╤В */
   position: absolute;
-  /* ╨Р╨▒╤Б╨╛╨╗╤О╤В╨╜╨╛╨╡ ╨┐╨╛╨╖╨╕╤Ж╨╕╨╛╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ */
   left: 100%;
-  /* ╨Я╨╛╨╗╨╛╨╢╨╡╨╜╨╕╨╡ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╨╕ */
   top: 0px;
   z-index: 1;
-  /* ╨Ю╤В╨╛╨▒╤А╨░╨╢╨░╨╡╨╝ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╤Г ╨┐╨╛╨▓╨╡╤А╤Е ╨┤╤А╤Г╨│╨╕╤Е ╤Н╨╗╨╡╨╝╨╡╨╜╤В╨╛╨▓ */
   background: rgba(255, 255, 230, 0.9);
-  /* ╨Я╨╛╨╗╤Г╨┐╤А╨╛╨╖╤А╨░╤З╨╜╤Л╨╣ ╤Ж╨▓╨╡╤В ╤Д╨╛╨╜╨░ */
   font-family: Arial, sans-serif;
-  /* ╨У╨░╤А╨╜╨╕╤В╤Г╤А╨░ ╤И╤А╨╕╤Д╤В╨░ */
   font-size: 11px;
-  /* ╨а╨░╨╖╨╝╨╡╤А ╤В╨╡╨║╤Б╤В╨░ ╨┐╨╛╨┤╤Б╨║╨░╨╖╨║╨╕ */
   padding: 5px 10px;
-  /* ╨Я╨╛╨╗╤П */
   border: 1px solid #0c4880;
-  /* ╨Я╨░╤А╨░╨╝╨╡╤В╤А╤Л ╤А╨░╨╝╨║╨╕ */
   border-radius: 5px;
 }
 
@@ -136,6 +127,12 @@ span.error {
   width: 100%;
   color: #2ecc71;
   text-align: center;
+}
+
+.required-field {
+    color: red;
+    font-weight: bold;
+    font-size: 17px;
 }
 
 /*# sourceMappingURL=common.css.map */

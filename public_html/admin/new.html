@@ -21,9 +21,8 @@
         <form name="form" action="" class="new-user form  width500px">
             <table>
                 <tr>
-                    <td>Name:</td>
+                    <td>Name:<span class="required-field">*</span></td>
                     <td class="data-title" data-title="1-25 characters and unique name">
-
                         <input  name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
                         <span class="error" data-bind="text:curr_operation.local.user_name"></span>
                     </td>
@@ -36,7 +35,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>City:</td>
+                    <td>City:<span class="required-field">*</span></td>
                     <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
                         <input data-bind="value: city.text, attr: { invalid: city.invalid }" name="city" type="text" />
                         <span class="error" data-bind="text:curr_operation.local.city"></span>
