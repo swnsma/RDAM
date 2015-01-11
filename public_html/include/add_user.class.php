@@ -5,7 +5,8 @@ include_once  __DIR__ . '/connection.class.php';
 class AddUser {
     private $id = null,
         $server_db,
-        $values_db;
+        $values_db,
+        $error = null;
 
     function __construct() {
         $this->server_db = Connection::conn_db();
@@ -42,6 +43,21 @@ HERE;
     public function add($user_name, $city, $descr) {
         $this->server_db->beginTransaction();
         try {
+            if (!$this->create_record_in_user($user_name, $city, $descr)) {
+                throw new RuntimeException('failed to create a new user. Perhaps it already exists');
+            }
+            $this->id = $this->server_db->lastInsertId();
+            if (!($this->create_record_in_auth() && $this->create_table_for_values())) {
+                throw new RuntimeException('try again later or or change it');
+            }
+
+            $this->server_db->commit();
+            return true;
+        } catch(RuntimeException $e) {
+            $this->server_db->rollBack();
+            return false;
+        }
+        /*try {
             if ($this->create_record_in_user($user_name, $city, $descr)
                 && $this->create_record_in_auth()) {
                 $this->id = $this->server_db->lastInsertId();
@@ -54,11 +70,15 @@ HERE;
         } catch(Exception $e) {
             $this->server_db->rollBack();
             return false;
-        }
+        }*/
     }
 
     public function get_id() {
         return $this->id;
+    }
+
+    public function get_error() {
+        return $this->error;
     }
 
     function __destruct() {
