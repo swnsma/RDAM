@@ -7,24 +7,25 @@ ul.users-list {
 }
 
 ul.users-list > li {
-    background: #FFF;
+    /*background: #FFF;*/
     width: 100%;
-    border-radius: 7px;
+    /*border-radius: 7px;*/
 }
 
 div.table {
     display: table;
     width: 100%;
     margin: 5px 0;
-    border: 1px solid #929df2;
-    border-radius: 7px;
+    /*border: 1px solid #929df2;*/
+    /*border-radius: 7px;*/
+    border-bottom: 1px solid #bbbbbb;
 }
 
-div.table:hover {
-    -webkit-box-shadow: -5px 6px 52px -22px rgba(168,168,168,1);
-    -moz-box-shadow: -5px 6px 52px -22px rgba(168,168,168,1);
-    box-shadow: -5px 6px 52px -22px rgba(168,168,168,1);
-}
+/*div.table:hover {*/
+    /*-webkit-box-shadow: -5px 6px 52px -22px rgba(168,168,168,1);*/
+    /*-moz-box-shadow: -5px 6px 52px -22px rgba(168,168,168,1);*/
+    /*box-shadow: -5px 6px 52px -22px rgba(168,168,168,1);*/
+/*}*/
 
 div.table-row {
     display: table-row;
