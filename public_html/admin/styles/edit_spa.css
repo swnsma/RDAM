@@ -1,6 +1,10 @@
 input, textarea {
     outline: none;
 }
+
+.list-left-menu [disable='true']{
+    opacity: 0.6;
+}
 div.pos_fix{
     position: fixed;
     left: 0;

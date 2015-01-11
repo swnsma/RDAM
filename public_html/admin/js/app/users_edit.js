@@ -13,7 +13,8 @@ function UsersModel() {
         user_name: null,
         city: null,
         descr: null,
-        photo: null
+        photo: null,
+        type_db: 0
     });
     self.bd_type=ko.observable(0);
     self.change_db_type = function(type) {
