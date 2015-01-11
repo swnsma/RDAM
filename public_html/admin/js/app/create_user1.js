@@ -14,6 +14,14 @@ function CreateUser() {
         };
     }
 
+    self.custom_db = ko.observable(new Db({
+        id: null,
+        db_port: null,
+        db_server: null,
+        db_user: null,
+        db_name: null,
+        db_pass: null
+    }));
 
     self.save_photo = function() {
         var pp = $('#photoProgress');
