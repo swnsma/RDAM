@@ -170,14 +170,25 @@ div.lu img{
 
 .newtooltip > div {
     position: relative;
-    left: -15px;
+    left: -11px;
     background-color: #16a98e;
     box-shadow: 3px 4px 6px rgba(0, 0, 1, 0.22);
     color: #FFF;
     padding: 5px;
-    max-width: 280px;
+    max-width: 300px;
     border-radius: 4px;
-    border: 1px solid #14765e;
+}
+
+.newtooltip > div:before {
+    border-width: 5px 8px 5px 0;
+    border-color: rgba(0, 0, 0, 0) #16a98e rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    right: 100%;
+    z-index: 10000;
+    margin-top: -5px;
+    top: 13px;
+    border-style: solid;
+    content: '';
+    position: absolute;
 }
 
 .newtooltip a {
