@@ -24,25 +24,27 @@ function getUserDefined() {
 ko.bindingHandlers.newtooltip = {
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         element = $(element);
-        var message = $('<div>').html(valueAccessor()).addClass('newtooltip').insertBefore(element);
+        var b_message = $('<div>').addClass('newtooltip').insertBefore(element);
+        var message = $('<div>').html(valueAccessor());
+        b_message.append(message);
         var flag = true;
-        message.mouseover(function() {
+        b_message.mouseover(function() {
             flag = false;
         }).mouseout(function() {
             if (flag) {
-                message.css('display', 'none');
+                b_message.css('display', 'none');
             } else {
                 flag = true;
             }
         });
-        message.click(function() {
+        b_message.click(function() {
             flag = true;
         });
         element.focusin(function() {
-            message.css('display', 'block');
+            b_message.css('display', 'block');
         }).focusout(function() {
             if (flag) {
-                message.css('display', 'none');
+                b_message.css('display', 'none');
             }
         });
     }

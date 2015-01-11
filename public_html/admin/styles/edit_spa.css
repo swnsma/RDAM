@@ -160,28 +160,22 @@ div.lu img{
     margin-top: 10px;
 }
 
-.messageTip {
-    background-color: #EF5B5B;
-    box-shadow: 3px 4px 6px rgba(0, 0, 1, 0.22);
-    color: #FFF;
-    display: none;
-    line-height: 1;
-    padding: 10px 14px;
-    position: absolute;
-    white-space: nowrap;
-    z-index: 1000;
-}
-
 .newtooltip {
-    background-color: #16a98e;
-    box-shadow: 3px 4px 6px rgba(0, 0, 1, 0.22);
-    color: #FFF;
     display: none;
-    line-height: 1;
-    padding: 10px 14px;
     position: absolute;
-    white-space: nowrap;
     z-index: 1000;
     left: 100%;
     margin-left: 10px;
+}
+
+.newtooltip > div {
+    position: relative;
+    left: -15px;
+    background-color: #16a98e;
+    box-shadow: 3px 4px 6px rgba(0, 0, 1, 0.22);
+    color: #FFF;
+    padding: 5px;
+    max-width: 280px;
+    border-radius: 4px;
+    border: 1px solid #14765e;
 }
