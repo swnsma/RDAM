@@ -37,22 +37,22 @@
                             <table >
                                 <tr>
                                     <td>name:<span class="required-field">*</span></td>
-                                    <td class="data-title" data-title="1-25 characters and unique name">
-                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" name="edit_name" />
+                                    <td>
+                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }, newtooltip: '1-25 characters and unique name'" type="text" name="edit_name" />
                                         <span class="error" data-bind="text:curr_operation.local.user_name"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>city:<span class="required-field">*</span></td>
-                                    <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
-                                        <input data-bind="value: city.text, attr: { invalid: city.invalid }" class="fi" type="text" name="edit_city" />
+                                    <td>
+                                        <input data-bind="value: city.text, attr: { invalid: city.invalid }, newtooltip: 'city of this link <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" class="fi" type="text" name="edit_city" />
                                         <span data-bind="text:curr_operation.local.city" class="error" ></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>description:</td>
-                                    <td class="data-title" data-title="max 1000 characters">
-                                        <textarea class="fi" data-bind="value: descr.text, attr: { invalid: descr.invalid }" id="textarea" > </textarea>
+                                    <td>
+                                        <textarea class="fi" data-bind="value: descr.text, attr: { invalid: descr.invalid }, newtooltip: 'max 1000 characters'" id="textarea" > </textarea>
                                         <span data-bind="text:curr_operation.local.description" class="error"></span>
                                     </td>
                                 </tr>
@@ -96,7 +96,7 @@
                                     <tr>
                                         <td class="text-align-center">
                                             <form id="formData">
-                                                <input  name="id" type="hidden" />
+                                                <input data-bind="value: user().id" name="id" type="hidden" />
                                                 <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
                                                 <input class="normal-line-hei" name="data" type="file" />
                                             </form>
@@ -105,7 +105,7 @@
                                     </tr>
                                 </table>
                                 <div class="buttons">
-                                    <button type="button">upload</button>
+                                    <button type="button" data-bind="click: $root.save_data">upload</button>
                                     <button type="reset">clear</button>
                                 </div>
                                 <!-- /ko -->
