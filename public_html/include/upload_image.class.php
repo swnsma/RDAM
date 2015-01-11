@@ -72,7 +72,7 @@ class UploadImage extends Upload {
     public function upload($id) {
         try {
             if ($this->check_size()) {
-                throw new RuntimeException('exceeded filesize limit');
+                throw new RuntimeException('File is too big');
             }
 
             $tmp_name = $this->file['tmp_name'];
@@ -86,7 +86,7 @@ class UploadImage extends Upload {
 
             $previous_file_name = $db->get_previous_file_name($id);
             if ($previous_file_name === false) {
-                throw new RuntimeException('it was not possible to obtain information about the current picture');
+                throw new RuntimeException('Cannot load current picture. Please try again later');
             }
 
             $file = uniqid() . '.' . $ext;
@@ -100,7 +100,7 @@ class UploadImage extends Upload {
 
             if (!$db->set_current_file_name($id, $file)) {
                 unlink($folder . $file);
-                throw new RuntimeException('failed to update the information about the current photo.');
+                throw new RuntimeException('Cannot update current photo. Please try again later');
             }
 
             $db = null;

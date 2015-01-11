@@ -101,7 +101,7 @@ class UploadData extends Upload {
     public function upload($id, $ignore_first_line = true) {
         try {
             if ($this->check_size()) {
-                throw new RuntimeException('exceeded filesize limit');
+                throw new RuntimeException('File is too big');
             }
 
             $tmp_name = $this->file['tmp_name'];

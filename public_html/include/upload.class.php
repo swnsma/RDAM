@@ -15,12 +15,12 @@ abstract class Upload {
                 case UPLOAD_ERR_OK:
                     break;
                 case UPLOAD_ERR_NO_FILE:
-                    throw new RuntimeException('no file sent');
+                    throw new RuntimeException('File wasn\'t sent. Please try again later');
                 case UPLOAD_ERR_INI_SIZE:
                 case UPLOAD_ERR_FORM_SIZE:
-                    throw new RuntimeException('exceeded filesize limit');
+                    throw new RuntimeException('File is too big');
                 default:
-                    throw new RuntimeException('unknown errors');
+                    throw new RuntimeException('Something went wrong. Please try again later');
             }
 
             return true;
