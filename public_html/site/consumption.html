@@ -38,12 +38,14 @@
                     <label>Self-sufficiency:</label>
                     <div class="wrapper">
                         <div class="from-grid">
-                            Power grid:<br/>
-                            <span data-bind="text:stringGrid"></span>
+                            <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
+                            <label>from power greed</label><br/>
+                            <p>Consumption from power greed. If energy from solar panel not enough, it will be consumed from greed.</p>
                         </div>
                         <div class="from-panel">
-                            Solar panel:<br/>
-                            <span data-bind="text:stringPanel"></span>
+                            <span class="kwh-label" data-bind="text:stringPanel"></span><br/>
+                            <label>from solar panel</label><br/>
+                            <p>Consumption from solar panel's produce. If solar panel accumulated some energy, it will be consumed first.</p>
                         </div>
                     </div>
                 </div>
