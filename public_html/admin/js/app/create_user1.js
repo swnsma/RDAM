@@ -255,6 +255,44 @@ function CreateUser() {
         db_name: null,
         db_pass: null
     }));
+
+    self.set_auth = function() {
+        ajax.set_auth_db(self.custom_db(), {
+            success: function(data) {
+                alert('updated');
+            },
+            error: function(message) {
+                alert(message);
+            },
+            after: function() {
+
+            },
+            before: function() {
+
+            }
+        });
+    };
+    self.test_connection = function() {
+        ajax.test_conn(self.custom_db(), {
+            success: function(data) {
+                if (data.status == 'success') {
+                    alert('success');
+                } else {
+                    alert('failed');
+                }
+            },
+            error: function(message) {
+                alert(message);
+            },
+            before: function() {
+
+            },
+            after: function() {
+
+            }
+        });
+    };
+
     self.bd_type=ko.observable(0);
     ko.bindingHandlers.typedb = {
         init: function(element, valueAccessor, allBindings, viewModel, bindingContext){

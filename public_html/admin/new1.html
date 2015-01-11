@@ -116,38 +116,39 @@
                                     external DB
                                 </h3>
                                 <div>
-
+                                    <!-- ko with: custom_db() -->
                                     <table class="gdr">
                                         <tr>
                                             <td>server:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" style="width: 313px"  type="text" />
+                                                <input class="fi" style="width: 313px" data-bind="value: server" type="text" />
                                                 <span style="padding-left: 1px; font-weight: bold">:</span>
-                                                <input class="fi" style="width: 30px" type="text" />
+                                                <input class="fi" style="width: 30px"data-bind="value: port" type="text" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>name:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi"  type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: name" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>user:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi"  type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: user" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>password:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: pass" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                     </table>
+                                    <!-- /ko -->
                                     <div class="buttons">
-                                        <button type="button">save</button>
-                                        <button type="button">test connection</button>
+                                        <button type="button" data-bind="click: set_auth">save</button>
+                                        <button type="button" data-bind="click: test_connection">test connection</button>
                                     </div>
                                 </div>
                             </div>

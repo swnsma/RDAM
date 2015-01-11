@@ -105,10 +105,10 @@ function UsersModel() {
                 alert(message);
             },
             before: function() {
-                pp.css('display', 'block');
+
             },
             after: function() {
-                pp.css('display', 'none');
+
             }
         });
     };
