@@ -72,7 +72,7 @@ function CreateUser() {
         clear_operation(self.curr_operation);
         return false;
 
-    }
+    };
     self.user = ko.observable({
         id: null,
         user_name: null,
