@@ -111,7 +111,7 @@ function UsersModel() {
             self.valid_custom_db.user(true);
             return false;
         }
-        if (!valid.pass(data.pass)) {
+        if (!valid.password(data.pass)) {
             self.valid_custom_db.pass(true);
             return false;
         }
