@@ -55,6 +55,7 @@ HERE;
             return true;
         } catch(RuntimeException $e) {
             $this->server_db->rollBack();
+            $this->error = $e->getMessage();
             return false;
         }
         /*try {
