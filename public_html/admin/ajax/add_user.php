@@ -27,7 +27,7 @@ if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr']
         } else {
             $log->write('failed to add a new user', LOGTYPES::CRITICAL);
             header('HTTP/1.0 400 Bad Request');
-            print '{ "status": "error", "error_message": "try again later or or change it" }';
+            print '{ "status": "error", "error_message": "' . $user->get_error() . '" }';
         }
 
         $log = null;
