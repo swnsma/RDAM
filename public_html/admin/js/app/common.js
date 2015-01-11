@@ -24,7 +24,7 @@ function getUserDefined() {
 ko.bindingHandlers.newtooltip = {
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         element = $(element);
-        var message = $('<div>').text(valueAccessor()).addClass('newtooltip').insertBefore(element);
+        var message = $('<div>').html(valueAccessor()).addClass('newtooltip').insertBefore(element);
         var flag = true;
         message.mouseover(function() {
             flag = false;
