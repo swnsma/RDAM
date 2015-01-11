@@ -22,11 +22,13 @@ class AuthDB {
     }
 
     public static function valid_pass($pass) {
-        return preg_match('/^[a-zA-Z\$\@\#\%\d_\-]{4,30}$/', $pass);
+        //return preg_match('/^[a-zA-Z\$\@\#\%\d_\-]{4,30}$/', $pass);
+        $l = strlen($pass);
+        return $l >= 5 && $l <= 30;
     }
 
     public static function valid_port($port) {
-        return $port > 0 && $port < 65000;
+        return $port > 0 && $port < 65535;
     }
 
     public function update_auth($id, $server, $name, $user, $pass, $port) {
