@@ -76,7 +76,7 @@
                             </div>
                             <div class="buttons">
                                 <button type="button" data-bind="click: $root.save_photo">upload</button>
-                                <button type="reset">clear</button>
+                                <button data-bind="click: function(){$root.active_page.active(2);$root.active_page.max_active(2);}"  type="button">skip stage</button>
                             </div>
                             <span class="good"></span>
                             <!--/ko-->
@@ -106,7 +106,7 @@
                                 </table>
                                 <div class="buttons">
                                     <button type="button" data-bind="click: $root.save_data">upload</button>
-                                    <button type="reset">clear</button>
+                                    <a href="users.html">skip stage</a>
                                 </div>
                                 <!-- /ko -->
                             </div>
