@@ -176,6 +176,7 @@ div.lu img{
     color: #FFF;
     padding: 5px;
     max-width: 300px;
+    min-width: 150px;
     border-radius: 4px;
 }
 
