@@ -3,8 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Create New User | RTE</title>
-    <link rel="stylesheet" href="sass/common.css" type="text/css"/>
-    <link rel="stylesheet" href="sass/new.css" type="text/css"/>
+    <link rel="stylesheet" href="sass/common.css" type="text/css" />
+    <link rel="stylesheet" href="styles/edit_spa.css" type="text/css" />
 </head>
 <body>
 <div class="content">
@@ -15,49 +15,158 @@
             <a title="Users" href="users.html"><img class="menu-ico" alt="List user" src="img/person-stalker-white.png"></a>
             <a title="Change Design" href="design.html"><img class="menu-ico" alt="design" src="img/ios7-photos-white.png"></a>
         </menu>
-        <h1>Create New User</h1>
+        <h1>
+            <span>Create New User</span>
+        </h1>
     </header>
     <div class="wrapper">
-        <form name="form" action="" class="new-user form  width500px">
-            <table>
+        <div style="margin-top: 10px"  class="edit">
+            <table class="et">
                 <tr>
-                    <td>Name:<span class="required-field">*</span></td>
-                    <td class="data-title" data-title="1-25 characters and unique name">
-                        <input  name="name" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }" type="text" />
-                        <span class="error" data-bind="text:curr_operation.local.user_name"></span>
+                    <td>
+                        <ul class="list-left-menu">
+                            <li data-bind="click: function() { if(active_page.max_active()==0){ active_page.active(0);}} ,attr: { disable: !(active_page.max_active()==0) }, css: { active: active_page.active() == 0 }">create user</li>
+                            <li data-bind="click: function() { if(active_page.max_active()>=1){ active_page.active(1); }},attr: { disable: (active_page.max_active()<1) }, css: { active: active_page.active() == 1 }">add photo</li>
+                            <li data-bind="click: function() { if(active_page.max_active()>=2){ active_page.active(2);}},attr: { disable: (active_page.max_active()<2) }, css: { active: active_page.active() == 2 }">database</li>
+                        </ul>
                     </td>
-                </tr>
-                <tr>
-                    <td>Description:</td>
-                    <td class="data-title" data-title="max 1000 characters">
-                        <textarea  data-bind="value: descr.text, attr: { invalid: descr.invalid }" name="description"></textarea>
-                        <span class="error" data-bind="text:curr_operation.local.description"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>City:<span class="required-field">*</span></td>
-                    <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
-                        <input data-bind="value: city.text, attr: { invalid: city.invalid }" name="city" type="text" />
-                        <span class="error" data-bind="text:curr_operation.local.city"></span>
+                    <td class="edit-data">
+                        <div class="ped">
 
+                            <!-- ko if: active_page.active() == 0 -->
+                            <table >
+                                <tr>
+                                    <td>name:<span class="required-field">*</span></td>
+                                    <td>
+                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }, newtooltip: '1-25 characters and unique name'" type="text" name="edit_name" />
+                                        <span class="error" data-bind="text:curr_operation.local.user_name"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>city:<span class="required-field">*</span></td>
+                                    <td>
+                                        <input data-bind="value: city.text, attr: { invalid: city.invalid }, newtooltip: 'city of this link <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" class="fi" type="text" name="edit_city" />
+                                        <span data-bind="text:curr_operation.local.city" class="error" ></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>description:</td>
+                                    <td>
+                                        <textarea class="fi" data-bind="value: descr.text, attr: { invalid: descr.invalid }, newtooltip: 'max 1000 characters'" id="textarea" > </textarea>
+                                        <span data-bind="text:curr_operation.local.description" class="error"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="buttons">
+                                <button data-bind="click: create" type="button" >create</button>
+                                <button  data-bind="click: clear" type="reset">clear</button>
+                            </div>
+                            <span class="good" ></span>
+                            <!-- /ko -->
+
+                            <!-- ko if: active_page.active() == 1 -->
+                            <!-- ko with: user() -->
+                            <div class="edit-photo">
+                                <span>(gif, png, jpg)</span>
+                                <form id="formPhoto">
+                                    <input name="id"  data-bind="value: id" type="hidden" />
+                                    <input name="photo" type="file" />
+                                </form>
+                                <progress id="photoProgress" style="display: none;"></progress>
+                            </div>
+                            <div class="buttons">
+                                <button type="button" data-bind="click: $root.save_photo">upload</button>
+                                <button type="reset">clear</button>
+                            </div>
+                            <span class="good"></span>
+                            <!--/ko-->
+                            <!-- /ko -->
+
+                            <!-- ko if: active_page.active() == 2 -->
+
+                            <form data-bind="typedb: false">
+
+                            </form>
+                            <hr />
+                            <div id="act_true">
+                                <h3 class="db-setting">
+                                    upload data from csv-file to the default database
+                                </h3>
+                                <table>
+                                    <tr>
+                                        <td class="text-align-center">
+                                            <form id="formData">
+                                                <input data-bind="value: user().id" name="id" type="hidden" />
+                                                <label><input type="checkbox" value="true" checked="checked"/>ignore first line</label>
+                                                <input class="normal-line-hei" name="data" type="file" />
+                                            </form>
+                                            <progress id="dataProgress" style="display: none;"></progress>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="buttons">
+                                    <button type="button" data-bind="click: $root.save_data">upload</button>
+                                    <button type="reset">clear</button>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+
+                            <div id="act_false">
+                                <h3 class="db-setting">
+                                    external DB
+                                </h3>
+                                <div>
+                                    <!-- ko with: custom_db() -->
+                                    <table class="gdr">
+                                        <tr>
+                                            <td>server:<span class="required-field">*</span></td>
+                                            <td>
+                                                <input class="fi" style="width: 313px" data-bind="value: server" type="text" />
+                                                <span style="padding-left: 1px; font-weight: bold">:</span>
+                                                <input class="fi" style="width: 30px"data-bind="value: port" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>name:<span class="required-field">*</span></td>
+                                            <td>
+                                                <input class="fi" data-bind="value: name" type="text" name="edit_name" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>user:<span class="required-field">*</span></td>
+                                            <td>
+                                                <input class="fi" data-bind="value: user" type="text" name="edit_name" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>password:<span class="required-field">*</span></td>
+                                            <td>
+                                                <input class="fi" data-bind="value: pass" type="text" name="edit_name" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- /ko -->
+                                    <div class="buttons">
+                                        <button type="button" data-bind="click: set_auth">save</button>
+                                        <button type="button" data-bind="click: test_connection">test connection</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+
+                        </div>
                     </td>
                 </tr>
             </table>
-            <div class="buttons">
-                <button data-bind="click: create" type="submit">Create</button>
-                <button data-bind="click: clear"  type="reset">Clear</button>
-            </div>
-            <div class="curr_oper">
-                <span class="good" data-bind="text: curr_operation.global"></span>
-            </div>
-        </form>
+        </div>
+
     </div>
 </div>
-<script src="js/vendor/jquery-2.1.1.js"></script>
-<script src="js/vendor/knockout-3.2.0.js"></script>
-<script src="js/app/common.js"></script>
-<script src="js/app/validator.js"></script>
-<script src="js/app/ajax.js"></script>
-<script src="js/app/create_user.js"></script>
+<script type="text/javascript" src="js/vendor/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/vendor/knockout-3.2.0.js"></script>
+<script type="text/javascript" src="js/app/common.js"></script>
+<script type="text/javascript" src="js/app/validator.js"></script>
+<script type="text/javascript" src="js/app/ajax.js"></script>
+<script type="text/javascript" src="js/app/create_user1.js"></script>
 </body>
 </html>
