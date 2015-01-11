@@ -16,4 +16,24 @@ Validator.prototype.descr = function(descr) {
 //    return /^[\w \n\(\)\'\"\d\-]{0,1000}$/.test(descr);
 };
 
+Validator.prototype.server = function(server) {
+    return /^[a-z\d_\-]{7,30}$/.test(server);
+};
+
+Validator.prototype.port = function(port) {
+    return port % 1 === 0 && port > 0 && port < 65535;
+};
+
+Validator.prototype.password = function(pass) {
+    return pass.length >= 4 && pass.length <= 30;
+};
+
+Validator.prototype.user = function(user) {
+    return /^[a-z\d_]{4,30}$/.test(user);
+};
+
+Validator.prototype.name = function(name) {
+    return /^[a-z\d_]{4,30}$/.test(name);
+};
+
 var valid = new Validator;

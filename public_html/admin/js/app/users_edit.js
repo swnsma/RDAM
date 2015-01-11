@@ -75,7 +75,51 @@ function UsersModel() {
         db_name: null,
         db_pass: null
     }));
+
+    self.valid_custom_db = {
+        port: ko.observable(false),
+        server: ko.observable(false),
+        user: ko.observable(false),
+        name: ko.observable(false),
+        pass: ko.observable(false)
+    };
+
+    function valid_custom_db_reset() {
+        self.valid_custom_db.port(false);
+        self.valid_custom_db.server(false);
+        self.valid_custom_db.user(false);
+        self.valid_custom_db.name(false);
+        self.valid_custom_db.pass(false);
+    }
+
+    function check_valid_db_fields() {
+        valid_custom_db_reset();
+        var data = self.custom_db();
+        if (!valid.server(data.server)) {
+            self.valid_custom_db.server(true);
+            return false;
+        }
+        if (!valid.port(data.port)) {
+            self.valid_custom_db.port(true);
+            return false;
+        }
+        if (!valid.name(data.name)) {
+            self.valid_custom_db.name(true);
+            return false;
+        }
+        if (!valid.user(data.user)) {
+            self.valid_custom_db.user(true);
+            return false;
+        }
+        if (!valid.pass(data.pass)) {
+            self.valid_custom_db.pass(true);
+            return false;
+        }
+        return true;
+    }
+
     self.set_auth = function() {
+        if (!check_valid_db_fields()) return;
         ajax.set_auth_db(self.custom_db(), {
             success: function(data) {
                 alert('updated');
@@ -92,6 +136,7 @@ function UsersModel() {
         });
     };
     self.test_connection = function() {
+        if (!check_valid_db_fields()) return;
         ajax.test_conn(self.custom_db(), {
             success: function(data) {
                 if (data.status == 'success') {
