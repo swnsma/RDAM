@@ -24,7 +24,7 @@ class AuthDB {
     public static function valid_pass($pass) {
         //return preg_match('/^[a-zA-Z\$\@\#\%\d_\-]{4,30}$/', $pass);
         $l = strlen($pass);
-        return $l >= 5 && $l <= 30;
+        return $l >= 4 && $l <= 30;
     }
 
     public static function valid_port($port) {
