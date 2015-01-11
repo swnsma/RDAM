@@ -338,7 +338,7 @@ ko.bindingHandlers.upload_users = {
                         /*for(var i in data) {
                             valueAccessor().push(new User(data[i]));
                         }*/
-                        for(var i = data.length-1; i != 0; --i) {
+                        for(var i = data.length-1; i != -1; --i) {
                             valueAccessor().push(new User(data[i]));
                         }
                         id = getHash();
