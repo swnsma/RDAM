@@ -20,6 +20,34 @@ function getUserDefined() {
     }
 }
 
+
+ko.bindingHandlers.newtooltip = {
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        element = $(element);
+        var message = $('<div>').text(valueAccessor()).addClass('newtooltip').insertBefore(element);
+        var flag = true;
+        message.mouseover(function() {
+            flag = false;
+        }).mouseout(function() {
+            if (flag) {
+                message.css('display', 'none');
+            } else {
+                flag = true;
+            }
+        });
+        message.click(function() {
+            flag = true;
+        });
+        element.focusin(function() {
+            message.css('display', 'block');
+        }).focusout(function() {
+            if (flag) {
+                message.css('display', 'none');
+            }
+        });
+    }
+};
+
 function changePage(page, id) {
     var w = window.location;
     w.replace(w.protocol + '//' + w.hostname + ':' + w.port + '/admin/' + page + '.html#' + id);

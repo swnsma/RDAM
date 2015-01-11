@@ -75,21 +75,21 @@
                                 <tr>
                                     <td>name:<span class="required-field">*</span></td>
                                     <td class="data-title" data-title="1-25 characters and unique name">
-                                        <input class="fi" type="text" data-bind="value: user_name,attr: { invalid: $root.valid.user_name }" name="edit_name" />
+                                        <input class="fi" type="text" data-bind="value: user_name,attr: { invalid: $root.valid.user_name }, newtooltip: 'hi'" name="edit_name" />
                                         <span class="error" data-bind="text:$root.curr_oper.info.local.user_name"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>city:<span class="required-field">*</span></td>
                                     <td class="data-title" data-title="city of this link http://www.worldweatheronline.com/country.aspx">
-                                        <input class="fi" type="text" data-bind="value: city,attr: { invalid: $root.valid.city }" name="edit_city" />
+                                        <input class="fi" type="text" data-bind="value: city,attr: { invalid: $root.valid.city }, newtooltip: 'hi'" name="edit_city" />
                                         <span class="error" data-bind="text:$root.curr_oper.info.local.city"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>description:</td>
                                     <td class="data-title" data-title="max 1000 characters">
-                                        <textarea class="fi" id="textarea" data-bind="value: descr,attr: { invalid: $root.valid.description }"> </textarea>
+                                        <textarea class="fi" id="textarea" data-bind="value: descr,attr: { invalid: $root.valid.description }, newtooltip: 'hi'"> </textarea>
                                         <span class="error" data-bind="text:$root.curr_oper.info.local.description"></span>
                                     </td>
                                 </tr>

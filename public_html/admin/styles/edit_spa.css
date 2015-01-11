@@ -142,3 +142,46 @@ div.lu img{
 #bd{
     display: none;
 }
+
+.valid-message.tooltip-left{
+    right: 100%;
+    margin-right: 10px;
+}
+.valid-message.tooltip-right{
+    left: 100%;
+    margin-left: 10px;
+}
+.valid-message.tooltip-top{
+    bottom: 100%;
+    margin-bottom: 10px;
+}
+.valid-message.tooltip-bottom{
+    top: 100%;
+    margin-top: 10px;
+}
+
+.messageTip {
+    background-color: #EF5B5B;
+    box-shadow: 3px 4px 6px rgba(0, 0, 1, 0.22);
+    color: #FFF;
+    display: none;
+    line-height: 1;
+    padding: 10px 14px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.newtooltip {
+    background-color: #16a98e;
+    box-shadow: 3px 4px 6px rgba(0, 0, 1, 0.22);
+    color: #FFF;
+    display: none;
+    line-height: 1;
+    padding: 10px 14px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1000;
+    left: 100%;
+    margin-left: 10px;
+}
