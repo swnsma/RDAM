@@ -44,7 +44,7 @@ HERE;
         $this->server_db->beginTransaction();
         try {
             if (!$this->create_record_in_user($user_name, $city, $descr)) {
-                throw new RuntimeException('failed to create a new user. Perhaps it already exists');
+                throw new RuntimeException('Username is already in use. Please try another one');
             }
             $this->id = $this->server_db->lastInsertId();
             if (!($this->create_record_in_auth() && $this->create_table_for_values())) {
@@ -58,20 +58,6 @@ HERE;
             $this->error = $e->getMessage();
             return false;
         }
-        /*try {
-            if ($this->create_record_in_user($user_name, $city, $descr)
-                && $this->create_record_in_auth()) {
-                $this->id = $this->server_db->lastInsertId();
-                if (!$this->create_table_for_values()) throw new Exception();
-            } else {
-                throw new Exception();
-            }
-            $this->server_db->commit();
-            return true;
-        } catch(Exception $e) {
-            $this->server_db->rollBack();
-            return false;
-        }*/
     }
 
     public function get_id() {
