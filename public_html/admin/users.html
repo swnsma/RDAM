@@ -159,27 +159,29 @@
                                         <tr>
                                             <td>server:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" style="width: 313px" data-bind="value: custom_db().server, attr: {invalid: valid_custom_db.server }" type="text" />
-                                                <span style="padding-left: 1px; font-weight: bold">:</span>
-                                                <input class="fi" style="width: 30px"data-bind="value: custom_db().port, attr: {invalid: valid_custom_db.port }" type="text" />
+                                                <div data-bind="newtooltip: 'max 1000 characters'">
+                                                    <input class="fi" style="width: 313px" data-bind="value: custom_db().server, attr: {invalid: valid_custom_db.server }" type="text" />
+                                                    <span style="padding-left: 1px; font-weight: bold">:</span>
+                                                    <input class="fi" style="width: 30px" data-bind="value: custom_db().port, attr: {invalid: valid_custom_db.port }" type="text" />
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>name:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" data-bind="value: custom_db().name, attr: {invalid: valid_custom_db.name }" type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: custom_db().name, attr: {invalid: valid_custom_db.name }, newtooltip: 'max 1000 characters'" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>user:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" data-bind="value: custom_db().user, attr: {invalid: valid_custom_db.user }" type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: custom_db().user, attr: {invalid: valid_custom_db.user }, newtooltip: 'max 1000 characters'" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>password:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" data-bind="value: custom_db().pass, attr: {invalid: valid_custom_db.pass }" type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: custom_db().pass, attr: {invalid: valid_custom_db.pass }, newtooltip: 'max 1000 characters'" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                     </table>
