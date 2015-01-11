@@ -13,8 +13,7 @@ function UsersModel() {
         user_name: null,
         city: null,
         descr: null,
-        photo: null,
-        type_db: 0
+        photo: null
     });
     self.bd_type=ko.observable(0);
     self.change_db_type = function(type) {
@@ -307,14 +306,12 @@ ko.bindingHandlers.typedb = {
             label.append(span);
             element.append(label);
             input.click(function() {
+                debugger;
                 viewModel.change_db_type(type);
-                $('#act_' + select).slideDown(); $('#act_' + !select).slideUp();
+
+                $('#act_' + !type).slideDown(); $('#act_' + !!type).slideUp();
             });
         }
-
-        /*create_input('Default database', 0, type);
-        create_input('External database', 1, !type);
-        $('#act_' + type).slideDown(); $('#act_' + !type).slideUp();*/
 
         create_input('Default database', 0, !type);
         create_input('External database', 1, type);

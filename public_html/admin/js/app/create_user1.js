@@ -70,7 +70,8 @@ function CreateUser() {
         user_name: null,
         city: null,
         descr: null,
-        photo: null
+        photo: null,
+        type_bd:false
     });
     this.create = function() {
         var user_name = self.user_name.text();
