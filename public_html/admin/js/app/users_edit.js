@@ -75,7 +75,6 @@ function UsersModel() {
         db_name: null,
         db_pass: null
     }));
-
     self.valid_custom_db = {
         port: ko.observable(false),
         server: ko.observable(false),
@@ -83,7 +82,6 @@ function UsersModel() {
         name: ko.observable(false),
         pass: ko.observable(false)
     };
-
     function valid_custom_db_reset() {
         self.valid_custom_db.port(false);
         self.valid_custom_db.server(false);

@@ -69,7 +69,6 @@ function CreateUser() {
 
                         }
                     });
-
                 } else {
                     self.curr_operation.local.city('');
                     self.city.invalid(true);

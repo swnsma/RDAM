@@ -14,6 +14,14 @@ function CreateUser() {
         };
     }
 
+    self.custom_db = ko.observable(new Db({
+        id: null,
+        db_port: null,
+        db_server: null,
+        db_user: null,
+        db_name: null,
+        db_pass: null
+    }));
 
     self.save_photo = function() {
         var pp = $('#photoProgress');
@@ -67,7 +75,7 @@ function CreateUser() {
         clear_operation(self.curr_operation);
         return false;
 
-    }
+    };
     self.user = ko.observable({
         id: null,
         user_name: null,
@@ -262,16 +270,50 @@ function CreateUser() {
 //    }
 //    get_data(self.user().id);
 
-    self.custom_db = ko.observable(new Db({
-        id: null,
-        db_port: null,
-        db_server: null,
-        db_user: null,
-        db_name: null,
-        db_pass: null
-    }));
+    self.valid_custom_db = {
+        port: ko.observable(false),
+        server: ko.observable(false),
+        user: ko.observable(false),
+        name: ko.observable(false),
+        pass: ko.observable(false)
+    };
+
+    function valid_custom_db_reset() {
+        self.valid_custom_db.port(false);
+        self.valid_custom_db.server(false);
+        self.valid_custom_db.user(false);
+        self.valid_custom_db.name(false);
+        self.valid_custom_db.pass(false);
+    }
+
+    function check_valid_db_fields() {
+        valid_custom_db_reset();
+        var data = self.custom_db();
+        if (!valid.server(data.server)) {
+            self.valid_custom_db.server(true);
+            return false;
+        }
+        if (!valid.port(data.port)) {
+            self.valid_custom_db.port(true);
+            return false;
+        }
+        if (!valid.name(data.name)) {
+            self.valid_custom_db.name(true);
+            return false;
+        }
+        if (!valid.user(data.user)) {
+            self.valid_custom_db.user(true);
+            return false;
+        }
+        if (!valid.password(data.pass)) {
+            self.valid_custom_db.pass(true);
+            return false;
+        }
+        return true;
+    }
 
     self.set_auth = function() {
+        if (!check_valid_db_fields()) return;
         ajax.set_auth_db(self.custom_db(), {
             success: function(data) {
                 alert('updated');
@@ -288,6 +330,7 @@ function CreateUser() {
         });
     };
     self.test_connection = function() {
+        if (!check_valid_db_fields()) return;
         ajax.test_conn(self.custom_db(), {
             success: function(data) {
                 if (data.status == 'success') {
