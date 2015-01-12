@@ -81,6 +81,42 @@ HERE;
         return true;
     }
 
+    public function save2($id, $file, $ignore_first_line = true) {
+        try {
+            date_default_timezone_set(TIME_ZONE);
+            $row = 1;
+            if (($handle = fopen($file, 'r')) !== FALSE) {
+                if ($ignore_first_line) fgetcsv($handle, 1000, ';');
+                while (($data = fgetcsv($handle, 1000, ';')) !== FALSE) {
+                    $row++;
+                    if ($row > 30) break;
+
+                    $date = $data[1];
+                    $p = $data[2];
+                    $c = $data[3];
+                    $request = <<<HERE
+                    INSERT INTO user_$id
+                        (readingid, toDT, production, consumption)
+                        VALUES (
+                            NULL,
+                            STR_TO_DATE('$date', '%e.%c.%Y %H:%i'),
+	                        CONVERT( REPLACE('$p', ',', '.'), DECIMAL(10, 2) ),
+	                        CONVERT( REPLACE('$c', ',', '.'), DECIMAL(10, 2) )
+	                    )
+HERE;
+                    if (!$this->values_db->query($request))
+                        throw new Exception();
+                }
+                fclose($handle);
+            }
+            $this->count_row = $row;
+            return true;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
+
     function __destruct() {
         $this->server_db = null;
         $this->values_db = null;
@@ -123,7 +159,7 @@ class UploadData extends Upload {
                 throw new RuntimeException('failed to move uploaded file');
             }
 
-            if (!$save_data->save($id, $file, $ignore_first_line)) {
+            if (!$save_data->save2($id, $file, $ignore_first_line)) {
                 unlink($file);
                 throw new RuntimeException('failed to load data');
             }

@@ -13,6 +13,8 @@ class Connection {
             $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             return $db;
         } catch(PDOException $e) {
+            /*print 12456;
+            print $e->getMessage();*/
             header('HTTP/1.0 500 Internal Server Error');
             exit();
         }
@@ -28,6 +30,8 @@ class Connection {
             $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             return $db;
         } catch(PDOException $e) {
+            /*print 12456;
+            print $e->getMessage();*/
             header('HTTP/1.0 500 Internal Server Error');
             exit();
         }
@@ -40,6 +44,8 @@ class Connection {
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
             return $db;
         } catch(PDOException $e) {
+            /*print 12456;
+            print $e->getMessage();*/
             header('HTTP/1.0 500 Internal Server Error');
             exit();
         }
