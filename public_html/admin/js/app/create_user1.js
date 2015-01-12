@@ -15,12 +15,12 @@ function CreateUser() {
     }
 
     self.custom_db = ko.observable(new Db({
-        id: null,
-        db_port: null,
-        db_server: null,
-        db_user: null,
-        db_name: null,
-        db_pass: null
+        id: '',
+        db_port: '',
+        db_server: '',
+        db_user: '',
+        db_name: '',
+        db_pass: ''
     }));
 
     self.save_photo = function() {
@@ -287,7 +287,9 @@ function CreateUser() {
     }
 
     function check_valid_db_fields() {
+
         valid_custom_db_reset();
+        debugger;
         var data = self.custom_db();
         if (!valid.server(data.server)) {
             self.valid_custom_db.server(true);
