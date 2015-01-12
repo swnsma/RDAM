@@ -94,6 +94,7 @@ HERE;
                     $date = $data[1];
                     $p = $data[2];
                     $c = $data[3];
+                    // There is an injection.
                     $request = <<<HERE
                     INSERT INTO user_$id
                         (readingid, toDT, production, consumption)
