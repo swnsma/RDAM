@@ -208,7 +208,8 @@ function UsersModel() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
-                    alert(data);
+//                    alert(data);
+                    alert('Data was successfully updated');
                 },
                 error: function(error) {
                     alert(error);
