@@ -208,6 +208,7 @@ function UsersModel() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
+                    alert(data);
                 },
                 error: function(error) {
                     alert(error);
