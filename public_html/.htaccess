@@ -10,8 +10,8 @@ Options +FollowSymLinks
 #RewriteCond %{HTTP_HOST} ^(www.)?rdam.loc:83$
 #RewriteRule ^(/)?$ site/homepage.html [L]
 
-#195.69.221.236
 
+#195.69.221.236
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^195.69.221.236$
 RewriteCond %{REQUEST_URI} !^/site/
