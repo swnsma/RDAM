@@ -71,7 +71,7 @@ function CreateUser() {
                     });
 
                 } else {
-                    self.curr_operation.local.city('field is not filled!');
+                    self.curr_operation.local.city('');
                     self.city.invalid(true);
                     self.curr_operation.global('');
                 }

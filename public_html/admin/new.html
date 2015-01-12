@@ -38,15 +38,15 @@
                                 <tr>
                                     <td>name:<span class="required-field">*</span></td>
                                     <td>
-                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }, newtooltip: '1-25 characters and unique name'" type="text" name="edit_name" />
+                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }, newtooltip: 'Unique name, max 25 characters'" type="text" name="edit_name" />
                                         <span class="error" data-bind="text:curr_operation.local.user_name"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>city:<span class="required-field">*</span></td>
                                     <td>
-                                        <input data-bind="value: city.text, attr: { invalid: city.invalid }, newtooltip: 'city of this link <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" class="fi" type="text" name="edit_city" />
-                                        <span data-bind="text:curr_operation.local.city" class="error" ></span>
+                                        <input data-bind="value: city.text, attr: { invalid: city.invalid }, newtooltip: 'City for a weather forecast. Should be supported by <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" class="fi" type="text" name="edit_city" />
+                                        <span data-bind="html:curr_operation.local.city" class="error" ></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,7 +61,7 @@
                                 <button data-bind="click: create" type="button" >create</button>
                                 <button  data-bind="click: clear" type="reset">clear</button>
                             </div>
-                            <span class="good" ></span>
+                            <span data-bind="text:curr_operation.global" class="good" ></span>
                             <!-- /ko -->
 
                             <!-- ko if: active_page.active() == 1 -->
@@ -78,8 +78,9 @@
                                 <button type="button" data-bind="click: $root.save_photo">upload</button>
                                 <button data-bind="click: function(){$root.active_page.active(2);$root.active_page.max_active(2);}"  type="button">skip stage</button>
                             </div>
-                            <span class="good"></span>
+
                             <!--/ko-->
+                            <span data-bind="text:curr_operation.global" class="good" ></span>
                             <!-- /ko -->
 
                             <!-- ko if: active_page.active() == 2 -->

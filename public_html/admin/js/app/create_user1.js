@@ -22,14 +22,17 @@ function CreateUser() {
             {
                 success: function(data) {
 //                    alert('good');
+                    self.curr_operation.global('Photo was successfully uploaded');
                     self.active_page.active(2);
                     self.active_page.max_active(2);
+                    clear_operation(self.curr_operation);
 //                    self.curr_oper.photo.global('You are uploaded photo!');
                 },
                 error: function(error) {
                     alert(error);
                 },
                 before: function() {
+                    self.curr_operation.global('User is being created');
                     pp.css('display', 'block');
 //                    self.curr_oper.photo.global('');
                 },
@@ -87,7 +90,7 @@ function CreateUser() {
 
                     ajax.check_exists_city(city, {
                         before: function() {
-                            self.curr_operation.global('check the relevance of the city');
+                            self.curr_operation.global('Looking for a weather forecast for this city');
                         },
                         success: function(status) {
                             if (status) {
@@ -97,45 +100,56 @@ function CreateUser() {
                                     descr: descr
                                 }, {
                                     before: function() {
-                                        self.curr_operation.global('the process of creating user');
+                                        self.curr_operation.global('User is being created');
                                     },
                                     success: function(data) {
-                                        debugger;
                                         self.user().id=data.id;
-                                        self.curr_operation.global('You Create new User!');
+                                        self.curr_operation.global('User was successfully created');
                                         self.active_page.active(1);
                                         self.active_page.max_active(1);
+                                        clear_operation(self.curr_operation);
+
 
                                     },
                                     error: function(error) {
-                                        self.curr_operation.local.user_name('this name is not free. But if you believe that this name is free, then reload the page');
+                                        if(error==='Username is already in use. Please try another one'){
+                                            self.curr_operation.local.user_name(error);
+                                        }else{
+                                            debugger;
+                                            alert(error);
+                                        }
+//                                        self.curr_operation.local.user_name('this name is not free. But if you believe that this name is free, then reload the page');
                                         self.user_name.invalid(true);
                                         self.curr_operation.global('');
                                     }
                                 });
                             } else {
-                                self.curr_operation.local.city('this city isn\'t supported');
+                                self.curr_operation.local.city('Weather forecast cannot be found. Please check if your city is supported by <a href="worldweatheronline.com/country.aspx">worldweatheronline.com</a>');
                                 self.curr_operation.global('');
                             }
                         },
                         error: function(error) {
-                            self.curr_operation.local.city('can\'t get the data. try again later');
+//                            self.curr_operation.local.city('can\'t get the data. try again later');
 
                         }
                     });
 
                 } else {
-                    self.curr_operation.local.city('field is not filled!');
+                    self.curr_operation.local.city('City cannot be empty');
                     self.city.invalid(true);
                     self.curr_operation.global('');
                 }
             } else {
-                self.curr_operation.local.description('this description has more than 1000 letters');
+                self.curr_operation.local.description('Description is too long. It should be 1000 characters or less');
                 self.descr.invalid(true);
                 self.curr_operation.global('');
             }
         } else {
-            self.curr_operation.local.user_name('this name has less than 1 letters or more than 25 letters');
+            if(user_name.length>=25) {
+                self.curr_operation.local.user_name('User name is too long. It should be 25 characters or less');
+            }else{
+                self.curr_operation.local.user_name('User name cannot be empty');
+            }
             self.user_name.invalid(true);
             self.curr_operation.global('');
         }

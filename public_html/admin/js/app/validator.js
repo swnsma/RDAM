@@ -7,7 +7,7 @@ Validator.prototype.user_name = function(name) {
 };
 
 Validator.prototype.city = function(city) {
-    return city.length <= 25 && city.length >= 1;
+    return city.length <= 100000 && city.length >= 1;
 //    return /^[\w \-]{2,25}$/.test(city);
 };
 
