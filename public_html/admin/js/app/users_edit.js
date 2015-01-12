@@ -63,15 +63,15 @@ function UsersModel() {
         self.valid.user_name(false);
         var c = self.user();
         if(!valid.descr(c.descr)){
-            self.curr_oper.info.local.description('Description is too long. It should be 1000 characters or less');
+            self.curr_oper.local.description('Description is too long. It should be 1000 characters or less');
             self.valid.description(true);
             return false;
         }
         if(!valid.user_name(c.user_name)){
             if(c.user_name.length>25){
-                self.curr_oper.info.local.user_name('User name is too long. It should be 25 characters or less');
+                self.curr_oper.local.user_name('User name is too long. It should be 25 characters or less');
             }else{
-                self.curr_oper.info.local.user_name('User name cannot be empty');
+                self.curr_oper.local.user_name('User name cannot be empty');
             }
             self.valid.user_name(true);
             return false;
@@ -208,6 +208,7 @@ function UsersModel() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
+                    alert(data);
                 },
                 error: function(error) {
                     alert(error);

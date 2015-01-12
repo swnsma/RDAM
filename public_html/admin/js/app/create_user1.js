@@ -202,6 +202,8 @@ function CreateUser() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
+                    alert(data);
+                    changePage('users',self.user().id);
                 },
                 error: function(error) {
                     alert(error);
