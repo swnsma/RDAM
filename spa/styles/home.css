@@ -12,7 +12,19 @@ html{
 body{
     background-color: #f9f9f9;
 }
-
+.fb{
+    text-align: center;
+    display: inline-block;
+    height: 26px;
+    width: 300px;
+    position: absolute;
+    margin-left: -150px;
+    left: 50%;
+}
+.fb span{
+    font-size: 19px;
+    margin-left:20px;
+}
 .content {
     width: 960px;
     margin: 0 auto;
