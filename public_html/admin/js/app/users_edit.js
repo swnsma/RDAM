@@ -116,12 +116,12 @@ function UsersModel() {
         curr_oper.local.city('');
     }
     self.custom_db = ko.observable(new Db({
-        id: null,
-        db_port: null,
-        db_server: null,
-        db_user: null,
-        db_name: null,
-        db_pass: null
+        id: '',
+        db_port: '',
+        db_server: '',
+        db_user: '',
+        db_name: '',
+        db_pass: ''
     }));
     self.valid_custom_db = {
         port: ko.observable(false),
