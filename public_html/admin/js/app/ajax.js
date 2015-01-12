@@ -1,6 +1,6 @@
 //var url = 'http://rdam.loc:83/';
-var url = 'http://rdam:10000/public_html/';
-//var url = 'http://rdam.tk/';
+//var url = 'http://rdam:10000/public_html/';
+var url = 'http://195.69.221.236/';
 
 function Ajax() {}
 
@@ -22,6 +22,7 @@ Ajax.prototype._gen_func = function(func) {
     if (func.error) {
         result_func.error = function(xhr, status, error) {
             var err = JSON.parse(xhr.responseText);
+            console.log(error);
             if (err.error_message) {
                 func.error(err.error_message);
             } else {
