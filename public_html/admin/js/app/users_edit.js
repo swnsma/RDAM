@@ -49,23 +49,71 @@ function UsersModel() {
         city:ko.observable(false)
     };
     self.curr_oper = {
-        info:{
-            global:ko.observable(),
-            local: {
-                user_name: ko.observable(''),
-                description:ko.observable(''),
-                city:ko.observable('')
-            }
-        },
-        photo:{
-            global:ko.observable('')
+        global:ko.observable(),
+        local: {
+            user_name: ko.observable(''),
+            description:ko.observable(''),
+            city:ko.observable('')
         }
     };
+    self.save_info = function() {
+        clear_curr_oper(self.curr_oper);
+        self.valid.city(false);
+        self.valid.description(false);
+        self.valid.user_name(false);
+        var c = self.user();
+        if(!valid.descr(c.descr)){
+            self.curr_oper.info.local.description('Description is too long. It should be 1000 characters or less');
+            self.valid.description(true);
+            return false;
+        }
+        if(!valid.user_name(c.user_name)){
+            if(c.user_name.length>25){
+                self.curr_oper.info.local.user_name('User name is too long. It should be 25 characters or less');
+            }else{
+                self.curr_oper.info.local.user_name('User name cannot be empty');
+            }
+            self.valid.user_name(true);
+            return false;
+        }
+        if(!valid.city(c.city)){
+            self.curr_oper.info.local.city('City cannot be empty');
+            self.valid.city(true);
+            return false;
+        }
+        ajax.update_user_info({
+            id: c.id,
+            user_name: c.user_name,
+            city: c.city,
+            descr: c.descr
+        }, {
+            before: function() {
+                self.curr_oper.global('User is being updated');
+            },
+            after: function() {
+
+            },
+            success: function(data) {
+                self.user(new User(data));
+                self.curr_oper.global('User was successfully updated');
+                self.active_page(1);
+                clear_curr_oper(self.curr_oper);
+            },
+            error: function(error) {
+                if(error==='Username is already in use. Please try another one'){
+                    self.curr_oper.local.user_name('Username is already in use. Please try another one');
+                }else {
+                    alert(error);
+                }
+            }
+        });
+        return false;
+    };
     function clear_curr_oper(curr_oper){
-        curr_oper.info.global('');
-        curr_oper.info.local.user_name('');
-        curr_oper.info.local.description('');
-        curr_oper.info.local.city('');
+        curr_oper.global('');
+        curr_oper.local.user_name('');
+        curr_oper.local.description('');
+        curr_oper.local.city('');
     }
     self.custom_db = ko.observable(new Db({
         id: null,
@@ -188,15 +236,17 @@ function UsersModel() {
             new FormData(document.getElementById('formPhoto')),
             {
                 success: function(data) {
-
-                    self.curr_oper.photo.global('You are uploaded photo!');
+                    self.curr_oper.global('Photo was successfully updated');
+                    self.active_page(2);
+                    clear_curr_oper(self.curr_oper);
                 },
                 error: function(error) {
+                    clear_curr_oper(self.curr_oper);
                     alert(error);
                 },
                 before: function() {
                     pp.css('display', 'block');
-                    self.curr_oper.photo.global('');
+                    self.curr_oper.global('Photo is being updated');
                 },
                 after: function() {
                     pp.css('display', 'none');
@@ -213,50 +263,7 @@ function UsersModel() {
         );
         return false;
     };
-    self.save_info = function() {
-        clear_curr_oper(self.curr_oper);
-        self.valid.city(false);
-        self.valid.description(false);
-        self.valid.user_name(false);
-        var c = self.user();
-        if(!valid.descr(c.descr)){
-            self.curr_oper.info.local.description('this description has more than 1000 letters');
-            self.valid.description(true);
-            return false;
-        }
-        if(!valid.user_name(c.user_name)){
-            self.curr_oper.info.local.user_name('this name has less than 1 letters or more than 25 letters');
-            self.valid.user_name(true);
-            return false;
-        }
-        if(!valid.city(c.city)){
-            self.curr_oper.info.local.city('field is not filled');
-            self.valid.city(true);
-            return false;
-        }
-        ajax.update_user_info({
-            id: c.id,
-            user_name: c.user_name,
-            city: c.city,
-            descr: c.descr
-        }, {
-            before: function() {
-                self.curr_oper.info.global('the process of updating user');
-            },
-            after: function() {
 
-            },
-            success: function(data) {
-                self.user(new User(data));
-                self.curr_oper.info.global('You are update this information!');
-            },
-            error: function(error) {
-                self.curr_oper.info(error);
-                self.curr_oper.info.local.user_name('this name is not free. But if you believe that this name is free, then reload the page');
-            }
-        });
-        return false;
-    };
     function get_data(id) {
         if (id() == null) {
             alert('undefined user');

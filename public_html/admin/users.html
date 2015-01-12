@@ -74,22 +74,22 @@
                                 <tr>
                                     <td>name:<span class="required-field">*</span></td>
                                     <td>
-                                        <input class="fi" type="text" data-bind="value: user_name,attr: { invalid: $root.valid.user_name }, newtooltip: '1-25 characters and unique name'" name="edit_name" />
-                                        <span class="error" data-bind="text:$root.curr_oper.info.local.user_name"></span>
+                                        <input class="fi" type="text" data-bind="value: user_name,attr: { invalid: $root.valid.user_name }, newtooltip: 'Unique name, max 25 characters'" name="edit_name" />
+                                        <span class="error" data-bind="text:$root.curr_oper.local.user_name"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>city:<span class="required-field">*</span></td>
                                     <td>
-                                        <input class="fi" type="text" data-bind="value: city,attr: { invalid: $root.valid.city }, newtooltip: 'city of this link <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" name="edit_city" />
-                                        <span class="error" data-bind="text:$root.curr_oper.info.local.city"></span>
+                                        <input class="fi" type="text" data-bind="value: city,attr: { invalid: $root.valid.city }, newtooltip: 'City for a weather forecast. Should be supported by <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" name="edit_city" />
+                                        <span class="error" data-bind="text:$root.curr_oper.local.city"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>description:</td>
                                     <td>
-                                        <textarea class="fi" id="textarea" data-bind="value: descr,attr: { invalid: $root.valid.description }, newtooltip: 'max 1000 characters'"> </textarea>
-                                        <span class="error" data-bind="text:$root.curr_oper.info.local.description"></span>
+                                        <textarea class="fi" id="textarea" data-bind="value: descr,attr: { invalid: $root.valid.description }, newtooltip: 'Max 1000 characters'"> </textarea>
+                                        <span class="error" data-bind="text:$root.curr_oper.local.description"></span>
                                     </td>
                                 </tr>
                             </table>
@@ -97,7 +97,7 @@
                                 <button type="button" data-bind="click: $parent.save_info">save</button>
                                 <button type="reset">clear</button>
                             </div>
-                            <span class="good" data-bind="text: $root.curr_oper.info.global"></span>
+                            <span class="good" data-bind="text: $root.curr_oper.global"></span>
                             <!-- /ko -->
                             <!-- /ko -->
                             <!-- ko if: active_page() == 1 -->
@@ -116,7 +116,7 @@
                             </div>
 
                             <!-- /ko -->
-                            <span class="good" data-bind="text: $root.curr_oper.photo.global"></span>
+                            <span class="good" data-bind="text: $root.curr_oper.global"></span>
                             <!-- /ko -->
                             <!-- ko if: active_page() == 2 -->
 
