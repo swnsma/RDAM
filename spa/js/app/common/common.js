@@ -181,6 +181,8 @@ function CurrentUser() {
 var loading = new LoadingManager();
 var current_user = new CurrentUser();
 var manager = new ScriptManager();
-
+$(window).bind('hashchange', function() {
+    location.reload();
+});
 manager.initFirstFunc(current_user.selectCurrentUser);
 manager.init();
