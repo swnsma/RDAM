@@ -271,11 +271,11 @@ function CreateUser() {
 //    get_data(self.user().id);
 
     self.valid_custom_db = {
-        port: ko.observable(false),
-        server: ko.observable(false),
-        user: ko.observable(false),
-        name: ko.observable(false),
-        pass: ko.observable(false)
+        port: ko.observable(''),
+        server: ko.observable(''),
+        user: ko.observable(''),
+        name: ko.observable(''),
+        pass: ko.observable('')
     };
 
     function valid_custom_db_reset() {
