@@ -76,15 +76,15 @@ function UsersModel() {
             self.valid.user_name(true);
             return false;
         }
-//        if(!valid.city(c.city)){
-//            self.curr_oper.info.local.city('City cannot be empty');
-//            self.valid.city(true);
-//            return false;
-//        }
+        if(!valid.city(c.city)){
+            self.curr_oper.info.local.city('City cannot be empty');
+            self.valid.city(true);
+            return false;
+        }
         ajax.update_user_info({
             id: c.id,
             user_name: c.user_name,
-//            city: c.city,
+            city: c.city,
             descr: c.descr
         }, {
             before: function() {
