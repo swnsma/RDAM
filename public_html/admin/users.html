@@ -82,7 +82,7 @@
                                     <td>city:<span class="required-field">*</span></td>
                                     <td>
                                         <input class="fi" type="text" data-bind="value: city,attr: { invalid: $root.valid.city }, newtooltip: 'City for a weather forecast. Should be supported by <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" name="edit_city" />
-                                        <span class="error" data-bind="text:$root.curr_oper.local.city"></span>
+                                        <span class="error" data-bind="html:$root.curr_oper.local.city"></span>
                                     </td>
                                 </tr>
                                 <tr>

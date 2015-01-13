@@ -81,30 +81,45 @@ function UsersModel() {
             self.valid.city(true);
             return false;
         }
-        ajax.update_user_info({
-            id: c.id,
-            user_name: c.user_name,
-            city: c.city,
-            descr: c.descr
-        }, {
+        ajax.check_exists_city(c.city, {
             before: function() {
-                self.curr_oper.global('User is being updated');
+                self.curr_oper.global('Looking for a weather forecast for this city');
             },
-            after: function() {
+            success: function(status) {
+                if (status) {
+                    ajax.update_user_info({
+                        id: c.id,
+                        user_name: c.user_name,
+                        city: c.city,
+                        descr: c.descr
+                    }, {
+                        before: function() {
+                            self.curr_oper.global('User is being updated');
+                        },
+                        after: function() {
 
-            },
-            success: function(data) {
-                self.user(new User(data));
-                self.curr_oper.global('User was successfully updated');
-                self.active_page(1);
-                clear_curr_oper(self.curr_oper);
+                        },
+                        success: function(data) {
+                            self.user(new User(data));
+                            self.curr_oper.global('User was successfully updated');
+                            self.active_page(1);
+                            clear_curr_oper(self.curr_oper);
+                        },
+                        error: function(error) {
+                            if(error==='Username is already in use. Please try another one'){
+                                self.curr_oper.local.user_name('Username is already in use. Please try another one');
+                            }else {
+                                alert(error);
+                            }
+                        }
+                    });
+                } else {
+                    self.curr_oper.local.city('Weather forecast cannot be found. Please check if your city is supported by <a href="worldweatheronline.com/country.aspx">worldweatheronline.com</a>');
+                    self.curr_oper.global('');
+                }
             },
             error: function(error) {
-                if(error==='Username is already in use. Please try another one'){
-                    self.curr_oper.local.user_name('Username is already in use. Please try another one');
-                }else {
-                    alert(error);
-                }
+                self.curr_oper.local.city('can\'t get the data. try again later');
             }
         });
         return false;
