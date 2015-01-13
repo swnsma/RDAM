@@ -15,14 +15,14 @@ if (isset($_POST['id'])) {
         if (isset($_POST['user_name'])) {
             $user_name = full_trim($_POST['user_name']);
             $l = strlen($user_name);
-            if ($l < 1 || $l > 25) exit_ttwp();
+            if ($l < 1 || $l > 100) exit_ttwp();
             //if (!preg_match('/^[\p{L}\d \.\'\-\:\,\.\?\!]{1,25}$/', $user_name)) exit_ttwp();
         }
 
         if (isset($_POST['city'])) {
             $city = full_trim($_POST['city']);
             $l = strlen($city);
-            if ($l < 1 || $l > 10000) exit_ttwp();
+            if ($l < 1 || $l > 100) exit_ttwp();
             //if (!preg_match('/^[\p{L} \-]{5,25}$/', $city)) exit_ttwp();
         }
 

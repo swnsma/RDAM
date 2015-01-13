@@ -2,12 +2,12 @@ Options All -Indexes
 Options +FollowSymLinks
 
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^(www.)?rdam.loc:83$
+RewriteCond %{HTTP_HOST} ^(www.)?rdam.tk$
 RewriteCond %{REQUEST_URI} !^/site/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /site/$1
-RewriteCond %{HTTP_HOST} ^(www.)?rdam.loc:83$
+RewriteCond %{HTTP_HOST} ^(www.)?rdam.tk$
 RewriteRule ^(/)?$ site/homepage.html [L]
 
 

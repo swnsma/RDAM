@@ -2,12 +2,12 @@ function Validator() {}
 
 Validator.prototype.user_name = function(name) {
 //    return /^[\w\d \.\'\-]{1,25}$/.test(name);
-    return name.length <= 25 && name.length >= 1;
+    return name.length <= 100 && name.length >= 1;
 //    return /^[\w \n\(\)\'\"\d\-]{1,25}$/.test(name);
 };
 
 Validator.prototype.city = function(city) {
-    return city.length <= 100000 && city.length >= 1;
+    return city.length <= 100 && city.length >= 1;
 //    return /^[\w \-]{2,25}$/.test(city);
 };
 
@@ -17,7 +17,7 @@ Validator.prototype.descr = function(descr) {
 };
 
 Validator.prototype.server = function(server) {
-    return /^[a-z\d_\-]{7,30}$/.test(server);
+    return /^[a-z\d_\.\-]{3,80}$/.test(server);
 };
 
 Validator.prototype.port = function(port) {
@@ -29,11 +29,11 @@ Validator.prototype.password = function(pass) {
 };
 
 Validator.prototype.user = function(user) {
-    return /^[a-z\d_]{4,30}$/.test(user);
+    return /^[a-z\d_]{3,30}$/.test(user);
 };
 
 Validator.prototype.name = function(name) {
-    return /^[a-z\d_]{4,30}$/.test(name);
+    return /^[a-z\d_]{3,30}$/.test(name);
 };
 
 var valid = new Validator;
