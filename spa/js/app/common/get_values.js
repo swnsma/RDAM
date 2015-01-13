@@ -107,7 +107,7 @@ function Values() {
             funcSuccess([]);
         } else {
             $.ajax({
-                url: 'http://rdam.tk/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
+                url: 'http://195.69.221.236/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
                 type: 'GET',
                 contentType: 'application/json',
                 beforeSend: function(){
