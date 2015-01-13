@@ -321,6 +321,7 @@ function CreateUser() {
         ajax.set_auth_db(self.custom_db(), {
             success: function(data) {
                 alert('updated');
+                changePage('users',self.user().id);
             },
             error: function(message) {
                 alert(message);
