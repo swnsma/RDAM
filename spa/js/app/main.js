@@ -36,6 +36,7 @@ var main=function() {
     }
 
     var modelHome= new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container"));
+    modelHome.activate();
     var modelScore= new ScoreViewModel('chart_score');
     var modelWeather = new WeatherModel();
     getUsers(modelScore,analyze);

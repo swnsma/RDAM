@@ -10,12 +10,13 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles/menu.css">
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="styles/chart.css">
-    <link rel="stylesheet" href="styles/weather.css">
-    <link rel="stylesheet" href="styles/compare.css">
-    <link rel="stylesheet" href="styles/jquery.jqplot.css">
+    <link rel="stylesheet" href="styles/menu.css"/>
+    <link rel="stylesheet" href="styles/home.css"/>
+    <link rel="stylesheet" href="styles/chart.css"/>
+    <link rel="stylesheet" href="styles/weather.css"/>
+    <link rel="stylesheet" href="styles/compare.css"/>
+    <link rel="stylesheet" href="styles/jquery.jqplot.css"/>
+    <link rel="stylesheet" href="styles/consumption.css" type="text/css"/>
 
     <meta property="og:title" content="I am greening the planet!" />
     <meta property="og:description" content="I am greening the planet! See how much benefit I bring the environment!" />
@@ -154,10 +155,32 @@
             </div>
 
 
-            <div class="pure-g">
-                <div class="pure-u-1-4">Description diagram</div>
-                <div class="pure-u-3-4">
-                    <img class="pie-chart" src="http://www.farshadoo.com/p/diagram-ring/images/diagram-sample5.jpg"/>
+            <div>
+                <div class="battery-container">
+                    <div class="chart-text-box">
+                        <label>Self-sufficiency:</label>
+                        <div class="wrapper">
+                            <div class="from-grid">
+                                <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
+                                <label>from power grid</label><br/>
+                                <p>Consumption from power grid. If energy from solar panel not enough, it will be consumed from grid.</p>
+                            </div>
+                            <div class="from-panel">
+                                <span class="kwh-label" data-bind="text:stringPanel"></span><br/>
+                                <label>from solar panel</label><br/>
+                                <p>Consumption from solar panel's produce. If solar panel accumulated some energy, it will be consumed first.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ko foreach: batteries -->
+                    <div class="battery-rend">
+
+                        <div data-bind="text:consumption +' kWh'" class="total-consumption"></div>
+                        <div class="label" data-bind="text:label"></div>
+                        <div class="prod" data-bind="battery: { production: production, takenFrom: takenFrom, type: type, consumption: consumption}"></div>
+                        <div data-bind="text: date2" class="date"></div>
+                    </div>
+                    <!-- /ko -->
                 </div>
             </div>
             <div class="fb">
@@ -395,7 +418,9 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
+<script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
 
+<script type="text/javascript" src="js/app/api.js"></script>
 <script src="js/app/common/get_values.js"></script>
 <script src="js/app/common/common.js"></script>
 <script src="js/app/common/data_containers.js"></script>
@@ -410,6 +435,8 @@
 <script type="text/javascript" src="js/app/common/Share.js"></script>
 <script type='text/javascript' src='js/app/score/view_model.js'></script>
 <script type='text/javascript' src='js/app/score/ColorMas.js'></script>
+<script type="text/javascript" src="js/app/parseData.js"></script>
+
 
 </body>
 </html>

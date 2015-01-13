@@ -123,7 +123,6 @@ function Values() {
                         if (response) {
                             parseData(response);
                             funcSuccess(id);
-                            //debugger;
                         } else {
                             funcError('');
                         }

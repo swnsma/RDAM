@@ -19,6 +19,7 @@ body{
     width: 300px;
     position: absolute;
     margin-left: -150px;
+    margin-top: 10px;
     left: 50%;
 }
 .fb span{
@@ -66,6 +67,9 @@ body{
     background-color: #f9f9f9;
     border-bottom: 2px solid #666;
 }
+.battery-container{
+    border-bottom: 2px solid #666;
+}
 .content>.pure-g:nth-child(2n){
     background-color: #f9f9f9;
     border-bottom: 2px solid #666;
@@ -92,7 +96,7 @@ body{
 
     font-style: normal;
 
-    letter-spacing: 0em;
+    letter-spacing: 0;
     font-family: MuseoSans, serif;
     font-size: 18px;
     font-weight: 400;
@@ -112,7 +116,7 @@ body{
     font-style: normal;
     color: #333;
     line-height: 1.1em;
-    letter-spacing: 0em;
+    letter-spacing: 0;
 }
 
 /*Not display all tabs at first load (in main.js: fadeIn first tab)*/
@@ -125,7 +129,7 @@ body{
     background-color: #fff;
     margin-bottom: 25px;
     border: 1px solid #aaa;
-    height: 390;
+    height: 390px;
     max-height: 390px;
 }
 .row-metrics{
@@ -156,7 +160,7 @@ body{
     font-weight: 400;
     font-style: normal;
     color: #000000;
-    letter-spacing: 0em;
+    letter-spacing: 0;
 }
 .explanation{
     font-size: 12px;
@@ -164,7 +168,7 @@ body{
     font-style: normal;
     color: #999999;
     line-height: 1.16em;
-    letter-spacing: 0em;
+    letter-spacing: 0;
 }
 .cell-metrics>.pure-g{
     padding: 5px 10px 5px 10px;
@@ -176,7 +180,7 @@ body{
     border-radius: 0;
 }
 .container-menu{
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .container-menu>.pure-g:first-child{
