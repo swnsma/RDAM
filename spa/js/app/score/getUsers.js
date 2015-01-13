@@ -1,6 +1,6 @@
 function getUsers(self,success) {
     var options = {
-        url: 'http://rdam.tk/ajax/users_info.php?from_id=' + 1+'&&fields=city,photo,descr',
+        url: 'http://195.69.221.236/ajax/users_info.php?from_id=' + 1+'&&fields=city,photo,descr',
         type: 'GET',
         contentType: 'application/json',
         success: function (response) {
