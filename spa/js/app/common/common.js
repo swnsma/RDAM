@@ -27,7 +27,7 @@ function UserInfo(id, name, city, photo, descr) {
     this.city = city;
     debugger;
     if (photo) {
-        this.photo = photo;
+        this.photo = 'cdn/users/' + photo;
     } else {
         this.photo = 'cdn/general/default_avatar.jpg';
     }
@@ -123,6 +123,8 @@ function CurrentUser() {
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
+                alert(123456799);
+                console.log(response);
                 if (response) {
                     funcSuccess(response);
                 } else {
