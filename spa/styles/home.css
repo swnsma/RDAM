@@ -118,14 +118,17 @@ body{
     background-color: #fff;
     margin-bottom: 25px;
     border: 1px solid #aaa;
-    height: 390px;
-    max-height: 390px;
+    height: 450px;
 }
 .row-metrics{
     display: table-row;
+    height: 450px;
 }
 .cell-metrics{
     margin-top: 8px;
+}
+.column-metrics{
+    height: 450px;
 }
 
 .table-metrics p{
