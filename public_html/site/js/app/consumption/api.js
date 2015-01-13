@@ -1,7 +1,7 @@
 var api = {
     getData: getValues = function (id,successFunction, type) {
             $.ajax({
-                url: 'http://rdam.tk/ajax/users_values.php?id=' + id + '&todt=last' + type,
+                url: 'http://195.69.221.236/ajax/users_values.php?id=' + id + '&todt=last' + type,
                 type: 'GET',
                 contentType: 'application/json',
 

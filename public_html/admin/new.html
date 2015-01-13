@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>name:<span class="required-field">*</span></td>
                                     <td>
-                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }, newtooltip: 'Unique name, max 25 characters'" type="text" name="edit_name" />
+                                        <input class="fi" data-bind="value: user_name.text, attr: { invalid: user_name.invalid }, newtooltip: 'Unique name, max 100 characters'" type="text" name="edit_name" />
                                         <span class="error" data-bind="text:curr_operation.local.user_name"></span>
                                     </td>
                                 </tr>
@@ -130,7 +130,7 @@
                                         <tr>
                                             <td>name:<span class="required-field">*</span></td>
                                             <td>
-                                                <input class="fi" data-bind="value: custom_db().name, attr: {invalid: valid_custom_db.name }, newtooltip: 'a-z,  0-9, _'" type="text" name="edit_name" />
+                                                <input class="fi" data-bind="value: custom_db().name, attr: {invalid: valid_custom_db.name }, newtooltip: 'a-z,  0-9, ., _'" type="text" name="edit_name" />
                                             </td>
                                         </tr>
                                         <tr>
