@@ -4,13 +4,12 @@
     height: 100%;
     font-size: 1.2em;
     position: relative;
-    /*border: 1px solid black;*/
 }
 .button-table{
     position: relative;
     margin-left:20px;
     display: table;
-    bottom:0px;
+    bottom:0;
 }
 .button-row{
     display: table-row;
@@ -22,14 +21,12 @@
     height: 30px;
     cursor:pointer;
     font-size: 12px;
-    /*float:left;*/
     line-height: 250%;
     color:#333;
     background-color:#fff;
     border: 1px solid #ddd;
     border-radius: 2px;
     margin: 0;
-    width: 100px;
     padding: 0 8px;
     text-align: center;
     transition: all 0.218s;

@@ -11,15 +11,9 @@
 .main-content{
     animation: apa 1s;
 }
-
 .list {
     margin: 3px;
 }
-
-.compare-float-right li{
-
-}
-
 .user {
     min-height: 30px;
     text-overflow: ellipsis;
@@ -27,15 +21,12 @@
     line-height: 30px;
     padding: 3px 0 3px 0;
 }
-
 .user .check-box {
 
 }
-
 .user:hover {
     background-color: #63AD1F;
 }
-
 .compare-float-right p{
     text-align: center;
 }
@@ -135,7 +126,6 @@
 }
 
 .compare {
-    /*height: 700px;*/
     border: 2px solid rgb(99, 173, 31);
     border-top: none;
     background-color: #eee;

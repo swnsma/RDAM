@@ -4,7 +4,7 @@ ko.bindingHandlers.sumP={
         var sum=valueAccessor()();
         $("#"+element.id).html((sum).toFixed(1)+" kWh");
     }
-}
+};
 ko.bindingHandlers.battery = {
     update:function(element, valueAccessor, allBindings,currentContext,  viewModel) {
         $(element).css('display', 'block');
@@ -13,7 +13,6 @@ ko.bindingHandlers.battery = {
         var takenFrom = value.takenFrom;
         var incrementBattery=1;
         var zoom;
-        var margin;
         switch (value.type){
             case 'day':
                 incrementBattery=1;
@@ -67,8 +66,8 @@ ko.bindingHandlers.battery = {
                 },
                 grid: {
                     drawBorder:false,
-                    shadow: false,
-                    background: '#f9f9f9;'
+                    shadow: false
+
                 },
                 highlighter: {
                     show: true,
@@ -87,7 +86,7 @@ ko.bindingHandlers.sumC={
         //&nbsp - nonbreak space
         $("#"+element.id).html((0.61*sum).toFixed(1)+"&nbspkg");
     }
-}
+};
 
 //amount of trees
 ko.bindingHandlers.sumT={
@@ -96,7 +95,7 @@ ko.bindingHandlers.sumT={
         //&nbsp - nonbreak space
         $("#"+element.id).html((0.61*sum*0.026).toFixed(1)+"&nbsptrees");
     }
-}
+};
 
 //hours of vac cleaning
 ko.bindingHandlers.sumV={
@@ -105,7 +104,7 @@ ko.bindingHandlers.sumV={
         //&nbsp - nonbreak space
         $("#"+element.id).html((sum/1.5).toFixed(1)+"&nbsphours");
     }
-}
+};
 
 //hours of vac cleaning
 ko.bindingHandlers.sumCar={
@@ -114,5 +113,5 @@ ko.bindingHandlers.sumCar={
         //&nbsp - nonbreak space
         $("#"+element.id).html((sum*0.61*3.8624256).toFixed(1)+"&nbspkm");
     }
-}
+};
 
