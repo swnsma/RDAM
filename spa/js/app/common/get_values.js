@@ -99,7 +99,6 @@ function Values() {
 
     this.getValues = function(ids, funcSuccess, funcError,type) {
         var id = [];
-        debugger;
         for(var i=0;i<ids.length;i++) {
             if (!this.checkExistsUser(ids[i]))
                 id.push(ids[i]);

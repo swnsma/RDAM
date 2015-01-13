@@ -4,7 +4,6 @@ function getUsers(self,success) {
         type: 'GET',
         contentType: 'application/json',
         success: function (response) {
-            debugger;
             success(response,self);
 
         },

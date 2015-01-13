@@ -20,6 +20,7 @@
 .from-grid{
     width: 250px;
     display: table-cell;
+    padding: 0 10px 0 10px;
 
 }
 .from-grid span.kwh-label, .from-grid label{
@@ -29,6 +30,7 @@
     color: #4BB2C5;
 }
 .from-panel {
+    padding: 0 10px 0 10px;
     width: 250px;
     display: table-cell;
     height: 55px;

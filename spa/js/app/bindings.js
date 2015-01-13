@@ -44,12 +44,12 @@ ko.bindingHandlers.battery = {
         }else{
             showFromPanel=value.production;
         }
-
         $(element).parent()
             .on('mouseover', function(){
                 viewModel.$root.changeTextData([showFromGrid, showFromPanel])})
             .on('mouseleave', function(){
                 viewModel.$root.changeTextData(['', ''])});
+
         var plot1 = jQuery.jqplot(chart.attr('id'), [data],
             {
                 seriesColors: ["#4BB2C5", "#2d6a76"],
