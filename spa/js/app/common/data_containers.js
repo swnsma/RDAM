@@ -42,6 +42,7 @@ function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
     self.resize=ko.observable(true);
     self.img = ko.observable();
     self.img("http://195.69.221.236/"+current_user.getPhoto());
+    debugger;
     self.desc(current_user.getDescr());
     self.userName = ko.observable(current_user.getName());
     self.idChart = id;
