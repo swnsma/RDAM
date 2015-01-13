@@ -1,17 +1,17 @@
 <?php
 
-define('DB_SERVER', '195.69.221.236');
+/*define('DB_SERVER', 'localhost');
 define('DB_NAME', 'rte');
 define('DB_USER', 'rte');
 define('DB_PASSWORD', '3Z84QaJb');
 
-define('DB_SERVER_V', '195.69.221.236');
+define('DB_SERVER_V', 'localhost');
 define('DB_NAME_V', 'rte');
 define('DB_USER_V', 'rte');
-define('DB_PASSWORD_V', '3Z84QaJb');
+define('DB_PASSWORD_V', '3Z84QaJb');*/
 
 
-/*
+
 ##################################################
 
 #db
@@ -36,7 +36,7 @@ define('DB_PASSWORD_V', 'root');
 //define('DB_PASSWORD_V', 'mysql');
 
 ##################################################
-*/
+
 define('TIME_ZONE', 'Europe/London');
 
 define('LOG_FILE', '../logs/log.txt');
