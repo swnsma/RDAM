@@ -66,7 +66,8 @@ ko.bindingHandlers.battery = {
                 },
                 grid: {
                     drawBorder:false,
-                    shadow: false
+                    shadow: false,
+                    background: "#F9F9F9"
 
                 },
                 highlighter: {
