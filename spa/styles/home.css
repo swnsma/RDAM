@@ -182,12 +182,12 @@ body{
 }
 
 .active-link{
-    background-color: #E8510A!important
+    background-color: rgb(234,162, 40)!important
 }
 
 .link{
     color:#fff;
-    background-color: #69be57;
+    background-color: #4BB2C5;
     font-family: 'PT Serif', serif;
     font-size: 40px;
     line-height: 1.28em;

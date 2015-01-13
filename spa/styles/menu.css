@@ -1,11 +1,7 @@
-body {
-    /*color: #777;*/
-}
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
 }
-
 #layout,
 #menu,
 .menu-link {
@@ -15,11 +11,9 @@ body {
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
-
 #layout {
     position: relative;
     padding-left: 0;
-
 }
 #layout.active {
     position: relative;
