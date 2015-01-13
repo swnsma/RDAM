@@ -24,7 +24,7 @@ var main=function() {
             thisTab.fadeIn(300);
             thisTab.addClass('active-tab');
             if (id == 'score') {
-                debugger;
+
                 models.addModel('score', scoreViewModel);
             }
             models.changeModel(id);
