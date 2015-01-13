@@ -2,9 +2,17 @@
 
 var main=function() {
     function tab(clas,models){
-        $(clas).click(function(){
+        $(clas).click(function () {
             var that=$(this);
-            var id=that.attr('tab');
+            var id = that.attr('tab');
+
+            if (id == 'score') {
+                if (!dataLoaded) {
+                    return;
+                }
+                models.addModel('score', scoreViewModel);
+            }
+
             var currentTab=$('.active-tab');
             var thisTab=$('#'+id);
             that
@@ -15,6 +23,10 @@ var main=function() {
             currentTab.removeClass('active-tab');
             thisTab.fadeIn(300);
             thisTab.addClass('active-tab');
+            if (id == 'score') {
+                debugger;
+                models.addModel('score', scoreViewModel);
+            }
             models.changeModel(id);
         }).first().click();
     }
@@ -37,12 +49,12 @@ var main=function() {
 
     var modelHome= new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container"));
     modelHome.activate();
-    var modelScore= new ScoreViewModel('chart_score');
+    var modelScore= scoreViewModel;
     var modelWeather = new WeatherModel();
     getUsers(modelScore,analyze);
     var models = new Models();
     models.addModel('home',modelHome);
-    models.addModel('score',modelScore);
+    //models.addModel('score', scoreViewModel);
     models.addModel('weather-list',modelWeather);
     models.changeModel('home');
     tab(".link",models);
