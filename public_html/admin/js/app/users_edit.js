@@ -132,7 +132,7 @@ function UsersModel() {
     }
     self.custom_db = ko.observable(new Db({
         id: '',
-        db_port: '',
+        db_port: '3306',
         db_server: '',
         db_user: '',
         db_name: '',
@@ -334,11 +334,11 @@ function UsersModel() {
 }
 function Db(data) {
     this.id = data.id;
-    this.port = data.db_port;
-    this.server = data.db_server;
-    this.user = data.db_user;
-    this.name = data.db_name;
-    this.pass = data.db_password;
+    this.port = data.db_port || 3306;
+    this.server = data.db_server || '';
+    this.user = data.db_user || '';
+    this.name = data.db_name || '';
+    this.pass = data.db_password || '';
 }
 ko.bindingHandlers.animation={
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext){

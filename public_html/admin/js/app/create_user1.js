@@ -228,11 +228,11 @@ function CreateUser() {
     };
     function Db(data) {
         this.id = data.id;
-        this.port = data.db_port;
-        this.server = data.db_server;
-        this.user = data.db_user;
-        this.name = data.db_name;
-        this.pass = data.db_password;
+        this.port = data.db_port || 3306;
+        this.server = data.db_server || '';
+        this.user = data.db_user || '';
+        this.name = data.db_name || '';
+        this.pass = data.db_password || '';
     }
 //    function get_data(id) {
 //        if (id == null) {
@@ -273,7 +273,7 @@ function CreateUser() {
 //    get_data(self.user().id);
 
     self.valid_custom_db = {
-        port: ko.observable(''),
+        port: ko.observable('3306'),
         server: ko.observable(''),
         user: ko.observable(''),
         name: ko.observable(''),

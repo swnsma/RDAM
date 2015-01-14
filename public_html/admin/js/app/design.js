@@ -92,7 +92,7 @@ function Template(data) {
     this.version = data.version;
     this.comment = data.comment;
     this.active = ko.observable(data.active == 1 ? true : false);
-    this.file = 'http://rdam.tk/storage/skins/' + data.filename;
+    this.file = 'http://195.69.221.236/storage/skins/' + data.filename;
 }
 
 $(document).ready(function() {
