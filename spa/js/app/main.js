@@ -23,10 +23,6 @@ var main=function() {
             currentTab.removeClass('active-tab');
             thisTab.fadeIn(300);
             thisTab.addClass('active-tab');
-            if (id == 'score') {
-
-                models.addModel('score', scoreViewModel);
-            }
             models.changeModel(id);
         }).first().click();
     }
