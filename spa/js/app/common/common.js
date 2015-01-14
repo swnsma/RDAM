@@ -26,8 +26,8 @@ function UserInfo(id, name, city, photo, descr) {
     this.user = name;
     this.city = city;
     if (photo) {
-        if(photo.indexOf('cdn/users/')===0) {
-            this.photo = photo;
+        if(photo.indexOf('cdn/')===0) {
+           this.photo = photo;
         }
         else {
             this.photo = 'cdn/users/' + photo;
@@ -140,6 +140,7 @@ function CurrentUser() {
 
     this.selectCurrentUser = function(func) {
         var id = getUserDefined();
+        debugger;
         if (id == null) {
             id = 1; //prompt('What is the current user id?', 1);
 
@@ -153,6 +154,7 @@ function CurrentUser() {
             });
 
         } else {
+
             var data = window.localStorage.getItem('curr_user_info');
             if (data === null) {
                 alert('data user undefined');

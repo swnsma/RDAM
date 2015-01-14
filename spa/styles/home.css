@@ -1,6 +1,8 @@
 body{
     background-color: #f9f9f9;
 }
+html { overflow:  hidden; }
+
 .fb{
     text-align: center;
     display: inline-block;
@@ -74,23 +76,37 @@ body{
     margin-right: 15px;
 }
 
+/*.about-user>p{*/
+    /*clear:both;*/
+    /*display: block;*/
+    /*margin-right: 60px;*/
+
+
+    /*font-style: normal;*/
+
+    /*letter-spacing: 0;*/
+    /*font-family:  'Slabo 27px', serif;*/
+    /*font-family: MuseoSans, serif;*/
+    /*font-family: 'Droid Sans', sans-serif;*/
+    /*font-family: Arial, sans-serif;*/
+    /*font-size: 15px;*/
+    /*font-weight: 400;*/
+
+    /*color: #313131;*/
+    /*line-height: 1.88em;*/
+
+
+/*}*/
+
 .about-user>p{
-    clear:both;
-    display: block;
-    margin-right: 60px;
-
-
-    font-style: normal;
-
-    letter-spacing: 0;
-    font-family: MuseoSans, serif;
-    font-size: 18px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
     font-weight: 400;
-
-    color: #313131;
-    line-height: 1.88em;
-
-
+    font-style: normal;
+    color: #222222;
+    line-height: 1.66em;
+    letter-spacing: 0em;
+    margin-top:0;
 }
 .grid-header-parent{
 
