@@ -123,7 +123,7 @@
                                                 <div data-bind="newtooltip: 'Server: a-z,  0-9, _ Port: the number is in the range 0 to 65535'">
                                                     <input class="fi" style="width: 313px" data-bind="value: custom_db().server, attr: {invalid: valid_custom_db.server }" type="text" />
                                                     <span style="padding-left: 1px; font-weight: bold">:</span>
-                                                    <input class="fi" style="width: 30px" data-bind="value: custom_db().port, attr: {invalid: valid_custom_db.port }" type="text" />
+                                                    <input class="fi" style="width: 30px" data-bind="value: custom_db().port || 3306, attr: {invalid: valid_custom_db.port }" type="text" />
                                                 </div>
                                             </td>
                                         </tr>
