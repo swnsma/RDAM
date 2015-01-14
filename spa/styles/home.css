@@ -3,8 +3,7 @@ body{
 }
 .fb{
     text-align: center;
-    display: inline-block;
-    height: 26px;
+   height: 26px;
     width: 350px;
     position: absolute;
     margin-left: -150px;
