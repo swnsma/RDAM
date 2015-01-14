@@ -25,9 +25,13 @@ function UserInfo(id, name, city, photo, descr) {
     this.id = id;
     this.user = name;
     this.city = city;
-    debugger;
     if (photo) {
-        this.photo = 'cdn/users/' + photo;
+        if(photo.indexOf('cdn/users/')===0) {
+            this.photo = photo;
+        }
+        else {
+            this.photo = 'cdn/users/' + photo;
+        }
     } else {
         this.photo = 'cdn/general/default_avatar.jpg';
     }
@@ -102,7 +106,6 @@ function CurrentUser() {
     };
 
     function processData(data) {
-        debugger;
         info = new UserInfo(data.id, data.user, data.city, data.photo, data.descr);
         changeMenu(info.id)
     }
@@ -123,7 +126,7 @@ function CurrentUser() {
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
-                alert(123456799);
+
                 console.log(response);
                 if (response) {
                     funcSuccess(response);
@@ -142,7 +145,6 @@ function CurrentUser() {
 
             getInfoByUser(id, function(response) {
                 window.location.hash = id;
-                debugger;
                 processData(response.data[0]); //temp index array
                 saveData();
                 func();
