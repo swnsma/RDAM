@@ -8,6 +8,10 @@
     border-left: 1px solid #dcdcdc;
 }
 
+.score-tab .buttons-block{
+    height: 28px;
+}
+
 .score-tab .button {
     display: inline-block;
     line-height: 20px;
@@ -171,7 +175,6 @@
 }
 
 .score-tab .compare {
-    margin-top: 30px;
 }
 
 .score-tab .compare h2 {
@@ -222,6 +225,7 @@
     display: table-cell;
     width: 25%;
     position: relative;
+    height: 23px;
 }
 
 .score-tab .star {
@@ -288,6 +292,7 @@
     font-size: 15px;
     border-left: 1px solid #dcdcdc;
     border-bottom: 1px solid #dcdcdc;
+    line-height: 27px;
 }
 
 .score-tab .sort-column:hover {
