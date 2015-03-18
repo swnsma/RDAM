@@ -157,7 +157,7 @@ function WeatherModel() {
         } catch(e) {
             alert('invalid city');
         }
-    }, function() { alert('error'); });
+    }, function() { console.log("Error"); });
 }
 
 
