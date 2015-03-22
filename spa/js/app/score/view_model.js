@@ -25,7 +25,6 @@ ko.bindingHandlers.showGraphScore={
 
     },
     update: function(element, valueAccessor, allBindings, viewModel){
-        debugger;
         viewModel.resize();
         //отримання даних з моделі
         var value=valueAccessor().active_user;

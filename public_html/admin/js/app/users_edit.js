@@ -328,6 +328,21 @@ function UsersModel() {
         self.bool_edit(true);
         changePage('users','edit'+root.id);
     };
+    self.destruction = function(root){
+        ajax.deleteUser({id_user: root.id},{
+            success:function(){
+            window.location.reload();
+        },
+        error: function(){
+            console.log("Houston, we have a problem...");
+            window.location.reload();
+        },
+        after: function(){
+        },
+        before: function() {
+        }
+        })
+    };
 
     get_data(getHash);
 

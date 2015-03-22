@@ -107,6 +107,9 @@ hoverEventCanvas.addEventListener('click', mouseClick);
 wrapper.appendChild(canvas);
 }
 function calculateRange() {
+    if(desc.dataSets[0][0]===undefined){
+        return;
+    }
     minDate = desc.dataSets[0][0].date;
     maxDate = desc.dataSets[0][0].date;
     for (var set in desc.dataSets) {
@@ -152,6 +155,7 @@ function calculateSpace() {
 
     //find max value for all data sets
     maxValue = desc.dataSets[0][0].value;
+
     minValue = maxValue;
     for (var set in desc.dataSets) {
     for (var i in desc.dataSets[set]) {
@@ -1034,6 +1038,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 contentType: 'application/json',
                                 beforeSend: function () { },
                             success: function (response) {
+                                console.log(response);
                                 processValuesWeek(response);
                                 },
                             error: function (xhr, status, error) { }
@@ -1153,7 +1158,6 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 var userLoaded = false;
                                 var ids = id;
                                 var userN = getUserNById(users, id);
-
                                 getValues();
                                 function getValues() {
                                 self.dataLoaded(false);
@@ -1185,6 +1189,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 contentType: 'application/json',
                                 beforeSend: function () { },
                             success: function (response) {
+
                                 processValuesWeek(response);
                                 },
                             error: function (xhr, status, error) { }
@@ -1233,6 +1238,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                             function processValuesWeek(response) {
                                 for (var user in response.data.week) {
                                 var userN = getUserNById(users, response.data.week[user].id);
+
                                 if (response.data.week[user].values.length == 0) {
                                 //if no enegry data for user we`ll fill it with zeros
                                 data.consumption.weekInterval = [new Value(0, new Date())];
@@ -1430,8 +1436,8 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 break;
                                 }
                             }
-                            if (!user.energyDataLoaded) {
-                                loadUserById(self, user.id);
+                                if (!user.energyDataLoaded) {
+                                    loadUserById(self, user.id);
                                 }
                             user.selected(true);
                             } else {
@@ -1446,7 +1452,6 @@ if (g.measureText(text).width < (x2 - x1)) {
                             }
 
                             self.setActiveUser(self.users()[currentUserN]());
-
                             self.selectedRange = ko.observable();
                             self.graphDescriptor = ko.computed(function () {
                                 if (!self.users()[0]) {
@@ -1472,12 +1477,15 @@ if (g.measureText(text).width < (x2 - x1)) {
                                     self.selectedRange('');
                                     return;
                                     }
-                                self.selectedRange({ dateStart: dateStart, dateEnd: dateEnd, rangeSelected: rangeSelected });
+                                    self.selectedRange({ dateStart: dateStart, dateEnd: dateEnd, rangeSelected: rangeSelected });
                                 }
 
                                 //need this part for initialising table under the graph
                                 var minDate;
                                 var maxDate;
+                                if(desc.dataSets[0][0]===undefined){
+                                    return desc;
+                                }
                                 minDate = new Date(desc.dataSets[0][0].date);
                                 maxDate = new Date(desc.dataSets[0][0].date);
                                 for (var set in desc.dataSets) {
@@ -1561,7 +1569,8 @@ if (g.measureText(text).width < (x2 - x1)) {
                 row.name = u.name;
                 var cons = sumByDateRange(u.consumption[self.scale().index], dateStart, dateEnd);
                 var prod = sumByDateRange(u.production[self.scale().index], dateStart, dateEnd);
-                var sSuff = prod / (cons + prod) * 100;
+                var sSuff = prod / cons * 100;
+                sSuff>100?sSuff=100:sSuff;
                 if (isNaN(sSuff)) {
                     sSuff = '';
                 } else {
@@ -1602,7 +1611,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                     bestProd = res.rows[r].production;
                     bestProducerN = r;
                 }
-                if (res.rows[r].consumption < lowestCons) {
+                if (res.rows[r].consumption < lowestCons&&res.rows[r].consumption!=0) {
                     lowestCons = res.rows[r].consumption;
                     lowestConsumerN = r;
                 }
@@ -1687,7 +1696,6 @@ if (g.measureText(text).width < (x2 - x1)) {
                                         for (var r in res.rows) {
                                         res.rows[r].production = res.rows[r].production.toFixed(2);
                                         res.rows[r].consumption = res.rows[r].consumption.toFixed(2);
-                                        res.rows[r].selfSufficiency = res.rows[r].selfSufficiency.toFixed(2);
                                         }
                                     }
                                     allToFixed();
@@ -1711,7 +1719,6 @@ if (g.measureText(text).width < (x2 - x1)) {
                                         }
                                     return color;
                                     }
-                                    debugger;
                                     var t = 0;
                                     }
 

@@ -101,7 +101,19 @@ Ajax.prototype.create_user = function(data, func) {
         error: func.error
     });
 };
-
+Ajax.prototype.deleteUser = function (data, func){
+    func = this._gen_func(func);
+    $.ajax({
+        url: url+'admin/ajax/delUser.php',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
+        beforeSend: func.before,
+        complete: func.after,
+        success: func.success,
+        error: func.error
+    });
+};
 Ajax.prototype.update_user_info = function(data, func) {
     func = this._gen_func(func);
     $.ajax({

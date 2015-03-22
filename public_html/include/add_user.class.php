@@ -21,7 +21,25 @@ class AddUser {
             ':descr' => $descr
         ));
     }
-
+    public function delete_user($id){
+        $this->server_db->beginTransaction();
+        try{
+        $result = $this->server_db->prepare('DELETE FROM `users` WHERE id = :id');
+        $result ->execute(array(':id'=>$id));
+        $result = $this->server_db->prepare('DELETE FROM `auth` WHERE id = :id');
+        $result ->execute(array(':id'=>$id));
+        $request = <<<DELETE
+        DROP TABLE IF EXISTS `user_$id`;
+DELETE;
+            $this->values_db->query($request);
+            $this->server_db->commit();
+        }
+        catch(RuntimeException $e){
+            $this->server_db->rollBack();
+            $this->error = $e->getMessage();
+            return false;
+        }
+    }
     private function create_table_for_values() {
         $id = $this->id;
         $request =<<<HERE

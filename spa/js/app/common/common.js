@@ -140,7 +140,6 @@ function CurrentUser() {
 
     this.selectCurrentUser = function(func) {
         var id = getUserDefined();
-        debugger;
         if (id == null) {
             id = 1; //prompt('What is the current user id?', 1);
 
