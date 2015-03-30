@@ -74,29 +74,13 @@ body{
     line-height: 150%;
     margin-right: 15px;
 }
-
-/*.about-user>p{*/
-    /*clear:both;*/
-    /*display: block;*/
-    /*margin-right: 60px;*/
-
-
-    /*font-style: normal;*/
-
-    /*letter-spacing: 0;*/
-    /*font-family:  'Slabo 27px', serif;*/
-    /*font-family: MuseoSans, serif;*/
-    /*font-family: 'Droid Sans', sans-serif;*/
-    /*font-family: Arial, sans-serif;*/
-    /*font-size: 15px;*/
-    /*font-weight: 400;*/
-
-    /*color: #313131;*/
-    /*line-height: 1.88em;*/
-
-
-/*}*/
-
+.fb_iframe_widget iframe{
+    top: 2px;
+    left: -20px;
+}
+.fb_iframe_widget{
+    overflow: visible!important;
+}
 .about-user>p{
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 15px;
@@ -106,6 +90,7 @@ body{
     line-height: 1.66em;
     letter-spacing: 0em;
     margin-top:0;
+    white-space: pre-wrap;
 }
 .grid-header-parent{
 

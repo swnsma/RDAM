@@ -20,7 +20,7 @@
 
     <meta property="og:title" content="I am greening the planet!" />
     <meta property="og:description" content="I am greening the planet! See how much benefit I bring to the environment!" />
-    <meta property="og:image" content="http://s1.1zoom.net/big3/341/352144-admin.jpg?m=1"/>
+    <meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/7/7e/Trees_in_Spring,_Penn,_Wolverhampton_-_geograph.org.uk_-_808013.jpg"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:url" content="http://195.69.221.236/"/>
 
@@ -282,21 +282,21 @@
             </div>
             <!-- ko foreach: addInfo().rows-->
             <div class="row">
-                <div class="cell" data-bind="text: name"></div>
-                <div class="cell">
+                <div class="cell score-cell" data-bind="text: name"></div>
+                <div class="cell score-cell">
                     <!-- ko text: consumption -->
                     <!-- /ko -->
-                    <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"></div>
+                    <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
                 </div>
-                <div class="cell">
+                <div class="cell score-cell">
                     <!-- ko text: production -->
                     <!-- /ko -->
-                    <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"></div>
+                    <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
                 </div>
-                <div class="cell">
+                <div class="cell score-cell">
                     <!-- ko text: selfSufficiency -->
                     <!-- /ko -->
-                    <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"></div>
+                    <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
                 </div>
             </div>
             <!-- /ko -->
@@ -382,37 +382,37 @@
                                     <th>23:00</th>
                                 </tr>
                                 <tr>
-                                    <td>temperature (&deg;C)</td>
+                                    <td>Temperature (&deg;C)</td>
                                     <!-- ko foreach: hourly -->
                                     <td data-bind="text: tempC"></td>
                                     <!-- /ko -->
                                 </tr>
                                 <tr>
-                                    <td>humidity</td>
+                                    <td>Humidity</td>
                                     <!-- ko foreach: hourly -->
                                     <td data-bind="text: humidity"></td>
                                     <!-- /ko -->
                                 </tr>
                                 <tr>
-                                    <td>precip (mm)</td>
+                                    <td>Precip (mm)</td>
                                     <!-- ko foreach: hourly -->
                                     <td data-bind="text: precipMM"></td>
                                     <!-- /ko -->
                                 </tr>
                                 <tr>
-                                    <td>pressure</td>
+                                    <td>Pressure</td>
                                     <!-- ko foreach: hourly -->
                                     <td data-bind="text: pressure"></td>
                                     <!-- /ko -->
                                 </tr>
                                 <tr>
-                                    <td>wind degree</td>
+                                    <td>Wind degree</td>
                                     <!-- ko foreach: hourly -->
                                     <td data-bind="text: winddirDegree"></td>
                                     <!-- /ko -->
                                 </tr>
                                 <tr>
-                                    <td>wind speed (miles)</td>
+                                    <td>Wind speed (miles)</td>
                                     <!-- ko foreach: hourly -->
                                     <td data-bind="text: windspeedMiles"></td>
                                     <!-- /ko -->

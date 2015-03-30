@@ -28,11 +28,8 @@ class AddUser {
         $result ->execute(array(':id'=>$id));
         $result = $this->server_db->prepare('DELETE FROM `auth` WHERE id = :id');
         $result ->execute(array(':id'=>$id));
-        $request = <<<DELETE
-        DROP TABLE IF EXISTS `user_$id`;
-DELETE;
-            $this->values_db->query($request);
             $this->server_db->commit();
+            return true;
         }
         catch(RuntimeException $e){
             $this->server_db->rollBack();

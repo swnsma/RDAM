@@ -328,7 +328,10 @@ function UsersModel() {
         self.bool_edit(true);
         changePage('users','edit'+root.id);
     };
-    self.destruction = function(root){
+    self.destruction = function(root, element){
+
+        if(confirm("Do you want to delete "+root.user_name+' id#'+root.id)){
+            $("#scroll"+root.id).remove();
         ajax.deleteUser({id_user: root.id},{
             success:function(){
             window.location.reload();
@@ -341,7 +344,8 @@ function UsersModel() {
         },
         before: function() {
         }
-        })
+        });
+        }
     };
 
     get_data(getHash);
@@ -425,7 +429,7 @@ ko.bindingHandlers.upload_users = {
                         if(id.slice(0,4)==='edit'){
                             var id=id.slice(4);
                         }
-                        if (id !== null) {
+                        if (id !== null&&$('#scroll' + id).offset()) {
                             $(document.body).animate({
                                 'scrollTop':   $('#scroll' + id).offset().top
                             }, 0);

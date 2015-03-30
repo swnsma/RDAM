@@ -225,16 +225,19 @@
     display: table-cell;
     width: 25%;
     position: relative;
-    height: 23px;
+    height: 25px;
 }
 
 .score-tab .star {
-    width: 20px;
-    height: 20px;
-    background-image: url('../img/star.png');
-    position: absolute;
-    top: 1px;
-    right: 0;
+    display: inline-block;
+}
+.fa-score{
+    font-size: 12pt!important;
+    line-height: 20pt;
+    color: #007f00;
+}
+.score-cell{
+    width: 320px!important;
 }
 
 .score-tab .users-list {
@@ -243,6 +246,8 @@
     vertical-align: top;
     height: 97vh;
     overflow-y: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .score-tab .users-list p {

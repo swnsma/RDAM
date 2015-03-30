@@ -156,7 +156,6 @@ function CurrentUser() {
 
             var data = window.localStorage.getItem('curr_user_info');
             if (data === null) {
-                alert('data user undefined');
             } else {
                 processData(JSON.parse(data));
                 if (info.id != id) {
@@ -166,7 +165,6 @@ function CurrentUser() {
                         saveData();
                         func();
                     }, function() {
-                        alert('error getting user info');
                     });
 
                 } else {

@@ -20,6 +20,7 @@ var dataLoaded = false;//will be changed by getAllInfoAllUsers() or by getMinima
 var useRandom = false;
 var currentUserId;
 var currentUserN;
+var currentUserLastDay, currentUserLastWeek, currentUserLastMonth;
 
 //graph drawing thing
 //wraper - DOM object, graph's canvas will be placed in it
@@ -1025,6 +1026,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 contentType: 'application/json',
                                 beforeSend: function () { },
                             success: function (response) {
+
                                 processValuesDay(response);
                                 },
                             error: function (xhr, status, error) { }
@@ -1066,6 +1068,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 users[userN].consumption.dayInterval = [new Value(0, new Date())];
                                 users[userN].production.dayInterval = [new Value(0, new Date())];
                                 }
+
                             for (var value in response.data.day[user].values) {
                                 var val = response.data.day[user].values[value];
                                 var date = val[0];
@@ -1176,6 +1179,7 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 contentType: 'application/json',
                                 beforeSend: function () { },
                             success: function (response) {
+                                currentUserLastDay=response.data.day[0].values[0][0];
                                 processValuesDay(response);
                                 },
                             error: function (xhr, status, error) { }
@@ -1189,20 +1193,28 @@ if (g.measureText(text).width < (x2 - x1)) {
                                 contentType: 'application/json',
                                 beforeSend: function () { },
                             success: function (response) {
-
+                                currentUserLastWeek=response.data.week[0].values[0][0];
+                                console.log(currentUserLastWeek);
                                 processValuesWeek(response);
                                 },
                             error: function (xhr, status, error) { }
                             });
                             }
                             function getMonthValues(n) {
-                                var responseProcessed = false;
+                                var last;
+                                if(currentUserLastMonth){
+                                    last=currentUserLastMonth;
+                                }else{
+                                    last="last"
+                                }
                                 $.ajax({
                                 url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
                                 type: 'GET',
                                 contentType: 'application/json',
                                 beforeSend: function () { },
                             success: function (response) {
+                                currentUserLastMonth=response.data.month[0].values[0][0];
+                                console.log(currentUserLastMonth);
                                 processValuesMonth(response);
                                 },
                             error: function (xhr, status, error) { }

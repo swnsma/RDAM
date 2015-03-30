@@ -89,7 +89,7 @@ HERE;
                 if ($ignore_first_line) fgetcsv($handle, 1000, ';');
                 while (($data = fgetcsv($handle, 1000, ';')) !== FALSE) {
                     $row++;
-                    if ($row > 30) break;
+                    if ($row > 365) break;
 
                     $date = $data[1];
                     $p = $data[2];
