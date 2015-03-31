@@ -3,6 +3,7 @@ function getUsers(self,success) {
         url: 'http://195.69.221.236/ajax/users_info.php?from_id=' + 1+'&&fields=city,photo,descr',
         type: 'GET',
         contentType: 'application/json',
+        async: false,
         success: function (response) {
             success(response,self);
 

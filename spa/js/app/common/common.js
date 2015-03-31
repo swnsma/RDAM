@@ -125,6 +125,7 @@ function CurrentUser() {
             url: 'http://195.69.221.236/ajax/user_info.php?id=' + id  + '&fields=city,photo,descr',
             type: 'GET',
             contentType: 'application/json',
+            async: false,
             success: function (response) {
 
                 console.log(response);

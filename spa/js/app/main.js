@@ -5,14 +5,12 @@ var main=function() {
         $(clas).click(function () {
             var that=$(this);
             var id = that.attr('tab');
-
             if (id == 'score') {
                 if (!dataLoaded) {
                     return;
                 }
                 models.addModel('score', scoreViewModel);
             }
-
             var currentTab=$('.active-tab');
             var thisTab=$('#'+id);
             that
@@ -26,14 +24,19 @@ var main=function() {
             models.changeModel(id);
         }).first().click();
     }
+    var bool = false;
     function Models()
     {
         this.models = [];
         this.currentModel=0;
         this.changeModel = function(id){
-            var model = this.models[id];
-            this.currentModel=model;
-            ko.applyBindings(model,document.getElementById(id));
+            if(!bool) {
+                bool = true;
+                var model = this.models[id];
+                this.currentModel = model;
+                debugger;
+                ko.applyBindings(model, document.getElementById('body'));
+            }
         }
         this.addModel = function(id,model){
             this.models[id]=model;
@@ -45,13 +48,14 @@ var main=function() {
 
     var modelHome= new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container"));
     modelHome.activate();
-    var modelScore= scoreViewModel;
-    var modelWeather = new WeatherModel();
-    getUsers(modelScore,analyze);
+    //var modelScore= scoreViewModel;
+    //var modelWeather = new WeatherModel();
+    //getUsers(modelScore,analyze);
     var models = new Models();
     models.addModel('home',modelHome);
     //models.addModel('score', scoreViewModel);
-    models.addModel('weather-list',modelWeather);
+    //models.addModel('weather-list',modelWeather);
+    //models.addModel('score', scoreViewModel);
     models.changeModel('home');
     tab(".link",models);
     $(window).resize(function(){

@@ -108,7 +108,7 @@ body{
 
 /*Not display all tabs at first load (in main.js: fadeIn first tab)*/
 .tab{
-    display:none;
+    /*display:none;*/
 }
 /*Table different metrics*/
 .table-metrics{

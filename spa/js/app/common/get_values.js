@@ -110,6 +110,7 @@ function Values() {
                 url: 'http://195.69.221.236/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
                 type: 'GET',
                 contentType: 'application/json',
+                async: false,
                 beforeSend: function(){
                     if(bool==true){
                         bool=false;
