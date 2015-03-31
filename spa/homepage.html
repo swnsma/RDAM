@@ -19,24 +19,85 @@
 </head>
 <body id="body">
 <!--MENU-->
-<div style="position: fixed; z-index: 100000; left: 0; right: 0" class="container-menu content">
-    <div style="margin: 0 auto" class="pure-g cont ">
-        <div class="pure-u-1-1 table">
-            <div class="row">
-                <div id="mHome" class="link cell active-link" tab="home">
-                    <i class="fa fa-home fa-2x"></i>Home
-                </div>
-                <div id="mSelf" class="link cell" >
-                    <i class="fa fa-pie-chart fa-2x"></i>Score
-                </div>
-                <div id="mScore" class="link cell">
-                    <i class="fa fa-cloud fa-2x"></i><span>Weather</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div style="position: fixed; z-index: 100000; left: 0; right: 0;">-->
+    <!--<div  class="container-menu content" style="margin: 0 auto" class="pure-g cont ">-->
+        <!--<div class="pure-u-1-1 table">-->
+            <!--<div class="row">-->
+                <!--<div id="mHome" class="link cell active-link" tab="home">-->
+                    <!--<i class="fa fa-home fa-2x"></i>Home-->
+                <!--</div>-->
+                <!--<div id="mSelf" class="link cell" >-->
+                    <!--<i class="fa fa-pie-chart fa-2x"></i>Score-->
+                <!--</div>-->
+                <!--<div id="mScore" class="link cell">-->
+                    <!--<i class="fa fa-cloud fa-2x"></i><span>Weather</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
+<header class="header">
+    <div class="header-content">
+        <img class="img" src="img/793z0hv6.jpg" >
+            <ul class="menu">
+                <li id="mHome" class="active-my-link">Home </li>
+                <li id="mSelf">Self-sufficiency </li>
+                <li id="mScore">Compare </li>
+            </ul>
+    </div>
+</header>
+
+<style>
+    .header .header-content .menu{
+        float: right;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .header .header-content .menu, .header .header-content .menu li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .header .header-content .menu li{
+        display: inline-block;
+        padding: 0 10px;
+        color: #999;
+        cursor: pointer;
+    }
+    .header .header-content .menu li:hover{
+        border-top: 2px solid #FFE082;
+    }
+    .header{
+        position: fixed;
+        height: 60px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+        background-color: #ffffff;
+        z-index: 2000;
+        padding: 0;
+        line-height: 66px;
+    }
+    .header-content{
+        width: 960px;
+        margin: 0 auto;
+        padding: 0;
+        height: 100%;
+        text-align: left;
+        line-height: 60px;
+
+    }
+    .header-content .img{
+        vertical-align: middle;
+        opacity: 1;
+        height: 50px;
+    }
+    .header .header-content .menu li.active-my-link{
+        border-top: 2px solid #FFC107;
+        color: #000;
+    }
+</style>
 <!--TAB HOME-->
 <div style="padding-top: 50px" id="home" class="tab active-tab">
     <div class="content">
@@ -287,8 +348,8 @@
 </footer>
 
 
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="js/vendor/knockout-3.2.0.js"></script>
+<script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type='text/javascript' src="js/vendor/knockout-3.2.0.js"></script>
 
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
@@ -305,14 +366,14 @@
 
 <script type="text/javascript" src="js/app/score.js"></script>
 <script type="text/javascript" src="js/app/api.js"></script>
-<script src="js/app/common/get_values.js"></script>
-<script src="js/app/common/common.js"></script>
-<script src="js/app/common/data_containers.js"></script>
-<script src="js/app/common/changeGraph.js"></script>
-<script src="js/app/common/Users_class.js"></script>
+<script type='text/javascript' src="js/app/common/get_values.js"></script>
+<script type='text/javascript' src="js/app/common/common.js"></script>
+<script type='text/javascript' src="js/app/common/data_containers.js"></script>
+<script type='text/javascript' src="js/app/common/changeGraph.js"></script>
+<script type='text/javascript' src="js/app/common/Users_class.js"></script>
 
-<script src="js/app/bindings.js"></script>
-<script src="js/app/main.js"></script>
+<script type='text/javascript' src="js/app/bindings.js"></script>
+<script type='text/javascript' src="js/app/main.js"></script>
 
 <script type='text/javascript' src='js/app/score/getUsers.js'></script>
 <script type="text/javascript" src="js/app/common/Share.js"></script>
@@ -323,21 +384,20 @@
 <script>
     function animate(id_li,id_div,ms){
         $(id_li).on('click',function(){
-//            debugger;
-            $(id_li).addClass('active-link')
+            debugger;
+
+            var lenth = $(id_div).offset().top;
+            $(id_li).addClass('active-my-link')
                     .siblings()
-                    .removeClass('active-link');;
+                    .removeClass('active-my-link');
             $(document.body).animate({
-                'scrollTop':   $(id_div).offset().top
+                'scrollTop':   lenth-90
             }, ms);
         });
     }
     animate('#mHome','#home', 1000);
     animate('#mSelf','#self',1000);
     animate('#mScore','#score',1000);
-    //        $(document.body).animate({
-    //            'scrollTop':   $('#scroll' + id).offset().top
-    //        }, 0);
 </script>
 </body>
 </html>
