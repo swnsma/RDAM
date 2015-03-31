@@ -3,18 +3,8 @@ body{
 }
 /*html { overflow:  hidden; }*/
 
-.fb{
-    text-align: center;
-   height: 26px;
-    width: 350px;
-    position: absolute;
-    margin-left: -150px;
-    margin-top:110px;
-    left: 50%;
-}
-.fb span{
-    font-size: 19px;
-    margin-left:20px;
+.twitter-hashtag-button{
+
 }
 .content {
     width: 960px;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu test</title>
+
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
+
+<link href="css/demo.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script	src="js/jquery.smint.js" type="text/javascript" ></script>
+
+<script type="text/javascript">
+	
+
+$(document).ready( function() {
+    $('.subMenu').smint({
+    	'scrollSpeed' : 1000
+    });
+});
+
+
+</script>
+
+
+</head>
+<body>
+<div class="top-menu wrap ">
+	<div class="top-menu subMenu" >
+	 	<div class="top-menu inner">
+	 		<a href="#s1" class="top-menu subNavBtn">
+                <i class="top-menu fa fa-home"></i>Home
+            </a>
+			<a href="#s2" class="top-menu subNavBtn">
+                <i class="top-menu fa fa-pie-chart"></i>Self sufficiency
+            </a>
+			<a href="#s3" class="top-menu subNavBtn">
+                <i class="top-menu fa fa-star"></i>Score
+            </a>
+		</div>
+	</div>
+	<div class="top-menu section s1">
+		<div class="top-menu inner ">
+			<h1>Home</h1>
+		</div>
+	</div>
+	<div class="top-menu section s2">
+		<div class="top-menu inner">
+			<h1>Self sufficiency</h1>
+		</div>
+	</div>
+	<div class="top-menu section s3">
+		<div class="top-menu inner">
+			<h1>Score</h1>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

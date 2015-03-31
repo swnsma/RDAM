@@ -384,6 +384,9 @@ function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
     self.img("http://195.69.221.236/"+current_user.getPhoto());
     self.desc(current_user.getDescr());
     self.userName = ko.observable(current_user.getName());
+    self.textTweet = ko.computed(function(){
+        return self.userName()+" helps to make the planet green! See more details at "+window.location;
+    });
     self.idChart = id;
     self.data=items;
     self.buttons=ko.observableArray(['Days','Weeks','Months']);
