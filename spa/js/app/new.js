@@ -155,6 +155,5 @@ ko.bindingHandlers.showGraph={
 
 
 $(document).ready(function () {
-    //debugger;
     ko.applyBindings(new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container")));
 });

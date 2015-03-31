@@ -245,12 +245,12 @@
     width: 23%;
     vertical-align: top;
     height: 97vh;
-    overflow-y: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.score-tab .users-list p {
+.score-tab .list p {
     padding: 10px 7px 7px 7px;
     border-bottom: 1px solid #e0e0e0;
     margin: 0;
@@ -260,6 +260,7 @@
 .score-tab .list {
     height: 85vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .score-tab .selected-user {

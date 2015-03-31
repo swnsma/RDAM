@@ -23,7 +23,6 @@ function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
     self.setScale = function (scale) {
         self.scale(scale);
     }
-    debugger;
     self.currentUser = self.users()[0];
     self.selectedUsers = ko.computed(function () {
         var selected = 0;
@@ -177,7 +176,6 @@ function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
         }
 
         function rangeSelected() {
-            debugger;
             var dateStart = self.selectedRange().dateStart;
             var dateEnd = self.selectedRange().dateEnd;
             for (var user in self.users()) {
