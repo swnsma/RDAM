@@ -82,8 +82,8 @@ body{
     margin-top:0;
     white-space: pre-wrap;
 }
-.grid-header-parent{
-
+.pre{
+    white-space: pre-line;
 }
 .grid-header{
     font-family: 'Oswald', sans-serif;

@@ -129,17 +129,14 @@
                                         <span id="vac" data-bind="text:sumVac"></span>
                                         <p>vacuum cleaning</p>
                                     </div>
-
                                 </div>
                                 <div class="pure-g explanation">
                                     <div class="pure-u-1-1">
-                                         <p>You can spend this energy by </p>
-                                         <p>doing vacuum cleaning during</p>
-                                        <span id="vacV" data-bind="text:sumVac"></span>
+                                         <p class="pre">You can spend this energy by doing
+                                         vacuum cleaning during  <span id="vacV" data-bind="text:sumVac"></span></p>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="cell-metrics">
                                 <div class="pure-g">
                                     <div class=" pure-u-1-1 value">
@@ -149,12 +146,11 @@
                                 </div>
                                 <div class="pure-g explanation">
                                     <div class="pure-u-1-1">
-                                        <p>Normal production of this amount</p><p>of energy will cause emission of</p>
-                                        <span id="co2v" data-bind="text: sumC"></span>
+                                        <p class="pre">Normal production of this amount of
+                                             energy will cause emission of <span id="co2v" data-bind="text: sumC"></span></p>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="cell-metrics">
                                 <div class="pure-g">
                                     <div class=" pure-u-1-1 value">
@@ -164,30 +160,22 @@
                                 </div>
                                 <div class="pure-g explanation">
                                     <div class="pure-u-1-1">
-                                             <span>
-                                            Driving
-                                            </span>
-                                        <span id="carV" data-bind="text:sumCar"></span>
-
-                                            in an average passenger vehicle will cause<p> the same CO<sub>2</sub> emission</p>
-
+                                        <p class="pre"> Driving <span id="carV" data-bind="text:sumCar"></span> in an average passenger
+                                         vehicle will cause the same CO<sub>2</sub> emission</p>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="cell-metrics">
                                 <div class="pure-g">
                                     <div class=" pure-u-1-1 value">
                                         <span id="trees" data-bind="text: sumTrees"></span>
+                                        <p>trees helped</p>
                                     </div>
                                 </div>
                                 <div class="pure-g explanation">
                                     <div class="pure-u-1-1">
-                                            <p>
-                                            This amount of CO<sub>2</sub> can be sequestered</p>by
-
-                                        <span id="treesV" data-bind="text: sumTrees"></span>
-                                        <span> during 10 year period</span>
+                                            <p class=pre>This amount of CO<sub>2</sub> can be sequestered
+                                            <span id="treesV" data-bind="text: sumTrees"></span> by during 10 year period</p>
                                     </div>
                                 </div>
                             </div>
@@ -259,52 +247,53 @@
 </div>
 
 
-<div class="stats">
-    <div style="display:none" class="different-metrics block">
-        <div class="metric">
-            <h2>
-                <span class="value" data-bind="text: productionAmount"></span>
-                <span class="unit">kWh</span>
-            </h2>
-            <p>
-                During period shown on the graph was produced
-                <span data-bind="text: (productionAmount()+' ')"></span>
-                &nbsp;kWh
-            </p>
+    <div class="stats">
+        <div style="display:none" class="different-metrics block">
+            <div class="metric">
+                <h2>
+                    <span class="value" data-bind="text: productionAmount"></span>
+                    <span class="unit">kWh</span>
+                </h2>
+                <p>
+                    During period shown on the graph was produced
+                    <span data-bind="text: (productionAmount()+' ')"></span>
+                    &nbsp;kWh
+                </p>
+            </div>
+            <div class="metric">
+                <h2>
+                    <span class="value" data-bind="text: CO2Amount"></span>
+                    <span class="unit">kg</span>
+                </h2>
+                <p>
+                    Normal production of this amount of energy will cause emission of
+                    <span data-bind="text: (CO2Amount()+' ')"></span>kg of CO2
+                </p>
+            </div>
+            <div class="metric">
+                <h2>
+                    <span class="value" data-bind="text: kmOnCar"></span>
+                    <span class="unit">km</span>
+                </h2>
+                <p>
+                    Driving
+                    <span data-bind="text: (kmOnCar()+' ')"></span>
+                    km in<br/> an average passenger vehicle
+                    will cause the same CO2 emission
+                </p>
+            </div>
+            <div class="metric">
+                <h2>
+                    <span class="value" data-bind="text: trees"></span>
+                    <span class="unit">trees</span>
+                </h2>
+                <p>
+                    This amount of CO2 can be sequestered by
+                    <span data-bind="text: (trees()+' ')"></span>
+                    trees during 10 year period
+                </p>
+            </div>
         </div>
-        <div class="metric">
-            <h2>
-                <span class="value" data-bind="text: CO2Amount"></span>
-                <span class="unit">kg</span>
-            </h2>
-            <p>
-                Normal production of this amount of energy will cause emission of
-                <span data-bind="text: (CO2Amount()+' ')"></span>kg of CO2
-            </p>
-        </div>
-        <div class="metric">
-            <h2>
-                <span class="value" data-bind="text: kmOnCar"></span>
-                <span class="unit">km</span>
-            </h2>
-            <p>
-                Driving
-                <span data-bind="text: (kmOnCar()+' ')"></span>
-                km in an average passenger vehicle will cause the same CO2 emission
-            </p>
-        </div>
-        <div class="metric">
-            <h2>
-                <span class="value" data-bind="text: trees"></span>
-                <span class="unit">trees</span>
-            </h2>
-            <p>
-                This amount of CO2 can be sequestered by
-                <span data-bind="text: (trees()+' ')"></span>
-                trees during 10 year period
-            </p>
-        </div>
-    </div>
     <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
     <div class="buttons-block" data-bind="foreach: scales" style="float:left">
         <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
