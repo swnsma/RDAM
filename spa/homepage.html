@@ -20,25 +20,26 @@
 </head>
 <body id="body">
 <!--MENU-->
-<div class="container-menu content">
-    <div class="pure-g cont ">
+<div style="position: fixed; z-index: 100000; left: 0; right: 0" class="container-menu content">
+    <div style="margin: 0 auto" class="pure-g cont ">
         <div class="pure-u-1-1 table">
             <div class="row">
-                <div class="link cell" tab="home">
+                <div id="mHome" class="link cell active-link" tab="home">
                     <i class="fa fa-home fa-2x"></i>Home
                 </div>
-                <div class="link cell" >
+                <div id="mSelf" class="link cell" >
                     <i class="fa fa-pie-chart fa-2x"></i>Score
                 </div>
-                <div class="link cell">
+                <div id="mScore" class="link cell">
                     <i class="fa fa-cloud fa-2x"></i><span>Weather</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!--TAB HOME-->
-<div id="home" class="tab active-tab">
+<div style="padding-top: 50px" id="home" class="tab active-tab">
     <div class="content">
         <div class="pure-g">
             <div class="pure-u-1-1 grid-header-parent">
@@ -151,7 +152,7 @@
         <div style="border-bottom: 2px solid #666">
             <div class="battery-container">
                 <div class="chart-text-box">
-                    <h2 class="grid-header">Self-sufficiency:</h2>
+                    <h2 id="self" class="grid-header">Self-sufficiency:</h2>
                     <div class="wrapper">
                         <div class="from-grid">
                             <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
@@ -180,8 +181,10 @@
 
     </div>
 </div>
+
 <!--TAB SCORE-->
-<div id="score" class="tab score-tab">
+<div  id="score" class="tab score-tab">
+<h2 class="grid-header">Score</h2>
 <div class="users-list block">
     <div>
         <p>Select users:</p>
@@ -193,6 +196,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="stats">
     <div style="display:none" class="different-metrics block">
         <div class="metric">
@@ -281,6 +286,7 @@
         </div>
     </div>
 </div>
+    </div>
 <footer>
     <div class="contact">
         <p>Rooftop Energy B.V.</p>
@@ -291,6 +297,7 @@
         &copy All rights reserved
     </div>
 </footer>
+
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="js/vendor/knockout-3.2.0.js"></script>
@@ -325,6 +332,24 @@
 <script type='text/javascript' src='js/app/score/ColorMas.js'></script>
 <script type="text/javascript" src="js/app/parseData.js"></script>
 
-
+<script>
+    function animate(id_li,id_div,ms){
+        $(id_li).on('click',function(){
+//            debugger;
+            $(id_li).addClass('active-link')
+                    .siblings()
+                    .removeClass('active-link');;
+            $(document.body).animate({
+                'scrollTop':   $(id_div).offset().top
+            }, ms);
+        });
+    }
+    animate('#mHome','#home', 1000);
+    animate('#mSelf','#self',1000);
+    animate('#mScore','#score',1000);
+    //        $(document.body).animate({
+    //            'scrollTop':   $('#scroll' + id).offset().top
+    //        }, 0);
+</script>
 </body>
 </html>
