@@ -304,7 +304,6 @@
     </div>
 </div>
 <footer>
-
     <div class="contact">
         <p>Rooftop Energy B.V.</p>
         <p>Kouwe Hoek 20 | 2741 PX Waddinxveen</p>
@@ -314,130 +313,6 @@
         &copy All rights reserved
     </div>
 </footer>
-</div>
-<!--TAB WEATHER-->
-<div id="weather-list" class="tab">
-    <div class="content">
-        <div class="pure-g">
-            <div class="pure-u-1-1" >
-                <div class="weather-city">Weather in <span data-bind="text: city"></span></div>
-                <div class="both-fix"></div>
-                <ul class="weather-list" data-bind="foreach: weather_days">
-                    <li data-bind="click: function() { $parent.renderMoreInfo($index()); }, attr: { selected: active }">
-                        <div class="wdate">
-                            <!-- ko with: date -->
-                            <span class="wname" data-bind="text: day_name"></span>
-                            <span class="wday" data-bind="text: day, css: { is_day_off: is_day_off }"></span>
-                            <span class="wname" data-bind="text: month_name"></span>
-                            <!-- /ko -->
-                        </div>
-                        <div class="wimg">
-                            <img src="" data-bind="attr: { src: weatherIconUrl }" alt="" />
-                        </div>
-                        <span class="wdesc" data-bind="text: weatherDesc"></span>
-                        <div class="wtemp">
-                            <span data-bind="text: maxnimtemp.mintempC"></span> -
-                            <span data-bind="text: maxnimtemp.maxtempC"></span> &deg;C
-                        </div>
-                    </li>
-                </ul>
-                <div class="wmore-info">
-                    <!-- ko with: weather_days_mi -->
-                    <div class="wm">
-                        <div class="temp-grad">
-                            <div class="btemp-img"><img src="img/temp.png" alt="" /></div>
-                        </div>
-                        <div class="temp-value">
-                            <span class="curr-temp-value" data-bind="text: tempC"></span> &deg;C
-                        </div>
-                        <div class="sun">
-                            <div class="sun-hours">
-                                The sun will shine <span data-bind="text: sun().hours"></span>
-                            </div>
-                            <div class="sun-hours-detail">
-                                <div class="sun-field">Moonrise <span data-bind="text: sun().moonrise"></span></div>
-                                <div class="sun-field">Moonset <span data-bind="text: sun().moonset"></span></div>
-                                <div class="sun-field">Sunrise <span data-bind="text: sun().sunrise"></span></div>
-                                <div class="sun-field">Sunset <span data-bind="text: sun().sunset"></span></div>
-                            </div>
-                        </div>
-                        <div class="table-hourly-right">
-                            <table class="hourly">
-                                <tr>
-                                    <th></th>
-                                    <th colspan="2">Night</th>
-                                    <th colspan="2">Morning</th>
-                                    <th colspan="2">Day</th>
-                                    <th colspan="2">Evening</th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th>2:00</th>
-                                    <th>5:00</th>
-                                    <th>8:00</th>
-                                    <th>11:00</th>
-                                    <th>14:00</th>
-                                    <th>17:00</th>
-                                    <th>20:00</th>
-                                    <th>23:00</th>
-                                </tr>
-                                <tr>
-                                    <td>Temperature (&deg;C)</td>
-                                    <!-- ko foreach: hourly -->
-                                    <td data-bind="text: tempC"></td>
-                                    <!-- /ko -->
-                                </tr>
-                                <tr>
-                                    <td>Humidity</td>
-                                    <!-- ko foreach: hourly -->
-                                    <td data-bind="text: humidity"></td>
-                                    <!-- /ko -->
-                                </tr>
-                                <tr>
-                                    <td>Precip (mm)</td>
-                                    <!-- ko foreach: hourly -->
-                                    <td data-bind="text: precipMM"></td>
-                                    <!-- /ko -->
-                                </tr>
-                                <tr>
-                                    <td>Pressure</td>
-                                    <!-- ko foreach: hourly -->
-                                    <td data-bind="text: pressure"></td>
-                                    <!-- /ko -->
-                                </tr>
-                                <tr>
-                                    <td>Wind degree</td>
-                                    <!-- ko foreach: hourly -->
-                                    <td data-bind="text: winddirDegree"></td>
-                                    <!-- /ko -->
-                                </tr>
-                                <tr>
-                                    <td>Wind speed (miles)</td>
-                                    <!-- ko foreach: hourly -->
-                                    <td data-bind="text: windspeedMiles"></td>
-                                    <!-- /ko -->
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- /ko -->
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <footer>
-
-        <div class="contact">
-            <p>Rooftop Energy B.V.</p>
-            <p>Kouwe Hoek 20 | 2741 PX Waddinxveen</p>
-            <p>T +31 (0)182 74 80 90  | E info@rooftopenergy.nl</p>
-        </div>
-        <div class="copyRight">
-            &copy All rights reserved
-        </div>
-    </footer>
-</div>
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="js/vendor/knockout-3.2.0.js"></script>
@@ -465,7 +340,6 @@
 
 <script src="js/app/bindings.js"></script>
 <script src="js/app/main.js"></script>
-<script src="js/app/weather.js"></script>
 
 <script type='text/javascript' src='js/app/score/getUsers.js'></script>
 <script type="text/javascript" src="js/app/common/Share.js"></script>
