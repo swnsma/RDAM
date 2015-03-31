@@ -17,13 +17,6 @@
     <link rel="stylesheet" href="styles/jquery.jqplot.css"/>
     <link rel="stylesheet" href="styles/consumption.css" type="text/css"/>
     <link rel="stylesheet" href="styles/score.css" type="text/css"/>
-
-    <meta property="og:title" content="I am greening the planet!" />
-    <meta property="og:description" content="I am greening the planet! See how much benefit I bring to the environment!" />
-    <meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/7/7e/Trees_in_Spring,_Penn,_Wolverhampton_-_geograph.org.uk_-_808013.jpg"/>
-    <meta property="og:locale" content="en_US"/>
-    <meta property="og:url" content="http://195.69.221.236/"/>
-
 </head>
 <body>
 <!--MENU-->
@@ -52,11 +45,12 @@
                 <h2 data-bind="text:userName" class="grid-header">About this user</h2>
             </div>
             <div class="pure-u-3-4 about-user ">
-
                 <p data-bind="text: desc"> </p>
             </div>
             <div class="pure-u-1-4 avatar">
                 <img class="avatar-img" data-bind="attr:{src:img}"/>
+                <a class="twitter-hashtag-button" href="https://twitter.com/intent/tweet" data-related="twitter" data-bind="attr:{'data-text':textTweet}" data-size="large" data-hashtags="rooftopenergy"> Tweet</a>
+
             </div>
         </div>
         <div class="pure-g">
@@ -180,12 +174,7 @@
                     <div data-bind="text: date2" class="date"></div>
                 </div>
                 <!-- /ko -->
-                <div class="fb">
-                    <div id="fb-root" >
-                        <span>Tell this to your friends!</span>
-                        <div class="fb-share-button" data-href="http://rdam.zz.mu/production.html#1" data-layout="button"></div>
-                    </div>
-                </div>
+
             </div>
         </div>
 

@@ -46,12 +46,10 @@ var main=function() {
     var modelHome= new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container"));
     modelHome.activate();
     var modelScore= scoreViewModel;
-    var modelWeather = new WeatherModel();
     getUsers(modelScore,analyze);
     var models = new Models();
     models.addModel('home',modelHome);
     //models.addModel('score', scoreViewModel);
-    models.addModel('weather-list',modelWeather);
     models.changeModel('home');
     tab(".link",models);
     $(window).resize(function(){
