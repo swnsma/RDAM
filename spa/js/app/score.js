@@ -985,6 +985,7 @@ function getMinimalInfo() {
             success: function (response) {
                 processUsers(response);
                 addUser(currentUserId);
+
             },
             error: function () {
                 alert("Can't recieve users.");
@@ -1020,7 +1021,6 @@ function getMinimalInfo() {
         currentUserN = getUserNById(users, currentUserId);
 
         function getDayValues(n) {
-            var responseProcessed = false;
             $.ajax({
                 url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=day&limit=' + n,
                 type: 'GET',
@@ -1035,7 +1035,6 @@ function getMinimalInfo() {
             });
         }
         function getWeekValues(n) {
-            var responseProcessed = false;
             $.ajax({
                 url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
                 type: 'GET',
@@ -1050,7 +1049,6 @@ function getMinimalInfo() {
             });
         }
         function getMonthValues(n) {
-            var responseProcessed = false;
             $.ajax({
                 url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
                 type: 'GET',
@@ -1176,7 +1174,6 @@ function loadUserById(self, id) {
     currentUserN = getUserNById(users, currentUserId);
 
     function getDayValues(n) {
-        var responseProcessed = false;
         $.ajax({
             url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=day&limit=' + n,
             type: 'GET',
@@ -1191,7 +1188,6 @@ function loadUserById(self, id) {
         });
     }
     function getWeekValues(n) {
-        var responseProcessed = false;
         $.ajax({
             url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
             type: 'GET',
@@ -1206,13 +1202,7 @@ function loadUserById(self, id) {
             error: function (xhr, status, error) { }
         });
     }
-    function getMonthValues(n) {
-        var last;
-        if(currentUserLastMonth){
-            last=currentUserLastMonth;
-        }else{
-            last="last"
-        }
+    function getMonthValues(n){
         $.ajax({
             url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
             type: 'GET',
@@ -1220,8 +1210,6 @@ function loadUserById(self, id) {
             async: false,
             beforeSend: function () { },
             success: function (response) {
-                currentUserLastMonth=response.data.month[0].values[0][0];
-                console.log(currentUserLastMonth);
                 processValuesMonth(response);
             },
             error: function (xhr, status, error) { }
