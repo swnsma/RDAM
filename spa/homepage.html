@@ -40,12 +40,14 @@
 <header class="header">
     <div class="header-content">
         <img class="img" src="img/793z0hv6.jpg" >
-            <ul class="menu">
-                <li id="mHome" class="active-my-link">Home </li>
-                <li id="mSelf">Self-sufficiency </li>
-                <li id="mScore">Compare </li>
-            </ul>
+        <ul class="menu  subMenu">
+            <li id="mHome" class="subNavBtn"><a href="#sml1" >Home</a> </li>
+            <li id="mSelf"><a href="#sml2" class="subNavBtn">Self-sufficiency</a> </li>
+            <li id="mScore"><a href="#sml3" class="subNavBtn">Compare</a> </li>
+            <li id="" > <a href="#sml4" class="subNavBtn">Contact</a> </li>
+        </ul>
     </div>
+
 </header>
 
 <style>
@@ -59,13 +61,22 @@
         padding: 0;
         list-style: none;
     }
+    .header .header-content .menu a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #999;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+    }
     .header .header-content .menu li{
         display: inline-block;
         padding: 0 10px;
-        color: #999;
-        cursor: pointer;
+        margin: 0;
+
     }
-    .header .header-content .menu li:hover{
+    .header .header-content .menu li a:hover{
         border-top: 2px solid #FFE082;
         color: #777;
     }
@@ -95,114 +106,115 @@
         opacity: 1;
         height: 50px;
     }
-    .header .header-content .menu li.active-my-link{
+    .header .header-content .menu li a.active{
         border-top: 2px solid #FFC107;
         color: #000;
     }
 </style>
 <!--TAB HOME-->
-<div style="padding-top: 50px" id="home" class="tab active-tab">
+<div style="padding-top: 50px" id="home" class="tab active-tab ">
     <div class="content">
-        <div class="pure-g">
-            <div class="pure-u-1-1 grid-header-parent">
-                <h2 data-bind="text:userName" class="grid-header">About this user</h2>
-            </div>
-            <div class="pure-u-3-4 about-user ">
-                <p data-bind="text: desc"> </p>
-            </div>
-            <div class="pure-u-1-4 avatar">
-                <img class="avatar-img" data-bind="attr:{src:img}"/>
-                <a class="twitter-hashtag-button" href="https://twitter.com/intent/tweet" data-related="twitter" data-bind="attr:{'data-text':textTweet}" data-size="large" data-hashtags="rooftopenergy"> Tweet</a>
+        <div class="sml1">
+            <div class="pure-g">
+                <div class="pure-u-1-1 grid-header-parent">
+                    <h2 data-bind="text:userName" class="grid-header">About this user</h2>
+                </div>
+                <div class="pure-u-3-4 about-user ">
+                    <p data-bind="text: desc"> </p>
+                </div>
+                <div class="pure-u-1-4 avatar">
+                    <img class="avatar-img" data-bind="attr:{src:img}"/>
+                    <a class="twitter-hashtag-button" href="https://twitter.com/intent/tweet" data-related="twitter" data-bind="attr:{'data-text':textTweet}" data-size="large" data-hashtags="rooftopenergy"> Tweet</a>
 
+                </div>
             </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1-1 grid-header-parent">
-                <h2 class="grid-header">Production and Consumption</h2>
-            </div>
-            <div class="pure-u-1-4 ">
-                <div class="table-metrics">
-                    <div class="row-metrics">
-                        <div class="column-metrics">
-                            <div class="cell-metrics">
-                                <div class="pure-g">
-                                    <div class=" pure-u-1-1 value">
-                                        <span id="vac" data-bind="text:sumVac"></span>
-                                        <p>vacuum cleaning</p>
+            <div class="pure-g">
+                <div class="pure-u-1-1 grid-header-parent">
+                    <h2 class="grid-header">Production and Consumption</h2>
+                </div>
+                <div class="pure-u-1-4 ">
+                    <div class="table-metrics">
+                        <div class="row-metrics">
+                            <div class="column-metrics">
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="vac" data-bind="text:sumVac"></span>
+                                            <p>vacuum cleaning</p>
+                                        </div>
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                            <p class="pre">You can spend this energy by doing
+                                                vacuum cleaning during  <span id="vacV" data-bind="text:sumVac"></span></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="pure-g explanation">
-                                    <div class="pure-u-1-1">
-                                         <p class="pre">You can spend this energy by doing
-                                         vacuum cleaning during  <span id="vacV" data-bind="text:sumVac"></span></p>
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="co2" data-bind="text: sumC"></span>
+                                            <p>avoided CO<sub>2</sub></p>
+                                        </div>
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                            <p class="pre">Normal production of this amount of
+                                                energy will cause emission of <span id="co2v" data-bind="text: sumC"></span></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="cell-metrics">
-                                <div class="pure-g">
-                                    <div class=" pure-u-1-1 value">
-                                        <span id="co2" data-bind="text: sumC"></span>
-                                        <p>avoided CO<sub>2</sub></p>
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="car" data-bind="text: sumCar"></span>
+                                            <p>driving</p>
+                                        </div>
+                                    </div>
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
+                                            <p class="pre"> Driving <span id="carV" data-bind="text:sumCar"></span> in an average passenger
+                                                vehicle will cause the same CO<sub>2</sub> emission</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="pure-g explanation">
-                                    <div class="pure-u-1-1">
-                                        <p class="pre">Normal production of this amount of
-                                             energy will cause emission of <span id="co2v" data-bind="text: sumC"></span></p>
+                                <div class="cell-metrics">
+                                    <div class="pure-g">
+                                        <div class=" pure-u-1-1 value">
+                                            <span id="trees" data-bind="text: sumTrees"></span>
+                                            <p>trees helped</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="cell-metrics">
-                                <div class="pure-g">
-                                    <div class=" pure-u-1-1 value">
-                                        <span id="car" data-bind="text: sumCar"></span>
-                                        <p>driving</p>
-                                    </div>
-                                </div>
-                                <div class="pure-g explanation">
-                                    <div class="pure-u-1-1">
-                                        <p class="pre"> Driving <span id="carV" data-bind="text:sumCar"></span> in an average passenger
-                                         vehicle will cause the same CO<sub>2</sub> emission</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cell-metrics">
-                                <div class="pure-g">
-                                    <div class=" pure-u-1-1 value">
-                                        <span id="trees" data-bind="text: sumTrees"></span>
-                                        <p>trees helped</p>
-                                    </div>
-                                </div>
-                                <div class="pure-g explanation">
-                                    <div class="pure-u-1-1">
+                                    <div class="pure-g explanation">
+                                        <div class="pure-u-1-1">
                                             <p class=pre>This amount of CO<sub>2</sub> can be sequestered
-                                            <span id="treesV" data-bind="text: sumTrees"></span> by during 10 year period</p>
+                                                <span id="treesV" data-bind="text: sumTrees"></span> by during 10 year period</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="pure-u-3-4 chart" >
-                <div  class="graph-container">
-                    <div id="chart_home" data-bind="showGraph:{}" class="chart"> </div>
-                    <div class="button-table" >
-                        <div class="button-row" data-bind="foreach: buttons">
-                            <div data-bind="click:$root.changeData, text:$data" class="period"></div>
+                <div class="pure-u-3-4 chart" >
+                    <div  class="graph-container">
+                        <div id="chart_home" data-bind="showGraph:{}" class="chart"> </div>
+                        <div class="button-table" >
+                            <div class="button-row" data-bind="foreach: buttons">
+                                <div data-bind="click:$root.changeData, text:$data" class="period"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <div style="border-bottom: 2px solid #666">
+        <div class="sml2" style="border-bottom: 2px solid #666">
             <div class="battery-container">
-                <div class="chart-text-box">
-                    <h2 id="self" class="grid-header">Self-sufficiency:</h2>
+                <div class="chart-text-box ">
+                    <h2 id="self" class="grid-header ">Self-sufficiency:</h2>
                     <div class="wrapper">
                         <div class="from-grid">
                             <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
@@ -229,129 +241,140 @@
             </div>
         </div>
 
-    </div>
-</div>
-
-<!--TAB SCORE-->
-<div style=""  id="score" class="tab score-tab">
-<h2 class="grid-header">Compare:</h2>
-<div class="users-list block">
-    <div>
-        <p>Select users:</p>
-        <div class="list" data-bind="foreach: users">
-            <div class="user block"
-                 data-bind="style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
-                <span data-bind="text: name"></span>
-            </div>
-        </div>
-    </div>
-</div>
+        <!--TAB SCORE-->
+        <div class="sml3">
+            <div id="score" class="tab score-tab ">
+                <h2 class="grid-header">Compare:</h2>
+                <div class="users-list block">
+                    <div>
+                        <p>Select users:</p>
+                        <div class="list" data-bind="foreach: users">
+                            <div class="user block"
+                                 data-bind="style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
+                                <span data-bind="text: name"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-    <div class="stats">
-        <div style="display:none" class="different-metrics block">
-            <div class="metric">
-                <h2>
-                    <span class="value" data-bind="text: productionAmount"></span>
-                    <span class="unit">kWh</span>
-                </h2>
-                <p>
-                    During period shown on the graph was produced
-                    <span data-bind="text: (productionAmount()+' ')"></span>
-                    &nbsp;kWh
-                </p>
+                <div class="stats">
+                    <div style="display:none" class="different-metrics block">
+                        <div class="metric">
+                            <h2>
+                                <span class="value" data-bind="text: productionAmount"></span>
+                                <span class="unit">kWh</span>
+                            </h2>
+                            <p>
+                                During period shown on the graph was produced
+                                <span data-bind="text: (productionAmount()+' ')"></span>
+                                &nbsp;kWh
+                            </p>
+                        </div>
+                        <div class="metric">
+                            <h2>
+                                <span class="value" data-bind="text: CO2Amount"></span>
+                                <span class="unit">kg</span>
+                            </h2>
+                            <p>
+                                Normal production of this amount of energy will cause emission of
+                                <span data-bind="text: (CO2Amount()+' ')"></span>kg of CO2
+                            </p>
+                        </div>
+                        <div class="metric">
+                            <h2>
+                                <span class="value" data-bind="text: kmOnCar"></span>
+                                <span class="unit">km</span>
+                            </h2>
+                            <p>
+                                Driving
+                                <span data-bind="text: (kmOnCar()+' ')"></span>
+                                km in<br/> an average passenger vehicle
+                                will cause the same CO2 emission
+                            </p>
+                        </div>
+                        <div class="metric">
+                            <h2>
+                                <span class="value" data-bind="text: trees"></span>
+                                <span class="unit">trees</span>
+                            </h2>
+                            <p>
+                                This amount of CO2 can be sequestered by
+                                <span data-bind="text: (trees()+' ')"></span>
+                                trees during 10 year period
+                            </p>
+                        </div>
+                    </div>
+                    <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
+                    <div class="buttons-block" data-bind="foreach: scales" style="float:left">
+                        <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
+                    </div>
+                    <div class="buttons-block" data-bind="foreach: dataTypes" style="float:right">
+                        <div class="button scale" data-bind="text: $data, click: $parent.setDataType, css: {'selected': $parent.dataType()==$data}"></div>
+                    </div>
+                    <div style="clear: both"></div>
+                    <div class="compare">
+                        <h2>
+                            <span data-bind="text: addInfo().range"></span>
+                        </h2>
+                        <div class="table">
+                            <div class="row">
+                                <div class="cell">Name</div>
+                                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='consumption','deselected': sortingBy()!='consumption'}, click: sortByCons">Consumed energy, kWh</div>
+                                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='production','deselected': sortingBy()!='production'}, click: sortByProd">Produced energy, kWh</div>
+                                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='selfSufficiency','deselected': sortingBy()!='selfSufficiency'}, click: sortByRate">Self sufficiency, %</div>
+                            </div>
+                            <!-- ko foreach: addInfo().rows-->
+                            <div class="row">
+                                <div class="cell score-cell" data-bind="text: name"></div>
+                                <div class="cell score-cell">
+                                    <!-- ko text: consumption -->
+                                    <!-- /ko -->
+                                    <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                                </div>
+                                <div class="cell score-cell">
+                                    <!-- ko text: production -->
+                                    <!-- /ko -->
+                                    <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                                </div>
+                                <div class="cell score-cell">
+                                    <!-- ko text: selfSufficiency -->
+                                    <!-- /ko -->
+                                    <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="metric">
-                <h2>
-                    <span class="value" data-bind="text: CO2Amount"></span>
-                    <span class="unit">kg</span>
-                </h2>
-                <p>
-                    Normal production of this amount of energy will cause emission of
-                    <span data-bind="text: (CO2Amount()+' ')"></span>kg of CO2
-                </p>
-            </div>
-            <div class="metric">
-                <h2>
-                    <span class="value" data-bind="text: kmOnCar"></span>
-                    <span class="unit">km</span>
-                </h2>
-                <p>
-                    Driving
-                    <span data-bind="text: (kmOnCar()+' ')"></span>
-                    km in<br/> an average passenger vehicle
-                    will cause the same CO2 emission
-                </p>
-            </div>
-            <div class="metric">
-                <h2>
-                    <span class="value" data-bind="text: trees"></span>
-                    <span class="unit">trees</span>
-                </h2>
-                <p>
-                    This amount of CO2 can be sequestered by
-                    <span data-bind="text: (trees()+' ')"></span>
-                    trees during 10 year period
-                </p>
-            </div>
+
         </div>
-    <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
-    <div class="buttons-block" data-bind="foreach: scales" style="float:left">
-        <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
-    </div>
-    <div class="buttons-block" data-bind="foreach: dataTypes" style="float:right">
-        <div class="button scale" data-bind="text: $data, click: $parent.setDataType, css: {'selected': $parent.dataType()==$data}"></div>
-    </div>
-    <div style="clear: both"></div>
-    <div class="compare">
-        <h2>
-            <span data-bind="text: addInfo().range"></span>
-        </h2>
-        <div class="table">
-            <div class="row">
-                <div class="cell">Name</div>
-                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='consumption','deselected': sortingBy()!='consumption'}, click: sortByCons">Consumed energy, kWh</div>
-                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='production','deselected': sortingBy()!='production'}, click: sortByProd">Produced energy, kWh</div>
-                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='selfSufficiency','deselected': sortingBy()!='selfSufficiency'}, click: sortByRate">Self sufficiency, %</div>
+
+        <div class="sml4">
+        <footer >
+            <div class="contact">
+                <p>Rooftop Energy B.V.</p>
+                <p>Kouwe Hoek 20 | 2741 PX Waddinxveen</p>
+                <p>T +31 (0)182 74 80 90  | E info@rooftopenergy.nl</p>
             </div>
-            <!-- ko foreach: addInfo().rows-->
-            <div class="row">
-                <div class="cell score-cell" data-bind="text: name"></div>
-                <div class="cell score-cell">
-                    <!-- ko text: consumption -->
-                    <!-- /ko -->
-                    <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
-                </div>
-                <div class="cell score-cell">
-                    <!-- ko text: production -->
-                    <!-- /ko -->
-                    <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
-                </div>
-                <div class="cell score-cell">
-                    <!-- ko text: selfSufficiency -->
-                    <!-- /ko -->
-                    <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
-                </div>
+            <div class="copyRight">
+                &copy All rights reserved
             </div>
-            <!-- /ko -->
+        </footer>
         </div>
     </div>
+
+
 </div>
-    </div>
-<footer>
-    <div class="contact">
-        <p>Rooftop Energy B.V.</p>
-        <p>Kouwe Hoek 20 | 2741 PX Waddinxveen</p>
-        <p>T +31 (0)182 74 80 90  | E info@rooftopenergy.nl</p>
-    </div>
-    <div class="copyRight">
-        &copy All rights reserved
-    </div>
-</footer>
+
+
+
 
 
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type='text/javascript' src="js/vendor/knockout-3.2.0.js"></script>
+<script type='text/javascript' src="js/vendor/jquery.smint.js"></script>
 
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
@@ -384,23 +407,29 @@
 <script type="text/javascript" src="js/app/parseData.js"></script>
 
 <script>
-    function animate(id_li,id_div,ms){
-        $(id_li).on('click',function(e){
-            var lenth = $(id_div).offset().top;
-            $(id_li).addClass('active-my-link')
-                    .siblings()
-                    .removeClass('active-my-link');
-            e.preventDefault();
-            $('html, body').animate({
-                'scrollTop':lenth
-            }, ms);
-        });
-    }
-    $(document).ready( function() {
-        animate('#mHome', '#home', 1000);
-        animate('#mSelf', '#self', 1000);
-        animate('#mScore', '#score', 1000);
+//    function animate(id_li,id_div,ms){
+//        $(id_li).on('click',function(e){
+//            var lenth = $(id_div).offset().top;
+//            $(id_li).addClass('active-my-link')
+//                    .siblings()
+//                    .removeClass('active-my-link');
+//            e.preventDefault();
+//            $('html, body').animate({
+//                'scrollTop':lenth
+//            }, ms);
+//        });
+//    }
+//    $(document).ready( function() {
+//        animate('#mHome', '#home', 1000);
+//        animate('#mSelf', '#self', 1000);
+//        animate('#mScore', '#score', 1000);
+//    });
+
+$(document).ready( function() {
+    $('.subMenu').smint({
+        'scrollSpeed' : 1000
     });
+});
 </script>
 </body>
 </html>
