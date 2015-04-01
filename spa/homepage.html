@@ -18,25 +18,6 @@
     <link rel="stylesheet" href="styles/score.css" type="text/css"/>
 </head>
 <body id="body">
-<!--MENU-->
-<!--<div style="position: fixed; z-index: 100000; left: 0; right: 0;">-->
-    <!--<div  class="container-menu content" style="margin: 0 auto" class="pure-g cont ">-->
-        <!--<div class="pure-u-1-1 table">-->
-            <!--<div class="row">-->
-                <!--<div id="mHome" class="link cell active-link" tab="home">-->
-                    <!--<i class="fa fa-home fa-2x"></i>Home-->
-                <!--</div>-->
-                <!--<div id="mSelf" class="link cell" >-->
-                    <!--<i class="fa fa-pie-chart fa-2x"></i>Score-->
-                <!--</div>-->
-                <!--<div id="mScore" class="link cell">-->
-                    <!--<i class="fa fa-cloud fa-2x"></i><span>Weather</span>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
 <header class="header">
     <div class="header-content">
         <img class="img" src="img/793z0hv6.jpg" >
@@ -340,5 +321,31 @@
 <script type='text/javascript' src='js/app/score/view_model.js'></script>
 <script type='text/javascript' src='js/app/score/ColorMas.js'></script>
 <script type="text/javascript" src="js/app/parseData.js"></script>
+
+<script>
+//    function animate(id_li,id_div,ms){
+//        $(id_li).on('click',function(e){
+//            var lenth = $(id_div).offset().top;
+//            $(id_li).addClass('active-my-link')
+//                    .siblings()
+//                    .removeClass('active-my-link');
+//            e.preventDefault();
+//            $('html, body').animate({
+//                'scrollTop':lenth
+//            }, ms);
+//        });
+//    }
+//    $(document).ready( function() {
+//        animate('#mHome', '#home', 1000);
+//        animate('#mSelf', '#self', 1000);
+//        animate('#mScore', '#score', 1000);
+//    });
+
+$(document).ready( function() {
+    $('.subMenu').smint({
+        'scrollSpeed' : 1000
+    });
+});
+</script>
 </body>
 </html>

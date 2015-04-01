@@ -11,11 +11,11 @@ var monthsShort = ['Jan', 'Feb', 'Mar',
     'Nov', 'Dec'];
 var lastNames = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"];
 var initials = ["W.R.", "I.T.", "I.N.", "G.C.", "H.A.", "R.A.", "C.H.", "T.E.", "R.S.", "K.O."];
-var colors = [{ color: '#BBDEFB', used: false },
-    { color: '#64B5F6', used: false },
-    { color: '#2196F3', used: false },
-    { color: '#1976D2', used: false },
-    { color: '#0D47A1', used: false }];
+var colors = [{ color: '#737373', used: false },
+    { color: '#4986e7', used: false },
+    { color: '#16a765', used: false },
+    { color: '#e9b330', used: false },
+    { color: '#a479e2', used: false }];
 var dataLoaded = false;//will be changed by getAllInfoAllUsers() or by getMinimalInfo()
 var useRandom = false;
 var currentUserId;

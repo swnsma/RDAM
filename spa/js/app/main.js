@@ -1,4 +1,5 @@
 
+
 var main=function() {
 
     var modelHome= new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container"));
