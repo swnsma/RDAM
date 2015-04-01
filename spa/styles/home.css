@@ -16,11 +16,11 @@ body{
 .pure-g{
     padding:15px;
 }
- .header .header-content .menu{
-     float: right;
-     font-weight: 600;
-     font-size: 20px;
- }
+.header .header-content .menu{
+    float: right;
+    font-weight: 600;
+    font-size: 20px;
+}
 .header .header-content .menu, .header .header-content .menu li{
     margin: 0;
     padding: 0;
@@ -39,7 +39,6 @@ body{
     display: inline-block;
     padding: 0 10px;
     margin: 0;
-
 }
 .header .header-content .menu li a:hover{
     border-top: 2px solid #FFE082;
@@ -64,12 +63,15 @@ body{
     height: 100%;
     text-align: left;
     line-height: 60px;
-
 }
 .header-content .img{
     vertical-align: middle;
     opacity: 1;
     height: 50px;
+}
+.header .header-content .menu li a.active{
+    border-top: 2px solid #FFC107;
+    color: #000;
 }
 .table{
     display: table;
