@@ -67,6 +67,7 @@
     }
     .header .header-content .menu li:hover{
         border-top: 2px solid #FFE082;
+        color: #777;
     }
     .header{
         position: fixed;
@@ -75,12 +76,13 @@
         right: 0;
         box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
         background-color: #ffffff;
+        /*background: #4BB2C5;;*/
         z-index: 2000;
         padding: 0;
         line-height: 66px;
     }
     .header-content{
-        width: 960px;
+        max-width: 960px;
         margin: 0 auto;
         padding: 0;
         height: 100%;
@@ -231,7 +233,7 @@
 </div>
 
 <!--TAB SCORE-->
-<div  id="score" class="tab score-tab">
+<div style=""  id="score" class="tab score-tab">
 <h2 class="grid-header">Compare:</h2>
 <div class="users-list block">
     <div>
@@ -383,21 +385,22 @@
 
 <script>
     function animate(id_li,id_div,ms){
-        $(id_li).on('click',function(){
-            debugger;
-
+        $(id_li).on('click',function(e){
             var lenth = $(id_div).offset().top;
             $(id_li).addClass('active-my-link')
                     .siblings()
                     .removeClass('active-my-link');
-            $(document.body).animate({
-                'scrollTop':   lenth-90
+            e.preventDefault();
+            $('html, body').animate({
+                'scrollTop':lenth
             }, ms);
         });
     }
-    animate('#mHome','#home', 1000);
-    animate('#mSelf','#self',1000);
-    animate('#mScore','#score',1000);
+    $(document).ready( function() {
+        animate('#mHome', '#home', 1000);
+        animate('#mSelf', '#self', 1000);
+        animate('#mScore', '#score', 1000);
+    });
 </script>
 </body>
 </html>
