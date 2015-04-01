@@ -8,3 +8,8 @@ var main=function() {
 
 };
 manager.add(main);
+$(document).ready( function() {
+    $('.subMenu').smint({
+        'scrollSpeed' : 1000
+    });
+});

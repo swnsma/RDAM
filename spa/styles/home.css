@@ -16,7 +16,61 @@ body{
 .pure-g{
     padding:15px;
 }
+ .header .header-content .menu{
+     float: right;
+     font-weight: 600;
+     font-size: 20px;
+ }
+.header .header-content .menu, .header .header-content .menu li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.header .header-content .menu a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #999;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+.header .header-content .menu li{
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0;
 
+}
+.header .header-content .menu li a:hover{
+    border-top: 2px solid #FFE082;
+    color: #777;
+}
+.header{
+    position: fixed;
+    height: 60px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    background-color: #ffffff;
+    /*background: #4BB2C5;;*/
+    z-index: 2000;
+    padding: 0;
+    line-height: 66px;
+}
+.header-content{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    text-align: left;
+    line-height: 60px;
+
+}
+.header-content .img{
+    vertical-align: middle;
+    opacity: 1;
+    height: 50px;
+}
 .table{
     display: table;
 }
