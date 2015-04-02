@@ -29,6 +29,7 @@ class AddUser {
         $result = $this->server_db->prepare('DELETE FROM `auth` WHERE id = :id');
         $result ->execute(array(':id'=>$id));
             $this->server_db->commit();
+            $this->values_db->query("DROP TABLE IF EXISTS user_$id");
             return true;
         }
         catch(RuntimeException $e){
