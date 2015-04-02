@@ -1,11 +1,9 @@
 .graph-container
 {
     height:350px;
-    /*width:830px;*/
     width: 100%;
     font-size: 1.2em;
     position: relative;
-    /*border: 1px solid black;*/
 }
 
 #chartDiv
