@@ -111,6 +111,7 @@ function CurrentUser() {
     }
 
     function saveData() {
+        //alert('alert')
         window.localStorage.setItem('curr_user_info', JSON.stringify(info));
     }
 
@@ -154,9 +155,15 @@ function CurrentUser() {
             });
 
         } else {
-
             var data = window.localStorage.getItem('curr_user_info');
-            if (data === null) {
+            //alert(!data ||data==='undefined');
+            if (!data||data==='undefined') {
+                getInfoByUser(id, function(response) {
+                    processData(response.data[0]); //temp index array
+                    saveData();
+                    func();
+                }, function() {
+                });
             } else {
                 processData(JSON.parse(data));
                 if (info.id != id) {

@@ -10,6 +10,9 @@ RewriteRule ^(.*)$ /site/$1
 RewriteCond %{HTTP_HOST} ^(www.)?rdam.tk$
 RewriteRule ^(/)?$ site/homepage.html [L]
 
+#<IfModule mod_headers.c>
+#   Header set Access-Control-Allow-Origin "*"
+# </IfModule>
 
 #195.69.221.236
 #RewriteEngine on

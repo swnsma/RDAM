@@ -1,5 +1,5 @@
 var api = {
-    getData: getValues = function (id,successFunction, type) {
+    getData:  function (id,successFunction, type) {
             $.ajax({
                 url: 'http://195.69.221.236/ajax/users_values.php?id=' + id + '&todt=last' + type,
                 type: 'GET',
