@@ -168,59 +168,13 @@
                         <p>Select users:</p>
                         <div class="list" data-bind="foreach: users">
                             <div class="user block"
-                                 data-bind="style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
+                                 data-bind="attr:{title: name}, style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
                                 <span data-bind="text: name"></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="stats">
-                    <div style="display:none" class="different-metrics block">
-                        <div class="metric">
-                            <h2>
-                                <span class="value" data-bind="text: productionAmount"></span>
-                                <span class="unit">kWh</span>
-                            </h2>
-                            <p>
-                                During period shown on the graph was produced
-                                <span data-bind="text: (productionAmount()+' ')"></span>
-                                &nbsp;kWh
-                            </p>
-                        </div>
-                        <div class="metric">
-                            <h2>
-                                <span class="value" data-bind="text: CO2Amount"></span>
-                                <span class="unit">kg</span>
-                            </h2>
-                            <p>
-                                Normal production of this amount of energy will cause emission of
-                                <span data-bind="text: (CO2Amount()+' ')"></span>kg of CO2
-                            </p>
-                        </div>
-                        <div class="metric">
-                            <h2>
-                                <span class="value" data-bind="text: kmOnCar"></span>
-                                <span class="unit">km</span>
-                            </h2>
-                            <p>
-                                Driving
-                                <span data-bind="text: (kmOnCar()+' ')"></span>
-                                km in<br/> an average passenger vehicle
-                                will cause the same CO2 emission
-                            </p>
-                        </div>
-                        <div class="metric">
-                            <h2>
-                                <span class="value" data-bind="text: trees"></span>
-                                <span class="unit">trees</span>
-                            </h2>
-                            <p>
-                                This amount of CO2 can be sequestered by
-                                <span data-bind="text: (trees()+' ')"></span>
-                                trees during 10 year period
-                            </p>
-                        </div>
-                    </div>
                     <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
                     <div class="buttons-block" data-bind="foreach: scales" style="float:left">
                         <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
@@ -294,8 +248,6 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
 <script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
-
-
 
 <script type="text/javascript" src="js/app/score.js"></script>
 <script type="text/javascript" src="js/app/api.js"></script>

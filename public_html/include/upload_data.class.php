@@ -86,11 +86,9 @@ HERE;
             date_default_timezone_set(TIME_ZONE);
             $row = 1;
             if (($handle = fopen($file, 'r')) !== FALSE) {
-                if ($ignore_first_line) fgetcsv($handle, 1000, ';');
-                while (($data = fgetcsv($handle, 1000, ';')) !== FALSE) {
+                if ($ignore_first_line) fgetcsv($handle, 2000, ';');
+                while (($data = fgetcsv($handle, 2000, ';')) !== FALSE) {
                     $row++;
-                    if ($row > 365) break;
-
                     $date = $data[1];
                     $p = $data[2];
                     $c = $data[3];
