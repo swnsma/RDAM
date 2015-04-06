@@ -1,7 +1,5 @@
 
 function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
-    var self= this;
-    var currentUserID = 1;
     var self = this;
     self.dataLoaded = ko.observable(false);
     self.working = ko.observable(true);//if true screen will be blocked
@@ -68,7 +66,6 @@ function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
             user.selected(false);
         }
     }
-
     self.setActiveUser(self.users()[currentUserN]());
     self.selectedRange = ko.observable();
     self.graphDescriptor = ko.computed(function () {
@@ -156,7 +153,6 @@ function AppViewModel(id,items,legend,get_type,equalHeight,equalWidth){
         res = (self.productionAmount() * 0.61 * 0.026).toFixed(1);
         return res;
     });
-
     self.sortingBy = ko.observable('selfSufficiency');
     self.sortByProd = function () {
         self.sortingBy('production');
