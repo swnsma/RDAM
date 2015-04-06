@@ -176,9 +176,9 @@ function CurrentUser() {
     };
 
     function getUserDefined() {
-        var id = window.location.hash.substring(1);
-        if (id == parseInt(id)) {
-            return id;
+        window.app.id = window.location.hash.substring(1);
+        if (window.app.id == parseInt(window.app.id)) {
+            return window.app.id;
         } else {
             return null;
         }

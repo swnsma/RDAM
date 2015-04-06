@@ -15,7 +15,6 @@ function Values() {
         return d.getDate()+ ' '+m_names[d.getMonth()]+' '+ d.getFullYear()+ ' - ' + weekDate;
     }
     function parseSomeTypeData(data, type) {
-//        for(var i in data) {
             var id = data[0].id;
             if (arr_data[type][id] == undefined) {
                 arr_data[type][id] = {
@@ -36,7 +35,6 @@ function Values() {
 
                 arr_data[type][id].values.production.push(+data[0].values[j][1]);
                 arr_data[type][id].values.consumption.push(+data[0].values[j][2]);
-//            }
         }
     }
 
@@ -107,7 +105,7 @@ function Values() {
             funcSuccess([]);
         } else {
             $.ajax({
-                url: 'http://195.69.221.236/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
+                url: window.app.url+'/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
                 type: 'GET',
                 contentType: 'application/json',
                 async: false,
