@@ -1,12 +1,13 @@
 
 function removeLoad(){
-    $("#loadScreen")
-        .addClass("hiding")
     setTimeout(function(){
         $("#loadScreen")
-            .addClass("no")
-    }, 1000);
-
+            .addClass("hiding")
+        setTimeout(function(){
+            $("#loadScreen")
+                .addClass("no")
+        }, 1000);
+    },500);
 }
 var main=function() {
 

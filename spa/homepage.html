@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/loader.css" type="text/css" rel="stylesheet"/>
 
-    <!--<link rel="shortcut icon" href="imgs/793z0hv6.jpg">-->
     <link rel="stylesheet" href="styles/menu.css"/>
     <link rel="stylesheet" href="styles/home.css"/>
     <link rel="stylesheet" href="styles/chart.css"/>
@@ -20,8 +19,9 @@
 </head>
 <body data-bind="title: {}">
 <div id="loadScreen">
-    <img class="load" src="imgs/load.gif"/>
+    <div class="load loader-inner ball-rotate"></div>
 </div>
+
 <header class="header">
     <div class="header-content">
         <a href="http://www.rooftopenergy.nl/">
@@ -239,7 +239,7 @@
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type='text/javascript' src="js/vendor/knockout-3.2.0.js"></script>
 <script type='text/javascript' src="js/vendor/jquery.smint.js"></script>
-<script type='text/javascript' src="js/vendor/somelibrary.js"></script>
+<script type="text/javascript" src="js/vendor/loader.js"></script>
 
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>

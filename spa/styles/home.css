@@ -21,7 +21,77 @@ body{
     font-weight: 600;
     font-size: 20px;
 }
-@keyframes opa{
+@-webkit-keyframes opa{
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 0.9;
+    }
+    20%{
+        opacity: 0.8;
+    }
+    30%{
+        opacity: 0.7;
+    }
+    40%{
+        opacity: 0.6;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    60%{
+        opacity: 0.4;
+    }
+    70%{
+        opacity: 0.3;
+    }
+    80%{
+        opacity: 0.2;
+    }
+    90%{
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@-o-keyframes opa{
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 0.9;
+    }
+    20%{
+        opacity: 0.8;
+    }
+    30%{
+        opacity: 0.7;
+    }
+    40%{
+        opacity: 0.6;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    60%{
+        opacity: 0.4;
+    }
+    70%{
+        opacity: 0.3;
+    }
+    80%{
+        opacity: 0.2;
+    }
+    90%{
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@-moz-keyframes opa{
     0%{
         opacity: 1;
     }
@@ -57,21 +127,26 @@ body{
     }
 }
 .hiding{
-    animation: opa 1s;
+    -webkit-animation-name: opa;
+    -o-animation-name: opa;
+    -moz-animation-name: opa;
+    -webkit-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    -moz-animation-delay: 1s;
 }
 #loadScreen{
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: 2001;
-    background-color: #000000;
+    background-color:#00796B;
 }
 .load{
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -250px;
-    margin-left: -250px;
+    margin-left: -25px;
+    margin-top: -25px;
 }
 .no{
     display: none;
