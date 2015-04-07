@@ -9,8 +9,6 @@ var monthsShort = ['Jan', 'Feb', 'Mar',
     'Apr', 'May', 'June', 'July',
     'Aug', 'Sep', 'Oct',
     'Nov', 'Dec'];
-var lastNames = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"];
-var initials = ["W.R.", "I.T.", "I.N.", "G.C.", "H.A.", "R.A.", "C.H.", "T.E.", "R.S.", "K.O."];
 var colors = [{ color: '#737373', used: false },
     { color: '#4986e7', used: false },
     { color: '#16a765', used: false },
@@ -20,7 +18,6 @@ var dataLoaded = false;//will be changed by getAllInfoAllUsers() or by getMinima
 var useRandom = false;
 var currentUserId;
 var currentUserN;
-var currentUserLastDay, currentUserLastWeek, currentUserLastMonth;
 
 //graph drawing thing
 //wraper - DOM object, graph's canvas will be placed in it
@@ -171,8 +168,6 @@ function drawGraph(wrapper, desc) {
         }
 
         yScaleFactor = graphHeight / (maxValue - minValue);
-
-        var maxStep = graphHeight / 4;
         var minStep = graphHeight / 6;
         var step = 0.01;
         for (; ;) {
@@ -208,10 +203,8 @@ function drawGraph(wrapper, desc) {
             var y = (set[i].value - minValue) * graphHeight / (maxValue - minValue);
             if (i == 0) {
                 graphCtx.moveTo(x, graphBottom - y);
-                //graphCtx.fillText(set[i].value.toFixed(2), x, graphBottom - y);
             } else {
                 graphCtx.lineTo(x, graphBottom - y);
-                //graphCtx.fillText(set[i].value.toFixed(2), x, graphBottom - y);
             }
         }
         graphCtx.stroke();
@@ -236,12 +229,10 @@ function drawGraph(wrapper, desc) {
         graphCtx.font = fontSize + 'px Calibri';
         graphCtx.strokeStyle = "#bebebd";
 
-        var xOffset = horGridStep;
 
         createXIntervals();
         function createXIntervals() {
             var date = new Date(maxDate);
-            var month = date.getMonth();
 
             xIntervals.push({ time: new Date(maxDate), x: width });
 
@@ -258,6 +249,7 @@ function drawGraph(wrapper, desc) {
                 xIntervals.unshift({ time: new Date(date), x: x });
             }
             for (var n in xIntervals) {
+                var xR, widthR;
                 var date1;
                 var date2;
                 var values = [];
@@ -328,43 +320,14 @@ function drawGraph(wrapper, desc) {
             graphCtx.stroke();
             return true;
         }
-
-        //drawMonths();
-        function drawMonths() {
-            var monthDrawn = false;
-            var monthsToDraw = [];//contains months' names and their coordinates
-            var date = new Date(maxDate);
-            for (; date > minDate; date.setDate(date.getDate() - 1)) {
-                if (date.getDate() == 1) {
-                    var month = {};
-                    month.n = date.getMonth();
-                    month.x = (date - minDate - 86400000) * width / dateRange;
-                    monthsToDraw.unshift(month);
-                }
-            }
-            for (var m in monthsToDraw) {
-                var lX = monthsToDraw[m].x;
-                var lY = graphBottom;
-                lX = Math.round(lX) + 0.5;
-                lY = Math.round(lY) + 0.5;
-                graphCtx.beginPath();
-                graphCtx.moveTo(lX, lY);
-                graphCtx.lineTo(lX, lY + 2 * fontSize);
-                graphCtx.closePath();
-                graphCtx.stroke();
-            }
-        }
     }
     function drawDateLabelsWeek() {
         graphCtx.font = fontSize + 'px Calibri';
         graphCtx.strokeStyle = "#bebebd";
 
-        var xOffset = horGridStep;
-
         createXIntervals();
         function createXIntervals() {
             var date = new Date(maxDate);
-            var month = date.getMonth();
 
             xIntervals.push({ time: new Date(maxDate), x: width });
 
@@ -489,12 +452,10 @@ function drawGraph(wrapper, desc) {
         graphCtx.font = fontSize + 'px Calibri';
         graphCtx.strokeStyle = "#bebebd";
         graphCtx.textAlign = 'center';
-        var xOffset = horGridStep;
 
         createXIntervals();
         function createXIntervals() {
             var date = new Date(maxDate);
-            var month = date.getMonth();
 
             xIntervals.push({ time: new Date(maxDate), x: width });
 
@@ -582,25 +543,15 @@ function drawGraph(wrapper, desc) {
             graphCtx.fillText(text, x, graphBottom + 2 * fontSize + 2);
             graphCtx.stroke();
         }
-        function drawYear(x) {
-            graphCtx.beginPath();
-            graphCtx.moveTo(x, graphBottom);
-            graphCtx.lineTo(x, graphBottom + 2 * fontSize);
-            graphCtx.closePath();
-            graphCtx.stroke();
-        }
-
     }
     function drawHorLines() {
         graphCtx.strokeStyle = "#bebebd";
         graphCtx.lineWidth = 1;
         graphCtx.beginPath();
-        var value = minValue;
         for (var i = graphBottom; i > 0; i -= verGridStep * yScaleFactor) {
             graphCtx.moveTo(0, Math.round(i) + 0.5);
             graphCtx.lineTo(width, Math.round(i) + 0.5);
         }
-        //graphCtx.closePath();
         graphCtx.stroke();
     }
     function drawHorLabels() {
@@ -627,11 +578,7 @@ function drawGraph(wrapper, desc) {
         var y = event.offsetY;
         if (isNaN(x) || isNaN(y)) {
             x = event.layerX;
-            y = event.layerY;
         }
-
-        var dateStart;
-        var dateEnd
 
         var n = 0;
         for (var i = 1; i < xIntervals.length; i++) {
@@ -668,8 +615,6 @@ function drawGraph(wrapper, desc) {
         //draw pointed interval
         if (pointedInterval != null) {
             var n = pointedInterval;
-            var date1;
-            var date2;
             if (n == 0) {
                 xR = 0;
                 widthR = xIntervals[n].x
@@ -844,28 +789,6 @@ function drawGraph(wrapper, desc) {
         desc.applySelectedRange(dateStart, dateEnd, rangeSelected);
     }
 }
-
-//utilities
-function randomInRange(min, max) {
-    return (Math.random() * (max - min) + min);
-}
-function valueByDate(arr, date) {
-    for (var i = 0; i < arr.length; i++) {
-        var res = true;
-        var d = arr[i].date;
-        if (date.getDate() != d.getDate()) {
-            res = false;
-        }
-        if (date.getMonth() != d.getMonth()) {
-            res = false;
-        }
-        if (date.getFullYear() != d.getFullYear()) {
-            res = false;
-        }
-        if (res) return arr[i].value;
-    }
-    return null;
-}
 function sumByDateRange(arr, dateStart, dateEnd) {
     var res = 0;
     for (var i = 0; i < arr.length; i++) {
@@ -891,13 +814,6 @@ function averageByDateRange(arr, dateStart, dateEnd) {
     } else {
         return res / n;
     }
-}
-function sumOfSet(set) {
-    var res = 0;
-    for (var i in set) {
-        res += set[i].value;
-    }
-    return res;
 }
 function parseDate(date) {
     if (date.length < 9) {
@@ -978,9 +894,8 @@ function getMinimalInfo() {
     getUsers();
     function getUsers() {
         var options = {
-            url: 'http://195.69.221.236/ajax/users_info.php?from_id=' + 1 + '&&fields=city,photo,descr',
+            url: window.app.url+'/ajax/users_info.php?from_id=' + 1 + '&&fields=city,photo,descr',
             type: 'GET',
-            async: false,
             contentType: 'application/json',
             success: function (response) {
                 processUsers(response);
@@ -1022,10 +937,9 @@ function getMinimalInfo() {
 
         function getDayValues(n) {
             $.ajax({
-                url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=day&limit=' + n,
+                url: window.app.url+'/ajax/users_values.php?id=' + ids + '&todt=last&type=day&limit=' + n,
                 type: 'GET',
                 contentType: 'application/json',
-                async: false,
                 beforeSend: function () { },
                 success: function (response) {
 
@@ -1036,10 +950,9 @@ function getMinimalInfo() {
         }
         function getWeekValues(n) {
             $.ajax({
-                url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
+                url: window.app.url+'/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
                 type: 'GET',
                 contentType: 'application/json',
-                async: false,
                 beforeSend: function () { },
                 success: function (response) {
                     console.log(response);
@@ -1050,10 +963,9 @@ function getMinimalInfo() {
         }
         function getMonthValues(n) {
             $.ajax({
-                url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
+                url: window.app.url+'/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
                 type: 'GET',
                 contentType: 'application/json',
-                async: false,
                 beforeSend: function () { },
                 success: function (response) {
                     processValuesMonth(response);
@@ -1175,10 +1087,9 @@ function loadUserById(self, id) {
 
     function getDayValues(n) {
         $.ajax({
-            url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=day&limit=' + n,
+            url: window.app.url+'/ajax/users_values.php?id=' + ids + '&todt=last&type=day&limit=' + n,
             type: 'GET',
             contentType: 'application/json',
-            async: false,
             beforeSend: function () { },
             success: function (response) {
                 currentUserLastDay=response.data.day[0].values[0][0];
@@ -1189,10 +1100,9 @@ function loadUserById(self, id) {
     }
     function getWeekValues(n) {
         $.ajax({
-            url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
+            url: window.app.url+'/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
             type: 'GET',
             contentType: 'application/json',
-            async: false,
             beforeSend: function () { },
             success: function (response) {
                 currentUserLastWeek=response.data.week[0].values[0][0];
@@ -1204,10 +1114,9 @@ function loadUserById(self, id) {
     }
     function getMonthValues(n){
         $.ajax({
-            url: 'http://195.69.221.236/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
+            url: window.app.url+'/ajax/users_values.php?id=' + ids + '&todt=last&type=month&limit=' + n,
             type: 'GET',
             contentType: 'application/json',
-            async: false,
             beforeSend: function () { },
             success: function (response) {
                 processValuesMonth(response);
@@ -1244,7 +1153,6 @@ function loadUserById(self, id) {
     }
     function processValuesWeek(response) {
         for (var user in response.data.week) {
-            var userN = getUserNById(users, response.data.week[user].id);
 
             if (response.data.week[user].values.length == 0) {
                 //if no enegry data for user we`ll fill it with zeros
@@ -1273,7 +1181,6 @@ function loadUserById(self, id) {
     }
     function processValuesMonth(response) {
         for (var user in response.data.month) {
-            var userN = getUserNById(users, response.data.month[user].id);
             if (response.data.month[user].values.length == 0) {
                 //if no enegry data for user we`ll fill it with zeros
                 data.consumption.monthInterval = [new Value(0, new Date())];
@@ -1332,12 +1239,6 @@ function addUsers(self) {
 function Value(value, date) {
     this.value = value; //float
     this.date = date; //JS Date object
-}
-function EnergyData() {
-    //arrays of Value objects
-    this.dayInterval = [];
-    this.weekInterval = [];
-    this.monthInterval = [];
 }
 function User(data) {
     if (!data) {
@@ -1728,17 +1629,6 @@ function ViewModelScore() {
     }
     var t = 0;
 }
-
 getMinimalInfo();
 
-//var interval = window.setInterval(runViewModel, 300);
-
-var scoreViewModel;
-
-function runViewModel() {
-    if (dataLoaded) {
-        scoreViewModel = new ProductionViewModel();
-        window.clearInterval(interval);
-    }
-}
 
