@@ -156,6 +156,68 @@
             <!-- /ko -->
         </div>
     </div>
+
+    <div id="score" class="sml4">
+        <div class="tab score-tab ">
+            <h2 class="grid-header">Compare:</h2>
+            <div class="users-list block">
+                <div>
+                    <p>Select users:</p>
+                    <div class="list" data-bind="foreach: users">
+                        <div class="user block"
+                             data-bind="attr:{title: name}, style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
+                            <span data-bind="text: name"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
+                <div class="buttons-block" data-bind="foreach: scales" style="float:left">
+                    <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
+                </div>
+                <div class="buttons-block" data-bind="foreach: dataTypes" style="float:right">
+                    <div class="button scale" data-bind="text: $data, click: $parent.setDataType, css: {'selected': $parent.dataType()==$data}"></div>
+                </div>
+                <div style="clear: both"></div>
+                <div class="compare">
+                    <h2>
+                        <span data-bind="text: addInfo().range"></span>
+                    </h2>
+                    <div class="table">
+                        <div class="row">
+                            <div class="cell">Name</div>
+                            <div class="sort-column" data-bind="css: {'selected': sortingBy()=='consumption','deselected': sortingBy()!='consumption'}, click: sortByCons">Consumed energy, kWh</div>
+                            <div class="sort-column" data-bind="css: {'selected': sortingBy()=='production','deselected': sortingBy()!='production'}, click: sortByProd">Produced energy, kWh</div>
+                            <div class="sort-column" data-bind="css: {'selected': sortingBy()=='selfSufficiency','deselected': sortingBy()!='selfSufficiency'}, click: sortByRate">Self sufficiency, %</div>
+                        </div>
+                        <!-- ko foreach: addInfo().rows-->
+                        <div class="row">
+                            <div class="cell score-cell" data-bind="text: name"></div>
+                            <div class="cell score-cell">
+                                <!-- ko text: consumption -->
+                                <!-- /ko -->
+                                <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                            </div>
+                            <div class="cell score-cell">
+                                <!-- ko text: production -->
+                                <!-- /ko -->
+                                <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                            </div>
+                            <div class="cell score-cell">
+                                <!-- ko text: selfSufficiency -->
+                                <!-- /ko -->
+                                <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <script>
     window.app={
@@ -186,6 +248,8 @@
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
 <script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
 
+
+<script type='text/javascript' src="js/app/viewModel/compare/viewModel.js"></script>
 <script type='text/javascript' src="js/app/viewModel/self/parseData.js"></script>
 <script type='text/javascript' src="js/app/viewModel/self/viewModel.js"></script>
 <script type='text/javascript' src="js/app/changeGraph.js"></script>
