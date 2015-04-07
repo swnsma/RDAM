@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="img/favicon.ico">
+    <title>Production</title>
+    <link rel="stylesheet" href="style/common.css" type="text/css"/>
+    <link rel="stylesheet" href="style/homepage.css" type="text/css"/>
+    <link rel="stylesheet" href="style/production.css" type="text/css"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+    <link rel="stylesheet" href="style/print.css" type="text/css" media="print"/>
+    <link rel="stylesheet" href="style/jquery.jqplot.css" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'/>
+
+    <meta property="og:title" content="I am greening the planet!" />
+    <meta property="og:description" content="I am greening the planet! See how much benefit I bring the environment!" />
+    <meta property="og:image" content="http://rdam.zz.mu/img/ForShare.png"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="http://rdam.zz.mu/production.html"/>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="http://www.rooftopenergy.nl/"><img src="img/793z0hv6.jpg"/></a>
+
+        <div class="text_right">
+            Rooftop Energy B.V.<br/>
+            Kouwe Hoek 20 | 2741 PX Waddinxveen<br/>
+            T +31 (0)182 74 80 90 | E <a href="mailto:info@rooftopenergy.nl">info@rooftopenergy.nl</a></div>
+    </header>
+    <nav>
+        <ul id="menu">
+            <li> <a href="homepage.html">HOME</a></li>
+            <li selected="true"><a href="production.html">PRODUCTION</a></li>
+            <li> <a href="consumption.html">CONSUMPTION</a></li>
+            <li> <a href="score.html">score</a></li>
+            <li> <a href="weather.html">weather</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div id="loading">
+            <img src="img/loading.gif" alt="loading" />
+        </div>
+        <div id="data">
+            <button class="change-view change-view-homepage" data-bind="click:$root.changeAppearance">Line/Bar</button>
+
+            <div class="chart"><h2>Production</h2>
+                <div data-bind="showGraph:{}" class="graph-container">
+                    <div id="chartDiv"> </div>
+                    <div class="button-center"  data-bind="foreach:buttons" id="buttonCenter">
+                        <div data-bind="click:$root.changeData, text:$data" class="period"></div>
+                    </div>
+                </div>
+            </div><!--end chart-->
+            <div class="wrap">
+                <h2>During period shown on the graph your solar plant produced <span id="kWv" data-bind="sumP: sumProd"></span></h2>
+                <div class="different-metrics">
+                    <div class="metric vac">
+                        <div class="image">
+                            <div class="img vac-image"></div>
+                            <div class="value">
+                                <span id="vac" data-bind="sumV: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <span>
+                            You can spend this energy by doing vacuum cleaning during
+                            </span>
+                            <span id="vacV" data-bind="sumV: sumProd"></span>
+                        </div>
+                    </div>
+                    <div class="metric co2">
+                        <div class="image">
+                            <div class="img co2-image"></div>
+                            <div class="value">
+                                <span id="co2" data-bind="sumC: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <span>Normal production of this amount of energy will cause emission of</span>
+                            <span id="co2v" data-bind="sumC: sumProd"></span>
+                            <span> of CO<sub>2</sub></span>
+                        </div>
+                    </div>
+                    <div class="metric car">
+                        <div class="image">
+                            <div class="img car-image"></div>
+                            <div class="value">
+                                <span id="car" data-bind="sumCar: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <span>
+                            Driving
+                            </span>
+                            <span id="carV" data-bind="sumCar: sumProd"></span>
+                            <span>
+                            in an average passenger vehicle will cause the same CO<sub>2</sub> emission
+                            </span>
+                        </div>
+                    </div>
+                    <div class="metric trees">
+                        <div class="image">
+                            <div class="img trees-image"></div>
+                            <div class="value" style='width:100px;'>
+                                <span id="trees" data-bind="sumT: sumProd"></span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <span>
+                            This amount of CO<sub>2</sub> can be sequestered by
+                            </span>
+                            <span id="treesV" data-bind="sumT: sumProd"></span>
+                            <span> trees during 10 year period</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="fb-root" class="fb"><span>Tell this to your friends!</span><div class="fb-share-button" data-href="http://rdam.zz.mu/production.html#1" data-layout="button"></div></div>
+            </div>
+        </div>
+    </div><!--end main-content-->
+    <footer>
+        <span>Copyright &copy 2014 All right reserved.</span>
+    </footer>
+</div>
+</body>
+
+<script type='text/javascript' src='js/vendor/knockout/knockout-3.2.0.js'></script>
+<script type='text/javascript' src='js/vendor/jquery-2.1.1.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
+<script type="text/javascript" src='js/vendor/somelibrary.js'></script>
+
+<script src="js/app/common/common.js"></script>
+<script src="js/app/common/get_values.js"></script>
+<script src="js/app/common/changeGraph.js"></script>
+<!--<script src="js/app/common/options.js"></script>-->
+
+<script src="js/app/common/data_containers.js"></script>
+
+<script type="text/javascript" src="js/app/product/Share.js"></script>
+<script type='text/javascript' src='js/app/product/render_data.js'></script>
+
+</html>

@@ -1,0 +1,51 @@
+.batteryContainer
+{
+    width: 960px;
+    margin: auto;
+    font: bold 14pt Arial, sans-serif;
+}
+.totalConsumption{
+    font-size: 18pt;
+    line-height: 30pt;
+}
+.main-content{
+    animation: apa 1s;
+    overflow: hidden;
+}
+.prod{
+    margin-top: 30px;
+}
+.battery-rend
+{
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    position: relative;
+}
+.date
+{
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.totalConsumption
+{
+    position: absolute;
+    margin-top: 180px;
+    z-index: 1000;
+     width: 100%;
+    text-align: center;
+}
+.label
+{
+    position: absolute;
+    margin-top: 140px;
+    z-index: 1000;
+    width: 100%;
+    text-align: center;
+}
+

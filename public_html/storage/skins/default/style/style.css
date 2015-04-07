@@ -1,0 +1,65 @@
+.graph-container
+{
+    height:350px;
+    /*width:830px;*/
+    width: 100%;
+    font-size: 1.2em;
+    position: relative;
+    /*border: 1px solid black;*/
+}
+
+#chartDiv
+{
+    height:350px;
+    width:100%;
+    margin: auto ;
+    font-size: 1.1em;
+    top:30px;
+    margin-bottom: 30px;
+}
+
+.period
+{
+    display: inline-block;
+    width: 241px;
+    height: 30px;
+    margin-left: 1px;
+    cursor:pointer;
+    text-align: center;
+    font-size: 25px;
+    float:left;
+    /*border-radius: 3px;*/
+    /*border: 2px solid rgb(113,191,68);*/
+    color:#333;
+    background-color:rgb(170, 250, 100);
+}
+
+.is_active
+{
+    color:white;
+    background-color: rgb(99, 173, 31);
+}
+table.jqplot-table-legend
+{
+    height:50px;
+    font-size:0.9em;
+}
+
+.change-view{
+    position: absolute;
+    right:15px;
+    z-index: 1000;
+}
+.change-view-homepage{
+    margin-top: 5px;
+}
+.jqplot-yaxis-label
+{
+    margin-left:10px;
+}
+
+
+.button-center {
+    width: 726px;
+    margin: 0 auto;
+}

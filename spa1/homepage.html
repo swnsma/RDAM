@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/loader.css" type="text/css" rel="stylesheet"/>
+
+
+    <link rel="stylesheet" href="styles/home.css"/>
+    <link rel="stylesheet" href="styles/chart.css"/>
+    <link rel="stylesheet" href="styles/jquery.jqplot.css"/>
+    <link rel="stylesheet" href="styles/consumption.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/score.css" type="text/css"/>
+
+</head>
+<body>
+<header class="header">
+    <div class="header-content">
+        <a href="http://www.rooftopenergy.nl/">
+            <img class="img" src="imgs/793z0hv6.jpg" >
+        </a>
+        <div class="menu">
+            <div class="menu-row">
+                <a href="#sml1" >About</a>
+                <a href="#sml2">Data</a>
+                <a href="#sml3">Self-sufficiency</a>
+                <a href="#sml4">Compare</a>
+                <a href="#sml5">Contact</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+    <div id="home" class="pure-g sml1">
+        <div class="pure-u-1-1 grid-header-parent">
+            <h1 data-bind="text:userName" class="grid-header super-header">About this user</h1>
+        </div>
+        <div class="pure-u-3-4 about-user ">
+            <p data-bind="text: desc"> </p>
+        </div>
+        <div class="pure-u-1-4 avatar">
+            <img class="avatar-img" data-bind="attr:{src:img}"/>
+            <a class="twitter-hashtag-button" href="https://twitter.com/intent/tweet" data-related="twitter" data-bind="attr:{'data-text':textTweet}" data-size="large" data-hashtags="rooftopenergy"> Tweet</a>
+        </div>
+    </div>
+    <div id="data" class="pure-g sml2">
+        <div class="pure-u-1-1 grid-header-parent">
+            <h2 class="grid-header">Production and Consumption:</h2>
+        </div>
+        <div class="pure-u-1-4 ">
+            <div class="table-metrics">
+                <div class="row-metrics">
+                    <div class="column-metrics">
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="vac" data-bind="text:sumVac"></span>
+                                    <p>vacuum cleaning</p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class="pre">You can spend this energy by doing
+                                        vacuum cleaning during  <span id="vacV" data-bind="text:sumVac"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="co2" data-bind="text: sumC"></span>
+                                    <p>avoided CO<sub>2</sub></p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class="pre">Normal production of this amount of
+                                        energy will cause emission of <span id="co2v" data-bind="text: sumC"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="car" data-bind="text: sumCar"></span>
+                                    <p>driving</p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class="pre"> Driving <span id="carV" data-bind="text:sumCar"></span> in an average passenger
+                                        vehicle will cause the same CO<sub>2</sub> emission</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="trees" data-bind="text: sumTrees"></span>
+                                    <p>trees helped</p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class=pre>This amount of CO<sub>2</sub> can be sequestered
+                                        <span id="treesV" data-bind="text: sumTrees"></span> by during 10 year period</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pure-u-3-4 chart" >
+            <div  class="graph-container">
+                <div id="chart_home" data-bind="showGraphProductionConsumption:{}" class="chart"> </div>
+                <div class="button-table" >
+                    <div class="button-row" data-bind="foreach: buttons">
+                        <div data-bind="click:$root.changeData, text:$data" class="period"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id ="self" class="sml3">
+        <div class="battery-container">
+            <div class="chart-text-box ">
+                <h2  class="grid-header ">Self-sufficiency:</h2>
+                <div class="wrapper">
+                    <div class="from-grid">
+                        <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
+                        <label>from power grid</label><br/>
+                        <p>Consumption from power grid. If energy from solar panel is not enough, it will be consumed from grid.</p>
+                    </div>
+                    <div class="from-panel">
+                        <span class="kwh-label" data-bind="text:stringPanel"></span><br/>
+                        <label>from solar panel</label><br/>
+                        <p>Consumption from solar panel's production. If solar panel accumulated some energy, it will be consumed first.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ko foreach: batteries -->
+            <div class="battery-rend">
+
+                <div data-bind="text:consumption +' kWh'" class="total-consumption"></div>
+                <div class="label" data-bind="text:label"></div>
+                <div class="prod" data-bind="battery: { production: production, takenFrom: takenFrom, type: type, consumption: consumption}"></div>
+                <div data-bind="text: date2" class="date"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<script>
+    window.app={
+        url:"http://195.69.221.236",
+        dataApp:{
+
+        },
+        HASH: window.location.hash.replace('#','')
+    };
+</script>
+<script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type='text/javascript' src="js/vendor/knockout-3.2.0.js"></script>
+<script type='text/javascript' src="js/vendor/jquery.smint.js"></script>
+
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
+<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>-->
+<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>-->
+<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>-->
+<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>-->
+<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>-->
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
+<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>-->
+<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
+<script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
+
+<script type='text/javascript' src="js/app/viewModel/self/parseData.js"></script>
+<script type='text/javascript' src="js/app/viewModel/self/viewModel.js"></script>
+<script type='text/javascript' src="js/app/changeGraph.js"></script>
+<script type='text/javascript' src="js/app/get_values.js"></script>
+<script type='text/javascript' src="js/app/api.js"></script>
+<script type='text/javascript' src="js/app/viewModel/about/viewModel.js"></script>
+<script type='text/javascript' src="js/app/viewModel/data/viewModel.js"></script>
+<script type='text/javascript' src="js/app/main.js"></script>
+<script>
+    $(document).ready( function() {
+        $('.menu').smint({
+            'scrollSpeed' : 1000
+        });
+    });
+        window.app.api.getInfoByUser(window.app.HASH);
+</script>
+</body>
+
+</html>

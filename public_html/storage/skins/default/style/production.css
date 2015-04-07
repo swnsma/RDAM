@@ -1,0 +1,207 @@
+.wrap{
+    text-align: center;
+    background-color:#eee;
+    animation: apa 1s;
+}
+
+.calculate-n {
+    display:inline-block;
+    width:320px;
+    position: relative;
+
+    float:left;
+    text-align: center;
+    /*border-radius: 10px;*/
+    /*border: 2px solid rgb(99, 173, 31);*/
+    height: 200px;
+    /*margin: 10px;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+}
+.border1{
+    border-left:1px solid rgb(99, 173, 31);
+    border-right:1px solid rgb(99, 173, 31);
+    width:318px;
+}
+.calculate-n p{
+    margin: 0;
+    width: 100%;
+    height:50px;
+    position: absolute;
+    bottom:0;
+    padding: 3px;
+}
+.wrap span{
+    /*font-size: 20pt ;*/
+}
+.calculate-n hr{
+    position: absolute;
+    top:45px;
+    width:100%;
+    z-index: 1000;
+    margin: 0;
+}
+.calculate-n h2{
+    padding: 5px;
+    background: rgb(99, 173, 31);
+    color:white;
+    /*border-radius: 8px 8px 0px 0px ;*/
+    margin:0 auto;
+    text-align: center;
+}
+
+#treeInfo, #co2Info{
+    height: 150px;
+}
+
+.factory{
+    position: absolute;
+    /*bottom:110px;*/
+    left:15px;
+    width:130px;
+    height:130px;
+    float:left;
+    display: inline-block;
+    stroke: green;
+    stroke-width: 2;
+    opacity:0.5;
+}
+
+.wrap{
+    position: relative;
+    width:100%;
+    overflow: hidden;
+    border: 1px solid #bbb;
+}
+
+.emm-res
+{
+    text-align: center;
+    font-family: "Levenim MT", Arial, Helvetica, sans-serif;
+    font-size: 2.2em;
+    padding: 0;
+    margin: 0;
+    color:#333;
+}
+/*.data{*/
+/*position: relative;*/
+/*}*/
+.fb{
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    background: url('../img/fb.png');
+    height: 26px;
+}
+.fb span{
+    font-size: 19px;
+    margin-left:20px;
+}
+.description
+{
+    position: absolute;
+    bottom:100px;
+    right:10px;
+    width:130px;
+    height:1em;
+    display: inline-block;
+    stroke: green;
+    stroke-width: 2;
+}
+.or{
+    position: absolute;
+    right:0px;
+    top: 13px;
+    font-size: 1.5em;
+}
+
+.different-metrics{
+    /*background-color: #f3f3f3;*/
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    padding: 5px;
+    display: table;
+}
+
+.metric {
+    display: inline-block;
+    width: 23%;
+    text-align: center;
+    float: left;
+    padding-left:3px;
+}
+
+.image {
+    position: relative;
+}
+
+.img {
+    display: table-cell;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+    position: relative;
+}
+
+.kw-image {
+    background-image: url("../img/icons/kw s.png");
+}
+
+.trees-image {
+    background-image: url("../img/icons/trees s.png");
+}
+
+.co2-image {
+    background-image: url("../img/icons/co2 s.png");
+}
+
+.vac-image {
+    background-image: url("../img/icons/vac s.png");
+}
+
+.car-image {
+    background-image: url("../img/icons/car s.png");
+}
+
+.value {
+    top: 14px;
+    left: 40px;
+    padding-left: 40px;
+    color: #666;
+    font-weight: 900;
+
+    background-color: #f9fbfa;
+    border: 1px solid #d7d7d7;
+    height: 50px;
+    border-radius: 40px;
+    padding-right: 15px;
+    font-size: 19px;
+    position: absolute;
+    z-index: 1;
+    line-height: 50px;
+}
+
+.explanation {
+    color: #7d7d7d;
+    font-size: 19px;
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+    margin: auto;
+}
+
+.kw {
+    width: 240px;
+}
+
+.co2 {
+    width: 230px;
+}
+
+.car {
+    width: 240px;
+}
+
+.trees {
+    float: right;
+}

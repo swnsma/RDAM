@@ -1,0 +1,40 @@
+
+.chart{
+    height: 450px;
+    width: 956px;
+    margin:0 auto;
+    /*border-radius: 10px;*/
+    border: 1px solid #bbb;
+    background-color:#eee;
+    margin-bottom: 15px;
+    animation: apa 1s;
+}
+
+.chart h2{
+
+    background: rgb(99, 173, 31);
+    color:white;
+
+    /*border-radius: 8px 8px 0px 0px ;*/
+    margin:0px auto;
+    text-align: center;
+    line-height: 40px;
+}
+
+
+.change-view {
+    color: #000;
+    background-color: rgb(244, 239, 212);
+    border: none;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+}
+.change-view:hover {
+    background-color: rgb(159, 233, 81);
+}
+.change-view:active {
+    background-color: #0B5300;
+    text-shadow: -1px 1px #193047;
+}
+
