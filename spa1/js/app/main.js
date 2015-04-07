@@ -1,9 +1,17 @@
+function removeLoad(){
+    setTimeout(function(){
+        $("#loadScreen")
+            .addClass("hiding");
+        setTimeout(function(){
+            $("#loadScreen")
+                .addClass("no")
+        }, 1000);
+    },500);
+}
 $(document).ready( function() {
-    $(document).ready( function() {
         $('.menu').smint({
             'scrollSpeed' : 1000
         });
-    });
     window.app.api.getInfoByUser(window.app.HASH).promise().done(function(response){
         if (response) {
             window.app.dataApp.current_user = response.data[0];
@@ -18,6 +26,7 @@ $(document).ready( function() {
                 ko.applyBindings(selfM,document.getElementById('self'));
                 ko.applyBindings(new ViewModelScore(),document.getElementById('score'));
                 selfM.activate();
+                removeLoad();
             });
         }
         )

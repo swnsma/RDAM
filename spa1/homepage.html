@@ -9,16 +9,16 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="styles/loader.css" type="text/css" rel="stylesheet"/>
-
-
     <link rel="stylesheet" href="styles/home.css"/>
     <link rel="stylesheet" href="styles/chart.css"/>
     <link rel="stylesheet" href="styles/jquery.jqplot.css"/>
     <link rel="stylesheet" href="styles/consumption.css" type="text/css"/>
     <link rel="stylesheet" href="styles/score.css" type="text/css"/>
-
 </head>
 <body>
+<div id="loadScreen">
+    <div class="load loader-inner ball-rotate"></div>
+</div>
 <header class="header">
     <div class="header-content">
         <a href="http://www.rooftopenergy.nl/">
@@ -251,28 +251,29 @@
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type='text/javascript' src="js/vendor/knockout-3.2.0.js"></script>
 <script type='text/javascript' src="js/vendor/jquery.smint.js"></script>
-<script type='text/javascript' src="js/app/Share.js"></script>
+<script type='text/javascript' src="js/vendor/Share.js"></script>
+<script type="text/javascript" src="js/vendor/loader.js"></script>
 
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
-<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>-->
-<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>-->
-<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>-->
-<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>-->
-<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>-->
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
-<!--<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>-->
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
 <script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
 
+<script type='text/javascript' src="js/app/additional/data/changeGraph.js"></script>
+<script type='text/javascript' src="js/app/additional/data/get_values.js"></script>
+<script type='text/javascript' src="js/app/additional/self/additional.js"></script>
+<script type="text/javascript" src="js/app/additional/score/additional.js"></script>
+
+<script type="text/javascript" src="js/app/binding/compare/binding.js"></script>
+<script type="text/javascript" src="js/app/binding/data/binding.js"></script>
+<script type="text/javascript" src="js/app/binding/self/binding.js"></script>
 
 <script type='text/javascript' src="js/app/viewModel/compare/viewModel.js"></script>
-<script type='text/javascript' src="js/app/viewModel/self/parseData.js"></script>
 <script type='text/javascript' src="js/app/viewModel/self/viewModel.js"></script>
-<script type='text/javascript' src="js/app/changeGraph.js"></script>
-<script type='text/javascript' src="js/app/get_values.js"></script>
-<script type='text/javascript' src="js/app/api.js"></script>
 <script type='text/javascript' src="js/app/viewModel/about/viewModel.js"></script>
 <script type='text/javascript' src="js/app/viewModel/data/viewModel.js"></script>
+
+<script type='text/javascript' src="js/app/api.js"></script>
 <script type='text/javascript' src="js/app/main.js"></script>
 
 </body>
