@@ -36,13 +36,6 @@ ko.bindingHandlers.showGraphProductionConsumption={
         var rend=$.jqplot.BarRenderer;
         values.getValues(masId,
             function(masid){
-                debugger;
-                $('#loading').css({
-                    'display':'none'
-                });
-                $('#data').css({
-                    'display':'block'
-                });
                 var dd = values.getDate('day',masId);
                 viewModel.first_loading(true);
                 var product = viewModel.data('day',masId);

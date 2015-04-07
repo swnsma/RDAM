@@ -90,11 +90,9 @@ function Values() {
             return data[ids].date;
         }
     };
-
     this.checkExistsUser = function(id) {
         return arr_data['day'][id] != undefined; //будь-який тип, т.к дані приходять одночасно
     };
-
     var bool = false;
 
     this.getValues = function(ids, funcSuccess, funcError,type) {
@@ -106,35 +104,11 @@ function Values() {
         if (id.length == 0) {
             funcSuccess([]);
         } else {
-            $.ajax({
-                url: window.app.url+'/ajax/users_values.php?id=' + id.join(',') + '&todt=last'+type,
-                type: 'GET',
-                contentType: 'application/json',
-                async: false,
-                beforeSend: function(){
-                    if(bool==true){
-                        bool=false;
-                    }
-
-                },
-                success: function (response)
-                {
-                    if(bool==false) {
-                        if (response) {
-                            parseData(response);
-                            funcSuccess(id);
-                        } else {
-                            funcError('');
-                        }
-                        bool=true;
-                    }
-
-                },
-                error: function (xhr, status, error) {
-                    var err = JSON.parse(xhr.responseText);
-                    funcError(err.error_message);
-                }
-            });
+            if(bool==true) {
+                bool = false;
+            }
+            parseData(window.app.dataApp.data);
+            funcSuccess(id);
         }
     }
 }
