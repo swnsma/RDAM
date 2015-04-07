@@ -9,220 +9,219 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="styles/loader.css" type="text/css" rel="stylesheet"/>
-
-    <!--<link rel="stylesheet" href="styles/menu.css"/>-->
     <link rel="stylesheet" href="styles/home.css"/>
     <link rel="stylesheet" href="styles/chart.css"/>
     <link rel="stylesheet" href="styles/jquery.jqplot.css"/>
     <link rel="stylesheet" href="styles/consumption.css" type="text/css"/>
     <link rel="stylesheet" href="styles/score.css" type="text/css"/>
 </head>
-<body data-bind="title: {}">
+<body>
 <div id="loadScreen">
     <div class="load loader-inner ball-rotate"></div>
 </div>
-
 <header class="header">
     <div class="header-content">
         <a href="http://www.rooftopenergy.nl/">
-         <img class="img" src="imgs/793z0hv6.jpg" >
+            <img class="img" src="imgs/793z0hv6.jpg" >
         </a>
-        <ul class="menu  subMenu">
-            <li id="mHome" class="subNavBtn"><a href="#sml1" >About</a> </li>
-            <li ><a href="#sml5">Data</a> </li>
-            <li id="mSelf"><a href="#sml2" class="subNavBtn">Self-sufficiency</a> </li>
-            <li id="mScore"><a href="#sml3" class="subNavBtn">Compare</a> </li>
-            <li  > <a href="#sml4" class="subNavBtn">Contact</a> </li>
-        </ul>
+        <div class="menu">
+            <div class="menu-row">
+                <a href="#sml1" >About</a>
+                <a href="#sml2">Data</a>
+                <a href="#sml3">Self-sufficiency</a>
+                <a href="#sml4">Compare</a>
+                <a href="#sml5">Contact</a>
+            </div>
+        </div>
     </div>
 </header>
-<!--TAB HOME-->
-<div style="padding-top: 50px" id="home" class="tab active-tab ">
-    <div class="content">
-        <div class="">
-            <div class="pure-g sml1">
-                <div class="pure-u-1-1 grid-header-parent">
-                    <h1 data-bind="text:userName" class="grid-header super-header">About this user</h1>
-                </div>
-                <div class="pure-u-3-4 about-user ">
-                    <p data-bind="text: desc"> </p>
-                </div>
-                <div class="pure-u-1-4 avatar">
-                    <img class="avatar-img" data-bind="attr:{src:img}"/>
-                    <a class="twitter-hashtag-button" href="https://twitter.com/intent/tweet" data-related="twitter" data-bind="attr:{'data-text':textTweet}" data-size="large" data-hashtags="rooftopenergy"> Tweet</a>
 
-                </div>
-            </div>
-            <div class="pure-g sml5">
-                <div class="pure-u-1-1 grid-header-parent">
-                    <h2 class="grid-header">Production and Consumption:</h2>
-                </div>
-                <div class="pure-u-1-4 ">
-                    <div class="table-metrics">
-                        <div class="row-metrics">
-                            <div class="column-metrics">
-                                <div class="cell-metrics">
-                                    <div class="pure-g">
-                                        <div class=" pure-u-1-1 value">
-                                            <span id="vac" data-bind="text:sumVac"></span>
-                                            <p>vacuum cleaning</p>
-                                        </div>
-                                    </div>
-                                    <div class="pure-g explanation">
-                                        <div class="pure-u-1-1">
-                                            <p class="pre">You can spend this energy by doing
-                                                vacuum cleaning during  <span id="vacV" data-bind="text:sumVac"></span></p>
-                                        </div>
-                                    </div>
+<div class="content">
+    <div id="home" class="pure-g sml1">
+        <div data-bind="title:{}" class="pure-u-1-1 grid-header-parent">
+            <h1 data-bind="text:userName" class="grid-header super-header">About this user</h1>
+        </div>
+        <div class="pure-u-3-4 about-user ">
+            <p data-bind="text: desc"> </p>
+        </div>
+        <div class="pure-u-1-4 avatar">
+            <img class="avatar-img" data-bind="attr:{src:img}"/>
+            <a class="twitter-hashtag-button" href="https://twitter.com/intent/tweet" data-related="twitter" data-bind="attr:{'data-text':textTweet}" data-size="large" data-hashtags="rooftopenergy"> Tweet</a>
+        </div>
+    </div>
+    <div id="data" class="pure-g sml2">
+        <div class="pure-u-1-1 grid-header-parent">
+            <h2 class="grid-header">Production and Consumption:</h2>
+        </div>
+        <div class="pure-u-1-4 ">
+            <div class="table-metrics">
+                <div class="row-metrics">
+                    <div class="column-metrics">
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="vac" data-bind="text:sumVac"></span>
+                                    <p>vacuum cleaning</p>
                                 </div>
-                                <div class="cell-metrics">
-                                    <div class="pure-g">
-                                        <div class=" pure-u-1-1 value">
-                                            <span id="co2" data-bind="text: sumC"></span>
-                                            <p>avoided CO<sub>2</sub></p>
-                                        </div>
-                                    </div>
-                                    <div class="pure-g explanation">
-                                        <div class="pure-u-1-1">
-                                            <p class="pre">Normal production of this amount of
-                                                energy will cause emission of <span id="co2v" data-bind="text: sumC"></span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cell-metrics">
-                                    <div class="pure-g">
-                                        <div class=" pure-u-1-1 value">
-                                            <span id="car" data-bind="text: sumCar"></span>
-                                            <p>driving</p>
-                                        </div>
-                                    </div>
-                                    <div class="pure-g explanation">
-                                        <div class="pure-u-1-1">
-                                            <p class="pre"> Driving <span id="carV" data-bind="text:sumCar"></span> in an average passenger
-                                                vehicle will cause the same CO<sub>2</sub> emission</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cell-metrics">
-                                    <div class="pure-g">
-                                        <div class=" pure-u-1-1 value">
-                                            <span id="trees" data-bind="text: sumTrees"></span>
-                                            <p>trees helped</p>
-                                        </div>
-                                    </div>
-                                    <div class="pure-g explanation">
-                                        <div class="pure-u-1-1">
-                                            <p class=pre>This amount of CO<sub>2</sub> can be sequestered
-                                                <span id="treesV" data-bind="text: sumTrees"></span> by during 10 year period</p>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class="pre">You can spend this energy by doing
+                                        vacuum cleaning during  <span id="vacV" data-bind="text:sumVac"></span></p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="pure-u-3-4 chart" >
-                    <div  class="graph-container">
-                        <div id="chart_home" data-bind="showGraph:{}" class="chart"> </div>
-                        <div class="button-table" >
-                            <div class="button-row" data-bind="foreach: buttons">
-                                <div data-bind="click:$root.changeData, text:$data" class="period"></div>
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="co2" data-bind="text: sumC"></span>
+                                    <p>avoided CO<sub>2</sub></p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class="pre">Normal production of this amount of
+                                        energy will cause emission of <span id="co2v" data-bind="text: sumC"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="car" data-bind="text: sumCar"></span>
+                                    <p>driving</p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class="pre"> Driving <span id="carV" data-bind="text:sumCar"></span> in an average passenger
+                                        vehicle will cause the same CO<sub>2</sub> emission</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-metrics">
+                            <div class="pure-g">
+                                <div class=" pure-u-1-1 value">
+                                    <span id="trees" data-bind="text: sumTrees"></span>
+                                    <p>trees helped</p>
+                                </div>
+                            </div>
+                            <div class="pure-g explanation">
+                                <div class="pure-u-1-1">
+                                    <p class=pre>This amount of CO<sub>2</sub> can be sequestered
+                                        <span id="treesV" data-bind="text: sumTrees"></span> by during 10 year period</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="sml2">
-            <div class="battery-container">
-                <div class="chart-text-box ">
-                    <h2 id="self" class="grid-header ">Self-sufficiency:</h2>
-                    <div class="wrapper">
-                        <div class="from-grid">
-                            <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
-                            <label>from power grid</label><br/>
-                            <p>Consumption from power grid. If energy from solar panel is not enough, it will be consumed from grid.</p>
-                        </div>
-                        <div class="from-panel">
-                            <span class="kwh-label" data-bind="text:stringPanel"></span><br/>
-                            <label>from solar panel</label><br/>
-                            <p>Consumption from solar panel's production. If solar panel accumulated some energy, it will be consumed first.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- ko foreach: batteries -->
-                <div class="battery-rend">
-
-                    <div data-bind="text:consumption +' kWh'" class="total-consumption"></div>
-                    <div class="label" data-bind="text:label"></div>
-                    <div class="prod" data-bind="battery: { production: production, takenFrom: takenFrom, type: type, consumption: consumption}"></div>
-                    <div data-bind="text: date2" class="date"></div>
-                </div>
-                <!-- /ko -->
-            </div>
-        </div>
-        <!--TAB SCORE-->
-        <div class="sml3">
-            <div id="score" class="tab score-tab ">
-                <h2 class="grid-header">Compare:</h2>
-                <div class="users-list block">
-                    <div>
-                        <p>Select users:</p>
-                        <div class="list" data-bind="foreach: users">
-                            <div class="user block"
-                                 data-bind="attr:{title: name}, style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
-                                <span data-bind="text: name"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stats">
-                    <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
-                    <div class="buttons-block" data-bind="foreach: scales" style="float:left">
-                        <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
-                    </div>
-                    <div class="buttons-block" data-bind="foreach: dataTypes" style="float:right">
-                        <div class="button scale" data-bind="text: $data, click: $parent.setDataType, css: {'selected': $parent.dataType()==$data}"></div>
-                    </div>
-                    <div style="clear: both"></div>
-                    <div class="compare">
-                        <h2>
-                            <span data-bind="text: addInfo().range"></span>
-                        </h2>
-                        <div class="table">
-                            <div class="row">
-                                <div class="cell">Name</div>
-                                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='consumption','deselected': sortingBy()!='consumption'}, click: sortByCons">Consumed energy, kWh</div>
-                                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='production','deselected': sortingBy()!='production'}, click: sortByProd">Produced energy, kWh</div>
-                                <div class="sort-column" data-bind="css: {'selected': sortingBy()=='selfSufficiency','deselected': sortingBy()!='selfSufficiency'}, click: sortByRate">Self sufficiency, %</div>
-                            </div>
-                            <!-- ko foreach: addInfo().rows-->
-                            <div class="row">
-                                <div class="cell score-cell" data-bind="text: name"></div>
-                                <div class="cell score-cell">
-                                    <!-- ko text: consumption -->
-                                    <!-- /ko -->
-                                    <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
-                                </div>
-                                <div class="cell score-cell">
-                                    <!-- ko text: production -->
-                                    <!-- /ko -->
-                                    <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
-                                </div>
-                                <div class="cell score-cell">
-                                    <!-- ko text: selfSufficiency -->
-                                    <!-- /ko -->
-                                    <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
-                                </div>
-                            </div>
-                            <!-- /ko -->
-                        </div>
+        <div class="pure-u-3-4 chart" >
+            <div  class="graph-container">
+                <div id="chart_home" data-bind="showGraphProductionConsumption:{}" class="chart"> </div>
+                <div class="button-table" >
+                    <div class="button-row" data-bind="foreach: buttons">
+                        <div data-bind="click:$root.changeData, text:$data" class="period"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="sml4">
+    </div>
+    <div id ="self" class="sml3">
+        <div class="battery-container">
+            <div class="chart-text-box ">
+                <h2  class="grid-header ">Self-sufficiency:</h2>
+                <div class="wrapper">
+                    <div class="from-grid">
+                        <span class="kwh-label" data-bind="text:stringGrid"></span><br/>
+                        <label>from power grid</label><br/>
+                        <p>Consumption from power grid. If energy from solar panel is not enough, it will be consumed from grid.</p>
+                    </div>
+                    <div class="from-panel">
+                        <span class="kwh-label" data-bind="text:stringPanel"></span><br/>
+                        <label>from solar panel</label><br/>
+                        <p>Consumption from solar panel's production. If solar panel accumulated some energy, it will be consumed first.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ko foreach: batteries -->
+            <div class="battery-rend">
+
+                <div data-bind="text:consumption +' kWh'" class="total-consumption"></div>
+                <div class="label" data-bind="text:label"></div>
+                <div class="prod" data-bind="battery: { production: production, takenFrom: takenFrom, type: type, consumption: consumption}"></div>
+                <div data-bind="text: date2" class="date"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div id="score" class="sml4">
+        <div class="tab score-tab ">
+            <h2 class="grid-header">Compare:</h2>
+            <div class="users-list block">
+                <div>
+                    <p>Select users:</p>
+                    <div class="list" data-bind="foreach: users">
+                        <div class="user block"
+                             data-bind="attr:{title: name}, style: {backgroundColor: $parent.getBackgroundColor($data)}, css: {'selected-user': selected()}, click: $parent.setActiveUser, event: {mouseover:  $parent.enableHover, mouseout: $parent.disableHover}">
+                            <span data-bind="text: name"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="graphContainer" id="graphContainerProduction" data-bind="graph: graphDescriptor"></div>
+                <div class="buttons-block" data-bind="foreach: scales" style="float:left">
+                    <div class="button scale" data-bind="text: name, click: $parent.setScale, css: {'selected': $parent.scale().index==index}"></div>
+                </div>
+                <div class="buttons-block" data-bind="foreach: dataTypes" style="float:right">
+                    <div class="button scale" data-bind="text: $data, click: $parent.setDataType, css: {'selected': $parent.dataType()==$data}"></div>
+                </div>
+                <div style="clear: both"></div>
+                <div class="compare">
+                    <h2>
+                        <span data-bind="text: addInfo().range"></span>
+                    </h2>
+                    <div class="table">
+                        <div class="row">
+                            <div class="cell">Name</div>
+                            <div class="sort-column" data-bind="css: {'selected': sortingBy()=='consumption','deselected': sortingBy()!='consumption'}, click: sortByCons">Consumed energy, kWh</div>
+                            <div class="sort-column" data-bind="css: {'selected': sortingBy()=='production','deselected': sortingBy()!='production'}, click: sortByProd">Produced energy, kWh</div>
+                            <div class="sort-column" data-bind="css: {'selected': sortingBy()=='selfSufficiency','deselected': sortingBy()!='selfSufficiency'}, click: sortByRate">Self sufficiency, %</div>
+                        </div>
+                        <!-- ko foreach: addInfo().rows-->
+                        <div class="row">
+                            <div class="cell score-cell" data-bind="text: name"></div>
+                            <div class="cell score-cell">
+                                <!-- ko text: consumption -->
+                                <!-- /ko -->
+                                <div class="star" data-bind="style:{visibility: lowestConsumer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                            </div>
+                            <div class="cell score-cell">
+                                <!-- ko text: production -->
+                                <!-- /ko -->
+                                <div class="star" data-bind="style:{visibility: bestProducer?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                            </div>
+                            <div class="cell score-cell">
+                                <!-- ko text: selfSufficiency -->
+                                <!-- /ko -->
+                                <div class="star" data-bind="style:{visibility: bestRate?'visible':'hidden'}"><i class="fa fa-score fa-leaf"></i></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="sml5">
         <footer >
             <div class="contact">
                 <p>Rooftop Energy B.V.</p>
@@ -233,45 +232,55 @@
                 &copy All rights reserved
             </div>
         </footer>
-        </div>
     </div>
+
+
+
 </div>
 <script>
     window.app={
-        url:"http://195.69.221.236"
+        url:"http://195.69.221.236",
+        dataApp:{
+
+        },
+        HASH: function() {
+            if(!window.location.hash.replace('#', '')){
+                window.location.hash=1;
+            }
+            return window.location.hash.replace('#', '');
+        }()
     };
 </script>
+
+
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type='text/javascript' src="js/vendor/knockout-3.2.0.js"></script>
 <script type='text/javascript' src="js/vendor/jquery.smint.js"></script>
+<script type='text/javascript' src="js/vendor/Share.js"></script>
 <script type="text/javascript" src="js/vendor/loader.js"></script>
 
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jquery.jqplot.min.js'></script>
-<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasAxisLabelRenderer.min.js'></script>
-<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasTextRenderer.min.js'></script>
-<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.themeEngine.js'></script>
-<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.tableLegendRenderer.js'></script>
-<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.pointLabels.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.categoryAxisRenderer.js'></script>
-<script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.canvasGridRenderer.js'></script>
 <script type='text/javascript' src='js/vendor/plugins_jqplot/jqplot.barRenderer.js'></script>
 <script type="text/javascript" src="js/vendor/plugins_jqplot/jqplot.donutRenderer.js"></script>
 
-<script type="text/javascript" src="js/app/score.js"></script>
-<script type="text/javascript" src="js/app/api.js"></script>
-<script type='text/javascript' src="js/app/common/get_values.js"></script>
-<script type='text/javascript' src="js/app/common/common.js"></script>
-<script type='text/javascript' src="js/app/common/data_containers.js"></script>
-<script type='text/javascript' src="js/app/common/changeGraph.js"></script>
-<script type='text/javascript' src="js/app/common/Users_class.js"></script>
+<script type='text/javascript' src="js/app/additional/data/changeGraph.js"></script>
+<script type='text/javascript' src="js/app/additional/data/get_values.js"></script>
+<script type='text/javascript' src="js/app/additional/self/additional.js"></script>
+<script type="text/javascript" src="js/app/additional/score/additional.js"></script>
 
-<script type='text/javascript' src="js/app/bindings.js"></script>
+<script type="text/javascript" src="js/app/binding/compare/binding.js"></script>
+<script type="text/javascript" src="js/app/binding/data/binding.js"></script>
+<script type="text/javascript" src="js/app/binding/self/binding.js"></script>
+
+<script type='text/javascript' src="js/app/viewModel/compare/viewModel.js"></script>
+<script type='text/javascript' src="js/app/viewModel/self/viewModel.js"></script>
+<script type='text/javascript' src="js/app/viewModel/about/viewModel.js"></script>
+<script type='text/javascript' src="js/app/viewModel/data/viewModel.js"></script>
+
+<script type='text/javascript' src="js/app/api.js"></script>
 <script type='text/javascript' src="js/app/main.js"></script>
 
-<script type='text/javascript' src='js/app/score/getUsers.js'></script>
-<script type="text/javascript" src="js/app/common/Share.js"></script>
-<script type='text/javascript' src='js/app/score/view_model.js'></script>
-<script type='text/javascript' src='js/app/score/ColorMas.js'></script>
-<script type="text/javascript" src="js/app/parseData.js"></script>
 </body>
+
 </html>

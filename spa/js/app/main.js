@@ -8,20 +8,26 @@ function removeLoad(){
         }, 1000);
     },500);
 }
-var main=function() {
-    api.reqest().promise().done(function(response){
-        window.app.data = response.data;
-    }).fail(function(){
-        console.log("something going wrong");
-    });
-    var modelHome= new AppViewModel('chart_home',values.getProCon,true,'',$(".table-metrics"),$(".graph-container"));
-    modelHome.activate();
-    ko.applyBindings(modelHome);
-    removeLoad();
-};
-manager.add(main);
 $(document).ready( function() {
-    $('.subMenu').smint({
-        'scrollSpeed' : 1000
-    });
+        $('.menu').smint({
+            'scrollSpeed' : 1000
+        });
+    window.app.api.getInfoByUser(window.app.HASH).promise().done(function(response){
+        if (response) {
+            window.app.dataApp.current_user = response.data[0];
+        }})
+        .done(
+        function(){
+            return window.app.api.getData(window.app.HASH).promise().done(function(response){
+                window.app.dataApp.data = response;
+                var selfM = new AppViewModelSelf();
+                ko.applyBindings(new AppViewModelAbout(window.app.dataApp.current_user),document.getElementById('home'));
+                ko.applyBindings(new AppViewModelData(window.app.dataApp.current_user,'chart_home',$(".table-metrics"),$(".graph-container"),values.getProCon),document.getElementById('data'));
+                ko.applyBindings(selfM,document.getElementById('self'));
+                ko.applyBindings(new ViewModelScore(),document.getElementById('score'));
+                selfM.activate();
+                removeLoad();
+            });
+        }
+        )
 });

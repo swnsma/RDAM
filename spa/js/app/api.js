@@ -1,23 +1,16 @@
-var api = {
-    getData: getValues = function (id,successFunction, type) {
-        $.ajax({
-            url: 'http://195.69.221.236/ajax/users_values.php?id=' + id + '&todt=last' + type,
-            type: 'GET',
-            contentType: 'application/json',
-            success: function (response) {
-                    successFunction(response);
-            },
-            error: function (xhr, status, error) {
-                var err = JSON.parse(xhr.responseText);
-
-            }});
-    },
-    reqest: function(){
+window.app.api={
+    getInfoByUser: function(id){
         return $.ajax({
-            url: window.app.url+'/ajax/users_values.php?id=' + window.app.id +'&todt=last',
+            url: window.app.url+'/ajax/user_info.php?id=' + id  + '&fields=city,photo,descr',
+            type: 'GET',
+            contentType: 'application/json'
+        });
+    },
+    getData: function (id) {
+        return $.ajax({
+            url: window.app.url+'/ajax/users_values.php?id=' + id + '&todt=last',
             type: 'GET',
             contentType: 'application/json'
         })
     }
-
 }
