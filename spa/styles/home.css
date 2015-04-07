@@ -126,6 +126,9 @@ body{
         opacity: 0;
     }
 }
+.sml1{
+    padding-top: 50px;
+}
 .hiding{
     -webkit-animation-name: opa;
     -o-animation-name: opa;
