@@ -11,3 +11,9 @@ function AppViewModelAbout(current){
         return self.userName()+" helps to make the planet green! See more details at "+window.location;
     });
 }
+
+ko.bindingHandlers.title = {
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        $('title').text(viewModel.userName() + " | RTE");
+    }
+}
