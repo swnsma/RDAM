@@ -32,11 +32,12 @@ function AppViewModelSelf(){
         }
     });
     self.activate = function () {
+        debugger;
         /*var id = window.location.hash.slice(1);
         window.app.api.getData(id, function (someValues) {*/
             var result = [];
             //parseData(someValues, result);
-            parseDate(app.dataApp.data, result);
+            parseData(app.dataApp.data, result);
             self.batteries(result);
         //}, '');
     };

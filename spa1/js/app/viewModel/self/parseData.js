@@ -7,7 +7,6 @@ function Battery(consumption, production, date2, type,label) {
     this.label=label;
     if(production>consumption){
         this.takenFrom=0;
-
     }
     else {
         this.takenFrom = Math.round(consumption - production);
@@ -15,6 +14,7 @@ function Battery(consumption, production, date2, type,label) {
 };
 
 var parseData = function (someValues, result) {
+    debugger;
     var dayConsumption = Math.round(someValues.data.day[0].values[0][2]);
     var dayProduction = Math.round(someValues.data.day[0].values[0][1]);
     var d = new Date(someValues.data.day[0].values[0][0]);
