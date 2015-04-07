@@ -1,8 +1,3 @@
-/**
- * Created by Таня on 07.04.2015.
- */
-
-
 $(document).ready( function() {
     $(document).ready( function() {
         $('.menu').smint({
