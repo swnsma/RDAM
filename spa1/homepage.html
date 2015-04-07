@@ -163,7 +163,12 @@
         dataApp:{
 
         },
-        HASH: window.location.hash.replace('#','')
+        HASH: function() {
+            if(!window.location.hash.replace('#', '')){
+                window.location.hash=1;
+            }
+            return window.location.hash.replace('#', '');
+        }()
     };
 </script>
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -189,14 +194,7 @@
 <script type='text/javascript' src="js/app/viewModel/about/viewModel.js"></script>
 <script type='text/javascript' src="js/app/viewModel/data/viewModel.js"></script>
 <script type='text/javascript' src="js/app/main.js"></script>
-<script>
-    $(document).ready( function() {
-        $('.menu').smint({
-            'scrollSpeed' : 1000
-        });
-    });
-        window.app.api.getInfoByUser(window.app.HASH);
-</script>
+
 </body>
 
 </html>

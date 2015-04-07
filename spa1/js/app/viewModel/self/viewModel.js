@@ -32,12 +32,13 @@ function AppViewModelSelf(){
         }
     });
     self.activate = function () {
-        var id = window.location.hash.slice(1);
-        window.app.api.getData(id, function (someValues) {
+        /*var id = window.location.hash.slice(1);
+        window.app.api.getData(id, function (someValues) {*/
             var result = [];
-            parseData(someValues, result);
-            self.batteries(result)
-        }, '');
+            //parseData(someValues, result);
+            parseDate(app.dataApp.data, result);
+            self.batteries(result);
+        //}, '');
     };
 }
 ko.bindingHandlers.battery = {
