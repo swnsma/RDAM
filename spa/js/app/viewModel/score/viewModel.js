@@ -149,6 +149,9 @@ function ViewModelScore() {
         }
 
         function rangeSelected() {
+            if(!self.selectedRange()){
+                window.location.reload();
+            }
             var dateStart = self.selectedRange().dateStart;
             var dateEnd = self.selectedRange().dateEnd;
             for (var user in self.users()) {
@@ -182,7 +185,6 @@ function ViewModelScore() {
                 res.rows.push(row);
             }
         }
-        rangeSelected();
         function findWinners() {
             if (res.rows.length < 2) {
                 return;
@@ -211,6 +213,7 @@ function ViewModelScore() {
             res.rows[lowestConsumerN].lowestConsumer = true;
             res.rows[bestRateN].bestRate = true;
         }
+        rangeSelected();
         findWinners();
         function setRangeName() {
             if (self.scale().index == 'monthInterval') {
