@@ -335,7 +335,7 @@ function drawGraph(wrapper, desc) {
             date.setMinutes(59);
             date.setSeconds(59);
             date.setMilliseconds(999);
-
+            var xR, widthR;
             for (; date >= minDate; date.setDate(date.getDate() - 7)) {
                 var x = (date - minDate) * width / dateRange;
                 x = Math.round(x) + 0.5;
@@ -347,7 +347,7 @@ function drawGraph(wrapper, desc) {
                 var values = [];
                 if (n == 0) {
                     xR = 0;
-                    widthR = xIntervals[n].x
+                    widthR = xIntervals[n].x;
                     date1 = new Date(minDate);
                     date1.setHours(-1);
                     date2 = new Date(xIntervals[n].time).setMilliseconds(1000);
@@ -395,7 +395,6 @@ function drawGraph(wrapper, desc) {
 
             for (; date < maxDate; date.setDate(date.getDate() + 1)) {
                 if (date.getDate() == 1) {
-                    var month = {};
                     month.n = date.getMonth();
                     month.x = (date - minDate) * width / dateRange;
                     monthsToDraw.push(month);
@@ -952,7 +951,6 @@ function getMinimalInfo() {
                 contentType: 'application/json',
                 beforeSend: function () { },
                 success: function (response) {
-                    console.log(response);
                     processValuesWeek(response);
                 },
                 error: function (xhr, status, error) { }
@@ -1102,8 +1100,6 @@ function loadUserById(self, id) {
             contentType: 'application/json',
             beforeSend: function () { },
             success: function (response) {
-                currentUserLastWeek=response.data.week[0].values[0][0];
-                console.log(currentUserLastWeek);
                 processValuesWeek(response);
             },
             error: function (xhr, status, error) { }
