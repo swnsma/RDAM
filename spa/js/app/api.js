@@ -12,5 +12,19 @@ window.app.api={
             type: 'GET',
             contentType: 'application/json'
         })
+    },
+    compareAjax: function(ids, n) {
+        return $.ajax({
+            url: window.app.url + '/ajax/users_values.php?id=' + ids + '&todt=last&type=week&limit=' + n,
+            type: 'GET',
+            contentType: 'application/json'
+        });
+    },
+    getUsers: function(){
+        return $.ajax({
+            url: window.app.url + '/ajax/users_info.php?from_id=' + 1 + '&&fields=city,photo,descr',
+            type: 'GET',
+            contentType: 'application/json'
+        });
     }
 }

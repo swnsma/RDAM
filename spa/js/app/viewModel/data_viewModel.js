@@ -1,7 +1,3 @@
-/**
- * Created by Таня on 07.04.2015.
- */
-
 function AppViewModelData(data, idChart,equalHeight,equalWidth,items){
     var self=this;
     self.sumProd=ko.observable(0);
@@ -30,5 +26,3 @@ function AppViewModelData(data, idChart,equalHeight,equalWidth,items){
         self.thisGraph(index);
     };
 }
-
-

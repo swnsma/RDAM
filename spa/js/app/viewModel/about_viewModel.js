@@ -1,6 +1,3 @@
-/**
- * Created by Таня on 07.04.2015.
- */
 
 function AppViewModelAbout(current){
     var self= this;
@@ -10,10 +7,4 @@ function AppViewModelAbout(current){
     self.textTweet = ko.computed(function(){
         return self.userName()+" helps to make the planet green! See more details at "+window.location;
     });
-}
-
-ko.bindingHandlers.title = {
-    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-        $('title').text(viewModel.userName() + " | RTE");
-    }
 }
