@@ -58,36 +58,6 @@ Ajax.prototype._custom_xhr = function(func) {
     }
     return myXhr;
 };
-
-Ajax.prototype.check_exists_city = function(city, func) {
-    var key = '5014b616aa426e0a5a01ccf7ebc3d';
-    var success = func.success;
-    func = this._gen_func(func);
-    func.success = success;
-    $.ajax({
-        url: 'http://api.worldweatheronline.com/free/v2/weather.ashx',
-        type: 'GET',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: {
-            q: city,
-            format: 'json',
-            num_of_days: 1,
-            key: key
-        },
-        beforeSend: func.before,
-        complete: func.after,
-        success: function(response) {
-            if (response.data.weather) {
-                func.success(true);
-            } else {
-                func.success(false);
-            }
-        },
-        error: func.error
-    });
-};
-
 Ajax.prototype.create_user = function(data, func) {
     func = this._gen_func(func);
     $.ajax({
@@ -171,7 +141,7 @@ Ajax.prototype.get_users = function(from_id, func) {
         dataType: 'json',
         data: {
             from_id: from_id,
-            fields: 'city,photo,descr'
+            fields: 'photo,descr'
         },
         beforeSend: func.before,
         complete: func.after,
@@ -189,7 +159,7 @@ Ajax.prototype.search = function(user_name, func) {
         dataType: 'json',
         data: {
             user_name: user_name,
-            fields: 'city,photo,descr,type_db'
+            fields: 'photo,descr,type_db'
         },
         beforeSend: func.before,
         complete: func.after,
@@ -328,7 +298,7 @@ Ajax.prototype.get_user_info = function(id, func) {
         dataType: 'json',
         data: {
             id: id,
-            fields: 'city,photo,descr,type_db'
+            fields: 'photo,descr,type_db'
         },
         beforeSend: func.before,
         complete: func.after,

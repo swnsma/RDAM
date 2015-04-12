@@ -3,25 +3,19 @@
 include_once __DIR__ . '/../../include/add_user.class.php';
 include_once __DIR__ . '/../../include/log.class.php';
 
-if (isset($_POST['user_name']) && isset($_POST['city']) && isset($_POST['descr'])) {
+if (isset($_POST['user_name'])&& isset($_POST['descr'])) {
     $user_name = full_trim($_POST['user_name']);
-    $city = full_trim($_POST['city']);
     $descr = full_trim($_POST['descr']);
 
     $lu = strlen($user_name);
-    $lc = strlen($city);
     $ld = strlen($descr);
-    /*if (preg_match('/^[\p{L}\d \.\'\-]{1,25}$/', $user_name)
-        && preg_match('/^[\p{L} \-]{5,25}$/', $city)
-        && preg_match('/^[\p{L} \(\)\'\"\d\-\:\,\.\?\!]{0,1000}$/m', $descr)) {*/
     if (($lu >= 1 && $lu <= 100)
-        && ($lc >= 1 && $lc <= 100)
         && $ld <= 1000) {
 
         $user = new AddUser();
         $log = new Log();
 
-        if ($user->add($user_name, $city, $descr)) {
+        if ($user->add($user_name, "", $descr)) {
             $log->write('added a new user ' . $user_name);
             print '{ "status": "success", "data": { "id": ' . $user->get_id() . ' } }';
         } else {

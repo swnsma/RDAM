@@ -62,7 +62,6 @@ function CreateUser() {
 
 
     this.user_name = genField();
-    this.city = genField();
     this.descr = genField();
     function clear(some_t){
         some_t.text('');
@@ -70,7 +69,6 @@ function CreateUser() {
     }
     this.clear = function(){
         clear(self.user_name);
-        clear(self.city);
         clear(self.descr);
         clear_operation(self.curr_operation);
         return false;
@@ -79,32 +77,20 @@ function CreateUser() {
     self.user = ko.observable({
         id: null,
         user_name: null,
-        city: null,
         descr: null,
         photo: null,
         type_bd:false
     });
     this.create = function() {
         var user_name = self.user_name.text();
-        var city = self.city.text();
         var descr = self.descr.text();
         clear_operation(self.curr_operation);
         if (valid.user_name(user_name)) {
             self.user_name.invalid(false);
             if (valid.descr(descr)) {
                 self.descr.invalid(false);
-                if (valid.city(city)) {
-                    self.city.invalid(false);
-
-                    ajax.check_exists_city(city, {
-                        before: function() {
-                            self.curr_operation.global('Looking for a weather forecast for this city');
-                        },
-                        success: function(status) {
-                            if (status) {
                                 ajax.create_user({
                                     user_name: user_name,
-                                    city: city,
                                     descr: descr
                                 }, {
                                     before: function() {
@@ -116,8 +102,6 @@ function CreateUser() {
                                         self.active_page.active(1);
                                         self.active_page.max_active(1);
                                         clear_operation(self.curr_operation);
-
-
                                     },
                                     error: function(error) {
                                         if(error==='Username is already in use. Please try another one'){
@@ -126,27 +110,11 @@ function CreateUser() {
                                             debugger;
                                             alert(error);
                                         }
-//                                        self.curr_operation.local.user_name('this name is not free. But if you believe that this name is free, then reload the page');
                                         self.user_name.invalid(true);
                                         self.curr_operation.global('');
                                     }
                                 });
-                            } else {
-                                self.curr_operation.local.city('Weather forecast cannot be found. Please check if your city is supported by <a href="worldweatheronline.com/country.aspx">worldweatheronline.com</a>');
-                                self.curr_operation.global('');
-                            }
-                        },
-                        error: function(error) {
-//                            self.curr_operation.local.city('can\'t get the data. try again later');
 
-                        }
-                    });
-
-                } else {
-                    self.curr_operation.local.city('City cannot be empty');
-                    self.city.invalid(true);
-                    self.curr_operation.global('');
-                }
             } else {
                 self.curr_operation.local.description('Description is too long. It should be 1000 characters or less');
                 self.descr.invalid(true);
@@ -167,14 +135,12 @@ function CreateUser() {
         global:ko.observable(''),
         local: {
             user_name: ko.observable(''),
-            city: ko.observable(''),
             description: ko.observable('')
         }
     };
     function clear_operation(some_op){
         some_op.global('');
         some_op.local.user_name('');
-        some_op.local.city('');
         some_op.local.description('');
     }
     self.change_db_type = function(type) {
@@ -202,7 +168,6 @@ function CreateUser() {
             new FormData(document.getElementById('formData')),
             {
                 success: function(data) {
-//                    alert(data);
                     changePage('users',self.user().id);
                 },
                 error: function(error) {
@@ -234,43 +199,6 @@ function CreateUser() {
         this.name = data.db_name || '';
         this.pass = data.db_password || '';
     }
-//    function get_data(id) {
-//        if (id == null) {
-//            alert('undefined user');
-//        } else {
-//
-//            ajax.get_user_info(id, {
-//                success: function(data) {
-//                    self.user(new User(data[0]));
-//                },
-//                error: function(message) {
-//
-//                },
-//                after: function() {
-//
-//                },
-//                before: function() {
-//
-//                }
-//            });
-//            ajax.get_auth_db(id, {
-//                success: function(data) {
-//                    console.log(data[0]);
-//                    self.custom_db(new Db(data[0]));
-//                },
-//                error: function(message) {
-//
-//                },
-//                after: function() {
-//
-//                },
-//                before: function() {
-//
-//                }
-//            });
-//        }
-//    }
-//    get_data(self.user().id);
 
     self.valid_custom_db = {
         port: ko.observable('3306'),

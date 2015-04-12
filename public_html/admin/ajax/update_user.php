@@ -9,34 +9,24 @@ if (isset($_POST['id'])) {
         $id = (int)$id;
 
         $user_name = null;
-        $city = null;
         $descr = null;
 
         if (isset($_POST['user_name'])) {
             $user_name = full_trim($_POST['user_name']);
             $l = strlen($user_name);
             if ($l < 1 || $l > 100) exit_ttwp();
-            //if (!preg_match('/^[\p{L}\d \.\'\-\:\,\.\?\!]{1,25}$/', $user_name)) exit_ttwp();
-        }
-
-        if (isset($_POST['city'])) {
-            $city = full_trim($_POST['city']);
-            $l = strlen($city);
-            if ($l < 1 || $l > 100) exit_ttwp();
-            //if (!preg_match('/^[\p{L} \-]{5,25}$/', $city)) exit_ttwp();
         }
 
         if (isset($_POST['descr'])) {
             $descr = full_trim($_POST['descr']);
             $l = strlen($descr);
             if ($l > 1000) exit_ttwp();
-            //if (!preg_match('/^[\p{L} \(\)\'\"\d\-]{0,300}$/m', $descr)) exit_ttwp();
         }
 
         $user = new UpdateUser();
         $log = new LOG();
 
-        if ($user->update($id, $user_name, $city, $descr)) {
+        if ($user->update($id, $user_name, "", $descr)) {
             $log->write('data about the user with id = ' . $id .' has been updated');
             if ($user->select_info($id)) {
                 print '{ "status": "success", "data": ' . json_encode($user->get_data()) . ' }';

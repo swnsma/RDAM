@@ -42,7 +42,6 @@ function CreateUser() {
                             if (status) {
                                 ajax.create_user({
                                     user_name: user_name,
-                                    city: city,
                                     descr: descr
                                 }, {
                                     before: function() {

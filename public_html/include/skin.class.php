@@ -40,8 +40,10 @@ class Skin {
                 if (null !== $filename = $this->get_filename($id)) {
                     $r = $this->server_db->prepare('DELETE FROM `templates` WHERE `id` = :id');
                     $r->bindParam(':id', $id, PDO::PARAM_INT);
-                    if (!$r->execute() || !unlink('../../' . SKINS_FOLDER . '/' . $filename)) {
-                        throw new RuntimeException('failed to remove the template');
+                    if(!$r->execute()){
+                        throw new RuntimeException("Can't remove template from database");
+                    }else if ( !unlink('../../' . SKINS_FOLDER . '/' . $filename)) {
+                        throw new RuntimeException("Can't remove template from server");
                     }
                 } else {
                     throw new RuntimeException('it was not possible to obtain data on the requested template');

@@ -28,8 +28,7 @@
                         </div>
                         <div class="bdesrc">
                             <h2 data-bind="text: user_name"></h2>
-                            <div class="short-descr">
-                                <span class="from">from <span class="city" data-bind="text: city"></span></span> |
+                            <div class="short-descr">|
                                 <span class="url">url:
                                     <a class="u-url" data-bind="attr: { href: 'http://195.69.221.236/#' + id }" href="#">195.69.221.236/#<span data-bind="text: id"></span></a>
                                 </span>
@@ -79,13 +78,7 @@
                                         <span class="error" data-bind="text:$root.curr_oper.local.user_name"></span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>city:<span class="required-field">*</span></td>
-                                    <td>
-                                        <input class="fi" type="text" data-bind="value: city,attr: { invalid: $root.valid.city }, newtooltip: 'City for a weather forecast. Should be supported by <a href=http://www.worldweatheronline.com/country.aspx >worldweatheronline.com/country.aspx</a>'" name="edit_city" />
-                                        <span class="error" data-bind="html:$root.curr_oper.local.city"></span>
-                                    </td>
-                                </tr>
+
                                 <tr>
                                     <td>description:</td>
                                     <td>

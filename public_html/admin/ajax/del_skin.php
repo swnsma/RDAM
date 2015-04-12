@@ -19,7 +19,6 @@ if (isset($_POST['id'])) {
             header('HTTP/1.0 400 Bad Request');
             print '{ "status": "error", "error_message": "' . $skin->get_error() . '" }';
         }
-
         $skin = null;
         $log = null;
     } else {

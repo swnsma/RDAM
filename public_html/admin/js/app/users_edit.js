@@ -11,7 +11,6 @@ function UsersModel() {
     self.user = ko.observable({
         id: null,
         user_name: null,
-        city: null,
         descr: null,
         photo: null
     });
@@ -45,20 +44,17 @@ function UsersModel() {
 
     self.valid={
         user_name:ko.observable(false),
-        description:ko.observable(false),
-        city:ko.observable(false)
+        description:ko.observable(false)
     };
     self.curr_oper = {
         global:ko.observable(),
         local: {
             user_name: ko.observable(''),
-            description:ko.observable(''),
-            city:ko.observable('')
+            description:ko.observable('')
         }
     };
     self.save_info = function() {
         clear_curr_oper(self.curr_oper);
-        self.valid.city(false);
         self.valid.description(false);
         self.valid.user_name(false);
         var c = self.user();
@@ -76,50 +72,29 @@ function UsersModel() {
             self.valid.user_name(true);
             return false;
         }
-        if(!valid.city(c.city)){
-            self.curr_oper.info.local.city('City cannot be empty');
-            self.valid.city(true);
-            return false;
-        }
-        ajax.check_exists_city(c.city, {
+        ajax.update_user_info({
+            id: c.id,
+            user_name: c.user_name,
+            descr: c.descr
+        }, {
             before: function() {
-                self.curr_oper.global('Looking for a weather forecast for this city');
+                self.curr_oper.global('User is being updated');
             },
-            success: function(status) {
-                if (status) {
-                    ajax.update_user_info({
-                        id: c.id,
-                        user_name: c.user_name,
-                        city: c.city,
-                        descr: c.descr
-                    }, {
-                        before: function() {
-                            self.curr_oper.global('User is being updated');
-                        },
-                        after: function() {
+            after: function() {
 
-                        },
-                        success: function(data) {
-                            self.user(new User(data));
-                            self.curr_oper.global('User was successfully updated');
-                            self.active_page(1);
-                            clear_curr_oper(self.curr_oper);
-                        },
-                        error: function(error) {
-                            if(error==='Username is already in use. Please try another one'){
-                                self.curr_oper.local.user_name('Username is already in use. Please try another one');
-                            }else {
-                                alert(error);
-                            }
-                        }
-                    });
-                } else {
-                    self.curr_oper.local.city('Weather forecast cannot be found. Please check if your city is supported by <a href="worldweatheronline.com/country.aspx">worldweatheronline.com</a>');
-                    self.curr_oper.global('');
-                }
+            },
+            success: function(data) {
+                self.user(new User(data));
+                self.curr_oper.global('User was successfully updated');
+                self.active_page(1);
+                clear_curr_oper(self.curr_oper);
             },
             error: function(error) {
-                self.curr_oper.local.city('can\'t get the data. try again later');
+                if(error==='Username is already in use. Please try another one'){
+                    self.curr_oper.local.user_name('Username is already in use. Please try another one');
+                }else {
+                    alert(error);
+                }
             }
         });
         return false;
@@ -128,7 +103,6 @@ function UsersModel() {
         curr_oper.global('');
         curr_oper.local.user_name('');
         curr_oper.local.description('');
-        curr_oper.local.city('');
     }
     self.custom_db = ko.observable(new Db({
         id: '',
